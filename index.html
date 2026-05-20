@@ -1,0 +1,4693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mt. Moriah First Missionary Baptist Church · Quincy, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap">
+<style>
+  :root {
+    --burgundy: #5C1A26;
+    --burgundy-deep: #3F1119;
+    --burgundy-darker: #2A0B12;
+    --gold: #B89154;
+    --gold-warm: #C9A766;
+    --gold-light: #D4B27E;
+    --cream: #F5F0E8;
+    --paper: #FAF6EF;
+    --ink: #1C1A18;
+    --ink-soft: #4A4540;
+    --muted: #8B847C;
+    --line: rgba(184, 145, 84, 0.25);
+    --line-soft: rgba(28, 26, 24, 0.08);
+
+    /* Motion system */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --motion-fast: 200ms;
+    --motion-base: 400ms;
+    --motion-slow: 700ms;
+
+    /* Focus ring — accessibility */
+    --focus-ring: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold);
+    --focus-ring-dark: 0 0 0 2px var(--burgundy-deep), 0 0 0 4px var(--gold-warm);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* Accessibility: skip to content */
+  .skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top var(--motion-fast) var(--ease-out);
+  }
+
+  .skip-to-content:focus {
+    top: 16px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--gold);
+  }
+
+  /* Accessibility: focus-visible across the system */
+  *:focus { outline: none; }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 2px;
+  }
+
+  /* On dark backgrounds, swap the focus ring color */
+  .hero a:focus-visible,
+  .hero button:focus-visible,
+  .footer a:focus-visible,
+  .footer button:focus-visible {
+    box-shadow: var(--focus-ring-dark);
+  }
+
+  /* Ensure all hero content layers above video + overlay */
+  .hero > .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Motion system: scroll reveal utility */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--motion-slow) var(--ease-out),
+                transform var(--motion-slow) var(--ease-out);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 80ms; }
+  .reveal-delay-2 { transition-delay: 160ms; }
+  .reveal-delay-3 { transition-delay: 240ms; }
+  .reveal-delay-4 { transition-delay: 320ms; }
+  .reveal-delay-5 { transition-delay: 400ms; }
+
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Screen-reader-only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ===================================================== */
+  /* SHARED COMPONENTS                                     */
+  /* ===================================================== */
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── SIGNATURE: Editorial gold rule that draws across as sections enter ─── */
+  .section-rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(184, 145, 84, 0.0) 8%,
+      rgba(184, 145, 84, 0.85) 30%,
+      rgba(184, 145, 84, 1) 50%,
+      rgba(184, 145, 84, 0.85) 70%,
+      rgba(184, 145, 84, 0.0) 92%,
+      transparent 100%
+    );
+    transform: scaleX(0);
+    transform-origin: center center;
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .section.in-view > .section-rule {
+    transform: scaleX(1);
+  }
+
+  /* Subtle accent dot at the center of each rule */
+  .section-rule::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold-warm);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
+    box-shadow: 0 0 12px rgba(184, 145, 84, 0.6);
+  }
+
+  .section.in-view > .section-rule::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Light section rule — gold against cream */
+  .section--light > .section-rule {
+    opacity: 0.85;
+  }
+
+  /* Dark section rule — slightly brighter */
+  .section--dark > .section-rule {
+    opacity: 1;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.85;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0.15s;
+  }
+
+  .reveal.visible .eyebrow::before,
+  .eyebrow.visible::before {
+    transform: scaleX(1);
+  }
+
+  /* When the eyebrow lives inside a reveal block, animate when the block reveals */
+  .reveal.visible .eyebrow::before {
+    transform: scaleX(1);
+  }
+
+  .eyebrow.centered {
+    justify-content: center;
+  }
+
+  .eyebrow.centered::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.85;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0.15s;
+  }
+
+  .reveal.visible .eyebrow.centered::after {
+    transform: scaleX(1);
+  }
+
+  .display-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+  }
+
+  /* ===================================================== */
+  /* NAVIGATION                                            */
+  /* ===================================================== */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 24px 40px;
+    transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.4s ease;
+    background: transparent;
+  }
+
+
+  /* ── DARK mode nav — over hero video ── */
+  .nav.nav--dark {
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 16, 14, 0.72) 0%,
+      rgba(20, 16, 14, 0.0) 100%
+    );
+  }
+
+  .nav.nav--dark .nav-name-primary { color: var(--cream); }
+  .nav.nav--dark .nav-name-secondary { color: rgba(245, 240, 232, 0.6); }
+
+
+  /* ── LIGHT mode nav — over cream sections ── */
+  .nav.nav--light {
+    background: linear-gradient(
+      to bottom,
+      rgba(250, 246, 239, 0.96) 0%,
+      rgba(250, 246, 239, 0.92) 100%
+    );
+    box-shadow: 0 1px 0 rgba(92, 26, 38, 0.10);
+  }
+
+  .nav.nav--light .nav-name-primary { color: var(--burgundy); }
+  .nav.nav--light .nav-name-secondary { color: rgba(92, 26, 38, 0.55); }
+
+
+  /* Smooth color transitions for adaptive nav theming */
+  .nav-name-primary,
+  .nav-name-secondary,
+  .nav-link,
+
+
+  /* Shrink padding when scrolled and in light mode */
+  .nav.nav--light {
+    padding: 20px 40px;
+  }
+
+  .nav-inner {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .nav-mark {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .nav-mark svg {
+    width: 52px;
+    height: 52px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Wordmark wrapper — stacked text next to logo */
+  .nav-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  /* "Mount Moriah" — primary wordmark */
+  .nav-name-primary {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 32, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--cream);
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-feature-settings: "ss01" on, "kern" on, "liga" on;
+  }
+
+  /* "First Missionary Baptist Church" — supporting label */
+  .nav-name-secondary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.62);
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* DARK mode — ghost outline appears on hover */
+  .nav.nav--dark .nav-link {
+    color: rgba(245, 240, 232, 0.82);
+  }
+
+  .nav.nav--dark .nav-link:hover {
+    color: var(--cream);
+    border-color: rgba(245, 240, 232, 0.45);
+    background: rgba(245, 240, 232, 0.05);
+  }
+
+  /* LIGHT mode — burgundy outline appears on hover */
+  .nav.nav--light .nav-link {
+    color: var(--ink-soft);
+  }
+
+  .nav.nav--light .nav-link:hover {
+    color: var(--burgundy);
+    border-color: rgba(92, 26, 38, 0.35);
+    background: rgba(92, 26, 38, 0.03);
+  }
+
+  /* ─── GIVE BUTTON — prominent editorial CTA in nav ─── */
+  .nav-give {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 26px;
+    margin-left: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* The gradient fill — slides up from below on hover */
+  .nav-give::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: translateY(101%);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-give::after {
+    content: '→';
+    font-size: 13px;
+    font-weight: 400;
+    transform: translateX(0);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .nav-give:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-give:hover::before {
+    transform: translateY(0);
+  }
+
+  .nav-give:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* DARK mode — gold outline, gold gradient fill rises on hover */
+  .nav.nav--dark .nav-give {
+    background: rgba(20, 16, 14, 0.25);
+    color: var(--gold-light);
+    border: 1px solid rgba(212, 178, 126, 0.7);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav.nav--dark .nav-give::before {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-warm) 50%, var(--gold) 100%);
+  }
+
+  .nav.nav--dark .nav-give:hover {
+    color: var(--burgundy-deep);
+    border-color: var(--gold-warm);
+    box-shadow: 0 8px 24px rgba(184, 145, 84, 0.25),
+                0 0 0 1px rgba(212, 178, 126, 0.4);
+  }
+
+  /* LIGHT mode — burgundy with deepening gradient on hover */
+  .nav.nav--light .nav-give {
+    background: var(--burgundy);
+    color: var(--cream);
+    border: 1px solid var(--burgundy);
+  }
+
+  .nav.nav--light .nav-give::before {
+    background: linear-gradient(135deg, var(--burgundy-deep) 0%, #2A0B12 100%);
+  }
+
+  .nav.nav--light .nav-give:hover {
+    color: var(--cream);
+    border-color: var(--burgundy-deep);
+    box-shadow: 0 8px 24px rgba(63, 17, 25, 0.3),
+                0 0 0 1px rgba(63, 17, 25, 0.4);
+  }
+
+  /* ===================================================== */
+  /* SECTION 1: HERO — Cream Static Grain                  */
+  /* ===================================================== */
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 48px 100px;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  /* ── Hero Video ── */
+  .hero-video {
+    position: absolute;
+    top: -5%;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* ── Dark overlay so text stays legible ── */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(12, 8, 6, 0.78) 0%,
+        rgba(18, 14, 12, 0.62) 45%,
+        rgba(12, 8, 6, 0.85) 100%
+      );
+  }
+
+  /* LAYER 1: Hidden — video replaces this */
+  .hero::before {
+    display: none;
+  }
+
+  /* Corner brackets — gold, drawn-in animation
+     Top-left bracket sits well clear of stacked nav brand (180px down)
+     Bottom-right bracket frames the lower-right corner */
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    z-index: 8;
+    top: 180px;
+    left: 96px;
+    border-top: 1px solid rgba(184, 145, 84, 0.9);
+    border-left: 1px solid rgba(184, 145, 84, 0.9);
+    transform: scale(0.6);
+    opacity: 0;
+    animation: heroBracketIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    pointer-events: none;
+  }
+
+  .hero-bracket-br {
+    display: none;
+  }
+  }
+
+
+}
+
+  /* ─── EDITORIAL: Top-right corner marker ─── */
+  /* ─── PARALLAX foundation ─── */
+  .hero-video {
+    will-change: transform;
+    transition: transform 0.05s linear;
+  }
+
+  .hero-content {
+    will-change: transform, opacity;
+  }
+
+  /* ─── SCROLL INDICATOR ─── */
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    right: 48px;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    color: rgba(245, 240, 232, 0.7);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0;
+    animation: heroScrollFadeIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  @keyframes heroScrollFadeIn {
+    to { opacity: 1; }
+  }
+
+  .hero-scroll:hover {
+    color: var(--cream);
+  }
+
+  .hero-scroll-line {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(184, 145, 84, 0.0) 0%,
+      rgba(184, 145, 84, 0.85) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle light traveling across the line */
+  .hero-scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    width: 50%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      var(--cream) 50%,
+      transparent 100%
+    );
+    animation: scrollLineFlow 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes scrollLineFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(400%); }
+  }
+
+  /* Container above the grain layers */
+  .hero > .container {
+    position: relative;
+    z-index: 7;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Identifier line */
+  .hero-identifier {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 56px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .hero-identifier-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    flex-shrink: 0;
+  }
+
+  .hero-identifier-name {
+    color: var(--ink);
+  }
+
+  .hero-identifier-sep {
+    color: var(--burgundy);
+    opacity: 0.6;
+  }
+
+  /* The centerpiece — sculpted mark */
+
+  /* ──────────────────────────────────────────────────────────────
+     BESPOKE HERO TYPOGRAPHY
+     A composition, not a sentence. Each word is a typographic event.
+     Uses Fraunces variable axes: opsz, wght, SOFT, WONK
+     ────────────────────────────────────────────────────────────── */
+  .hero-headline {
+    font-family: 'Fraunces', Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+    color: var(--cream);
+    font-feature-settings: "ss01" on, "ss02" on, "ss03" on, "liga" on, "kern" on;
+    -webkit-font-feature-settings: "ss01" on, "ss02" on, "ss03" on, "liga" on, "kern" on;
+  }
+
+  .hero-headline em {
+    font-style: normal; /* Override default italic — we control it per span */
+  }
+
+  /* "A place at" — preamble label with weight to balance the display word */
+  .hero-headline-white {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: clamp(11px, 0.95vw, 13px);
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding-left: 0;
+  }
+
+  /* Small gold rule sits before "A place at" — editorial dateline mark */
+  .hero-headline-white::before {
+    content: "";
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: rgba(184, 145, 84, 0.6);
+  }
+
+  /* "the Mount." — the entire hero is about this word */
+  .hero-headline-cream {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 600, "SOFT" 30, "WONK" 1;
+    font-style: italic;
+    font-size: clamp(58px, 8.5vw, 124px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    display: inline-block;
+    position: relative;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                text-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* The light sweep: solid gold base with a bright traveling band */
+    background-image: linear-gradient(
+      100deg,
+      var(--gold-light) 0%,
+      var(--gold-light) 42%,
+      #F5E6C8 47%,
+      #FFFFFF 50%,
+      #F5E6C8 53%,
+      var(--gold-light) 58%,
+      var(--gold-light) 100%
+    );
+    background-size: 300% 100%;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Fallback solid color in case background-clip fails */
+    color: var(--gold-light);
+
+    animation: lightSweep 6s ease-in-out infinite;
+  }
+
+  @keyframes lightSweep {
+    0%   { background-position: 100% 0; }
+    50%  { background-position: 0% 0; }
+    100% { background-position: 100% 0; }
+  }
+
+  /* Pause sweep on hover, gently scale up — no layout reflow */
+  .hero-headline:hover .hero-headline-cream {
+    transform: scale(1.04);
+    text-shadow: 0 2px 32px rgba(184, 145, 84, 0.4),
+                 0 0 60px rgba(184, 145, 84, 0.15);
+    animation-play-state: paused;
+  }
+
+  /* Respect reduced-motion users — disable the sweep entirely */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline-cream {
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+  }
+
+  /* Custom kerning on specific letter pairs in "the Mount." */
+  .hero-headline-cream::first-letter {
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Sans subtitle under headline ── */
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.72);
+    margin: 0 auto 52px auto;
+    display: block;
+    padding-left: 0.42em;
+    text-align: center;
+  }
+
+  .hero-subtitle span {
+    display: inline-block;
+  }
+
+
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
+
+  /* Shared base styles */
+  .btn-primary,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 46px;
+    padding: 13px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* PRIMARY — solid burgundy CTA, the dominant action */
+  .btn-primary {
+    background: var(--burgundy);
+    color: var(--cream);
+    border: 1px solid var(--burgundy);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--burgundy-deep);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .btn-primary:hover {
+    border-color: var(--burgundy-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(63, 17, 25, 0.4);
+  }
+
+  .btn-primary:hover::before {
+    transform: scaleX(1);
+  }
+
+  .btn-primary:not(:hover)::before {
+    transform-origin: right center;
+  }
+
+  /* GHOST — transparent secondary CTA, burgundy fill on hover */
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245, 240, 232, 0.55);
+  }
+
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--burgundy);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--burgundy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(63, 17, 25, 0.3);
+  }
+
+  .btn-ghost:hover::before {
+    transform: scaleX(1);
+  }
+
+  .btn-ghost:not(:hover)::before {
+    transform-origin: right center;
+  }
+
+  /* Shared arrow */
+  .btn-primary::after,
+  .btn-ghost::after {
+    content: '→';
+    font-size: 13px;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary:hover::after,
+  .btn-ghost:hover::after {
+    transform: translateX(4px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 4px 0;
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity var(--motion-fast) var(--ease-out),
+                color var(--motion-fast) var(--ease-out);
+  }
+
+  .btn-secondary:hover {
+    opacity: 1;
+    color: var(--burgundy);
+  }
+
+  .btn-secondary::after {
+    content: '→';
+    transition: transform var(--motion-fast) var(--ease-out);
+  }
+
+  .btn-secondary:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* ===================================================== */
+  /* SECTION 2: WELCOME                                    */
+  /* ===================================================== */
+
+  .welcome {
+    padding: 140px 0;
+    background: var(--paper);
+  }
+
+  .welcome-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .welcome-eyebrow {
+    margin-bottom: 40px;
+  }
+
+  .welcome-greeting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 3.2vw, 42px);
+    color: var(--burgundy);
+    line-height: 1.3;
+    margin-bottom: 48px;
+    letter-spacing: -0.01em;
+  }
+
+  .welcome-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.3vw, 20px);
+    line-height: 1.8;
+    font-weight: 400;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 auto 56px;
+  }
+
+  .welcome-body p {
+    margin-bottom: 24px;
+  }
+
+  .welcome-signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 40px;
+  }
+
+  .signature-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+
+  .signature-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  /* ===================================================== */
+  /* SECTION 3: ABOUT — Lean editorial moment              */
+  /* ===================================================== */
+  .about {
+    padding: 160px 0 180px;
+    background: var(--paper);
+  }
+
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Cross watermark — felt more than seen */
+  .about-inner::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 280px;
+    background:
+      linear-gradient(to bottom, rgba(184, 145, 84, 0.07) 0%, rgba(184, 145, 84, 0.07) 100%) no-repeat center center / 3px 280px,
+      linear-gradient(to right, rgba(184, 145, 84, 0.07) 0%, rgba(184, 145, 84, 0.07) 100%) no-repeat center 28% / 120px 3px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Gold corner flourishes — framing the section like a declaration */
+  .about-deco {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-deco-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 0.5px solid rgba(184, 145, 84, 0.12);
+  }
+
+  .about-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+  }
+
+  .about-corner--tl {
+    top: -4px;
+    left: -4px;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+  }
+
+  .about-corner--tr {
+    top: -4px;
+    right: -4px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+
+  .about-corner--bl {
+    bottom: -4px;
+    left: -4px;
+    border-bottom: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+  }
+
+  .about-corner--br {
+    bottom: -4px;
+    right: -4px;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+
+  /* Ensure all about content sits above the decorative elements */
+  .about-inner .eyebrow,
+  .about-headline,
+  .about-lead,
+  .about-link {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-inner .eyebrow {
+    margin: 0 auto 36px;
+    justify-content: center;
+  }
+
+  .about-headline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.04;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin: 0 0 36px 0;
+  }
+
+  .about-headline em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .about-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+  }
+
+  .about-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    text-decoration: none;
+    border-top: 1px solid rgba(184, 145, 84, 0.4);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.4);
+    transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .about-link:hover {
+    color: var(--burgundy-deep);
+    gap: 18px;
+    border-color: var(--gold-warm);
+  }
+
+  .about-link-arrow {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-link:hover .about-link-arrow {
+    transform: translateX(4px);
+  }
+
+
+  /* ===================================================== */
+  /* SECTION 4: PLAN YOUR VISIT                            */
+  /* ===================================================== */
+
+  /* ════════════════════════════════════════════════════════════
+     VISIT — Split layout: welcome + service info | hospitality form
+     Deep burgundy ground; cream text and gold accents
+     ════════════════════════════════════════════════════════════ */
+  .visit {
+    padding: 140px 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 0%, rgba(184, 145, 84, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #3F1119 0%, #2A0B12 100%);
+    color: var(--cream);
+    position: relative;
+  }
+
+  .visit-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .visit-top {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .visit-top .eyebrow {
+    margin: 0 auto 32px;
+    justify-content: center;
+  }
+
+  .visit-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: -0.015em;
+  }
+
+  .visit-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* ── LEFT: Info column ───────────────────────────────────── */
+  .visit-info {
+    padding-top: 8px;
+  }
+
+  .visit-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.4;
+    color: var(--gold-light);
+    margin: 0 0 48px 0;
+    max-width: 480px;
+  }
+
+  .visit-details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .visit-detail {
+    padding-top: 20px;
+    border-top: 1px solid rgba(184, 145, 84, 0.25);
+  }
+
+  .visit-detail-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .visit-detail-primary {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .visit-detail-secondary {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  /* Two directions links side by side — Apple Maps + Google Maps */
+  .visit-directions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(184, 145, 84, 0.25);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.25);
+  }
+
+  .visit-directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    padding: 12px 18px;
+    border: 1px solid rgba(184, 145, 84, 0.35);
+    border-radius: 1px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Fill animation — gold sweeps in from below on hover */
+  .visit-directions::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-warm) 100%);
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .visit-directions:hover {
+    color: var(--burgundy-deep);
+    border-color: var(--gold-warm);
+    transform: translateY(-2px);
+  }
+
+  .visit-directions:hover::before {
+    transform: translateY(0);
+  }
+
+  .visit-directions-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .visit-directions-arrow {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-block;
+    margin-left: 2px;
+  }
+
+  .visit-directions:hover .visit-directions-arrow {
+    transform: translateX(3px);
+  }
+
+  /* "Or call us" — quieter tertiary action, italic editorial treatment */
+  .visit-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 4px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .visit-call strong {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 36, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-left: 2px;
+    letter-spacing: 0.01em;
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .visit-call-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    color: var(--gold);
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .visit-call:hover {
+    color: var(--cream);
+    gap: 14px;
+  }
+
+  .visit-call:hover strong {
+    color: var(--cream);
+  }
+
+  .visit-call:hover .visit-call-icon {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+
+
+  /* ── RIGHT: Hospitality form — floats over the burgundy ground ───── */
+  .visit-form-wrap {
+    background: var(--paper);
+    border: 1px solid rgba(184, 145, 84, 0.3);
+    border-radius: 2px;
+    padding: 48px 44px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35),
+                0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Gold accent rule along the top of the form card */
+  .visit-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .visit-form-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .visit-form-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+  }
+
+  .visit-form-title em {
+    font-variation-settings: "opsz" 96, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .visit-form-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 32px 0;
+  }
+
+  /* ── Form fields ─────────────────────────────────────────── */
+  .visit-field {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .visit-field-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .visit-field-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(92, 26, 38, 0.25);
+    padding: 8px 0 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--ink);
+    line-height: 1.3;
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.3s ease;
+    outline: none;
+    border-radius: 0;
+  }
+
+  .visit-field-input::placeholder {
+    color: rgba(28, 26, 24, 0.4);
+    font-style: italic;
+  }
+
+  .visit-field-input:hover {
+    border-bottom-color: rgba(92, 26, 38, 0.45);
+  }
+
+  .visit-field-input:focus {
+    border-bottom-color: var(--burgundy);
+    border-bottom-width: 1px;
+    box-shadow: 0 1px 0 0 var(--burgundy);
+  }
+
+  .visit-field-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%235C1A26' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 24px;
+    cursor: pointer;
+  }
+
+  .visit-field-input[type="date"] {
+    cursor: pointer;
+    color: rgba(28, 26, 24, 0.5);
+    font-style: italic;
+  }
+
+  .visit-field-input[type="date"]:valid,
+  .visit-field-input[type="date"]:focus {
+    color: var(--ink);
+    font-style: normal;
+  }
+
+  /* ── Submit button ────────────────────────────────────────── */
+  .visit-form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 36px;
+    background: var(--burgundy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    border: 1px solid var(--burgundy);
+    border-radius: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    margin-top: 12px;
+    transition: border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .visit-form-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--burgundy-deep);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .visit-form-submit:hover {
+    transform: translateY(-2px);
+    border-color: var(--burgundy-deep);
+    box-shadow: 0 10px 28px rgba(63, 17, 25, 0.3);
+  }
+
+  .visit-form-submit:hover::before {
+    transform: scaleX(1);
+  }
+
+  .visit-form-submit:not(:hover)::before {
+    transform-origin: right center;
+  }
+
+  .visit-form-arrow {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-block;
+  }
+
+  .visit-form-submit:hover .visit-form-arrow {
+    transform: translateX(4px);
+  }
+
+  .visit-form-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    margin: 24px 0 0 0;
+  }
+
+  /* ── Confirmation state ──────────────────────────────────── */
+  .visit-confirm {
+    display: none;
+    text-align: center;
+    padding: 24px 0 16px;
+  }
+
+  .visit-confirm.visible {
+    display: block;
+    animation: visitConfirmIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes visitConfirmIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .visit-confirm-mark {
+    color: var(--gold);
+    margin: 0 auto 24px;
+    width: 48px;
+    height: 48px;
+    animation: visitMarkDraw 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+
+  @keyframes visitMarkDraw {
+    from { opacity: 0; transform: scale(0.6) rotate(-12deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0); }
+  }
+
+  .visit-confirm-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 32px;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 18px;
+  }
+
+  .visit-confirm-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .visit-confirm-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .visit-confirm-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 24px;
+    border-top: 1px solid rgba(184, 145, 84, 0.3);
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  /* Hide form when confirm is showing */
+  .visit-form-wrap.confirmed .visit-form {
+    display: none;
+  }
+
+
+  /* ════════════════════════════════════════════════════════════
+     PASTOR — Editorial profile spread
+     Portrait left, bio + pull quote + meta right
+     ════════════════════════════════════════════════════════════ */
+  .pastor {
+    padding: 160px 0;
+    background: var(--cream);
+    color: var(--ink);
+    position: relative;
+  }
+
+  .pastor .container {
+    max-width: 1180px;
+  }
+
+  .pastor-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  /* ── LEFT: Portrait + signature plate ────────────────────── */
+  .pastor-portrait-wrap {
+    position: sticky;
+    top: 140px;
+  }
+
+  .pastor-portrait {
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #ECE2D0 0%, #DFD2BB 100%);
+    border: 1px solid rgba(92, 26, 38, 0.15);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(63, 17, 25, 0.12),
+                0 6px 16px rgba(63, 17, 25, 0.06);
+  }
+
+  /* Gold corner mark on portrait */
+  .pastor-portrait::before,
+  .pastor-portrait::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: var(--gold);
+  }
+
+  .pastor-portrait::before {
+    top: 14px;
+    left: 14px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+
+  .pastor-portrait::after {
+    bottom: 14px;
+    right: 14px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+
+  /* Portrait image — fills the frame, slight zoom on hover */
+  .pastor-portrait-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pastor-portrait:hover .pastor-portrait-img {
+    transform: scale(1.03);
+  }
+
+  /* Subtle gold overlay on the portrait frame (only visible against image) */
+  .pastor-portrait {
+    transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pastor-portrait:hover {
+    box-shadow: 0 24px 56px rgba(63, 17, 25, 0.16),
+                0 8px 20px rgba(63, 17, 25, 0.08);
+  }
+
+  .pastor-plate {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(92, 26, 38, 0.22);
+    text-align: left;
+  }
+
+  .pastor-plate-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.1;
+    color: var(--burgundy);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .pastor-plate-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── RIGHT: Bio content ──────────────────────────────────── */
+  .pastor-content .eyebrow {
+    margin-bottom: 32px;
+  }
+
+  .pastor-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 40px;
+  }
+
+  .pastor-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .pastor-body {
+    margin-bottom: 48px;
+  }
+
+  .pastor-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2vw, 26px);
+    line-height: 1.5;
+    color: var(--burgundy);
+    margin: 0 0 28px 0;
+  }
+
+  .pastor-body p:not(.pastor-lead) {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 22px 0;
+  }
+
+  .pastor-body p:not(.pastor-lead):last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Pull quote ──────────────────────────────────────────── */
+  .pastor-quote {
+    margin: 0 0 48px 0;
+    padding: 32px 0;
+    border-top: 1px solid rgba(184, 145, 84, 0.55);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.55);
+  }
+
+  .pastor-quote-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.4;
+    color: var(--burgundy);
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+
+  .pastor-quote-attr {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── Meta strip ─────────────────────────────────────────── */
+  .pastor-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .pastor-meta-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .pastor-meta-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 36, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  /* ── CTA — "Hear him preach" → scrolls to Sermons ───────── */
+  .pastor-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    text-decoration: none;
+    border-top: 1px solid rgba(92, 26, 38, 0.28);
+    border-bottom: 1px solid rgba(92, 26, 38, 0.28);
+    transition: color 0.3s ease, gap 0.3s ease;
+  }
+
+  .pastor-cta:hover {
+    color: var(--burgundy-deep);
+    gap: 16px;
+  }
+
+  .pastor-cta-arrow {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-block;
+  }
+
+  .pastor-cta:hover .pastor-cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SERMONS — Clip carousel on deep burgundy ground
+     ═══════════════════════════════════════════════════════════════ */
+  .sermons {
+    padding: 160px 0 180px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 145, 84, 0.07) 0%, transparent 60%),
+      linear-gradient(180deg, #1A060C 0%, #0E0307 100%);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sermons-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .sermons-top .eyebrow {
+    margin: 0 auto 28px;
+    justify-content: center;
+  }
+
+  .sermons-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: -0.015em;
+    margin-bottom: 0;
+  }
+
+  .sermons-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .sermons-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.6;
+    color: rgba(245, 240, 232, 0.78);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* ── Carousel container ──────────────────────────────────── */
+  .sermons-carousel {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .sermons-stage {
+    position: relative;
+    height: 700px;
+    margin-bottom: 56px;
+    perspective: 2000px;
+  }
+
+  /* Each clip card holds an iPhone mockup + caption below */
+  .sermon-clip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 280px;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  /* Front: centered, full opacity, no rotation */
+  .sermon-clip.is-front {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+    filter: none;
+    cursor: default;
+  }
+
+  /* Next: shifted far right, slight rotation toward center, dimmed */
+  .sermon-clip.is-next {
+    transform: translateX(40%) translateY(36px) scale(0.78) rotateY(-14deg);
+    opacity: 0.55;
+    z-index: 2;
+    filter: brightness(0.62) saturate(0.85);
+    cursor: pointer;
+  }
+
+  /* Prev: shifted far left, mirror rotation, dimmed */
+  .sermon-clip.is-prev {
+    transform: translateX(-140%) translateY(36px) scale(0.78) rotateY(14deg);
+    opacity: 0.55;
+    z-index: 2;
+    filter: brightness(0.62) saturate(0.85);
+    cursor: pointer;
+  }
+
+  /* Hidden: tucked deeper behind */
+  .sermon-clip.is-hidden {
+    transform: translateX(-50%) translateY(64px) scale(0.6);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── iPhone frame ─────────────────────────────────────────── */
+  .sermon-phone {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    background: linear-gradient(160deg, #2C2C2E 0%, #1C1C1E 100%);
+    border-radius: 38px;
+    padding: 9px;
+    box-shadow:
+      0 0 0 1.5px #3a3a3c,
+      0 0 0 3px #1a1a1c,
+      0 32px 70px rgba(0, 0, 0, 0.55),
+      0 14px 28px rgba(0, 0, 0, 0.3),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+    position: relative;
+  }
+
+  /* Side buttons on the phone (silent switch, volume, power) — subtle */
+  .sermon-phone::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 110px;
+    width: 3px;
+    height: 32px;
+    background: #1a1a1c;
+    border-radius: 1px;
+    box-shadow: 0 48px 0 0 #1a1a1c, 0 110px 0 0 #1a1a1c;
+  }
+
+  .sermon-phone::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 140px;
+    width: 3px;
+    height: 60px;
+    background: #1a1a1c;
+    border-radius: 1px;
+  }
+
+  /* Screen */
+  .sermon-phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Dynamic Island / notch */
+  .sermon-phone-notch {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 22px;
+    background: #000;
+    border-radius: 14px;
+    z-index: 10;
+  }
+
+  /* iOS status bar */
+  .sermon-phone-statusbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    z-index: 9;
+  }
+
+  .sermon-phone-time {
+    margin-left: 4px;
+  }
+
+  .sermon-phone-indicators {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 4px;
+  }
+
+  /* Signal bars */
+  .sermon-phone-signal {
+    width: 16px;
+    height: 9px;
+    background: linear-gradient(to right,
+      var(--cream) 0%, var(--cream) 22%,
+      transparent 22%, transparent 28%,
+      var(--cream) 28%, var(--cream) 50%,
+      transparent 50%, transparent 56%,
+      var(--cream) 56%, var(--cream) 78%,
+      transparent 78%, transparent 84%,
+      var(--cream) 84%, var(--cream) 100%);
+    -webkit-mask: linear-gradient(to top, #000 0%, #000 100%);
+    mask: linear-gradient(to top, #000 0%, #000 100%);
+    border-radius: 1px;
+  }
+
+  /* WiFi icon (simplified) */
+  .sermon-phone-wifi {
+    width: 13px;
+    height: 9px;
+    background: var(--cream);
+    -webkit-mask: radial-gradient(circle at 50% 100%, #000 30%, transparent 31%);
+    mask: radial-gradient(circle at 50% 100%, #000 30%, transparent 31%);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  }
+
+  /* Battery */
+  .sermon-phone-battery {
+    width: 24px;
+    height: 11px;
+    border: 1px solid rgba(245, 240, 232, 0.7);
+    border-radius: 3px;
+    position: relative;
+    background: linear-gradient(to right, var(--cream) 78%, transparent 78%);
+    background-clip: padding-box;
+  }
+
+  .sermon-phone-battery::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    width: 1.5px;
+    height: 3px;
+    background: rgba(245, 240, 232, 0.7);
+    border-radius: 0 1px 1px 0;
+  }
+
+  /* Video area fills the screen behind the UI elements */
+  .sermon-phone-video {
+    position: absolute;
+    inset: 0;
+    background: #1A0509;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Actual video file that plays inside the phone screen */
+  .sermon-phone-videofile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 1;
+    background: #1A0509;
+    display: block;
+  }
+
+  /* Vignette overlay — darkens edges and bottom so the caption stays legible against any frame */
+  .sermon-phone-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%),
+      radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
+  }
+
+  /* Subtle vertical scan lines for a "video" feel */
+  .sermon-phone-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(0, 0, 0, 0.04) 3px,
+      rgba(0, 0, 0, 0.04) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Play button is hidden — TikTok-style autoplay with no overlay */
+  .sermon-phone-play {
+    display: none;
+  }
+
+  .sermon-clip.is-front .sermon-phone:hover .sermon-phone-play {
+    transform: scale(1.08);
+    background: rgba(184, 145, 84, 0.22);
+    border-color: var(--gold-light);
+  }
+
+  /* Bottom-left caption stack — TikTok style */
+  .sermon-phone-overlay {
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    right: 56px; /* leave room for the action rail on the right */
+    padding: 0 16px;
+    z-index: 4;
+    color: var(--cream);
+  }
+
+  /* Username at top of caption stack (e.g., @mountmoriahfmbc) */
+  .sermon-phone-username {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 6px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.005em;
+  }
+
+  /* Caption / clip title */
+  .sermon-phone-overlay-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin: 0 0 10px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Music / source row (mimics TikTok music ticker) */
+  .sermon-phone-music {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    color: rgba(245, 240, 232, 0.92);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .sermon-phone-music svg {
+    flex-shrink: 0;
+    opacity: 0.95;
+  }
+
+  /* ── Right-side action rail (heart, comment, save, share) ── */
+  .sermon-phone-actions {
+    position: absolute;
+    right: 8px;
+    bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 4;
+    color: var(--cream);
+  }
+
+  .sermon-phone-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .sermon-phone-action-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
+  }
+
+  .sermon-phone-action-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--cream);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.01em;
+  }
+
+  /* Home bar */
+  .sermon-phone-homebar {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 4px;
+    background: rgba(245, 240, 232, 0.65);
+    border-radius: 2px;
+    z-index: 11;
+  }
+
+  /* ── Caption below phone (visible only on front card) ────── */
+  .sermon-clip-caption {
+    margin-top: 32px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
+    pointer-events: none;
+  }
+
+  .sermon-clip.is-front .sermon-clip-caption {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .sermon-clip-caption-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.78);
+    margin: 0 0 20px 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sermon-clip-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    border-top: 1px solid rgba(184, 145, 84, 0.35);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.35);
+    transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .sermon-clip-cta:hover {
+    color: var(--cream);
+    gap: 16px;
+    border-color: var(--gold-warm);
+  }
+
+  .sermon-clip-arrow {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sermon-clip-cta:hover .sermon-clip-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Controls (arrows + dots) ────────────────────────────── */
+  .sermons-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .sermons-arrow {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(184, 145, 84, 0.35);
+    border-radius: 50%;
+    color: var(--gold-light);
+    cursor: pointer;
+    transition: border-color 0.4s ease, color 0.4s ease, background 0.4s ease, transform 0.4s ease;
+  }
+
+  .sermons-arrow:hover {
+    border-color: var(--gold-warm);
+    color: var(--cream);
+    background: rgba(184, 145, 84, 0.08);
+  }
+
+  .sermons-arrow:active {
+    transform: scale(0.95);
+  }
+
+  .sermons-dots {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sermons-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.4s ease, width 0.4s ease;
+  }
+
+  .sermons-dot:hover {
+    background: rgba(245, 240, 232, 0.5);
+  }
+
+  .sermons-dot.active {
+    background: var(--gold-light);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* ── Footnote ────────────────────────────────────────────── */
+  .sermons-footnote {
+    text-align: center;
+    margin-top: 64px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(245, 240, 232, 0.65);
+  }
+
+  .sermons-footnote a {
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.4);
+    padding-bottom: 1px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .sermons-footnote a:hover {
+    color: var(--cream);
+    border-bottom-color: var(--gold-light);
+  }
+  /* ===================================================== */
+  /* SECTION 8: GIVE                                       */
+  /* ===================================================== */
+
+  .give {
+    padding: 140px 0;
+    background: var(--paper);
+  }
+
+  .give-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .give-eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .give-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(44px, 5vw, 64px);
+    line-height: 1.0;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 20px;
+  }
+
+  .give-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .give-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+  }
+
+  /* ── Give buttons ─────────────────────────────────────── */
+  .give-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .give-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+  }
+
+  .give-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(92, 26, 38, 0.15);
+  }
+
+  .give-btn-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* Givelify — primary solid button */
+  .give-btn--givelify {
+    background: var(--burgundy);
+    color: var(--cream);
+    border: 1.5px solid var(--burgundy);
+  }
+
+  .give-btn--givelify:hover {
+    background: var(--burgundy-deep);
+    border-color: var(--burgundy-deep);
+  }
+
+  /* Cash App — outlined secondary button */
+  .give-btn--cashapp {
+    background: transparent;
+    color: var(--burgundy);
+    border: 1.5px solid var(--gold);
+  }
+
+  .give-btn--cashapp:hover {
+    background: var(--burgundy);
+    color: var(--cream);
+    border-color: var(--burgundy);
+  }
+
+
+  /* ===================================================== */
+  /* EVENTS                                                */
+  /* ===================================================== */
+
+  .events {
+    padding: 140px 0;
+    background: var(--burgundy-darker);
+    position: relative;
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  .events::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.3;
+  }
+
+  .events-top {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 72px;
+  }
+
+  .events-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+  }
+
+  .events-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 20, "WONK" 0;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.0;
+    color: var(--cream);
+    letter-spacing: -0.025em;
+  }
+
+  .events-title em {
+    font-variation-settings: "opsz" 144, "wght" 600, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ── Layout: months left, cards right ──────────────── */
+  .events-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* ── Month tabs (left sidebar) — premium block cards ── */
+  .events-months {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 74vh;
+    overflow-y: auto;
+    padding: 12px;
+    background: rgba(245, 240, 232, 0.05);
+    border: 1px solid rgba(184, 145, 84, 0.2);
+    border-radius: 8px;
+    scrollbar-width: auto;
+    scrollbar-color: var(--gold) rgba(184, 145, 84, 0.08);
+  }
+
+  /* Styled scrollbar — thick, Apple-like */
+  .events-months::-webkit-scrollbar {
+    width: 10px;
+  }
+  .events-months::-webkit-scrollbar-track {
+    background: rgba(184, 145, 84, 0.04);
+    border-radius: 6px;
+  }
+  .events-months::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 6px;
+    min-height: 56px;
+  }
+  .events-months::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-warm);
+  }
+
+  /* Block card — each month is a substantial, padded block */
+  .events-month-tab {
+    display: block;
+    padding: 24px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.18);
+    text-decoration: none;
+    border: none;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.06);
+    border-radius: 0;
+    cursor: default;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    background: transparent;
+    text-align: left;
+    margin: 0;
+  }
+
+  .events-month-tab:last-child {
+    border-bottom: none;
+  }
+
+  /* Months WITH events — bold, bright, interactive */
+  .events-month-tab[data-has-events="true"] {
+    color: var(--cream);
+    cursor: pointer;
+    font-size: 19px;
+    background: rgba(245, 240, 232, 0.03);
+    border-bottom-color: rgba(184, 145, 84, 0.1);
+  }
+
+  .events-month-tab[data-has-events="true"]:hover {
+    color: var(--gold);
+    background: rgba(184, 145, 84, 0.12);
+    border-radius: 6px;
+    transform: translateX(4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Empty months — structurally present, visually quiet */
+  .events-month-tab[data-has-events="false"] {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* Active month — gold accent, clear selection state */
+  .events-month-tab.is-active {
+    color: var(--gold);
+    background: rgba(184, 145, 84, 0.12);
+    border-radius: 6px;
+    border-bottom-color: transparent;
+    font-size: 20px;
+    box-shadow: inset 3px 0 0 var(--gold);
+  }
+
+  /* ── Event cards grid ───────────────────────────────── */
+  .events-month-group {
+    display: none;
+  }
+
+  .events-month-group.is-active {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+
+  /* ── Individual event card ─────────────────────────── */
+  .event-card {
+    background: rgba(245, 240, 232, 0.04);
+    border: 1px solid rgba(184, 145, 84, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(184, 145, 84, 0.3);
+    border-color: rgba(184, 145, 84, 0.4);
+    z-index: 10;
+  }
+
+  /* Card image — cropped preview */
+  .event-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .event-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .event-card:hover .event-card-image img {
+    transform: scale(1.05);
+  }
+
+  /* Card info area */
+  .event-card-info {
+    padding: 18px 20px 22px;
+  }
+
+  .event-card-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .event-card-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .event-card-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.55);
+  }
+  .event-card-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color 0.3s ease;
+  }
+
+  .event-card:hover .event-card-view {
+    color: var(--cream);
+  }
+
+  .event-card-view::after {
+    content: '\2197';
+    font-size: 13px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .event-card:hover .event-card-view::after {
+    transform: translate(2px, -2px);
+  }
+
+  /* ── Lightbox overlay ───────────────────────────────── */
+  .events-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .events-lightbox.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .events-lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 3, 7, 0.92);
+    cursor: pointer;
+  }
+
+  .events-lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 1;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .events-lightbox.is-open .events-lightbox-content {
+    transform: scale(1);
+  }
+
+  .events-lightbox-img {
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+    display: block;
+  }
+
+  /* ── Mobile responsive ──────────────────────────────── */
+  @media (max-width: 768px) {
+    .events-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .events-months {
+      position: static;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-height: none;
+      border-right: none;
+      border-bottom: 1px solid rgba(184, 145, 84, 0.2);
+      padding-right: 0;
+      padding-bottom: 0;
+      gap: 0;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .events-months::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .events-month-tab {
+      padding: 14px 24px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+    }
+
+    .events-month-tab.is-active {
+      font-size: 13px;
+    }
+
+    .events-month-tab.is-active::after {
+      display: none;
+    }
+
+    .events-month-tab.is-active {
+      border-bottom-color: var(--gold);
+    }
+
+    .events-month-group.is-active {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===================================================== */
+  /* FOOTER                                                */
+  /* ===================================================== */
+
+  .footer {
+    background: var(--burgundy-darker);
+    color: var(--cream);
+    padding: 100px 0 40px;
+    position: relative;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.15);
+  }
+
+  .footer-brand-mark {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-mark svg {
+    width: 72px;
+    height: 72px;
+    display: block;
+  }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .footer-brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(184, 145, 84, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.6);
+  }
+
+  .footer-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col a, .footer-col li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-bottom .gold {
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ===================================================== */
+  /* DESIGNER NOTE PANEL (toggleable for walkthroughs)     */
+  /* ===================================================== */
+
+  /* ===================================================== */
+  /* RESPONSIVE                                            */
+  /* ===================================================== */
+
+  @media (max-width: 1024px) {
+    .about { padding: 100px 0 120px; }
+    .about-headline { font-size: 36px; }
+    .about-lead { font-size: 17px; }
+    .visit-grid { grid-template-columns: 1fr; gap: 48px; }
+    .sermons-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+  }
+
+  @media (max-width: 720px) {
+    .container, .visit-inner { padding: 0 24px; }
+    .visit-grid { grid-template-columns: 1fr; gap: 56px; }
+    .visit-form-wrap { padding: 36px 28px; }
+    .pastor-grid { grid-template-columns: 1fr; gap: 56px; }
+    .pastor-portrait-wrap { position: static; }
+    .pastor-portrait { max-width: 420px; }
+    .pastor-meta { grid-template-columns: 1fr; gap: 24px; }
+    .sermons { padding: 100px 0 120px; }
+    .sermons-stage { height: 640px; perspective: 1400px; }
+    .sermon-clip { width: 220px; }
+    .sermon-clip.is-front { transform: translateX(-50%) scale(1); }
+    .sermon-clip.is-next { transform: translateX(20%) translateY(24px) scale(0.7) rotateY(-12deg); opacity: 0.35; }
+    .sermon-clip.is-prev { transform: translateX(-120%) translateY(24px) scale(0.7) rotateY(12deg); opacity: 0.35; }
+    .sermon-clip.is-hidden { transform: translateX(-50%) translateY(40px) scale(0.5); }
+    .sermon-phone-overlay-title { font-size: 16px; }
+    .sermon-clip-caption-text { font-size: 16px; }
+    .sermons-controls { gap: 20px; }
+    .visit-lead { font-size: 22px; margin-bottom: 36px; }
+    .visit-form-title { font-size: 26px; }
+    .visit-confirm-title { font-size: 26px; }
+    .nav, .nav.scrolled { padding: 16px 24px; }
+    .nav-links { display: none; }
+
+    /* Hero — refined mobile composition */
+    .hero { padding: 110px 0 80px; min-height: 100vh; }
+    .hero::before { top: 70px; left: 24px; width: 32px; height: 32px; }
+    .hero::after { top: 140px; left: 24px; width: 40px; height: 40px; }
+
+    .hero-identifier {
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      margin-bottom: 32px;
+    }
+    .hero-identifier-name { width: 100%; }
+    .hero-identifier-sep { display: none; }
+    .hero-identifier { font-size: 10px; letter-spacing: 0.28em; flex-wrap: wrap; justify-content: center; }
+
+    .hero-headline { margin-bottom: 28px; }
+    .hero-sunday { flex-direction: column; gap: 8px; align-items: center; }
+    .hero-sunday-divider { display: none; }
+    .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
+    .hero::after, .hero-bracket-br { display: none; }
+
+    .hero-sunday {
+      padding-left: 20px;
+      padding-right: 0;
+      margin-bottom: 32px;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .hero-sunday-label { letter-spacing: 0.28em; }
+
+    .hero-ctas { gap: 16px; flex-direction: column; align-items: center; }
+    .btn-primary { width: 100%; justify-content: center; padding: 16px 24px; }
+
+    .welcome, .about, .visit, .sermons, .give { padding: 80px 0; }
+    .sermons-top { flex-direction: column; align-items: flex-start; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#hero-headline" class="skip-to-content">Skip to content</a>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION                                                   -->
+<!-- ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#hero">
+      <div class="nav-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Mt. Moriah identity mark" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="navBgGrad" cx="50%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="#5C1A26"/>
+              <stop offset="70%" stop-color="#3F1119"/>
+              <stop offset="100%" stop-color="#2A0B12"/>
+            </radialGradient>
+            <linearGradient id="navGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#D4B27E"/>
+              <stop offset="50%" stop-color="#C9A766"/>
+              <stop offset="100%" stop-color="#B89154"/>
+            </linearGradient>
+            <linearGradient id="navMtnLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C9A766"/>
+              <stop offset="100%" stop-color="#B89154"/>
+            </linearGradient>
+            <linearGradient id="navMtnRight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#B89154"/>
+              <stop offset="100%" stop-color="#8B6B3D"/>
+            </linearGradient>
+            <linearGradient id="navRayGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#D4B27E" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#D4B27E" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#D4B27E" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="navSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="navStrongGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="12" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <circle cx="300" cy="300" r="290" fill="url(#navBgGrad)"/>
+          <circle cx="300" cy="300" r="280" fill="none" stroke="#B89154" stroke-width="2" opacity="0.85"/>
+          <circle cx="300" cy="300" r="270" fill="none" stroke="#B89154" stroke-width="0.75" opacity="0.5"/>
+          <g fill="#C9A766">
+            <circle cx="300" cy="15" r="3.5"/>
+            <circle cx="585" cy="300" r="3.5"/>
+            <circle cx="300" cy="585" r="3.5"/>
+            <circle cx="15" cy="300" r="3.5"/>
+          </g>
+          <g opacity="0.55" filter="url(#navSoftGlow)">
+            <polygon points="300,90 285,300 315,300" fill="url(#navRayGrad)"/>
+            <polygon points="300,90 240,300 270,300" fill="url(#navRayGrad)" transform="rotate(-22 300 300)"/>
+            <polygon points="300,90 330,300 360,300" fill="url(#navRayGrad)" transform="rotate(22 300 300)"/>
+            <polygon points="300,90 195,300 225,300" fill="url(#navRayGrad)" transform="rotate(-40 300 300)"/>
+            <polygon points="300,90 375,300 405,300" fill="url(#navRayGrad)" transform="rotate(40 300 300)"/>
+          </g>
+          <polygon points="140,420 215,275 290,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+          <polygon points="310,420 385,275 460,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+          <polygon points="180,430 300,180 420,430" fill="url(#navMtnLeft)"/>
+          <polygon points="300,180 420,430 300,430" fill="url(#navMtnRight)" opacity="0.85"/>
+          <polygon points="180,430 300,180 420,430" fill="none" stroke="#2A0B12" stroke-width="2"/>
+          <polygon points="270,260 300,180 330,260 315,265 300,255 285,265" fill="#D4B27E" opacity="0.9"/>
+          <g filter="url(#navStrongGlow)">
+            <rect x="294" y="120" width="12" height="80" fill="url(#navGoldGrad)" rx="1"/>
+            <rect x="270" y="144" width="60" height="12" fill="url(#navGoldGrad)" rx="1"/>
+          </g>
+          <rect x="297" y="122" width="2" height="76" fill="#F5F0E8" opacity="0.6"/>
+          <rect x="272" y="147" width="56" height="2" fill="#F5F0E8" opacity="0.5"/>
+          <circle cx="300" cy="150" r="38" fill="none" stroke="#D4B27E" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="300" cy="150" r="46" fill="none" stroke="#C9A766" stroke-width="0.75" opacity="0.4"/>
+          <line x1="120" y1="430" x2="480" y2="430" stroke="#B89154" stroke-width="2"/>
+          <line x1="100" y1="438" x2="500" y2="438" stroke="#B89154" stroke-width="0.75" opacity="0.6"/>
+          <rect x="285" y="415" width="30" height="15" fill="#2A0B12" stroke="#B89154" stroke-width="1"/>
+          <line x1="285" y1="422" x2="315" y2="422" stroke="#B89154" stroke-width="0.5" opacity="0.7"/>
+          <g fill="#B89154" opacity="0.85">
+            <circle cx="220" cy="465" r="2.5"/>
+            <circle cx="380" cy="465" r="2.5"/>
+            <path d="M 235 465 Q 300 478 365 465" fill="none" stroke="#B89154" stroke-width="1.25"/>
+          </g>
+        </svg>
+      </div>
+      <div class="nav-name">
+        <span class="nav-name-primary">Mount Moriah</span>
+        <span class="nav-name-secondary">First Missionary Baptist Church</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="#visit">Visit</a>
+      <a class="nav-link" href="#events">Events</a>
+      <a class="nav-link" href="#sermons">Sermons</a>
+      <a class="nav-give" href="#give">Giving</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- SECTION 1 · HERO — Cream Static Grain, Centered Editorial    -->
+<!-- ============================================================ -->
+<section class="hero section section--dark" id="hero" aria-labelledby="hero-headline">
+  <!-- Hero background video -->
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  >
+    <source src="assets/video/mt-moriah-hero-sanctuary-v1.mp4" type="video/mp4">
+  </video>
+  <!-- Dark overlay for text legibility -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Corner brackets -->
+
+  <div class="container">
+    <div class="hero-content">
+
+      <h1 class="hero-headline reveal reveal-delay-1" id="hero-headline">
+        <span class="hero-headline-cream">the Mount.</span>
+      </h1>
+
+      <p class="hero-subtitle reveal reveal-delay-2"><span>Grace · Growth · Gratitude</span></p>
+
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="#visit" class="btn-primary">Plan Your Visit</a>
+        <a href="#pastor" class="btn-ghost">Meet Pastor Caldwell</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator — editorial content cue -->
+  <a href="#about" class="hero-scroll" aria-label="Continue to welcome section">
+    <span>Sundays at 11 AM &nbsp;·&nbsp; 302 South Tenth Street, Quincy FL</span>
+    <span class="hero-scroll-line" aria-hidden="true"></span>
+  </a>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2 · ABOUT — Lean editorial moment                    -->
+<!-- ============================================================ -->
+<section class="about section has-rule section--light" id="about">
+  <div class="section-rule" aria-hidden="true"></div>
+  <div class="container">
+    <div class="about-inner">
+      <!-- Decorative gold corner flourishes -->
+      <div class="about-deco" aria-hidden="true">
+        <div class="about-deco-border"></div>
+        <div class="about-corner about-corner--tl"></div>
+        <div class="about-corner about-corner--tr"></div>
+        <div class="about-corner about-corner--bl"></div>
+        <div class="about-corner about-corner--br"></div>
+      </div>
+
+      <div class="eyebrow reveal">Our Story</div>
+      <h2 class="about-headline reveal reveal-delay-1">
+        More than <em>a gathering.</em>
+      </h2>
+      <p class="about-lead reveal reveal-delay-2">
+        Mt. Moriah First Missionary Baptist Church has been a fixture in Quincy, Florida for generations. Under Pastor Stephen L.M. Caldwell, we're entering a new chapter, rooted in the same faith that built this house and pointed toward the work still ahead.
+      </p>
+      <a href="about.html" class="about-link reveal reveal-delay-3">
+        <span class="about-link-label">Read our full story</span>
+        <span class="about-link-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4 · PLAN YOUR VISIT                                  -->
+<!-- ============================================================ -->
+<section class="visit section has-rule section--dark" id="visit">
+  <div class="section-rule" aria-hidden="true"></div>
+
+  <div class="visit-inner">
+    <div class="visit-top reveal">
+      <div class="eyebrow centered">Plan Your Visit</div>
+      <h2 class="visit-title">
+        Come <em>as you are.</em>
+      </h2>
+    </div>
+
+    <div class="visit-grid">
+      <!-- LEFT — Welcome copy + service details -->
+      <div class="visit-info reveal">
+        <p class="visit-lead">
+          Whether it's your first Sunday or your fiftieth, there's a place at the Mount for you.
+        </p>
+
+        <div class="visit-details">
+          <div class="visit-detail">
+            <div class="visit-detail-label">When</div>
+            <div class="visit-detail-primary">Sundays at 11 AM</div>
+            <div class="visit-detail-secondary">Bible study Wednesdays at 7 PM</div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="visit-detail-label">Where</div>
+            <div class="visit-detail-primary">302 South Tenth Street</div>
+            <div class="visit-detail-secondary">Quincy, Florida 32351</div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="visit-detail-label">What to expect</div>
+            <div class="visit-detail-primary">A warm welcome at the door</div>
+            <div class="visit-detail-secondary">Come as you are. We mean it.</div>
+          </div>
+        </div>
+
+        <div class="visit-directions-row">
+          <a href="https://maps.apple.com/?address=302+South+10th+Street,+Quincy,+FL+32351&q=Mt+Moriah+First+Missionary+Baptist+Church" target="_blank" rel="noopener" class="visit-directions">
+            <span class="visit-directions-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+            </span>
+            Apple Maps
+            <span class="visit-directions-arrow">&rarr;</span>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mt+Moriah+First+Missionary+Baptist+Church+302+South+Tenth+Street+Quincy+FL+32351" target="_blank" rel="noopener" class="visit-directions">
+            <span class="visit-directions-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+            </span>
+            Google Maps
+            <span class="visit-directions-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <a href="tel:8506277244" class="visit-call">
+          <span class="visit-call-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Or call us at <strong>850-627-7244</strong></span>
+        </a>
+      </div>
+
+      <!-- RIGHT — Hospitality form -->
+      <div class="visit-form-wrap reveal reveal-delay-1">
+        <form class="visit-form" id="visitForm" novalidate>
+          <div class="visit-form-eyebrow">A Note to Our Hospitality Team</div>
+          <h3 class="visit-form-title">
+            Let us know <em>you're coming.</em>
+          </h3>
+          <p class="visit-form-intro">
+            We'll be ready to greet you personally and save you a seat.
+          </p>
+
+          <div class="visit-field">
+            <label for="vf-name" class="visit-field-label">Your name</label>
+            <input type="text" id="vf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
+          </div>
+
+          <div class="visit-field">
+            <label for="vf-party" class="visit-field-label">How many of you?</label>
+            <select id="vf-party" name="party" class="visit-field-input visit-field-select" required>
+              <option value="" disabled selected>Select party size</option>
+              <option value="1">Just me</option>
+              <option value="2">Two of us</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6+">Six or more</option>
+            </select>
+          </div>
+
+          <div class="visit-field">
+            <label for="vf-date" class="visit-field-label">Which Sunday?</label>
+            <input type="date" id="vf-date" name="date" class="visit-field-input" required>
+          </div>
+
+          <button type="submit" class="visit-form-submit">
+            <span>Save my seat</span>
+            <span class="visit-form-arrow">&rarr;</span>
+          </button>
+
+          <p class="visit-form-note">
+            We'll never share your information. This goes straight to our hospitality team.
+          </p>
+        </form>
+
+        <!-- Confirmation state — hidden until form submit -->
+        <div class="visit-confirm" id="visitConfirm" aria-hidden="true">
+          <div class="visit-confirm-mark">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M14 24 L21 31 L34 17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="visit-confirm-title">
+            We'll see you Sunday, <em><span id="visitConfirmName">friend</span>.</em>
+          </h3>
+          <p class="visit-confirm-body">
+            Look for our hospitality team at the welcome table. We've saved a seat for you and your <span id="visitConfirmParty">party</span>.
+          </p>
+          <p class="visit-confirm-meta">
+            Sundays at 11 AM &middot; 302 South Tenth Street, Quincy FL
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6 · MEET PASTOR CALDWELL                             -->
+<!-- ============================================================ -->
+<section class="pastor section has-rule section--light" id="pastor">
+  <div class="section-rule" aria-hidden="true"></div>
+  <div class="container">
+    <div class="pastor-grid">
+
+      <!-- LEFT — Portrait placeholder + signature plate -->
+      <div class="pastor-portrait-wrap reveal">
+        <div class="pastor-portrait">
+          <img
+            src="assets/images/pastor-caldwell-portrait-v1.jpg"
+            alt="Portrait of Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
+            class="pastor-portrait-img"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="pastor-plate">
+          <div class="pastor-plate-name">Stephen L.M. Caldwell</div>
+          <div class="pastor-plate-title">Senior Pastor &middot; Mt. Moriah</div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Bio + pull quote + CTA -->
+      <div class="pastor-content reveal reveal-delay-1">
+        <div class="eyebrow">Our Pastor</div>
+        <h2 class="pastor-title">
+          A shepherd <em>for this season.</em>
+        </h2>
+
+        <div class="pastor-body">
+          <p class="pastor-lead">
+            Pastor Caldwell came to Mt. Moriah believing that a church is more than a Sunday service. It is a place where people grow.
+          </p>
+
+          <p>
+            His ministry is built on a simple conviction: the gospel transforms whole lives. Not just souls, but minds, families, finances, and futures. He preaches Christ crucified and pursues a vision of community where grace is the ground, growth is the work, and gratitude is the response.
+          </p>
+
+          <p>
+            He is new to the Mount, but he is not new to the work. He arrives with a heart for people, a love for the Word, and a calling that this congregation has been preparing to receive.
+          </p>
+        </div>
+
+        <blockquote class="pastor-quote">
+          <p class="pastor-quote-text">
+            We are not building a gathering. We are building a community of believers, growing together in every part of life.
+          </p>
+          <footer class="pastor-quote-attr">Pastor Stephen L.M. Caldwell</footer>
+        </blockquote>
+
+        <div class="pastor-meta">
+          <div class="pastor-meta-item">
+            <div class="pastor-meta-label">Family</div>
+            <div class="pastor-meta-value">Husband &middot; Father of two</div>
+          </div>
+          <div class="pastor-meta-item">
+            <div class="pastor-meta-label">Heart</div>
+            <div class="pastor-meta-value">Pastoral care &middot; Holistic ministry</div>
+          </div>
+        </div>
+
+        <a href="#sermons" class="pastor-cta">
+          Hear him preach
+          <span class="pastor-cta-arrow">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7 · SERMONS                                          -->
+<!-- ============================================================ -->
+<section class="sermons section has-rule section--dark" id="sermons">
+  <div class="section-rule" aria-hidden="true"></div>
+  <div class="container">
+
+    <!-- Editorial header -->
+    <div class="sermons-top reveal">
+      <div class="eyebrow centered">Clips from the Mount</div>
+      <h2 class="sermons-title">
+        Moments worth <em>revisiting.</em>
+      </h2>
+    </div>
+
+    <!-- Carousel -->
+    <div class="sermons-carousel reveal reveal-delay-1" id="sermonsCarousel">
+      <div class="sermons-stage">
+
+        <!-- Card 1 -->
+        <article class="sermon-clip" data-index="0">
+          <div class="sermon-phone">
+            <div class="sermon-phone-screen">
+              <div class="sermon-phone-notch" aria-hidden="true"></div>
+              <div class="sermon-phone-statusbar" aria-hidden="true">
+                <span class="sermon-phone-time">9:41</span>
+                <div class="sermon-phone-indicators">
+                  <span class="sermon-phone-signal"></span>
+                  <span class="sermon-phone-wifi"></span>
+                  <span class="sermon-phone-battery"></span>
+                </div>
+              </div>
+              <div class="sermon-phone-video">
+                <video
+                  class="sermon-phone-videofile"
+                  src="assets/video/pastor-caldwell-clip-placeholder-v1.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true">
+                </video>
+                <div class="sermon-phone-vignette" aria-hidden="true"></div>
+                <div class="sermon-phone-play">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M11 8 L11 24 L24 16 Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <!-- TikTok-style right-side action rail -->
+                <div class="sermon-phone-actions" aria-hidden="true">
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">2.4K</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">186</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Save</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                        <polyline points="16 6 12 2 8 6"/>
+                        <line x1="12" y1="2" x2="12" y2="15"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Share</div>
+                  </div>
+                </div>
+
+                <!-- Bottom-left caption stack (TikTok style) -->
+                <div class="sermon-phone-overlay">
+                  <div class="sermon-phone-username">@mountmoriahfmbc</div>
+                  <h3 class="sermon-phone-overlay-title">A shepherd's first word.</h3>
+                  <div class="sermon-phone-music">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    </svg>
+                    <span>Sunday Worship &middot; April 2026</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sermon-phone-homebar" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="sermon-clip-caption">
+            <p class="sermon-clip-caption-text">From Pastor Caldwell's first message at the Mount</p>
+            <a href="#" class="sermon-clip-cta">
+              Watch the clip
+              <span class="sermon-clip-arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="sermon-clip" data-index="1">
+          <div class="sermon-phone">
+            <div class="sermon-phone-screen">
+              <div class="sermon-phone-notch" aria-hidden="true"></div>
+              <div class="sermon-phone-statusbar" aria-hidden="true">
+                <span class="sermon-phone-time">9:41</span>
+                <div class="sermon-phone-indicators">
+                  <span class="sermon-phone-signal"></span>
+                  <span class="sermon-phone-wifi"></span>
+                  <span class="sermon-phone-battery"></span>
+                </div>
+              </div>
+              <div class="sermon-phone-video">
+                <video
+                  class="sermon-phone-videofile"
+                  src="assets/video/pastor-caldwell-clip-placeholder-v1.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true">
+                </video>
+                <div class="sermon-phone-vignette" aria-hidden="true"></div>
+                <div class="sermon-phone-play">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M11 8 L11 24 L24 16 Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <!-- TikTok-style right-side action rail -->
+                <div class="sermon-phone-actions" aria-hidden="true">
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">1.8K</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">94</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Save</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                        <polyline points="16 6 12 2 8 6"/>
+                        <line x1="12" y1="2" x2="12" y2="15"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Share</div>
+                  </div>
+                </div>
+
+                <!-- Bottom-left caption stack (TikTok style) -->
+                <div class="sermon-phone-overlay">
+                  <div class="sermon-phone-username">@mountmoriahfmbc</div>
+                  <h3 class="sermon-phone-overlay-title">Grace produces growth.</h3>
+                  <div class="sermon-phone-music">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    </svg>
+                    <span>Mid-Week Word &middot; April 2026</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sermon-phone-homebar" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="sermon-clip-caption">
+            <p class="sermon-clip-caption-text">On the simple truth that changes everything</p>
+            <a href="#" class="sermon-clip-cta">
+              Watch the clip
+              <span class="sermon-clip-arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="sermon-clip" data-index="2">
+          <div class="sermon-phone">
+            <div class="sermon-phone-screen">
+              <div class="sermon-phone-notch" aria-hidden="true"></div>
+              <div class="sermon-phone-statusbar" aria-hidden="true">
+                <span class="sermon-phone-time">9:41</span>
+                <div class="sermon-phone-indicators">
+                  <span class="sermon-phone-signal"></span>
+                  <span class="sermon-phone-wifi"></span>
+                  <span class="sermon-phone-battery"></span>
+                </div>
+              </div>
+              <div class="sermon-phone-video">
+                <video
+                  class="sermon-phone-videofile"
+                  src="assets/video/pastor-caldwell-clip-placeholder-v1.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true">
+                </video>
+                <div class="sermon-phone-vignette" aria-hidden="true"></div>
+                <div class="sermon-phone-play">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M11 8 L11 24 L24 16 Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <!-- TikTok-style right-side action rail -->
+                <div class="sermon-phone-actions" aria-hidden="true">
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">3.1K</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">247</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Save</div>
+                  </div>
+                  <div class="sermon-phone-action">
+                    <div class="sermon-phone-action-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                        <polyline points="16 6 12 2 8 6"/>
+                        <line x1="12" y1="2" x2="12" y2="15"/>
+                      </svg>
+                    </div>
+                    <div class="sermon-phone-action-count">Share</div>
+                  </div>
+                </div>
+
+                <!-- Bottom-left caption stack (TikTok style) -->
+                <div class="sermon-phone-overlay">
+                  <div class="sermon-phone-username">@mountmoriahfmbc</div>
+                  <h3 class="sermon-phone-overlay-title">More than a gathering.</h3>
+                  <div class="sermon-phone-music">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    </svg>
+                    <span>Sunday Worship &middot; March 2026</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sermon-phone-homebar" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="sermon-clip-caption">
+            <p class="sermon-clip-caption-text">On building a community, not just a Sunday service</p>
+            <a href="#" class="sermon-clip-cta">
+              Watch the clip
+              <span class="sermon-clip-arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Controls -->
+      <div class="sermons-controls">
+        <button class="sermons-arrow sermons-arrow-prev" id="sermonsPrev" aria-label="Previous clip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 18 L9 12 L15 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="sermons-dots" id="sermonsDots">
+          <button class="sermons-dot active" data-target="0" aria-label="Clip 1"></button>
+          <button class="sermons-dot" data-target="1" aria-label="Clip 2"></button>
+          <button class="sermons-dot" data-target="2" aria-label="Clip 3"></button>
+        </div>
+
+        <button class="sermons-arrow sermons-arrow-next" id="sermonsNext" aria-label="Next clip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 6 L15 12 L9 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Subtle footnote -->
+    <p class="sermons-footnote reveal reveal-delay-2">
+      Want to experience the full message? <a href="#visit">Join us this Sunday</a>.
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION · EVENTS                                             -->
+<!-- ============================================================ -->
+<section class="events" id="events">
+  <div class="container">
+
+    <div class="events-top">
+      <h2 class="events-title reveal">
+        Upcoming <em>Events</em>
+      </h2>
+    </div>
+
+    <div class="events-layout">
+
+      <!-- Month tabs (left) -->
+      <nav class="events-months reveal reveal-delay-2" aria-label="Event months">
+        <button class="events-month-tab is-active" data-month="may" data-has-events="true">May</button>
+        <button class="events-month-tab" data-month="june" data-has-events="false">June</button>
+        <button class="events-month-tab" data-month="july" data-has-events="false">July</button>
+        <button class="events-month-tab" data-month="august" data-has-events="false">August</button>
+        <button class="events-month-tab" data-month="september" data-has-events="false">September</button>
+        <button class="events-month-tab" data-month="october" data-has-events="false">October</button>
+        <button class="events-month-tab" data-month="november" data-has-events="false">November</button>
+        <button class="events-month-tab" data-month="december" data-has-events="false">December</button>
+        <button class="events-month-tab" data-month="january" data-has-events="true">January</button>
+        <button class="events-month-tab" data-month="february" data-has-events="false">February</button>
+        <button class="events-month-tab" data-month="march" data-has-events="false">March</button>
+        <button class="events-month-tab" data-month="april" data-has-events="false">April</button>
+      </nav>
+
+      <!-- Event cards (right) -->
+      <div class="events-cards reveal reveal-delay-3">
+
+        <!-- MAY -->
+        <div class="events-month-group is-active" data-month="may">
+          <article class="event-card" data-flyer="assets/images/event-may-pentecost-sunday.jpg">
+            <div class="event-card-image">
+              <img src="assets/images/event-may-pentecost-sunday.jpg" alt="Pentecost Sunday at Mt. Moriah" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">May 24 &middot; 11:00 AM</div>
+              <h3 class="event-card-name">Pentecost Sunday</h3>
+              <p class="event-card-desc">A special Sunday of worship celebrating the outpouring of the Holy Spirit.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+
+          <article class="event-card" data-flyer="assets/images/event-may-growing-in-grace.jpg">
+            <div class="event-card-image">
+              <img src="assets/images/event-may-growing-in-grace.jpg" alt="Growing in Grace sermon series" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">May 6 &middot; 7:00 PM</div>
+              <h3 class="event-card-name">Growing in Grace</h3>
+              <p class="event-card-desc">A journey of faith and growth. Grounded in truth, growing in grace.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+
+          <article class="event-card" data-flyer="assets/images/event-may-mothers-day.jpg">
+            <div class="event-card-image">
+              <img src="assets/images/event-may-mothers-day.jpg" alt="Mother's Day Celebration at Mt. Moriah" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">May 10</div>
+              <h3 class="event-card-name">Mother's Day Celebration</h3>
+              <p class="event-card-desc">Honoring Lady Quierah Caldwell and all the mothers of Mt. Moriah.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- JANUARY -->
+        <div class="events-month-group" data-month="january">
+          <article class="event-card" data-flyer="assets/images/event-jan-watch-night.jpg">
+            <div class="event-card-image">
+              <img src="assets/images/event-jan-watch-night.jpg" alt="New Year's Eve Watch Night Service" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">December 31 &middot; 10:00 PM</div>
+              <h3 class="event-card-name">New Year's Eve Watch Night</h3>
+              <p class="event-card-desc">Ring in the New Year in the house of the Lord with Rev. Stephen L.M. Caldwell.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox overlay for full flyer view -->
+  <div class="events-lightbox" id="eventsLightbox">
+    <div class="events-lightbox-backdrop"></div>
+    <div class="events-lightbox-content">
+      <img class="events-lightbox-img" id="eventsLightboxImg" src="" alt="" />
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION · GIVE                                               -->
+<!-- ============================================================ -->
+<section class="give section has-rule section--light" id="give">
+  <div class="section-rule" aria-hidden="true"></div>
+  <div class="container">
+    <div class="give-inner">
+      <div class="give-eyebrow eyebrow centered reveal">Give</div>
+
+      <h2 class="give-title reveal reveal-delay-1">
+        Every gift <em>moves us forward.</em>
+      </h2>
+
+      <p class="give-subtitle reveal reveal-delay-2">
+        Choose how you would like to give.
+      </p>
+
+      <div class="give-buttons reveal reveal-delay-3">
+        <a href="#" class="give-btn give-btn--givelify" aria-label="Give with Givelify">
+          <svg class="give-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+          </svg>
+          <span class="give-btn-label">Givelify</span>
+        </a>
+
+        <a href="#" class="give-btn give-btn--cashapp" aria-label="Give with Cash App">
+          <svg class="give-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-1h-1c-1.1 0-2-.9-2-2h2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1 0-.55-.36-.81-.9-.95l-2.2-.55C9.48 12.05 8.5 11.11 8.5 9.5c0-1.3.89-2.4 2.5-2.45V6h2v1.05c1.13.13 2 .9 2.22 2.95h-2c-.12-.55-.55-1-1.22-1h-1c-.55 0-1 .45-1 1 0 .44.36.69.9.83l2.2.55C14.52 11.95 15.5 12.89 15.5 14.5c0 1.3-.89 2.4-2.5 2.45V18z" fill="currentColor"/>
+          </svg>
+          <span class="give-btn-label">Cash App</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Mt. Moriah identity mark" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <radialGradient id="ftBgGrad" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#5C1A26"/>
+                <stop offset="70%" stop-color="#3F1119"/>
+                <stop offset="100%" stop-color="#2A0B12"/>
+              </radialGradient>
+              <linearGradient id="ftGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#D4B27E"/>
+                <stop offset="50%" stop-color="#C9A766"/>
+                <stop offset="100%" stop-color="#B89154"/>
+              </linearGradient>
+              <linearGradient id="ftMtnLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C9A766"/>
+                <stop offset="100%" stop-color="#B89154"/>
+              </linearGradient>
+              <linearGradient id="ftMtnRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#B89154"/>
+                <stop offset="100%" stop-color="#8B6B3D"/>
+              </linearGradient>
+              <linearGradient id="ftRayGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#D4B27E" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#D4B27E" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#D4B27E" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="ftSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="ftStrongGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="12" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="300" cy="300" r="290" fill="url(#ftBgGrad)"/>
+            <circle cx="300" cy="300" r="280" fill="none" stroke="#B89154" stroke-width="2" opacity="0.85"/>
+            <circle cx="300" cy="300" r="270" fill="none" stroke="#B89154" stroke-width="0.75" opacity="0.5"/>
+            <g fill="#C9A766">
+              <circle cx="300" cy="15" r="3.5"/>
+              <circle cx="585" cy="300" r="3.5"/>
+              <circle cx="300" cy="585" r="3.5"/>
+              <circle cx="15" cy="300" r="3.5"/>
+            </g>
+            <g opacity="0.55" filter="url(#ftSoftGlow)">
+              <polygon points="300,90 285,300 315,300" fill="url(#ftRayGrad)"/>
+              <polygon points="300,90 240,300 270,300" fill="url(#ftRayGrad)" transform="rotate(-22 300 300)"/>
+              <polygon points="300,90 330,300 360,300" fill="url(#ftRayGrad)" transform="rotate(22 300 300)"/>
+              <polygon points="300,90 195,300 225,300" fill="url(#ftRayGrad)" transform="rotate(-40 300 300)"/>
+              <polygon points="300,90 375,300 405,300" fill="url(#ftRayGrad)" transform="rotate(40 300 300)"/>
+            </g>
+            <polygon points="140,420 215,275 290,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+            <polygon points="310,420 385,275 460,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+            <polygon points="180,430 300,180 420,430" fill="url(#ftMtnLeft)"/>
+            <polygon points="300,180 420,430 300,430" fill="url(#ftMtnRight)" opacity="0.85"/>
+            <polygon points="180,430 300,180 420,430" fill="none" stroke="#2A0B12" stroke-width="2"/>
+            <polygon points="270,260 300,180 330,260 315,265 300,255 285,265" fill="#D4B27E" opacity="0.9"/>
+            <g filter="url(#ftStrongGlow)">
+              <rect x="294" y="120" width="12" height="80" fill="url(#ftGoldGrad)" rx="1"/>
+              <rect x="270" y="144" width="60" height="12" fill="url(#ftGoldGrad)" rx="1"/>
+            </g>
+            <rect x="297" y="122" width="2" height="76" fill="#F5F0E8" opacity="0.6"/>
+            <rect x="272" y="147" width="56" height="2" fill="#F5F0E8" opacity="0.5"/>
+            <circle cx="300" cy="150" r="38" fill="none" stroke="#D4B27E" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="300" cy="150" r="46" fill="none" stroke="#C9A766" stroke-width="0.75" opacity="0.4"/>
+            <line x1="120" y1="430" x2="480" y2="430" stroke="#B89154" stroke-width="2"/>
+            <line x1="100" y1="438" x2="500" y2="438" stroke="#B89154" stroke-width="0.75" opacity="0.6"/>
+            <rect x="285" y="415" width="30" height="15" fill="#2A0B12" stroke="#B89154" stroke-width="1"/>
+            <line x1="285" y1="422" x2="315" y2="422" stroke="#B89154" stroke-width="0.5" opacity="0.7"/>
+            <g fill="#B89154" opacity="0.85">
+              <circle cx="220" cy="465" r="2.5"/>
+              <circle cx="380" cy="465" r="2.5"/>
+              <path d="M 235 465 Q 300 478 365 465" fill="none" stroke="#B89154" stroke-width="1.25"/>
+            </g>
+          </svg>
+        </div>
+        <div class="footer-brand-name">Mt. Moriah</div>
+        <div class="footer-brand-sub">First Missionary Baptist Church</div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>302 South Tenth Street</li>
+          <li>Quincy, Florida 32351</li>
+          <li>Historic District</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Worship</h4>
+        <ul>
+          <li>Sundays · 11:00 AM</li>
+          <li>Bible Study · Wed 7:00 PM</li>
+          <li>(850) 627-7244</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Mt. Moriah First Missionary Baptist Church</span>
+      <span class="gold">Crafted by Merx Studios</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------------------------------------------------------------
+  // Hero entry animation — stagger on load
+  // ---------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroReveals = document.querySelectorAll('.hero .reveal');
+    // Small delay to let first paint settle, then trigger cascade
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        heroReveals.forEach(el => el.classList.add('visible'));
+      });
+    });
+
+    // ---------------------------------------------------------------
+    // Scroll-triggered reveals for everything below the hero
+    // ---------------------------------------------------------------
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    // Auto-tag legacy content blocks that don't have .reveal explicitly
+    document.querySelectorAll(
+      '.welcome-inner, .about-block, .visit-block, .sermon-card, .give-inner, .sermons-top, .visit-top'
+    ).forEach(el => {
+      if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    });
+
+    // Observe ALL .reveal elements outside the hero (hero animates separately above)
+    const heroEl = document.querySelector('.hero');
+    const revealTargets = Array.from(document.querySelectorAll('.reveal')).filter(el => {
+      return !heroEl || !heroEl.contains(el);
+    });
+    // ── Section rule observer: triggers gold rule animation ──
+    const ruleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          ruleObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    document.querySelectorAll('.section.has-rule').forEach(section => {
+      ruleObserver.observe(section);
+    });
+
+    revealTargets.forEach((el, i) => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+      }
+      // Stagger sibling reveals slightly (legacy blocks)
+      if (el.classList.contains('about-block') || el.classList.contains('visit-block') ||
+          el.classList.contains('sermon-card')) {
+        const siblings = Array.from(el.parentElement.children).filter(c => c === el || c.classList.contains(el.classList[0]));
+        const idx = siblings.indexOf(el);
+        if (idx > 0 && idx < 5) el.classList.add(`reveal-delay-${idx}`);
+      }
+      observer.observe(el);
+    });
+  });
+
+
+  // ─── HERO PARALLAX ─────────────────────────────────────────────────
+  (function initHeroParallax() {
+    const heroVideo = document.querySelector('.hero-video');
+    const heroContent = document.querySelector('.hero-content');
+    if (!heroVideo || !heroContent) return;
+
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      const heroHeight = document.getElementById('hero').offsetHeight;
+
+      // Only run parallax while hero is in view
+      if (scrollY > heroHeight) return;
+
+      // Video drifts down at 0.3x scroll speed (creates depth)
+      const videoOffset = scrollY * 0.3;
+      heroVideo.style.transform = `translateY(${videoOffset}px) scale(1.05)`;
+
+      // Content rises slightly at 0.15x scroll speed + fades
+      const contentOffset = scrollY * -0.15;
+      const contentOpacity = Math.max(0, 1 - (scrollY / (heroHeight * 0.6)));
+      heroContent.style.transform = `translateY(${contentOffset}px)`;
+      heroContent.style.opacity = contentOpacity;
+    }
+
+    function onParallaxScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+  })();
+
+
+
+
+
+
+
+  // ─── SERMONS VIDEOS — Pause when section is offscreen ───────────
+  (function initSermonVideos() {
+    const section = document.getElementById('sermons');
+    if (!section) return;
+
+    const videos = section.querySelectorAll('.sermon-phone-videofile');
+    if (!videos.length) return;
+
+    // Respect prefers-reduced-motion: pause everything and don't auto-resume
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      videos.forEach(v => {
+        v.pause();
+        v.removeAttribute('autoplay');
+      });
+      return;
+    }
+
+    // Try to start them all (autoplay attribute should do it, but some browsers are picky)
+    function tryPlayAll() {
+      videos.forEach(v => {
+        const p = v.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => { /* silently ignore autoplay rejection */ });
+        }
+      });
+    }
+
+    function pauseAll() {
+      videos.forEach(v => v.pause());
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tryPlayAll();
+        } else {
+          pauseAll();
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    sectionObserver.observe(section);
+
+    // Also pause if the tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        pauseAll();
+      } else {
+        // Only resume if the section is still visible
+        const rect = section.getBoundingClientRect();
+        const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (visible) tryPlayAll();
+      }
+    });
+  })();
+
+
+  // ─── SERMONS CAROUSEL — Rotating clip cards ──────────────────────
+  (function initSermonsCarousel() {
+    const carousel = document.getElementById('sermonsCarousel');
+    if (!carousel) return;
+
+    const cards = Array.from(carousel.querySelectorAll('.sermon-clip'));
+    const prevBtn = document.getElementById('sermonsPrev');
+    const nextBtn = document.getElementById('sermonsNext');
+    const dots = Array.from(carousel.querySelectorAll('.sermons-dot'));
+
+    if (!cards.length) return;
+
+    let currentIndex = 0;
+    const total = cards.length;
+
+    function updateCarousel() {
+      cards.forEach((card, i) => {
+        card.classList.remove('is-front', 'is-next', 'is-prev', 'is-hidden');
+
+        const offset = (i - currentIndex + total) % total;
+
+        if (offset === 0) {
+          card.classList.add('is-front');
+          card.setAttribute('aria-hidden', 'false');
+        } else if (offset === 1) {
+          card.classList.add('is-next');
+          card.setAttribute('aria-hidden', 'true');
+        } else if (offset === total - 1) {
+          card.classList.add('is-prev');
+          card.setAttribute('aria-hidden', 'true');
+        } else {
+          card.classList.add('is-hidden');
+          card.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function goNext() {
+      currentIndex = (currentIndex + 1) % total;
+      updateCarousel();
+    }
+
+    function goPrev() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateCarousel();
+    }
+
+    function goTo(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
+
+    nextBtn?.addEventListener('click', goNext);
+    prevBtn?.addEventListener('click', goPrev);
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const target = parseInt(dot.getAttribute('data-target'), 10);
+        if (!isNaN(target)) goTo(target);
+      });
+    });
+
+    // Click on the next/prev card itself advances/retreats
+    cards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        // Don't intercept clicks on the actual CTA link
+        if (e.target.closest('.sermon-clip-cta')) return;
+        if (card.classList.contains('is-next')) goNext();
+        if (card.classList.contains('is-prev')) goPrev();
+      });
+    });
+
+    // Keyboard navigation when focused on carousel
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goPrev(); }
+    });
+
+    // Initialize
+    updateCarousel();
+  })();
+
+
+  // ─── VISIT FORM — Hospitality submission ─────────────────────────
+  (function initVisitForm() {
+    const form = document.getElementById('visitForm');
+    if (!form) return;
+
+    const wrap = form.closest('.visit-form-wrap');
+    const confirm = document.getElementById('visitConfirm');
+    const nameOut = document.getElementById('visitConfirmName');
+    const partyOut = document.getElementById('visitConfirmParty');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = form.querySelector('[name="name"]').value.trim();
+      const party = form.querySelector('[name="party"]').value;
+      const date = form.querySelector('[name="date"]').value;
+
+      if (!name || !party || !date) return;
+
+      // Extract first name only for the warm greeting
+      const firstName = name.split(' ')[0];
+      nameOut.textContent = firstName;
+
+      // Format party text naturally
+      let partyText = 'guest';
+      if (party === '1') partyText = 'guest';
+      else if (party === '2') partyText = 'guest';
+      else if (party === '6+') partyText = 'group';
+      else partyText = 'group';
+      partyOut.textContent = partyText;
+
+      // In a real implementation, POST to the church's hospitality endpoint here:
+      //   fetch('/api/visit', { method: 'POST', body: new FormData(form) })
+      // For now, we just show the confirmation state.
+
+      wrap.classList.add('confirmed');
+      confirm.classList.add('visible');
+      confirm.setAttribute('aria-hidden', 'false');
+      confirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Set min date on the date input to today
+    const dateInput = form.querySelector('[name="date"]');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+  })();
+
+  // ─── Adaptive nav — section-aware color theming ───────────────────
+  // Uses viewport-relative measurement (getBoundingClientRect) which is
+  // bulletproof regardless of DOM nesting or offsetParent chains.
+  (function initAdaptiveNav() {
+    const nav = document.getElementById('nav');
+    if (!nav) {
+      console.warn('[nav] #nav element not found');
+      return;
+    }
+
+    const allSections = Array.from(document.querySelectorAll('section.section, section[class*="section--"]'));
+    if (allSections.length === 0) {
+      console.warn('[nav] no sections found');
+      return;
+    }
+
+    let currentTheme = null;
+
+    function getNavTheme() {
+      // Probe point: 1px below the nav in viewport coordinates
+      const probeY = nav.getBoundingClientRect().bottom + 1;
+
+      for (const section of allSections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probeY && rect.bottom > probeY) {
+          if (section.classList.contains('section--dark')) return 'dark';
+          if (section.classList.contains('section--light')) return 'light';
+          return 'light';
+        }
+      }
+      return 'light';
+    }
+
+    function applyTheme() {
+      const theme = getNavTheme();
+      if (theme === currentTheme) return;
+
+      if (theme === 'dark') {
+        nav.classList.add('nav--dark');
+        nav.classList.remove('nav--light');
+      } else {
+        nav.classList.add('nav--light');
+        nav.classList.remove('nav--dark');
+      }
+      currentTheme = theme;
+    }
+
+    // Throttle with requestAnimationFrame
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          applyTheme();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Init AFTER layout settles
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        applyTheme();
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', applyTheme, { passive: true });
+    window.addEventListener('load', applyTheme);
+  })();
+
+  // ─── EVENTS MONTH TABS ──────────────────────────────────
+  (function initEventsTabs() {
+    var tabs = document.querySelectorAll('.events-month-tab');
+    var groups = document.querySelectorAll('.events-month-group');
+    if (!tabs.length || !groups.length) return;
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        if (this.dataset.hasEvents !== 'true') return;
+
+        var month = this.dataset.month;
+
+        tabs.forEach(function(t) { t.classList.remove('is-active'); });
+        this.classList.add('is-active');
+
+        groups.forEach(function(g) {
+          if (g.dataset.month === month) {
+            g.classList.add('is-active');
+          } else {
+            g.classList.remove('is-active');
+          }
+        });
+      });
+    });
+  })();
+
+  // ─── EVENTS LIGHTBOX (click card to see full flyer) ─────
+  (function initEventsLightbox() {
+    var lightbox = document.getElementById('eventsLightbox');
+    var lightboxImg = document.getElementById('eventsLightboxImg');
+    if (!lightbox || !lightboxImg) return;
+    var backdrop = lightbox.querySelector('.events-lightbox-backdrop');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || 'Event flyer';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var flyer = this.dataset.flyer;
+        if (!flyer) return;
+        var name = this.querySelector('.event-card-name');
+        openLightbox(flyer, name ? name.textContent : 'Event flyer');
+      });
+    });
+
+    if (backdrop) backdrop.addEventListener('click', closeLightbox);
+    lightboxImg.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  })();
+
+
+</script>
+
+</body>
+</html>

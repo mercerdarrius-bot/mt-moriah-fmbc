@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story · Mt. Moriah First Missionary Baptist Church</title>
+<meta name="description" content="The story of Mt. Moriah First Missionary Baptist Church in Quincy, Florida, and the new chapter under Pastor Stephen L.M. Caldwell.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap">
+
+<style>
+  /* ───────────────────────────────────────────────────────────────
+     DESIGN TOKENS (mirror of index.html)
+     ─────────────────────────────────────────────────────────────── */
+  :root {
+    --burgundy: #5C1A26;
+    --burgundy-deep: #3F1119;
+    --burgundy-darker: #2A0B12;
+    --gold: #B89154;
+    --gold-warm: #C9A766;
+    --gold-light: #D4B27E;
+    --cream: #F5F0E8;
+    --paper: #FAF6EF;
+    --ink: #1C1A18;
+    --ink-soft: #4A4540;
+    --muted: rgba(28, 26, 24, 0.55);
+    --line: rgba(184, 145, 84, 0.25);
+    --line-soft: rgba(28, 26, 24, 0.08);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --focus-ring: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold);
+    --focus-ring-dark: 0 0 0 2px var(--burgundy-deep), 0 0 0 4px var(--gold-warm);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--burgundy);
+    color: var(--cream);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Skip to content for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 16px;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 8px 16px;
+    z-index: 100;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* Focus ring */
+  a:focus-visible, button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 2px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     NAV — Same lockup as homepage, but always paper background
+     (no dark/light switching needed since this page is uniformly paper-ish)
+     ═══════════════════════════════════════════════════════════════ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(250, 246, 239, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+    transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  .nav-mark {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .nav-mark svg {
+    width: 52px;
+    height: 52px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .nav-name {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-name-primary {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 1;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--burgundy);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-name-secondary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.is-current::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .nav-link.is-current {
+    color: var(--burgundy);
+  }
+
+  .nav-give {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: transparent;
+    transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+  }
+
+  .nav-give:hover {
+    background: var(--gold-warm);
+    color: var(--burgundy-deep);
+    border-color: var(--gold-warm);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PAGE HERO — Quiet, editorial. Not the homepage hero.
+     This is the cover of an essay, not a movie poster.
+     ═══════════════════════════════════════════════════════════════ */
+  .page-hero {
+    padding: 220px 0 120px;
+    background: var(--paper);
+    text-align: center;
+    position: relative;
+  }
+
+  .page-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+  }
+
+  .page-hero-eyebrow::before,
+  .page-hero-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .page-hero-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 1.0;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    margin: 0 auto 36px;
+    max-width: 900px;
+  }
+
+  .page-hero-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 60, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .page-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .page-hero-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent 0%, var(--gold) 100%);
+    margin: 80px auto 0;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 1 — THE ARC (expanded narrative)
+     Sticky marker on the left, three breathing paragraphs on the right
+     ═══════════════════════════════════════════════════════════════ */
+  .arc {
+    padding: 140px 0 160px;
+    background: var(--paper);
+  }
+
+  .arc-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  .arc-marker-wrap {
+    position: sticky;
+    top: 140px;
+  }
+
+  .arc-marker {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .arc-marker-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .arc-marker-est {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-style: italic;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--burgundy);
+  }
+
+  .arc-marker-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 4px 0 6px;
+  }
+
+  .arc-marker-place {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .arc-body {
+    max-width: 640px;
+  }
+
+  .arc-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  .arc-body p:last-child {
+    font-style: italic;
+    font-size: 23px;
+    color: var(--burgundy);
+    margin-bottom: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 2 — THE THREE G's (expanded with deeper exposition)
+     Cream background break + three pillars
+     ═══════════════════════════════════════════════════════════════ */
+  .gs {
+    padding: 160px 0;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .gs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .gs-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .gs-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .gs-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .gs-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .gs-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .gs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .gs-pillar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gs-pillar-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .gs-pillar-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .gs-pillar-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    font-size: clamp(38px, 4vw, 52px);
+    line-height: 1;
+    color: var(--burgundy);
+    margin-bottom: 20px;
+    letter-spacing: -0.015em;
+  }
+
+  .gs-pillar-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .gs-pillar-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 3 — THE VISION (four pillars of holistic ministry)
+     Back to paper. 2×2 editorial cards with serif headlines.
+     ═══════════════════════════════════════════════════════════════ */
+  .vision {
+    padding: 160px 0;
+    background: var(--paper);
+  }
+
+  .vision-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .vision-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .vision-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .vision-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .vision-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .vision-card {
+    padding: 48px 44px;
+    background: var(--cream);
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    position: relative;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .vision-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s var(--ease);
+  }
+
+  .vision-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 56px rgba(92, 26, 38, 0.08);
+  }
+
+  .vision-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .vision-card-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .vision-card-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--burgundy);
+    margin-bottom: 18px;
+    letter-spacing: -0.012em;
+  }
+
+  .vision-card-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 4 — LEADERSHIP
+     Pastor Caldwell anchor + space for the team
+     Burgundy background — the team is the heart of the church.
+     ═══════════════════════════════════════════════════════════════ */
+  .leadership {
+    padding: 160px 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 145, 84, 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+    color: var(--cream);
+  }
+
+  .leadership-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .leadership-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+
+  .leadership-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .leadership-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ── Pastor anchor — centered above the board ─────────── */
+  .leadership-pastor-anchor {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 0;
+    max-width: 1080px;
+  }
+
+  /* ── Leadership card grid ──────────────────────────────── */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 36px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* Exactly 5 columns for deacons/trustees — tight single row */
+  .leadership-grid--five {
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+  }
+
+  /* Section divider label (e.g. "Deacons & Trustees") */
+  .leadership-section-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1080px;
+    margin: 64px auto 48px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .leadership-section-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 145, 84, 0.25);
+  }
+
+  /* Individual leader card */
+  .leader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .leader-card-photo {
+    width: 160px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #2A0B12 0%, #1A060C 100%);
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .leader-card:hover .leader-card-photo {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+  }
+
+  .leader-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Placeholder photo — shows a subtle person icon */
+  .leader-card-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(184, 145, 84, 0.4);
+  }
+
+  /* Gold L-brackets on the pastor card photo */
+  .leader-card--pastor .leader-card-photo {
+    width: 200px;
+    height: 250px;
+  }
+
+  .leader-card--pastor .leader-card-photo::before,
+  .leader-card--pastor .leader-card-photo::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gold-light);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .leader-card--pastor .leader-card-photo::before {
+    top: -6px;
+    left: -6px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .leader-card--pastor .leader-card-photo::after {
+    bottom: -6px;
+    right: -6px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .leader-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .leader-card-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .leader-card-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 5 — HERITAGE
+     Cream. A quiet moment about Mt. Moriah's place in Quincy.
+     ═══════════════════════════════════════════════════════════════ */
+  .heritage {
+    padding: 160px 0;
+    background: var(--cream);
+  }
+
+  .heritage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 96px;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .heritage-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .heritage-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.08;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 32px;
+  }
+
+  .heritage-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .heritage-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+
+
+  /* Heritage marker card — photo + info */
+  .heritage-marker {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  /* Photo area — holds image or placeholder */
+  .heritage-marker-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--burgundy-deep) 0%, var(--burgundy-darker) 100%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .heritage-marker-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Placeholder when no photo is available */
+  .heritage-marker-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: rgba(184, 145, 84, 0.45);
+  }
+
+  .heritage-marker-photo-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(184, 145, 84, 0.4);
+  }
+
+  /* Info area below photo */
+  .heritage-marker-info {
+    padding: 36px 36px;
+    text-align: center;
+  }
+
+  .heritage-marker-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .heritage-marker-place {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+  }
+
+  .heritage-marker-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 14px auto;
+  }
+
+  .heritage-marker-address {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     CTA — Closing invitation, pushes back to homepage actions
+     ═══════════════════════════════════════════════════════════════ */
+  .cta {
+    padding: 180px 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 145, 84, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #1A060C 0%, #0E0307 100%);
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .cta-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+
+  .cta-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 1.0;
+    color: var(--cream);
+    letter-spacing: -0.022em;
+    margin-bottom: 28px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 60, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.75);
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+
+  .cta-buttons {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+    background: var(--gold-light);
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    transition: background 0.4s var(--ease), gap 0.3s ease, transform 0.3s ease;
+  }
+
+  .cta-btn-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    gap: 18px;
+  }
+
+  .cta-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border-top: 1px solid rgba(184, 145, 84, 0.4);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.4);
+    transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .cta-btn-secondary:hover {
+    color: var(--cream);
+    gap: 18px;
+    border-color: var(--gold-warm);
+  }
+
+  .cta-arrow {
+    display: inline-block;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .cta-btn-primary:hover .cta-arrow,
+  .cta-btn-secondary:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     FOOTER — minimal, brand-anchored
+     ═══════════════════════════════════════════════════════════════ */
+  .footer {
+    padding: 80px 0 48px;
+    background: var(--burgundy-darker);
+    color: rgba(245, 240, 232, 0.6);
+    position: relative;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.15);
+  }
+
+  .footer-brand-mark {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-mark svg {
+    width: 72px;
+    height: 72px;
+    display: block;
+  }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .footer-brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(184, 145, 84, 0.8);
+  }
+
+  .footer-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col a, .footer-col li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-bottom .gold {
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .footer-merx-link {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+
+  .footer-merx-link:hover {
+    color: var(--cream);
+    opacity: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     REVEAL ANIMATION (matches homepage system)
+     ═══════════════════════════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     MOBILE
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .container { padding: 0 24px; }
+    .nav-inner { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .nav-give { padding: 8px 16px; font-size: 10px; letter-spacing: 0.2em; }
+
+    .page-hero { padding: 160px 0 80px; }
+    .page-hero-title { font-size: 44px; }
+
+    .arc { padding: 100px 0 120px; }
+    .arc-grid { grid-template-columns: 1fr; gap: 48px; }
+    .arc-marker-wrap { position: static; }
+
+    .gs { padding: 120px 0; }
+    .gs-grid { grid-template-columns: 1fr; gap: 64px; }
+
+    .vision { padding: 120px 0; }
+    .vision-grid { grid-template-columns: 1fr; gap: 24px; }
+    .vision-card { padding: 36px 32px; }
+
+    .leadership { padding: 120px 0; }
+    .leadership-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 28px; }
+    .leadership-grid--five { grid-template-columns: repeat(3, 1fr); }
+    .leader-card-photo { width: 120px; height: 150px; }
+    .leader-card--pastor .leader-card-photo { width: 160px; height: 200px; }
+    .leader-card-name { font-size: 17px; }
+    .leadership-section-label { margin: 48px auto 36px; }
+
+    .heritage { padding: 120px 0; }
+    .heritage-grid { grid-template-columns: 1fr; gap: 56px; }
+
+    .cta { padding: 120px 0; }
+    .cta-buttons { flex-direction: column; gap: 24px; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- NAV                                                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" aria-label="Mount Moriah First Missionary Baptist Church · Home">
+      <div class="nav-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Mt. Moriah identity mark" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="navBgGrad" cx="50%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="#5C1A26"/>
+              <stop offset="70%" stop-color="#3F1119"/>
+              <stop offset="100%" stop-color="#2A0B12"/>
+            </radialGradient>
+            <linearGradient id="navGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#D4B27E"/>
+              <stop offset="50%" stop-color="#C9A766"/>
+              <stop offset="100%" stop-color="#B89154"/>
+            </linearGradient>
+            <linearGradient id="navMtnLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C9A766"/>
+              <stop offset="100%" stop-color="#B89154"/>
+            </linearGradient>
+            <linearGradient id="navMtnRight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#B89154"/>
+              <stop offset="100%" stop-color="#8B6B3D"/>
+            </linearGradient>
+            <linearGradient id="navRayGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#D4B27E" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#D4B27E" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#D4B27E" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="navSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="navStrongGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="12" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <circle cx="300" cy="300" r="290" fill="url(#navBgGrad)"/>
+          <circle cx="300" cy="300" r="280" fill="none" stroke="#B89154" stroke-width="2" opacity="0.85"/>
+          <circle cx="300" cy="300" r="270" fill="none" stroke="#B89154" stroke-width="0.75" opacity="0.5"/>
+          <g fill="#C9A766">
+            <circle cx="300" cy="15" r="3.5"/>
+            <circle cx="585" cy="300" r="3.5"/>
+            <circle cx="300" cy="585" r="3.5"/>
+            <circle cx="15" cy="300" r="3.5"/>
+          </g>
+          <g opacity="0.55" filter="url(#navSoftGlow)">
+            <polygon points="300,90 285,300 315,300" fill="url(#navRayGrad)"/>
+            <polygon points="300,90 240,300 270,300" fill="url(#navRayGrad)" transform="rotate(-22 300 300)"/>
+            <polygon points="300,90 330,300 360,300" fill="url(#navRayGrad)" transform="rotate(22 300 300)"/>
+            <polygon points="300,90 195,300 225,300" fill="url(#navRayGrad)" transform="rotate(-40 300 300)"/>
+            <polygon points="300,90 375,300 405,300" fill="url(#navRayGrad)" transform="rotate(40 300 300)"/>
+          </g>
+          <polygon points="140,420 215,275 290,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+          <polygon points="310,420 385,275 460,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+          <polygon points="180,430 300,180 420,430" fill="url(#navMtnLeft)"/>
+          <polygon points="300,180 420,430 300,430" fill="url(#navMtnRight)" opacity="0.85"/>
+          <polygon points="180,430 300,180 420,430" fill="none" stroke="#2A0B12" stroke-width="2"/>
+          <polygon points="270,260 300,180 330,260 315,265 300,255 285,265" fill="#D4B27E" opacity="0.9"/>
+          <g filter="url(#navStrongGlow)">
+            <rect x="294" y="120" width="12" height="80" fill="url(#navGoldGrad)" rx="1"/>
+            <rect x="270" y="144" width="60" height="12" fill="url(#navGoldGrad)" rx="1"/>
+          </g>
+          <rect x="297" y="122" width="2" height="76" fill="#F5F0E8" opacity="0.6"/>
+          <rect x="272" y="147" width="56" height="2" fill="#F5F0E8" opacity="0.5"/>
+          <circle cx="300" cy="150" r="38" fill="none" stroke="#D4B27E" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="300" cy="150" r="46" fill="none" stroke="#C9A766" stroke-width="0.75" opacity="0.4"/>
+          <line x1="120" y1="430" x2="480" y2="430" stroke="#B89154" stroke-width="2"/>
+          <line x1="100" y1="438" x2="500" y2="438" stroke="#B89154" stroke-width="0.75" opacity="0.6"/>
+          <rect x="285" y="415" width="30" height="15" fill="#2A0B12" stroke="#B89154" stroke-width="1"/>
+          <line x1="285" y1="422" x2="315" y2="422" stroke="#B89154" stroke-width="0.5" opacity="0.7"/>
+          <g fill="#B89154" opacity="0.85">
+            <circle cx="220" cy="465" r="2.5"/>
+            <circle cx="380" cy="465" r="2.5"/>
+            <path d="M 235 465 Q 300 478 365 465" fill="none" stroke="#B89154" stroke-width="1.25"/>
+          </g>
+        </svg>
+      </div>
+      <div class="nav-name">
+        <span class="nav-name-primary">Mount Moriah</span>
+        <span class="nav-name-secondary">First Missionary Baptist Church</span>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/about.html" class="nav-link is-current">About</a>
+      <a href="index.html#visit" class="nav-link">Visit</a>
+      <a href="index.html#events" class="nav-link">Events</a>
+      <a href="index.html#sermons" class="nav-link">Sermons</a>
+    </nav>
+    <a href="index.html#give" class="nav-give">
+      Giving
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- PAGE HERO                                                        -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">Our Story</div>
+      <h1 class="page-hero-title reveal reveal-delay-1">
+        A continuation,<br><em>not a restart.</em>
+      </h1>
+      <p class="page-hero-sub reveal reveal-delay-2">
+        The story of Mt. Moriah is older than any one chapter. It belongs to the people who built this house, to the people who keep walking through its doors, and to the work still ahead.
+      </p>
+      <div class="page-hero-divider reveal reveal-delay-3" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- THE ARC                                                          -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="arc">
+    <div class="container">
+      <div class="arc-grid">
+
+        <div class="arc-marker-wrap">
+          <div class="arc-marker reveal">
+            <div class="arc-marker-eyebrow">The Arc</div>
+            <div class="arc-marker-est">Est.</div>
+            <div class="arc-marker-rule"></div>
+            <div class="arc-marker-place">Quincy, FL</div>
+          </div>
+        </div>
+
+        <div class="arc-body">
+          <p class="reveal reveal-delay-1">
+            Mt. Moriah First Missionary Baptist Church has been a fixture in Quincy, Florida for generations. Across decades of change in the city, the South, and the country, this congregation has remained a place where people gather to worship, to learn, and to build a life together in faith.
+          </p>
+          <p class="reveal reveal-delay-2">
+            Every congregation has seasons. There are seasons of growth, seasons of patience, and seasons of preparation. We have known each of them. What has never changed is the conviction that this church belongs to a story bigger than any one moment, and that the work of the gospel is never finished.
+          </p>
+          <p class="reveal reveal-delay-3">
+            This is the chapter we have been preparing for.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- THE THREE G's                                                    -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="gs">
+    <div class="container">
+
+      <div class="gs-top">
+        <div class="gs-eyebrow reveal">What We Believe</div>
+        <h2 class="gs-title reveal reveal-delay-1">
+          Three words. <em>One posture.</em>
+        </h2>
+        <p class="gs-intro reveal reveal-delay-2">
+          The shape of our faith, said simply. Each word leads to the next, and together they describe how we want to live.
+        </p>
+      </div>
+
+      <div class="gs-grid">
+
+        <article class="gs-pillar reveal reveal-delay-1">
+          <div class="gs-pillar-num">i.</div>
+          <div class="gs-pillar-rule"></div>
+          <h3 class="gs-pillar-name">Grace</h3>
+          <div class="gs-pillar-tagline">Unearned. Given freely.</div>
+          <p class="gs-pillar-body">
+            We begin here because God begins here. Grace is not the reward at the end of effort. It is the ground we stand on before we have done anything at all. Every person who walks through these doors is met by it first.
+          </p>
+        </article>
+
+        <article class="gs-pillar reveal reveal-delay-2">
+          <div class="gs-pillar-num">ii.</div>
+          <div class="gs-pillar-rule"></div>
+          <h3 class="gs-pillar-name">Growth</h3>
+          <div class="gs-pillar-tagline">Spirit, mind, and means.</div>
+          <p class="gs-pillar-body">
+            Grace produces growth. We believe a believer should keep growing for the rest of their life, and that growth is not only spiritual. It includes how we think, how we care for our minds and bodies, how we handle our money, and how we build the futures we are responsible for.
+          </p>
+        </article>
+
+        <article class="gs-pillar reveal reveal-delay-3">
+          <div class="gs-pillar-num">iii.</div>
+          <div class="gs-pillar-rule"></div>
+          <h3 class="gs-pillar-name">Gratitude</h3>
+          <div class="gs-pillar-tagline">The only honest response.</div>
+          <p class="gs-pillar-body">
+            When you have received grace and you are walking in growth, gratitude is what comes out. Not as a feeling we perform, but as a posture we carry. We worship, we serve, and we give because we are grateful, not because we owe.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- THE VISION (Four pillars of holistic ministry)                   -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="vision">
+    <div class="container">
+
+      <div class="vision-top">
+        <div class="vision-eyebrow reveal">The Vision</div>
+        <h2 class="vision-title reveal reveal-delay-1">
+          A gospel that reaches <em>every part of life.</em>
+        </h2>
+        <p class="vision-intro reveal reveal-delay-2">
+          We believe faith speaks to more than Sunday morning. So our ministry does, too.
+        </p>
+      </div>
+
+      <div class="vision-grid">
+
+        <article class="vision-card reveal reveal-delay-1">
+          <div class="vision-card-num">01 &middot; Spirit</div>
+          <h3 class="vision-card-title">Spiritual formation</h3>
+          <p class="vision-card-body">
+            Worship, scripture, prayer, and discipleship. The center of everything, and the reason the rest of this list matters.
+          </p>
+        </article>
+
+        <article class="vision-card reveal reveal-delay-2">
+          <div class="vision-card-num">02 &middot; Mind</div>
+          <h3 class="vision-card-title">Mental and emotional health</h3>
+          <p class="vision-card-body">
+            Faith does not ask us to ignore what we feel. We hold space for grief, for anxiety, for the weight people carry, and we believe the church should walk with people through it.
+          </p>
+        </article>
+
+        <article class="vision-card reveal reveal-delay-3">
+          <div class="vision-card-num">03 &middot; Means</div>
+          <h3 class="vision-card-title">Financial wellness</h3>
+          <p class="vision-card-body">
+            How we earn, save, give, and steward what we have been entrusted with. We teach this because the Bible teaches it, and because our families deserve to flourish.
+          </p>
+        </article>
+
+        <article class="vision-card reveal reveal-delay-4">
+          <div class="vision-card-num">04 &middot; Community</div>
+          <h3 class="vision-card-title">Economic development</h3>
+          <p class="vision-card-body">
+            A healthy church helps build a healthy neighborhood. We invest in the people, the businesses, and the future of Quincy because this is where God has planted us.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- LEADERSHIP                                                       -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="leadership">
+    <div class="container">
+
+      <div class="leadership-top">
+        <div class="leadership-eyebrow reveal">Leadership</div>
+        <h2 class="leadership-title reveal reveal-delay-1">
+          A shepherd, <em>and a body.</em>
+        </h2>
+      </div>
+
+      <!-- Senior Pastor — centered above the board -->
+      <div class="leadership-pastor-anchor reveal reveal-delay-2">
+        <article class="leader-card leader-card--pastor">
+          <div class="leader-card-photo">
+            <img
+              src="assets/images/pastor-caldwell-portrait-v1.jpg"
+              alt="Pastor Stephen L.M. Caldwell"
+              loading="lazy"
+            />
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Stephen L.M. Caldwell</h3>
+            <div class="leader-card-role">Senior Pastor</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Deacons & Trustees -->
+      <div class="leadership-section-label reveal reveal-delay-2">
+        <div class="leadership-section-rule"></div>
+        <span>Deacons &amp; Trustees</span>
+        <div class="leadership-section-rule"></div>
+      </div>
+
+      <div class="leadership-grid leadership-grid--five reveal reveal-delay-3">
+
+        <article class="leader-card">
+          <div class="leader-card-photo leader-card-photo--placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Name</h3>
+            <div class="leader-card-role">Deacon</div>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <div class="leader-card-photo leader-card-photo--placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Name</h3>
+            <div class="leader-card-role">Deacon</div>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <div class="leader-card-photo leader-card-photo--placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Name</h3>
+            <div class="leader-card-role">Deacon</div>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <div class="leader-card-photo leader-card-photo--placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Name</h3>
+            <div class="leader-card-role">Trustee</div>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <div class="leader-card-photo leader-card-photo--placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="leader-card-info">
+            <h3 class="leader-card-name">Name</h3>
+            <div class="leader-card-role">Trustee</div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- HERITAGE                                                         -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="heritage">
+    <div class="container">
+      <div class="heritage-grid">
+
+        <div class="heritage-marker reveal">
+          <div class="heritage-marker-photo">
+            <!-- Replace this placeholder with a real photo:
+                 <img src="assets/images/mt-moriah-sanctuary-v1.jpg" 
+                      alt="Mt. Moriah First Missionary Baptist Church sanctuary" 
+                      loading="lazy" /> 
+            -->
+            <div class="heritage-marker-photo-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="1" stroke="currentColor" stroke-width="1"/>
+                <circle cx="8.5" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1"/>
+                <path d="M3 16l4-4 3 3 4-5 7 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="heritage-marker-photo-label">Sanctuary or Building Photo</span>
+            </div>
+          </div>
+          <div class="heritage-marker-info">
+            <div class="heritage-marker-eyebrow">Our Home</div>
+            <div class="heritage-marker-place">Quincy</div>
+            <div class="heritage-marker-rule"></div>
+            <div class="heritage-marker-address">
+              302 South 10th Street<br>
+              Quincy, Florida 32351
+            </div>
+          </div>
+        </div>
+
+        <div class="heritage-content">
+          <div class="heritage-eyebrow reveal reveal-delay-1">Heritage</div>
+          <h2 class="heritage-title reveal reveal-delay-1">
+            Planted here. <em>For a reason.</em>
+          </h2>
+          <p class="heritage-body reveal reveal-delay-2">
+            Every church belongs somewhere. Mt. Moriah belongs to Quincy. The families here, the streets here, the history here. This is where our roots are, and it is where our work begins.
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- CTA                                                              -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-eyebrow reveal">Come and see</div>
+      <h2 class="cta-title reveal reveal-delay-1">
+        The best way to know us <em>is to be with us.</em>
+      </h2>
+      <p class="cta-sub reveal reveal-delay-2">
+        We would love to meet you in person. Sundays at eleven.
+      </p>
+      <div class="cta-buttons reveal reveal-delay-3">
+        <a href="index.html#visit" class="cta-btn-primary">
+          Plan your visit
+          <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="index.html#sermons" class="cta-btn-secondary">
+          Watch a clip first
+          <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                           -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Mt. Moriah identity mark" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <radialGradient id="ftBgGrad" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#5C1A26"/>
+                <stop offset="70%" stop-color="#3F1119"/>
+                <stop offset="100%" stop-color="#2A0B12"/>
+              </radialGradient>
+              <linearGradient id="ftGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#D4B27E"/>
+                <stop offset="50%" stop-color="#C9A766"/>
+                <stop offset="100%" stop-color="#B89154"/>
+              </linearGradient>
+              <linearGradient id="ftMtnLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C9A766"/>
+                <stop offset="100%" stop-color="#B89154"/>
+              </linearGradient>
+              <linearGradient id="ftMtnRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#B89154"/>
+                <stop offset="100%" stop-color="#8B6B3D"/>
+              </linearGradient>
+              <linearGradient id="ftRayGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#D4B27E" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#D4B27E" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#D4B27E" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="ftSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="ftStrongGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="12" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="300" cy="300" r="290" fill="url(#ftBgGrad)"/>
+            <circle cx="300" cy="300" r="280" fill="none" stroke="#B89154" stroke-width="2" opacity="0.85"/>
+            <circle cx="300" cy="300" r="270" fill="none" stroke="#B89154" stroke-width="0.75" opacity="0.5"/>
+            <g fill="#C9A766">
+              <circle cx="300" cy="15" r="3.5"/>
+              <circle cx="585" cy="300" r="3.5"/>
+              <circle cx="300" cy="585" r="3.5"/>
+              <circle cx="15" cy="300" r="3.5"/>
+            </g>
+            <g opacity="0.55" filter="url(#ftSoftGlow)">
+              <polygon points="300,90 285,300 315,300" fill="url(#ftRayGrad)"/>
+              <polygon points="300,90 240,300 270,300" fill="url(#ftRayGrad)" transform="rotate(-22 300 300)"/>
+              <polygon points="300,90 330,300 360,300" fill="url(#ftRayGrad)" transform="rotate(22 300 300)"/>
+              <polygon points="300,90 195,300 225,300" fill="url(#ftRayGrad)" transform="rotate(-40 300 300)"/>
+              <polygon points="300,90 375,300 405,300" fill="url(#ftRayGrad)" transform="rotate(40 300 300)"/>
+            </g>
+            <polygon points="140,420 215,275 290,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+            <polygon points="310,420 385,275 460,420" fill="#3F1119" stroke="#B89154" stroke-width="1.5" opacity="0.85"/>
+            <polygon points="180,430 300,180 420,430" fill="url(#ftMtnLeft)"/>
+            <polygon points="300,180 420,430 300,430" fill="url(#ftMtnRight)" opacity="0.85"/>
+            <polygon points="180,430 300,180 420,430" fill="none" stroke="#2A0B12" stroke-width="2"/>
+            <polygon points="270,260 300,180 330,260 315,265 300,255 285,265" fill="#D4B27E" opacity="0.9"/>
+            <g filter="url(#ftStrongGlow)">
+              <rect x="294" y="120" width="12" height="80" fill="url(#ftGoldGrad)" rx="1"/>
+              <rect x="270" y="144" width="60" height="12" fill="url(#ftGoldGrad)" rx="1"/>
+            </g>
+            <rect x="297" y="122" width="2" height="76" fill="#F5F0E8" opacity="0.6"/>
+            <rect x="272" y="147" width="56" height="2" fill="#F5F0E8" opacity="0.5"/>
+            <circle cx="300" cy="150" r="38" fill="none" stroke="#D4B27E" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="300" cy="150" r="46" fill="none" stroke="#C9A766" stroke-width="0.75" opacity="0.4"/>
+            <line x1="120" y1="430" x2="480" y2="430" stroke="#B89154" stroke-width="2"/>
+            <line x1="100" y1="438" x2="500" y2="438" stroke="#B89154" stroke-width="0.75" opacity="0.6"/>
+            <rect x="285" y="415" width="30" height="15" fill="#2A0B12" stroke="#B89154" stroke-width="1"/>
+            <line x1="285" y1="422" x2="315" y2="422" stroke="#B89154" stroke-width="0.5" opacity="0.7"/>
+            <g fill="#B89154" opacity="0.85">
+              <circle cx="220" cy="465" r="2.5"/>
+              <circle cx="380" cy="465" r="2.5"/>
+              <path d="M 235 465 Q 300 478 365 465" fill="none" stroke="#B89154" stroke-width="1.25"/>
+            </g>
+          </svg>
+        </div>
+        <div class="footer-brand-name">Mt. Moriah</div>
+        <div class="footer-brand-sub">First Missionary Baptist Church</div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>302 South Tenth Street</li>
+          <li>Quincy, Florida 32351</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Worship</h4>
+        <ul>
+          <li>Sundays &middot; 11:00 AM</li>
+          <li>Bible Study &middot; Wed 7:00 PM</li>
+          <li>(850) 627-7244</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Mt. Moriah First Missionary Baptist Church</span>
+      <span class="gold"><a href="#" class="footer-merx-link">Crafted by Merx Studios</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── REVEAL ANIMATIONS ─────────────────────────────────────────
+  (function initReveals() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+
+  // ─── NAV BACKGROUND ON SCROLL ──────────────────────────────────
+  (function initNavScroll() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    function onScroll() {
+      if (window.scrollY > 40) {
+        nav.style.background = 'rgba(250, 246, 239, 0.96)';
+        nav.style.boxShadow = '0 1px 0 rgba(184, 145, 84, 0.15)';
+      } else {
+        nav.style.background = 'rgba(250, 246, 239, 0.92)';
+        nav.style.boxShadow = 'none';
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
