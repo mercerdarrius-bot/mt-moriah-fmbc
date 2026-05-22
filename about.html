@@ -1276,6 +1276,135 @@
     .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
     .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
   }
+  /* ===================================================== */
+  /* MOBILE NAVIGATION (hamburger + overlay menu)          */
+  /* ===================================================== */
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    position: relative;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cream);
+    margin: 0 auto;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease, background 0.3s ease;
+  }
+
+  .nav.scrolled .nav-toggle-bar {
+    background: var(--ink);
+  }
+
+  .nav-toggle.is-open .nav-toggle-bar {
+    background: var(--cream);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: linear-gradient(160deg, var(--burgundy-deep) 0%, var(--burgundy-darker) 100%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .mobile-menu-link {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 34px;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 14px 0;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  }
+
+  .mobile-menu.is-open .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu.is-open .mobile-menu-link:nth-child(1) { transition-delay: 0.08s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(2) { transition-delay: 0.14s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(3) { transition-delay: 0.20s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(4) { transition-delay: 0.26s; }
+
+  .mobile-menu-link:active {
+    color: var(--gold-light);
+  }
+
+  .mobile-menu-give {
+    margin-top: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+    background: var(--gold);
+    text-decoration: none;
+    padding: 18px 48px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease 0.32s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.32s;
+  }
+
+  .mobile-menu.is-open .mobile-menu-give {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-toggle { display: flex; }
+    .nav-give { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1370,7 +1499,7 @@
       </div>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/about.html" class="nav-link is-current">About</a>
+      <a href="about.html" class="nav-link is-current">About</a>
       <a href="index.html#visit" class="nav-link">Visit</a>
       <a href="index.html#events" class="nav-link">Events</a>
       <a href="index.html#sermons" class="nav-link">Sermons</a>
@@ -1379,8 +1508,25 @@
       Giving
       <span aria-hidden="true">&rarr;</span>
     </a>
+
+    <!-- Mobile hamburger toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation">
+    <a class="mobile-menu-link" href="about.html">About</a>
+    <a class="mobile-menu-link" href="index.html#visit">Visit</a>
+    <a class="mobile-menu-link" href="index.html#events">Events</a>
+    <a class="mobile-menu-link" href="index.html#sermons">Sermons</a>
+    <a class="mobile-menu-give" href="index.html#give">Giving</a>
+  </nav>
+</div>
 
 <main id="main">
 
@@ -1890,6 +2036,51 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+
+  // ─── MOBILE MENU TOGGLE ─────────────────────────────────────────────
+  (function initMobileMenu() {
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+
+    var links = menu.querySelectorAll('a');
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      toggle.classList.add('is-open');
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      document.body.classList.remove('menu-open');
+    }
+
+    toggle.addEventListener('click', function() {
+      if (menu.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    links.forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
   })();
 </script>
 

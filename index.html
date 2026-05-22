@@ -3294,6 +3294,177 @@
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
     .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
   }
+
+  /* ===================================================== */
+  /* MOBILE NAVIGATION (hamburger + overlay menu)          */
+  /* ===================================================== */
+
+  /* Hamburger toggle — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    position: relative;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cream);
+    margin: 0 auto;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease, background 0.3s ease;
+  }
+
+  /* When nav is scrolled (light bg), bars go dark */
+  .nav.scrolled .nav-toggle-bar {
+    background: var(--ink);
+  }
+
+  /* Open state — morph to X */
+  .nav-toggle.is-open .nav-toggle-bar {
+    background: var(--cream);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  /* Full-screen mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: linear-gradient(160deg, var(--burgundy-deep) 0%, var(--burgundy-darker) 100%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .mobile-menu-link {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 34px;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 14px 0;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  }
+
+  .mobile-menu.is-open .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu.is-open .mobile-menu-link:nth-child(1) { transition-delay: 0.08s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(2) { transition-delay: 0.14s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(3) { transition-delay: 0.20s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(4) { transition-delay: 0.26s; }
+
+  .mobile-menu-link:active {
+    color: var(--gold-light);
+  }
+
+  .mobile-menu-give {
+    margin-top: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+    background: var(--gold);
+    text-decoration: none;
+    padding: 18px 48px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease 0.32s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.32s;
+  }
+
+  .mobile-menu.is-open .mobile-menu-give {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Lock body scroll when menu open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Show hamburger, hide desktop links on mobile */
+  @media (max-width: 720px) {
+    .nav-toggle { display: flex; }
+    .nav-links { display: none; }
+  }
+
+  /* ===================================================== */
+  /* MOBILE POLISH — typography + spacing refinements      */
+  /* ===================================================== */
+  @media (max-width: 720px) {
+    /* Events title — keep it from overflowing */
+    .events-title { font-size: clamp(40px, 11vw, 56px); }
+    .events { padding: 90px 0; }
+    .events-top { margin-bottom: 48px; }
+
+    /* Events cards single column, comfortable */
+    .events-month-group.is-active { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Give section */
+    .give-buttons { flex-direction: column; align-items: center; }
+    .give-btn { width: 100%; max-width: 300px; justify-content: center; }
+
+    /* About section decorative frame — tighten on mobile */
+    .about-deco { top: -20px; left: -12px; right: -12px; bottom: -20px; }
+    .about-headline { font-size: 32px; }
+
+    /* Lightbox padding so flyers don't touch edges */
+    .events-lightbox-content { max-width: 92vw; }
+    .events-lightbox-img { max-height: 82vh; }
+
+    /* Footer brand mark centered feel */
+    .footer-merx { flex-wrap: wrap; gap: 8px 12px; }
+  }
+
+  /* Smaller phones */
+  @media (max-width: 400px) {
+    .mobile-menu-link { font-size: 28px; }
+    .events-title { font-size: clamp(34px, 10vw, 44px); }
+    .hero-headline { font-size: clamp(40px, 13vw, 56px); }
+  }
 </style>
 </head>
 <body>
@@ -3394,8 +3565,25 @@
       <a class="nav-link" href="#sermons">Sermons</a>
       <a class="nav-give" href="#give">Giving</a>
     </div>
+
+    <!-- Mobile hamburger toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation">
+    <a class="mobile-menu-link" href="about.html">About</a>
+    <a class="mobile-menu-link" href="#visit">Visit</a>
+    <a class="mobile-menu-link" href="#events">Events</a>
+    <a class="mobile-menu-link" href="#sermons">Sermons</a>
+    <a class="mobile-menu-give" href="#give">Giving</a>
+  </nav>
+</div>
 
 <!-- ============================================================ -->
 <!-- SECTION 1 · HERO — Cream Static Grain, Centered Editorial    -->
@@ -3408,7 +3596,9 @@
     muted
     loop
     playsinline
+    webkit-playsinline="true"
     preload="auto"
+    poster="event-may-pentecost-sunday.JPG"
     aria-hidden="true"
   >
     <source src="mt-moriah-hero-sanctuary-v1.mp4" type="video/mp4">
@@ -3726,7 +3916,9 @@
                   muted
                   loop
                   playsinline
-                  preload="metadata"
+                  webkit-playsinline="true"
+                  preload="auto"
+                  poster="pastor-caldwell-portrait-v1.JPG"
                   aria-hidden="true">
                 </video>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
@@ -3818,7 +4010,9 @@
                   muted
                   loop
                   playsinline
-                  preload="metadata"
+                  webkit-playsinline="true"
+                  preload="auto"
+                  poster="pastor-caldwell-portrait-v1.JPG"
                   aria-hidden="true">
                 </video>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
@@ -3910,7 +4104,9 @@
                   muted
                   loop
                   playsinline
-                  preload="metadata"
+                  webkit-playsinline="true"
+                  preload="auto"
+                  poster="pastor-caldwell-portrait-v1.JPG"
                   aria-hidden="true">
                 </video>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
@@ -4728,6 +4924,107 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
         closeLightbox();
+      }
+    });
+  })();
+
+  // ─── MOBILE VIDEO AUTOPLAY FALLBACK ─────────────────────────────────
+  // iOS/Android can be stubborn about inline autoplay even with the right
+  // attributes. This forces every muted video to play, retries on the
+  // first user interaction, and plays/pauses as videos enter the viewport.
+  (function initVideoAutoplay() {
+    var videos = document.querySelectorAll('video');
+    if (!videos.length) return;
+
+    function tryPlay(video) {
+      // Ensure properties are set at the JS level too (belt and suspenders)
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute('muted', '');
+      video.playsInline = true;
+      var p = video.play();
+      if (p !== undefined && p.catch) {
+        p.catch(function() { /* will retry on interaction or scroll */ });
+      }
+    }
+
+    // Initial attempt
+    videos.forEach(tryPlay);
+
+    // Retry every video on the first user interaction (covers strict iOS)
+    function onFirstInteraction() {
+      videos.forEach(tryPlay);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+      window.removeEventListener('scroll', onFirstInteraction);
+    }
+    window.addEventListener('touchstart', onFirstInteraction, { passive: true, once: false });
+    window.addEventListener('click', onFirstInteraction, { passive: true });
+    window.addEventListener('scroll', onFirstInteraction, { passive: true });
+
+    // Play when in view, pause when out (saves battery, keeps loops fresh)
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            tryPlay(entry.target);
+          } else {
+            entry.target.pause();
+          }
+        });
+      }, { threshold: 0.15 });
+      videos.forEach(function(v) { io.observe(v); });
+    }
+
+    // Re-attempt when tab regains focus
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) videos.forEach(tryPlay);
+    });
+  })();
+
+  // ─── MOBILE MENU TOGGLE ─────────────────────────────────────────────
+  (function initMobileMenu() {
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+
+    var links = menu.querySelectorAll('a');
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      toggle.classList.add('is-open');
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      document.body.classList.remove('menu-open');
+    }
+
+    toggle.addEventListener('click', function() {
+      if (menu.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close when a link is tapped
+    links.forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
       }
     });
   })();
