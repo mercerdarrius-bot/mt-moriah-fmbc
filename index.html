@@ -4272,8 +4272,8 @@
       <nav class="events-months reveal reveal-delay-2" aria-label="Event months">
         <button class="events-month-tab is-active" data-month="may" data-has-events="true">May</button>
         <button class="events-month-tab" data-month="june" data-has-events="false">June</button>
-        <button class="events-month-tab" data-month="july" data-has-events="false">July</button>
-        <button class="events-month-tab" data-month="august" data-has-events="false">August</button>
+        <button class="events-month-tab" data-month="july" data-has-events="true">July</button>
+        <button class="events-month-tab" data-month="august" data-has-events="true">August</button>
         <button class="events-month-tab" data-month="september" data-has-events="false">September</button>
         <button class="events-month-tab" data-month="october" data-has-events="false">October</button>
         <button class="events-month-tab" data-month="november" data-has-events="false">November</button>
@@ -4289,7 +4289,7 @@
 
         <!-- MAY -->
         <div class="events-month-group is-active" data-month="may">
-          <article class="event-card" data-flyer="event-may-pentecost-sunday.JPG">
+          <article class="event-card" data-flyer="event-may-pentecost-sunday.JPG" data-date="2026-05-24">
             <div class="event-card-image">
               <img src="event-may-pentecost-sunday.JPG" alt="Pentecost Sunday at Mt. Moriah" loading="lazy" />
             </div>
@@ -4301,7 +4301,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-flyer="event-may-growing-in-grace.JPG">
+          <article class="event-card" data-flyer="event-may-growing-in-grace.JPG" data-date="2026-05-06">
             <div class="event-card-image">
               <img src="event-may-growing-in-grace.JPG" alt="Growing in Grace sermon series" loading="lazy" />
             </div>
@@ -4313,7 +4313,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-flyer="event-may-mothers-day.JPG">
+          <article class="event-card" data-flyer="event-may-mothers-day.JPG" data-date="2026-05-10">
             <div class="event-card-image">
               <img src="event-may-mothers-day.JPG" alt="Mother's Day Celebration at Mt. Moriah" loading="lazy" />
             </div>
@@ -4326,9 +4326,39 @@
           </article>
         </div>
 
+        <!-- JULY -->
+        <div class="events-month-group" data-month="july">
+          <article class="event-card" data-flyer="event-jul-ice-cream-sunday.jpg" data-date="2026-07-19">
+            <div class="event-card-image">
+              <img src="event-jul-ice-cream-sunday.jpg" alt="Ice Cream Sunday at Mt. Moriah" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">July 19 &middot; 1:00 PM</div>
+              <h3 class="event-card-name">Ice Cream Sunday</h3>
+              <p class="event-card-desc">A sweet time together after service. Fun, fellowship, and sweet memories.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- AUGUST -->
+        <div class="events-month-group" data-month="august">
+          <article class="event-card" data-flyer="event-aug-pastoral-installation.jpg" data-date="2026-08-23">
+            <div class="event-card-image">
+              <img src="event-aug-pastoral-installation.jpg" alt="Pastoral Installation of Pastor Stephen L.M. Caldwell" loading="lazy" />
+            </div>
+            <div class="event-card-info">
+              <div class="event-card-date">August 21 and 23</div>
+              <h3 class="event-card-name">Pastoral Installation</h3>
+              <p class="event-card-desc">The official installation of Pastor Stephen L.M. Caldwell. Friday at 7:00 PM. Sunday at 11:00 AM and 3:30 PM.</p>
+              <span class="event-card-view">Click to view flyer</span>
+            </div>
+          </article>
+        </div>
+
         <!-- JANUARY -->
         <div class="events-month-group" data-month="january">
-          <article class="event-card" data-flyer="event-jan-watch-night.JPG">
+          <article class="event-card" data-flyer="event-jan-watch-night.JPG" data-date="2025-12-31">
             <div class="event-card-image">
               <img src="event-jan-watch-night.JPG" alt="New Year's Eve Watch Night Service" loading="lazy" />
             </div>
@@ -4911,28 +4941,88 @@
 
   // ─── EVENTS MONTH TABS ──────────────────────────────────
   (function initEventsTabs() {
-    var tabs = document.querySelectorAll('.events-month-tab');
-    var groups = document.querySelectorAll('.events-month-group');
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.events-month-tab'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.events-month-group'));
     if (!tabs.length || !groups.length) return;
+
+    function groupFor(month) {
+      for (var i = 0; i < groups.length; i++) {
+        if (groups[i].dataset.month === month) return groups[i];
+      }
+      return null;
+    }
+
+    function activate(month) {
+      tabs.forEach(function(t) { t.classList.toggle('is-active', t.dataset.month === month); });
+      groups.forEach(function(g) { g.classList.toggle('is-active', g.dataset.month === month); });
+    }
 
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
         if (this.dataset.hasEvents !== 'true') return;
-
-        var month = this.dataset.month;
-
-        tabs.forEach(function(t) { t.classList.remove('is-active'); });
-        this.classList.add('is-active');
-
-        groups.forEach(function(g) {
-          if (g.dataset.month === month) {
-            g.classList.add('is-active');
-          } else {
-            g.classList.remove('is-active');
-          }
-        });
+        activate(this.dataset.month);
       });
     });
+
+    // The opening month is worked out on load rather than hard coded, so the
+    // section cannot drift out of date again. Every card carries data-date
+    // with the day that event finishes on; a month counts as past only once
+    // all of its events have finished. Walk the tabs in order and open the
+    // first month that still has something ahead of it. When the whole
+    // calendar is behind us, fall back to the most recent month so the
+    // section still shows the newest thing that happened. Past months keep
+    // their tab and stay clickable either way.
+    function finishesOn(group) {
+      var newest = 0;
+      var cards = group.querySelectorAll('.event-card[data-date]');
+      for (var i = 0; i < cards.length; i++) {
+        var parts = cards[i].dataset.date.split('-');
+        var stamp = new Date(+parts[0], +parts[1] - 1, +parts[2]).getTime();
+        if (stamp > newest) newest = stamp;
+      }
+      return newest;
+    }
+
+    var months = [];
+    tabs.forEach(function(tab) {
+      if (tab.dataset.hasEvents !== 'true') return;
+      var group = groupFor(tab.dataset.month);
+      if (group) months.push({ month: tab.dataset.month, ends: finishesOn(group) });
+    });
+    if (!months.length) return;
+
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var cutoff = today.getTime();
+
+    var pick = null;
+    for (var i = 0; i < months.length; i++) {
+      if (months[i].ends >= cutoff) { pick = months[i]; break; }
+    }
+
+    if (!pick) {
+      pick = months[0];
+      for (var j = 1; j < months.length; j++) {
+        if (months[j].ends > pick.ends) pick = months[j];
+      }
+    }
+
+    activate(pick.month);
+
+    // The tab strip scrolls sideways on narrow screens, and the opening month
+    // is no longer guaranteed to be the first tab, so it can land out of
+    // sight. Nudge the strip itself, never the page, so the visitor can see
+    // which month they are looking at.
+    (function showActiveTab() {
+      var strip = document.querySelector('.events-months');
+      if (!strip || strip.scrollWidth <= strip.clientWidth) return;
+      var tab = null;
+      tabs.forEach(function(t) { if (t.dataset.month === pick.month) tab = t; });
+      if (!tab) return;
+      var stripBox = strip.getBoundingClientRect();
+      var tabBox = tab.getBoundingClientRect();
+      strip.scrollLeft += (tabBox.left - stripBox.left) - (stripBox.width - tabBox.width) / 2;
+    })();
   })();
 
   // ─── EVENTS LIGHTBOX (click card to see full flyer) ─────
