@@ -572,18 +572,33 @@
     color: var(--cream);
   }
 
-  /* ── Hero Video ── */
-  .hero-video {
+  /* ── Hero Video Stack ── */
+  /* The stack owns the positioning and the parallax transform. The clips
+     inside it stay pinned to it and only ever animate opacity. */
+  .hero-video-stack {
     position: absolute;
     top: -5%;
     left: 0;
     width: 100%;
     height: 110%;
-    object-fit: cover;
-    object-position: center;
     z-index: 0;
     pointer-events: none;
     will-change: transform;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-video.is-active {
+    opacity: 1;
   }
 
   /* ── Dark overlay so text stays legible ── */
@@ -634,9 +649,19 @@
 
   /* ─── EDITORIAL: Top-right corner marker ─── */
   /* ─── PARALLAX foundation ─── */
-  .hero-video {
+  /* Targets the stack, not the clips. Putting a transform transition on
+     .hero-video would override the opacity crossfade declared above. */
+  .hero-video-stack {
     will-change: transform;
     transition: transform 0.05s linear;
+  }
+
+  /* Reduced motion: hold clip 1 on screen, no crossfade, no advance.
+     The JS sequence controller bails out under the same query. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video {
+      transition: none;
+    }
   }
 
   .hero-content {
@@ -3589,20 +3614,39 @@
 <!-- SECTION 1 · HERO — Cream Static Grain, Centered Editorial    -->
 <!-- ============================================================ -->
 <section class="hero section section--dark" id="hero" aria-labelledby="hero-headline">
-  <!-- Hero background video -->
-  <video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline="true"
-    preload="auto"
-    poster="event-may-pentecost-sunday.JPG"
-    aria-hidden="true"
-  >
-    <source src="mt-moriah-hero-sanctuary-v1.mp4" type="video/mp4">
-  </video>
+  <!-- Hero background video sequence.
+       Two clips stacked in the same box, crossfading on the 'ended' event.
+       No loop attribute on the individual clips: the sequence loops, not
+       the clip. Clip 2 starts at preload="none" and is upgraded to "auto"
+       once clip 1 is actually playing, which keeps first paint fast on
+       cell data. -->
+  <div class="hero-video-stack" aria-hidden="true">
+    <video
+      class="hero-video is-active"
+      data-hero-clip="0"
+      autoplay
+      muted
+      playsinline
+      webkit-playsinline="true"
+      preload="auto"
+      poster="hero-congregation-01.jpg"
+      aria-hidden="true"
+    >
+      <source src="hero-congregation-01.mp4" type="video/mp4">
+    </video>
+    <video
+      class="hero-video"
+      data-hero-clip="1"
+      muted
+      playsinline
+      webkit-playsinline="true"
+      preload="none"
+      poster="hero-preaching-01.jpg"
+      aria-hidden="true"
+    >
+      <source src="hero-preaching-01.mp4" type="video/mp4">
+    </video>
+  </div>
   <!-- Dark overlay for text legibility -->
   <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -4551,7 +4595,8 @@
 
   // ─── HERO PARALLAX ─────────────────────────────────────────────────
   (function initHeroParallax() {
-    const heroVideo = document.querySelector('.hero-video');
+    // Drive the stack, not an individual clip, so all clips drift together.
+    const heroVideo = document.querySelector('.hero-video-stack');
     const heroContent = document.querySelector('.hero-content');
     if (!heroVideo || !heroContent) return;
 
@@ -4928,13 +4973,122 @@
     });
   })();
 
+  // ─── HERO VIDEO SEQUENCE ────────────────────────────────────────────
+  // Crossfades the stacked hero clips. Advances on the 'ended' event so the
+  // cut always lands on the real end of the clip rather than a guessed timer.
+  // Exposes window.heroSequence so the autoplay enforcer below can ask which
+  // clip is currently active instead of force-playing all of them at once.
+  (function initHeroSequence() {
+    var clips = Array.prototype.slice.call(
+      document.querySelectorAll('.hero-video-stack .hero-video')
+    );
+    if (!clips.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var index = 0;
+
+    function isActive(video) {
+      return clips.indexOf(video) === index;
+    }
+
+    // Reduced motion: hold clip 1 on its poster frame, never cycle.
+    if (reduced) {
+      clips.forEach(function(v, i) {
+        v.classList.toggle('is-active', i === 0);
+        v.removeAttribute('autoplay');
+        v.pause();
+      });
+      window.heroSequence = {
+        clips: clips,
+        isActive: isActive,
+        reduced: true
+      };
+      return;
+    }
+
+    function play(video) {
+      var p = video.play();
+      if (p !== undefined && p.catch) {
+        p.catch(function() { /* retried on interaction by the enforcer */ });
+      }
+    }
+
+    // Older WebKit throws if currentTime is set before metadata exists, and a
+    // clip that has never played is already at zero anyway.
+    function rewind(video) {
+      if (video.readyState > 0) {
+        try { video.currentTime = 0; } catch (e) { /* not seekable yet */ }
+      }
+    }
+
+    function advance() {
+      var previous = clips[index];
+      index = (index + 1) % clips.length;
+      var next = clips[index];
+
+      // Start the incoming clip from the top, fade it up, fade the old one out.
+      rewind(next);
+      next.classList.add('is-active');
+      play(next);
+      previous.classList.remove('is-active');
+
+      // Park the outgoing clip once it is fully hidden so it is ready to
+      // replay cleanly on the next pass through the sequence.
+      window.setTimeout(function() {
+        if (!isActive(previous)) {
+          previous.pause();
+          rewind(previous);
+        }
+      }, 1200);
+    }
+
+    clips.forEach(function(v) {
+      v.addEventListener('ended', function() {
+        if (isActive(v)) advance();
+      });
+    });
+
+    // Lazy load: once clip 1 is genuinely playing, let the rest fetch.
+    function upgradePreload() {
+      clips.slice(1).forEach(function(v) {
+        if (v.getAttribute('preload') !== 'auto') {
+          v.setAttribute('preload', 'auto');
+          v.preload = 'auto';
+          v.load();
+        }
+      });
+    }
+    clips[0].addEventListener('playing', upgradePreload, { once: true });
+
+    play(clips[0]);
+
+    window.heroSequence = {
+      clips: clips,
+      isActive: isActive,
+      reduced: false,
+      current: function() { return clips[index]; }
+    };
+  })();
+
   // ─── MOBILE VIDEO AUTOPLAY FALLBACK ─────────────────────────────────
   // iOS/Android can be stubborn about inline autoplay even with the right
   // attributes. This forces every muted video to play, retries on the
   // first user interaction, and plays/pauses as videos enter the viewport.
+  // Within the hero it defers to the sequence controller and only ever
+  // touches the clip that is currently active, so the stacked clips do not
+  // all play at once. Videos elsewhere on the page are unaffected.
   (function initVideoAutoplay() {
     var videos = document.querySelectorAll('video');
     if (!videos.length) return;
+
+    // True when this video belongs to the hero stack and is not the clip the
+    // sequence controller currently has on screen.
+    function isDormantHeroClip(video) {
+      var seq = window.heroSequence;
+      if (!seq || seq.clips.indexOf(video) === -1) return false;
+      if (seq.reduced) return true;
+      return !seq.isActive(video);
+    }
 
     function tryPlay(video) {
       // Ensure properties are set at the JS level too (belt and suspenders)
@@ -4942,6 +5096,7 @@
       video.defaultMuted = true;
       video.setAttribute('muted', '');
       video.playsInline = true;
+      if (isDormantHeroClip(video)) return;
       var p = video.play();
       if (p !== undefined && p.catch) {
         p.catch(function() { /* will retry on interaction or scroll */ });
