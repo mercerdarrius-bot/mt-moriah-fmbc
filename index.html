@@ -312,7 +312,7 @@
   }
 
   .nav.nav--dark .nav-name-primary { color: var(--cream); }
-  .nav.nav--dark .nav-name-secondary { color: rgba(245, 240, 232, 0.6); }
+  .nav.nav--dark .nav-name-secondary { color: var(--cream); }
 
 
   /* ── LIGHT mode nav — over cream sections ── */
@@ -326,7 +326,7 @@
   }
 
   .nav.nav--light .nav-name-primary { color: var(--burgundy); }
-  .nav.nav--light .nav-name-secondary { color: rgba(92, 26, 38, 0.55); }
+  .nav.nav--light .nav-name-secondary { color: var(--burgundy); }
 
 
   /* Smooth color transitions for adaptive nav theming */
@@ -359,8 +359,11 @@
     line-height: 1;
   }
 
+  /* Sized by height, not width. A free standing silhouette needs more
+     height than a contained badge to carry the same weight, so 52px is the
+     mark's height and the width follows its own proportion. */
   .nav-mark {
-    width: 52px;
+    width: auto;
     height: 52px;
     display: flex;
     align-items: center;
@@ -372,12 +375,11 @@
     font-size: 0;
   }
 
-  /* The mark is wider than it is tall, so height stays auto and the flex
-     container centres it. Colour comes from the nav state rules below, which
-     is the whole reason the paths use currentColor. */
+  /* Colour comes from the nav state rules below, which is the whole reason
+     the paths use currentColor. */
   .nav-mark svg {
-    width: 52px;
-    height: auto;
+    width: auto;
+    height: 52px;
     display: block;
     flex-shrink: 0;
   }
@@ -402,7 +404,7 @@
     font-family: 'Fraunces', Georgia, serif;
     font-variation-settings: "opsz" 32, "wght" 500, "SOFT" 50, "WONK" 1;
     font-style: italic;
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 500;
     letter-spacing: -0.005em;
     color: var(--cream);
@@ -414,13 +416,16 @@
   }
 
   /* "First Missionary Baptist Church" — supporting label */
+  /* Bigger and tighter than before. It was near invisible at 8px with 0.28em
+     tracking; it has to be readable at 1440 without leaning in. Opacity is a
+     property rather than an alpha so both nav states inherit it. */
   .nav-name-secondary {
     font-family: 'DM Sans', sans-serif;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.62);
+    opacity: 0.7;
     margin: 0;
     padding: 0;
     line-height: 1.2;
@@ -429,19 +434,21 @@
 
   .nav-links {
     display: flex;
-    gap: 8px;
+    gap: 44px;
     align-items: center;
   }
 
+  /* Bigger type, tighter tracking, and the 44px gap now carries the rhythm
+     instead of wide internal padding. */
   .nav-link {
     font-family: 'DM Sans', sans-serif;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
-    padding: 11px 18px;
+    padding: 10px 6px;
     border: 1px solid transparent;
     border-radius: 1px;
     transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -476,12 +483,12 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 26px;
-    margin-left: 14px;
+    padding: 16px 32px;
+    margin-left: 24px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 1px;
@@ -567,13 +574,16 @@
   /* SECTION 1: HERO — Cream Static Grain                  */
   /* ===================================================== */
 
+  /* Three anchored zones across the full viewport height: the nav sits in
+     the top gradient anchor, the headline block takes the centre, and the
+     meta band closes the bottom. The bottom padding clears that band. */
   .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px 48px 100px;
+    padding: 100px 48px 172px;
     position: relative;
     overflow: hidden;
     background: var(--ink);
@@ -609,18 +619,20 @@
     opacity: 1;
   }
 
-  /* ── Dark overlay so text stays legible ── */
+  /* ── Layered scrim ──
+     Four stacked gradients on one element instead of a flat wash. The top
+     and bottom anchors hold the nav and the meta band, the radial pool sits
+     under the headline, and the flat layer is the floor that keeps the
+     whole frame from going bright on a light clip. */
   .hero-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background:
-      linear-gradient(
-        to bottom,
-        rgba(12, 8, 6, 0.78) 0%,
-        rgba(18, 14, 12, 0.62) 45%,
-        rgba(12, 8, 6, 0.85) 100%
-      );
+      linear-gradient(to bottom, rgba(26, 6, 12, 0.85) 0%, transparent 22%),
+      linear-gradient(to top, rgba(26, 6, 12, 0.90) 0%, transparent 35%),
+      radial-gradient(ellipse 70% 55% at 50% 44%, rgba(26, 6, 12, 0.62) 0%, transparent 100%),
+      linear-gradient(rgba(26, 6, 12, 0.18), rgba(26, 6, 12, 0.18));
   }
 
   /* LAYER 1: Hidden — video replaces this */
@@ -676,75 +688,87 @@
     will-change: transform, opacity;
   }
 
-  /* ─── SCROLL INDICATOR ─── */
+  /* ─── SCROLL CUE ───
+     A bare 1px rule at bottom centre with a gradient pulse travelling down
+     it. The service details that used to live here have moved to the meta
+     band, so this element carries no text. */
   .hero-scroll {
     position: absolute;
-    bottom: 36px;
-    right: 48px;
+    left: 50%;
+    bottom: 104px;
+    transform: translateX(-50%);
     z-index: 8;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-    color: rgba(245, 240, 232, 0.7);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9.5px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(245, 240, 232, 0.3);
+    overflow: hidden;
     text-decoration: none;
     opacity: 0;
     animation: heroScrollFadeIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
-    cursor: pointer;
-    transition: color 0.3s ease;
   }
 
   @keyframes heroScrollFadeIn {
     to { opacity: 1; }
   }
 
-  .hero-scroll:hover {
-    color: var(--cream);
-  }
-
-  .hero-scroll-line {
-    width: 48px;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      rgba(184, 145, 84, 0.0) 0%,
-      rgba(184, 145, 84, 0.85) 100%
-    );
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Subtle light traveling across the line */
-  .hero-scroll-line::after {
-    content: '';
+  .hero-scroll-cue {
     position: absolute;
+    left: 0;
     top: 0;
-    bottom: 0;
-    left: -50%;
-    width: 50%;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      var(--cream) 50%,
-      transparent 100%
-    );
-    animation: scrollLineFlow 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+      transparent 0%, var(--cream) 50%, transparent 100%);
+    animation: heroScrollPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  @keyframes scrollLineFlow {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(400%); }
+  @keyframes heroScrollPulse {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  /* ─── META BAND ───
+     Full width band closing the bottom edge, not a floating fragment.
+     Service time left, address right, hairline gold rule above. */
+  .hero-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 8;
+    border-top: 1px solid rgba(184, 145, 84, 0.2);
+    padding: 24px 48px;
+  }
+
+  .hero-meta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.75);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-cue { animation: none; }
   }
 
   /* Container above the grain layers */
   .hero > .container {
     position: relative;
     z-index: 7;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .hero-content {
@@ -835,68 +859,21 @@
   }
 
   /* "the Mount." — the entire hero is about this word */
+  /* Solid cream, no gradient fill and no clipped background. The shadow is a
+     soft luminance anchor that lifts the type off a moving frame, not a
+     drop shadow, so it stays wide and low opacity. */
   .hero-headline-cream {
     font-family: 'Fraunces', Georgia, serif;
     font-variation-settings: "opsz" 144, "wght" 600, "SOFT" 30, "WONK" 1;
     font-style: italic;
-    font-size: clamp(58px, 8.5vw, 124px);
+    font-size: clamp(56px, 9vw, 132px);
     font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 0.95;
     display: inline-block;
     position: relative;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
-    transform-origin: center center;
-    will-change: transform;
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                text-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-
-    /* The light sweep: solid gold base with a bright traveling band */
-    background-image: linear-gradient(
-      100deg,
-      var(--gold-light) 0%,
-      var(--gold-light) 42%,
-      #F5E6C8 47%,
-      #FFFFFF 50%,
-      #F5E6C8 53%,
-      var(--gold-light) 58%,
-      var(--gold-light) 100%
-    );
-    background-size: 300% 100%;
-    background-position: 100% 0;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    /* Fallback solid color in case background-clip fails */
-    color: var(--gold-light);
-
-    animation: lightSweep 6s ease-in-out infinite;
-  }
-
-  @keyframes lightSweep {
-    0%   { background-position: 100% 0; }
-    50%  { background-position: 0% 0; }
-    100% { background-position: 100% 0; }
-  }
-
-  /* Pause sweep on hover, gently scale up — no layout reflow */
-  .hero-headline:hover .hero-headline-cream {
-    transform: scale(1.04);
-    text-shadow: 0 2px 32px rgba(184, 145, 84, 0.4),
-                 0 0 60px rgba(184, 145, 84, 0.15);
-    animation-play-state: paused;
-  }
-
-  /* Respect reduced-motion users — disable the sweep entirely */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-headline-cream {
-      animation: none;
-      background: none;
-      -webkit-text-fill-color: var(--gold-light);
-      color: var(--gold-light);
-    }
+    color: #F5F0E8;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
   }
 
   /* Custom kerning on specific letter pairs in "the Mount." */
@@ -935,99 +912,54 @@
 
 
 
-  /* Shared base styles */
+  /* Shared base styles. Hierarchy comes from fill weight alone: no lift,
+     no shadow, no scale on either button. Primary carries a transparent
+     border purely so both sit at the same height. */
   .btn-primary,
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    min-height: 46px;
-    padding: 13px 32px;
+    padding: 16px 36px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 1px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    transition: border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* PRIMARY — solid burgundy CTA, the dominant action */
+  /* PRIMARY: the dominant action, solid burgundy */
   .btn-primary {
-    background: var(--burgundy);
+    background-color: var(--burgundy);
     color: var(--cream);
-    border: 1px solid var(--burgundy);
-  }
-
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--burgundy-deep);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+    border: 1px solid transparent;
   }
 
   .btn-primary:hover {
-    border-color: var(--burgundy-deep);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(63, 17, 25, 0.4);
+    background-color: var(--burgundy-deep);
   }
 
-  .btn-primary:hover::before {
-    transform: scaleX(1);
-  }
-
-  .btn-primary:not(:hover)::before {
-    transform-origin: right center;
-  }
-
-  /* GHOST — transparent secondary CTA, burgundy fill on hover */
+  /* SECONDARY: recedes to an outline, fills faintly on hover */
   .btn-ghost {
-    background: transparent;
+    background-color: transparent;
     color: var(--cream);
-    border: 1px solid rgba(245, 240, 232, 0.55);
-  }
-
-  .btn-ghost::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--burgundy);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+    border: 1px solid rgba(245, 240, 232, 0.35);
   }
 
   .btn-ghost:hover {
-    border-color: var(--burgundy);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(63, 17, 25, 0.3);
-  }
-
-  .btn-ghost:hover::before {
-    transform: scaleX(1);
-  }
-
-  .btn-ghost:not(:hover)::before {
-    transform-origin: right center;
+    background-color: rgba(245, 240, 232, 0.08);
   }
 
   /* Shared arrow */
   .btn-primary::after,
   .btn-ghost::after {
-    content: '→';
+    content: '\2192';
     font-size: 13px;
     line-height: 1;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -3257,6 +3189,16 @@
   /* ===================================================== */
 
   @media (max-width: 1024px) {
+    /* Between the phone breakpoint and desktop the full nav is still shown,
+       so the 1440 type scale has to come down or the Giving button runs off
+       the right edge and the supporting line wraps to four lines. */
+    .nav-mark, .nav-mark svg { height: 42px; }
+    .nav-name-primary { font-size: 20px; }
+    .nav-name-secondary { font-size: 8px; letter-spacing: 0.14em; white-space: nowrap; }
+    .nav-links { gap: 20px; }
+    .nav-link { font-size: 11px; letter-spacing: 0.12em; padding: 8px 4px; }
+    .nav-give { font-size: 11px; padding: 12px 20px; margin-left: 12px; letter-spacing: 0.12em; }
+
     .about { padding: 100px 0 120px; }
     .about-headline { font-size: 36px; }
     .about-lead { font-size: 17px; }
@@ -3310,6 +3252,27 @@
     .hero-sunday-divider { display: none; }
     .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
     .hero::after, .hero-bracket-br { display: none; }
+
+    /* The nav sizes above are tuned for legibility at 1440. At phone widths
+       the lockup has to come back down or the supporting line wraps and the
+       mark crowds the menu button. */
+    .nav-mark, .nav-mark svg { height: 40px; }
+    .nav-name-primary { font-size: 20px; }
+    .nav-name-secondary { font-size: 8.5px; letter-spacing: 0.16em; }
+
+    /* Meta band stacks to two centred lines and the hero padding and scroll
+       cue follow it up so nothing overlaps. */
+    .hero { padding-bottom: 190px; }
+    .hero-meta { padding: 20px 24px; }
+    .hero-meta-inner {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+    }
+    .hero-scroll { bottom: 124px; }
 
     .hero-sunday {
       padding-left: 20px;
@@ -3613,11 +3576,18 @@
     </div>
   </div>
 
-  <!-- Scroll indicator — editorial content cue -->
+  <!-- Scroll cue: a pulsing hairline, no text -->
   <a href="#about" class="hero-scroll" aria-label="Continue to welcome section">
-    <span>Sundays at 11 AM &nbsp;·&nbsp; 302 South Tenth Street, Quincy FL</span>
-    <span class="hero-scroll-line" aria-hidden="true"></span>
+    <span class="hero-scroll-cue" aria-hidden="true"></span>
   </a>
+
+  <!-- Meta band: closes the bottom edge full width -->
+  <div class="hero-meta">
+    <div class="hero-meta-inner">
+      <span class="hero-meta-time">Sundays at 11 AM</span>
+      <span class="hero-meta-address">302 South Tenth Street, Quincy FL</span>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================ -->
