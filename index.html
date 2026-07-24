@@ -290,285 +290,158 @@
   /* NAVIGATION                                            */
   /* ===================================================== */
 
+  /* The bar reads its whole palette from these variables, and one block flips
+     them for light sections, so a state change is a colour swap rather than a
+     rule per element. Solid, never translucent: section headings used to read
+     straight through the old gradient. No backdrop filter either, because a
+     solid fill composites cheaply and will not flicker over the photo rail. */
   .nav {
+    --nav-bg: var(--burgundy-darker);
+    --nav-line: rgba(184, 145, 84, 0.20);
+    --nav-ink: var(--cream);
+    --nav-quiet: rgba(245, 240, 232, 0.66);
+    --nav-divider: rgba(184, 145, 84, 0.38);
+    --nav-cta: var(--gold-light);
+    --nav-cta-border: rgba(212, 178, 126, 0.55);
+    --nav-cta-fill-ink: var(--burgundy-darker);
+
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 24px 40px;
-    transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.4s ease;
-    background: transparent;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-line);
+    transition: background-color 0.45s ease, border-color 0.45s ease;
   }
 
-
-  /* ── DARK mode nav — over hero video ── */
-  .nav.nav--dark {
-    background: linear-gradient(
-      to bottom,
-      rgba(20, 16, 14, 0.72) 0%,
-      rgba(20, 16, 14, 0.0) 100%
-    );
-  }
-
-  .nav.nav--dark .nav-name-primary { color: var(--cream); }
-  .nav.nav--dark .nav-name-secondary { color: var(--cream); }
-
-
-  /* ── LIGHT mode nav — over cream sections ── */
   .nav.nav--light {
-    background: linear-gradient(
-      to bottom,
-      rgba(250, 246, 239, 0.96) 0%,
-      rgba(250, 246, 239, 0.92) 100%
-    );
-    box-shadow: 0 1px 0 rgba(92, 26, 38, 0.10);
+    --nav-bg: var(--paper);
+    --nav-line: rgba(92, 26, 38, 0.14);
+    --nav-ink: var(--burgundy);
+    --nav-quiet: rgba(74, 69, 64, 0.82);
+    --nav-divider: rgba(92, 26, 38, 0.22);
+    --nav-cta: var(--burgundy);
+    --nav-cta-border: rgba(184, 145, 84, 0.75);
+    --nav-cta-fill-ink: var(--paper);
   }
 
-  .nav.nav--light .nav-name-primary { color: var(--burgundy); }
-  .nav.nav--light .nav-name-secondary { color: var(--burgundy); }
-
-
-  /* Smooth color transitions for adaptive nav theming */
-  .nav-name-primary,
-  .nav-name-secondary,
-  .nav-link,
-
-
-  /* Shrink padding when scrolled and in light mode */
-  .nav.nav--light {
-    padding: 20px 40px;
-  }
-
+  /* brand | centred links | actions */
   .nav-inner {
-    max-width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    gap: 24px;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 17px 40px;
   }
 
   .nav-brand {
+    justify-self: start;
     display: inline-flex;
-    flex-direction: row;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
     text-decoration: none;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
   }
 
-  /* Sized by height, not width. A free standing silhouette needs more
-     height than a contained badge to carry the same weight, so 52px is the
-     mark's height and the width follows its own proportion. */
   .nav-mark {
-    width: auto;
-    height: 52px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
     flex-shrink: 0;
-    line-height: 0;
-    font-size: 0;
+    color: var(--nav-ink);
+    padding-right: 15px;
+    border-right: 1px solid var(--nav-divider);
+    transition: color 0.35s ease, border-color 0.35s ease;
   }
 
-  /* Colour comes from the nav state rules below, which is the whole reason
-     the paths use currentColor. */
   .nav-mark svg {
     width: auto;
-    height: 52px;
+    height: 44px;
     display: block;
-    flex-shrink: 0;
   }
 
-  .nav.nav--dark .nav-mark { color: var(--cream); }
-  .nav.nav--light .nav-mark { color: var(--burgundy); }
-
-  /* Wordmark wrapper — stacked text next to logo */
+  /* Stacked, uppercase, letterspaced, with the second line held quieter. */
   .nav-name {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2px;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-  }
-
-  /* "Mount Moriah" — primary wordmark */
-  .nav-name-primary {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 32, "wght" 500, "SOFT" 50, "WONK" 1;
-    font-style: italic;
-    font-size: 26px;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    color: var(--cream);
-    line-height: 1;
-    margin: 0;
-    padding: 0;
     display: block;
-    font-feature-settings: "ss01" on, "kern" on, "liga" on;
-  }
-
-  /* "First Missionary Baptist Church" — supporting label */
-  /* Bigger and tighter than before. It was near invisible at 8px with 0.28em
-     tracking; it has to be readable at 1440 without leaning in. Opacity is a
-     property rather than an alpha so both nav states inherit it. */
-  .nav-name-secondary {
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
+    font-size: 11.5px;
     font-weight: 500;
-    letter-spacing: 0.22em;
+    line-height: 1.34;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.7;
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
+    color: var(--nav-ink);
+    transition: color 0.35s ease;
+  }
+
+  .nav-name-primary { display: block; }
+
+  .nav-name-secondary {
     display: block;
+    color: var(--nav-quiet);
+    transition: color 0.35s ease;
   }
 
   .nav-links {
+    justify-self: center;
     display: flex;
-    gap: 44px;
     align-items: center;
+    gap: clamp(24px, 2.5vw, 44px);
   }
 
-  /* Bigger type, tighter tracking, and the 44px gap now carries the rhythm
-     instead of wide internal padding. */
   .nav-link {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
-    position: relative;
-    padding: 10px 6px;
-    border: 1px solid transparent;
-    border-radius: 1px;
-    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                background 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    color: var(--nav-quiet);
+    transition: color 0.35s ease;
   }
 
-  /* DARK mode — ghost outline appears on hover */
-  .nav.nav--dark .nav-link {
-    color: rgba(245, 240, 232, 0.82);
-  }
+  .nav-link:hover,
+  .nav-link[aria-current="page"] { color: var(--nav-ink); }
 
-  .nav.nav--dark .nav-link:hover {
-    color: var(--cream);
-    border-color: rgba(245, 240, 232, 0.45);
-    background: rgba(245, 240, 232, 0.05);
-  }
-
-  /* LIGHT mode — burgundy outline appears on hover */
-  .nav.nav--light .nav-link {
-    color: var(--ink-soft);
-  }
-
-  .nav.nav--light .nav-link:hover {
-    color: var(--burgundy);
-    border-color: rgba(92, 26, 38, 0.35);
-    background: rgba(92, 26, 38, 0.03);
-  }
-
-  /* ─── GIVE BUTTON — prominent editorial CTA in nav ─── */
-  .nav-give {
+  .nav-end {
+    justify-self: end;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 32px;
-    margin-left: 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 1px;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    gap: 14px;
   }
 
-  /* The gradient fill — slides up from below on hover */
-  .nav-give::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    transform: translateY(101%);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Gold stays reserved for this button and for accents. */
+  .nav-give {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--nav-cta);
+    background-color: transparent;
+    border: 1px solid var(--nav-cta-border);
+    border-radius: 999px;
+    padding: 11px 24px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
   .nav-give::after {
-    content: '→';
+    content: '\2192';
     font-size: 13px;
-    font-weight: 400;
-    transform: translateX(0);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    letter-spacing: 0;
     line-height: 1;
   }
 
   .nav-give:hover {
-    transform: translateY(-2px);
+    background-color: var(--nav-cta);
+    color: var(--nav-cta-fill-ink);
+    border-color: var(--nav-cta);
   }
 
-  .nav-give:hover::before {
-    transform: translateY(0);
-  }
-
-  .nav-give:hover::after {
-    transform: translateX(4px);
-  }
-
-  /* DARK mode — gold outline, gold gradient fill rises on hover */
-  .nav.nav--dark .nav-give {
-    background: rgba(20, 16, 14, 0.25);
-    color: var(--gold-light);
-    border: 1px solid rgba(212, 178, 126, 0.7);
-    backdrop-filter: blur(2px);
-  }
-
-  .nav.nav--dark .nav-give::before {
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-warm) 50%, var(--gold) 100%);
-  }
-
-  .nav.nav--dark .nav-give:hover {
-    color: var(--burgundy-deep);
-    border-color: var(--gold-warm);
-    box-shadow: 0 8px 24px rgba(184, 145, 84, 0.25),
-                0 0 0 1px rgba(212, 178, 126, 0.4);
-  }
-
-  /* LIGHT mode — burgundy with deepening gradient on hover */
-  .nav.nav--light .nav-give {
-    background: var(--burgundy);
-    color: var(--cream);
-    border: 1px solid var(--burgundy);
-  }
-
-  .nav.nav--light .nav-give::before {
-    background: linear-gradient(135deg, var(--burgundy-deep) 0%, #2A0B12 100%);
-  }
-
-  .nav.nav--light .nav-give:hover {
-    color: var(--cream);
-    border-color: var(--burgundy-deep);
-    box-shadow: 0 8px 24px rgba(63, 17, 25, 0.3),
-                0 0 0 1px rgba(63, 17, 25, 0.4);
-  }
 
   /* ===================================================== */
   /* SECTION 1: HERO — Cream Static Grain                  */
@@ -3443,12 +3316,14 @@
     /* Between the phone breakpoint and desktop the full nav is still shown,
        so the 1440 type scale has to come down or the Giving button runs off
        the right edge and the supporting line wraps to four lines. */
-    .nav-mark, .nav-mark svg { height: 42px; }
-    .nav-name-primary { font-size: 20px; }
-    .nav-name-secondary { font-size: 8px; letter-spacing: 0.14em; white-space: nowrap; }
+    .nav-inner { padding: 14px 24px; gap: 16px; }
+    .nav-mark svg { height: 36px; }
+    .nav-mark { padding-right: 11px; }
+    .nav-brand { gap: 11px; }
+    .nav-name { font-size: 9.5px; letter-spacing: 0.11em; white-space: nowrap; }
     .nav-links { gap: 20px; }
-    .nav-link { font-size: 11px; letter-spacing: 0.12em; padding: 8px 4px; }
-    .nav-give { font-size: 11px; padding: 12px 20px; margin-left: 12px; letter-spacing: 0.12em; }
+    .nav-link { font-size: 11px; letter-spacing: 0.06em; }
+    .nav-give { font-size: 11px; padding: 9px 17px; }
 
     .next-grid { grid-template-columns: repeat(2, 1fr); }
     .next-form-band { grid-template-columns: 1fr; gap: 36px; padding: 44px 36px; }
@@ -3518,9 +3393,10 @@
     /* The nav sizes above are tuned for legibility at 1440. At phone widths
        the lockup has to come back down or the supporting line wraps and the
        mark crowds the menu button. */
-    .nav-mark, .nav-mark svg { height: 40px; }
-    .nav-name-primary { font-size: 20px; }
-    .nav-name-secondary { font-size: 8.5px; letter-spacing: 0.16em; }
+    .nav-inner { grid-template-columns: 1fr auto; padding: 13px 20px; }
+    .nav-mark svg { height: 34px; }
+    .nav-name { font-size: 9px; letter-spacing: 0.1em; }
+    .nav-give { display: none; }
 
     /* Meta band stacks to two centred lines and the hero padding and scroll
        cue follow it up so nothing overlaps. */
@@ -3747,24 +3623,28 @@
           <path d="M50.14,33.63 49.55,33.32 49.33,32.60 47.76,30.63 39.46,16.96 39.46,16.45 39.83,16.37 41.79,18.61 42.74,19.06 46.19,22.39 46.41,21.66 46.19,20.77 46.41,11.29 46.10,10.76 40.67,10.76 40.22,10.54 39.91,10.23 39.91,6.81 40.22,6.50 46.10,6.50 46.41,4.85 46.19,2.33 46.41,2.16 46.41,0.31 46.72,0.00 49.92,0.00 50.22,0.31 50.31,6.50 56.19,6.50 56.50,6.81 56.50,10.23 55.97,10.76 51.65,10.54 50.22,11.07 50.14,33.63Z"/>
         </svg>
       </div>
-      <div class="nav-name">
+      <span class="nav-name">
         <span class="nav-name-primary">Mount Moriah</span>
         <span class="nav-name-secondary">First Missionary Baptist Church</span>
-      </div>
+      </span>
     </a>
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Main">
       <a class="nav-link" href="about.html">About</a>
       <a class="nav-link" href="#visit">Visit</a>
-      <a class="nav-link" href="#events">Events</a>
+      <a class="nav-link" href="#next-steps">Next Steps</a>
       <a class="nav-link" href="#sermons">Sermons</a>
+      <a class="nav-link" href="#events">Events</a>
+    </nav>
+
+    <div class="nav-end">
       <a class="nav-give" href="#give">Giving</a>
-    </div>
 
     <!-- Mobile hamburger toggle -->
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
-    </button>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -3773,8 +3653,9 @@
   <nav class="mobile-menu-links" aria-label="Mobile navigation">
     <a class="mobile-menu-link" href="about.html">About</a>
     <a class="mobile-menu-link" href="#visit">Visit</a>
-    <a class="mobile-menu-link" href="#events">Events</a>
+    <a class="mobile-menu-link" href="#next-steps">Next Steps</a>
     <a class="mobile-menu-link" href="#sermons">Sermons</a>
+    <a class="mobile-menu-link" href="#events">Events</a>
     <a class="mobile-menu-give" href="#give">Giving</a>
   </nav>
 </div>
@@ -3862,25 +3743,32 @@
     <p class="moments-note reveal reveal-delay-2">A look at Sundays, service, and the people who make this church home.</p>
   </div>
   <!-- Decorative rail. The photographs carry the feeling, the heading carries
-       the meaning, so the track is hidden from assistive tech. -->
+       the meaning, so the track is hidden from assistive tech.
+       These images are deliberately NOT lazy loaded: the track moves by CSS
+       transform, which does not retrigger the lazy loader, so images that
+       start off screen never fetch and their cards stay blank forever. -->
   <div class="marquee">
     <div class="marquee-track" aria-hidden="true">
-        <figure class="moment"><img src="moment-01.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-02.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-03.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-04.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-05.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-06.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-07.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-08.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-01.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-02.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-03.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-04.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-05.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-06.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-07.jpg" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="moment"><img src="moment-08.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async"></figure>
     </div>
   </div>
 </section>
