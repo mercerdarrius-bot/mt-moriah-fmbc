@@ -310,9 +310,38 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: var(--nav-bg);
-    border-bottom: 1px solid var(--nav-line);
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
     transition: background-color 0.45s ease, border-color 0.45s ease;
+  }
+
+  /* The bar only goes see through while the hero is behind it, where the
+     hero's own top gradient anchor already holds the lockup legible. Over
+     every other section it fills, so headings cannot read through it. */
+  .nav.is-lifted {
+    background-color: var(--nav-bg);
+    border-bottom-color: var(--nav-line);
+  }
+
+  /* See through over the hero means the lockup is reading against moving
+     video, so the quiet ink carries more weight there, and the Giving pill
+     fills instead of outlining. Gold as text over these clips tops out near
+     4.3:1 no matter how much scrim is added, but gold behind dark text is a
+     fixed pair at 9:1. Measured against the brightest frames of both clips. */
+  .nav:not(.is-lifted) {
+    --nav-quiet: rgba(245, 240, 232, 0.92);
+  }
+
+  .nav:not(.is-lifted) .nav-give {
+    background-color: var(--gold-light);
+    border-color: var(--gold-light);
+    color: var(--burgundy-darker);
+  }
+
+  .nav:not(.is-lifted) .nav-give:hover {
+    background-color: var(--cream);
+    border-color: var(--cream);
+    color: var(--burgundy-darker);
   }
 
   .nav.nav--light {
@@ -5020,7 +5049,20 @@
       return 'light';
     }
 
+    // Fill the bar unless the hero is the thing sitting behind it.
+    const hero = document.getElementById('hero');
+    function updateFill() {
+      const probeY = nav.getBoundingClientRect().bottom + 1;
+      let over = null;
+      for (const section of allSections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probeY && rect.bottom > probeY) { over = section; break; }
+      }
+      nav.classList.toggle('is-lifted', !(hero && over === hero));
+    }
+
     function applyTheme() {
+      updateFill();
       const theme = getNavTheme();
       if (theme === currentTheme) return;
 

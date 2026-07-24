@@ -96,146 +96,126 @@
      NAV — Same lockup as homepage, but always paper background
      (no dark/light switching needed since this page is uniformly paper-ish)
      ═══════════════════════════════════════════════════════════════ */
+  /* Same lockup and palette system as the homepage nav. This page has no
+     video hero behind the bar, so it is always filled. */
   .nav {
+    --nav-bg: var(--paper);
+    --nav-line: rgba(92, 26, 38, 0.14);
+    --nav-ink: var(--burgundy);
+    --nav-quiet: rgba(74, 69, 64, 0.82);
+    --nav-divider: rgba(92, 26, 38, 0.22);
+    --nav-cta: var(--burgundy);
+    --nav-cta-border: rgba(184, 145, 84, 0.75);
+    --nav-cta-fill-ink: var(--paper);
+
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 50;
-    background: rgba(250, 246, 239, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line-soft);
-    transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
+    z-index: 100;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-line);
   }
 
+  /* brand | centred links | actions */
   .nav-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    padding: 22px 40px;
-    max-width: 1400px;
+    gap: 24px;
+    max-width: 1480px;
     margin: 0 auto;
+    padding: 17px 40px;
   }
 
   .nav-brand {
-    display: flex;
+    justify-self: start;
+    display: inline-flex;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
     text-decoration: none;
   }
 
   .nav-mark {
-    width: 52px;
-    height: 52px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
     flex-shrink: 0;
-    line-height: 0;
-    font-size: 0;
+    color: var(--nav-ink);
+    padding-right: 15px;
+    border-right: 1px solid var(--nav-divider);
   }
 
-  /* The mark is wider than it is tall, so height stays auto and the flex
-     container centres it. This nav always sits on paper, so the mark is
-     burgundy in every state. */
   .nav-mark svg {
-    width: 52px;
-    height: auto;
+    width: auto;
+    height: 44px;
     display: block;
-    flex-shrink: 0;
   }
-
-  .nav-mark { color: var(--burgundy); }
 
   .nav-name {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .nav-name-primary {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 1;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1;
-    color: var(--burgundy);
-    letter-spacing: -0.01em;
-  }
-
-  .nav-name-secondary {
+    display: block;
     font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
+    font-size: 11.5px;
     font-weight: 500;
-    letter-spacing: 0.25em;
+    line-height: 1.34;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--nav-ink);
   }
+
+  .nav-name-primary { display: block; }
+  .nav-name-secondary { display: block; color: var(--nav-quiet); }
 
   .nav-links {
+    justify-self: center;
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: clamp(24px, 2.5vw, 44px);
   }
 
   .nav-link {
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink);
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 4px 0;
+    text-decoration: none;
+    color: var(--nav-quiet);
+    transition: color 0.35s ease;
   }
 
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: right center;
-    transition: transform 0.4s var(--ease);
-  }
+  .nav-link:hover,
+  .nav-link.is-current { color: var(--nav-ink); }
 
-  .nav-link:hover::after,
-  .nav-link.is-current::after {
-    transform: scaleX(1);
-    transform-origin: left center;
-  }
-
-  .nav-link.is-current {
-    color: var(--burgundy);
+  .nav-end {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
   }
 
   .nav-give {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--nav-cta);
+    background-color: transparent;
+    border: 1px solid var(--nav-cta-border);
+    border-radius: 999px;
+    padding: 11px 24px;
+    white-space: nowrap;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--burgundy);
-    border: 1px solid var(--gold);
-    border-radius: 2px;
-    background: transparent;
-    transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+    gap: 9px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
   .nav-give:hover {
-    background: var(--gold-warm);
-    color: var(--burgundy-deep);
-    border-color: var(--gold-warm);
+    background-color: var(--nav-cta);
+    color: var(--nav-cta-fill-ink);
+    border-color: var(--nav-cta);
   }
+
 
   /* ═══════════════════════════════════════════════════════════════
      PAGE HERO — Quiet, editorial. Not the homepage hero.
@@ -1252,7 +1232,9 @@
     .container { padding: 0 24px; }
     .nav-inner { padding: 18px 24px; }
     .nav-links { display: none; }
-    .nav-give { padding: 8px 16px; font-size: 10px; letter-spacing: 0.2em; }
+    .nav-inner { grid-template-columns: 1fr auto; padding: 13px 20px; }
+    .nav-mark svg { height: 34px; }
+    .nav-name { font-size: 9px; letter-spacing: 0.1em; }
 
     .page-hero { padding: 160px 0 80px; }
     .page-hero-title { font-size: 44px; }
@@ -1436,27 +1418,31 @@
           <path d="M50.14,33.63 49.55,33.32 49.33,32.60 47.76,30.63 39.46,16.96 39.46,16.45 39.83,16.37 41.79,18.61 42.74,19.06 46.19,22.39 46.41,21.66 46.19,20.77 46.41,11.29 46.10,10.76 40.67,10.76 40.22,10.54 39.91,10.23 39.91,6.81 40.22,6.50 46.10,6.50 46.41,4.85 46.19,2.33 46.41,2.16 46.41,0.31 46.72,0.00 49.92,0.00 50.22,0.31 50.31,6.50 56.19,6.50 56.50,6.81 56.50,10.23 55.97,10.76 51.65,10.54 50.22,11.07 50.14,33.63Z"/>
         </svg>
       </div>
-      <div class="nav-name">
+      <span class="nav-name">
         <span class="nav-name-primary">Mount Moriah</span>
         <span class="nav-name-secondary">First Missionary Baptist Church</span>
-      </div>
+      </span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="about.html" class="nav-link is-current">About</a>
       <a href="index.html#visit" class="nav-link">Visit</a>
-      <a href="index.html#events" class="nav-link">Events</a>
+      <a href="index.html#next-steps" class="nav-link">Next Steps</a>
       <a href="index.html#sermons" class="nav-link">Sermons</a>
+      <a href="index.html#events" class="nav-link">Events</a>
     </nav>
-    <a href="index.html#give" class="nav-give">
-      Giving
-      <span aria-hidden="true">&rarr;</span>
-    </a>
+
+    <div class="nav-end">
+      <a href="index.html#give" class="nav-give">
+        Giving
+        <span aria-hidden="true">&rarr;</span>
+      </a>
 
     <!-- Mobile hamburger toggle -->
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
-    </button>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -1465,8 +1451,9 @@
   <nav class="mobile-menu-links" aria-label="Mobile navigation">
     <a class="mobile-menu-link" href="about.html">About</a>
     <a class="mobile-menu-link" href="index.html#visit">Visit</a>
-    <a class="mobile-menu-link" href="index.html#events">Events</a>
+    <a class="mobile-menu-link" href="index.html#next-steps">Next Steps</a>
     <a class="mobile-menu-link" href="index.html#sermons">Sermons</a>
+    <a class="mobile-menu-link" href="index.html#events">Events</a>
     <a class="mobile-menu-give" href="index.html#give">Giving</a>
   </nav>
 </div>
@@ -1898,19 +1885,17 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   })();
 
-  // ─── NAV BACKGROUND ON SCROLL ──────────────────────────────────
+  // ─── NAV SHADOW ON SCROLL ──────────────────────────────────────
+  // Background is owned by CSS now. This used to write a translucent fill
+  // inline, which beat the stylesheet and kept the bar see through.
   (function initNavScroll() {
     const nav = document.getElementById('nav');
     if (!nav) return;
 
     function onScroll() {
-      if (window.scrollY > 40) {
-        nav.style.background = 'rgba(250, 246, 239, 0.96)';
-        nav.style.boxShadow = '0 1px 0 rgba(184, 145, 84, 0.15)';
-      } else {
-        nav.style.background = 'rgba(250, 246, 239, 0.92)';
-        nav.style.boxShadow = 'none';
-      }
+      nav.style.boxShadow = window.scrollY > 40
+        ? '0 1px 0 rgba(184, 145, 84, 0.15)'
+        : 'none';
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
