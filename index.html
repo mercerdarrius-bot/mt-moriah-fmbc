@@ -3184,6 +3184,257 @@
   /* DESIGNER NOTE PANEL (toggleable for walkthroughs)     */
   /* ===================================================== */
 
+
+  /* ===================================================== */
+  /* MINISTRY MOMENTS                                      */
+  /* ===================================================== */
+  /* A marquee of real Sundays. The track holds the set twice so a translate
+     of exactly half its width loops seamlessly. Spacing uses margin-right
+     rather than flex gap on purpose: with gap, half the track width lands
+     mid-gap and the loop stutters once per cycle. */
+  .moments {
+    background: var(--burgundy-darker);
+    padding: 118px 0 130px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .moments-head {
+    max-width: 1200px;
+    margin: 0 auto 54px;
+    padding: 0 48px;
+  }
+
+  .moments-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(34px, 4.2vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--cream);
+    margin: 22px 0 16px;
+    max-width: 22ch;
+  }
+
+  .moments-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.72);
+    max-width: 44ch;
+    margin: 0;
+  }
+
+  .marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: momentsFlow 58s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+
+  @keyframes momentsFlow {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .moment {
+    flex: 0 0 auto;
+    width: clamp(206px, 20vw, 292px);
+    aspect-ratio: 4 / 5;
+    margin: 0 20px 0 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid rgba(184, 145, 84, 0.22);
+    background: var(--burgundy-deep);
+  }
+
+  .moment img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===================================================== */
+  /* NEXT STEPS                                            */
+  /* ===================================================== */
+  .next {
+    background: var(--paper);
+    padding: 118px 0 130px;
+  }
+
+  .next-intro { max-width: 720px; margin: 0 0 60px; }
+
+  .next-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(34px, 4.2vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin: 22px 0 18px;
+  }
+
+  .next-lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    list-style: none;
+    margin: 0 0 76px;
+    padding: 0;
+  }
+
+  .next-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    padding: 30px 26px 26px;
+    cursor: pointer;
+    transition: border-color var(--motion-base) var(--ease-out),
+                transform var(--motion-base) var(--ease-out);
+  }
+
+  .next-card:hover,
+  .next-card:focus-visible {
+    border-color: rgba(184, 145, 84, 0.55);
+    transform: translateY(-3px);
+  }
+
+  .next-card.is-chosen {
+    border-color: var(--burgundy);
+    box-shadow: inset 0 0 0 1px var(--burgundy);
+  }
+
+  .next-n {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+
+  .next-card h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+
+  .next-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    flex: 1;
+  }
+
+  .next-go {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .next-card:hover .next-go { color: var(--burgundy-deep); }
+
+  /* The form band mirrors the visit form so the two read as one system */
+  .next-form-band {
+    background: #FFFFFF;
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    padding: 54px 48px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .next-form-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 1;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 20px 0 16px;
+  }
+
+  .next-form-title em { font-style: italic; color: var(--burgundy); }
+
+  .next-form-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .next-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .next-form-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 18px 0 0;
+  }
+
+  .next-opt {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: none;
+  }
+
+  .next-confirm {
+    display: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .next-confirm.visible { display: block; }
+  .next-form.confirmed { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .next-card:hover, .next-card:focus-visible { transform: none; }
+  }
+
   /* ===================================================== */
   /* RESPONSIVE                                            */
   /* ===================================================== */
@@ -3198,6 +3449,9 @@
     .nav-links { gap: 20px; }
     .nav-link { font-size: 11px; letter-spacing: 0.12em; padding: 8px 4px; }
     .nav-give { font-size: 11px; padding: 12px 20px; margin-left: 12px; letter-spacing: 0.12em; }
+
+    .next-grid { grid-template-columns: repeat(2, 1fr); }
+    .next-form-band { grid-template-columns: 1fr; gap: 36px; padding: 44px 36px; }
 
     .about { padding: 100px 0 120px; }
     .about-headline { font-size: 36px; }
@@ -3252,6 +3506,14 @@
     .hero-sunday-divider { display: none; }
     .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
     .hero::after, .hero-bracket-br { display: none; }
+
+    .moments { padding: 84px 0 92px; }
+    .moments-head { padding: 0 24px; margin-bottom: 38px; }
+    .moment { width: clamp(168px, 52vw, 220px); margin-right: 14px; }
+    .next { padding: 84px 0 92px; }
+    .next-grid { grid-template-columns: 1fr; gap: 16px; margin-bottom: 52px; }
+    .next-form-band { padding: 34px 24px; gap: 28px; }
+    .next-field-row { grid-template-columns: 1fr; }
 
     /* The nav sizes above are tuned for legibility at 1440. At phone widths
        the lockup has to come back down or the supporting line wraps and the
@@ -3586,6 +3848,39 @@
     <div class="hero-meta-inner">
       <span class="hero-meta-time">Sundays at 11 AM</span>
       <span class="hero-meta-address">302 South Tenth Street, Quincy FL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION - MINISTRY MOMENTS                                   -->
+<!-- ============================================================ -->
+<section class="moments section--dark" id="moments" aria-labelledby="moments-title">
+  <div class="moments-head">
+    <div class="eyebrow reveal">Ministry Moments</div>
+    <h2 class="moments-title reveal reveal-delay-1" id="moments-title">More than a place to worship. A place to belong.</h2>
+    <p class="moments-note reveal reveal-delay-2">A look at Sundays, service, and the people who make this church home.</p>
+  </div>
+  <!-- Decorative rail. The photographs carry the feeling, the heading carries
+       the meaning, so the track is hidden from assistive tech. -->
+  <div class="marquee">
+    <div class="marquee-track" aria-hidden="true">
+        <figure class="moment"><img src="moment-01.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-02.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-03.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-04.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-05.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-06.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-07.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-08.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-01.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-02.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-03.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-04.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-05.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-06.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-07.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="moment"><img src="moment-08.jpg" alt="" loading="lazy" decoding="async"></figure>
     </div>
   </div>
 </section>
@@ -4169,9 +4464,97 @@
 </section>
 
 <!-- ============================================================ -->
+<!-- SECTION - NEXT STEPS                                         -->
+<!-- ============================================================ -->
+<section class="next section--light" id="next-steps">
+  <div class="container">
+    <header class="next-intro">
+      <div class="eyebrow reveal">Take Your Next Step</div>
+      <h2 class="next-title reveal reveal-delay-1">Wherever you are with God, there is a step for you.</h2>
+      <p class="next-lede reveal reveal-delay-2">Faith moves one step at a time. Choose the step that fits where you are today, and we will walk it with you.</p>
+    </header>
+
+    <ul class="next-grid reveal reveal-delay-3">
+      <li class="next-card" data-step="Follow Christ" role="button" tabindex="0" aria-controls="nextForm">
+        <span class="next-n">01</span>
+        <h3>Follow Christ</h3>
+        <p>Ready to give your life to Jesus, or want to know what that means? Start here and we will help you take the first step.</p>
+        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
+      </li>
+      <li class="next-card" data-step="Request prayer" role="button" tabindex="0" aria-controls="nextForm">
+        <span class="next-n">02</span>
+        <h3>Request Prayer</h3>
+        <p>Carrying something heavy? Our prayer team would be honored to stand with you. Share it, confidentially if you wish.</p>
+        <span class="next-go">Share a request <span aria-hidden="true">&rarr;</span></span>
+      </li>
+      <li class="next-card" data-step="Be baptized" role="button" tabindex="0" aria-controls="nextForm">
+        <span class="next-n">03</span>
+        <h3>Be Baptized</h3>
+        <p>Baptism is a public declaration of a changed life. Let us know you are ready and we will prepare a date with you.</p>
+        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
+      </li>
+      <li class="next-card" data-step="Become a member" role="button" tabindex="0" aria-controls="nextForm">
+        <span class="next-n">04</span>
+        <h3>Become a Member</h3>
+        <p>Ready to call Mt. Moriah home? Membership is how you plant roots, belong, and grow with this church family.</p>
+        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
+      </li>
+    </ul>
+
+    <div class="next-form-band reveal">
+      <div class="next-form-lead">
+        <div class="eyebrow">Begin</div>
+        <h2 class="next-form-title">Tell us you're <em>ready.</em></h2>
+        <p class="next-form-intro">Pick your step and share how to reach you. A pastor or team member will follow up personally to walk with you.</p>
+      </div>
+
+      <div>
+        <form class="next-form" id="nextForm" novalidate>
+          <div class="visit-field">
+            <label for="nf-step" class="visit-field-label">Which step?</label>
+            <select id="nf-step" name="step" class="visit-field-input visit-field-select">
+              <option>Follow Christ</option>
+              <option>Request prayer</option>
+              <option>Be baptized</option>
+              <option>Become a member</option>
+              <option>I am not sure yet</option>
+            </select>
+          </div>
+
+          <div class="next-field-row">
+            <div class="visit-field">
+              <label for="nf-name" class="visit-field-label">Your name</label>
+              <input type="text" id="nf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
+            </div>
+            <div class="visit-field">
+              <label for="nf-contact" class="visit-field-label">Email or phone</label>
+              <input type="text" id="nf-contact" name="contact" class="visit-field-input" required autocomplete="email" placeholder="How we reach you">
+            </div>
+          </div>
+
+          <div class="visit-field">
+            <label for="nf-notes" class="visit-field-label">Anything you'd like to share? <span class="next-opt">optional</span></label>
+            <textarea id="nf-notes" name="notes" rows="3" class="visit-field-input" placeholder="Where you are on your journey, questions you have, or how we can help."></textarea>
+          </div>
+
+          <button type="submit" class="visit-form-submit">
+            <span>Take this step</span>
+            <span class="visit-form-arrow">&rarr;</span>
+          </button>
+
+          <p class="next-form-note">Shared only with our pastoral team. We will reach out personally.</p>
+        </form>
+
+        <p class="next-confirm" id="nextConfirm" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- SECTION · EVENTS                                             -->
 <!-- ============================================================ -->
-<section class="events" id="events">
+<section class="events section--dark" id="events">
   <div class="container">
 
     <div class="events-top">
@@ -4785,6 +5168,58 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', applyTheme, { passive: true });
     window.addEventListener('load', applyTheme);
+  })();
+
+
+  // ─── NEXT STEPS ─────────────────────────────────────────────────────
+  // The four cards are a picker for the form below rather than four dead
+  // ends: choosing one sets the select and moves focus there, so the whole
+  // section reads as a single flow. Submission is front end only, exactly
+  // like the visit form, and needs a real endpoint before launch.
+  (function initNextSteps() {
+    var form = document.getElementById('nextForm');
+    var confirmEl = document.getElementById('nextConfirm');
+    if (!form || !confirmEl) return;
+
+    var select = form.querySelector('[name="step"]');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.next-card'));
+
+    function choose(card) {
+      var step = card.dataset.step;
+      if (!step) return;
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].text === step) { select.selectedIndex = i; break; }
+      }
+      cards.forEach(function(c) { c.classList.toggle('is-chosen', c === card); });
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      window.setTimeout(function() {
+        try { select.focus({ preventScroll: true }); } catch (e) { select.focus(); }
+      }, 420);
+    }
+
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() { choose(card); });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(card); }
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = form.querySelector('[name="name"]').value.trim();
+      var contact = form.querySelector('[name="contact"]').value.trim();
+      if (!name || !contact) return;
+
+      // In a real implementation, POST to the church's pastoral endpoint here:
+      //   fetch('/api/next-step', { method: 'POST', body: new FormData(form) })
+      // For now, we just show the confirmation state.
+
+      confirmEl.textContent = 'Thank you, ' + name.split(' ')[0] +
+        '. A pastor or team member will reach out to you personally and soon.';
+      confirmEl.classList.add('visible');
+      form.classList.add('confirmed');
+      confirmEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   })();
 
   // ─── EVENTS MONTH TABS ──────────────────────────────────
