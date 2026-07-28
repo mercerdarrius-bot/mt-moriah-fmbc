@@ -48,7 +48,22 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+  }
+
+  /* The horizontal guard has to be `clip`, not `hidden`, and it has to sit on
+     the root as well as the body. `overflow-x: hidden` on body makes body a
+     scrolling container, and iOS Safari then resolves position: fixed against
+     that container instead of the viewport, so the pinned nav rides up the
+     page on a phone while looking perfectly pinned in desktop Chrome. `clip`
+     clips without creating a scroll container, which keeps the nav anchored.
+     Where clip is unsupported the guard falls back to the root only, which is
+     the same reason: never body alone. */
+  html { overflow-x: clip; }
+  body { overflow-x: clip; }
+
+  @supports not (overflow-x: clip) {
+    html { overflow-x: hidden; }
+    body { overflow-x: visible; }
   }
 
   ::selection {
@@ -111,9 +126,15 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
+    transform: translateZ(0);
     background-color: var(--nav-bg);
     border-bottom: 1px solid var(--nav-line);
   }
+
+  /* Owned by a class, not an inline style. An inline box-shadow outranks the
+     stylesheet, so it survived into the open menu and left a gold hairline
+     hanging across the overlay. */
+  .nav.is-stuck { box-shadow: 0 1px 0 rgba(184, 145, 84, 0.15); }
 
   /* brand | centred links | actions */
   .nav-inner {
@@ -1234,18 +1255,18 @@
     position: relative;
   }
 
+  /* The bar takes the nav's own ink, so it is burgundy on the light bar and
+     cream on the dark one. It was hard coded cream with a .scrolled override
+     that nothing sets any more, so once the nav became permanently light the
+     button was cream on cream and invisible at phone widths. */
   .nav-toggle-bar {
     display: block;
-    width: 26px;
+    width: 28px;
     height: 2px;
-    background: var(--cream);
+    background: var(--nav-ink);
     margin: 0 auto;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                 opacity 0.3s ease, background 0.3s ease;
-  }
-
-  .nav.scrolled .nav-toggle-bar {
-    background: var(--ink);
   }
 
   .nav-toggle.is-open .nav-toggle-bar {
@@ -1257,6 +1278,29 @@
   .nav-toggle.is-open .nav-toggle-bar:nth-child(2) {
     transform: translateY(-4px) rotate(-45deg);
   }
+
+  /* With the menu open the bar sits over the overlay rather than the page, so
+     it drops its own fill and switches to cream ink: the lockup and the close
+     X then read as the overlay's own header. The z-index climb is the load
+     bearing part. .nav is a stacking context at z-index 100, so the button's
+     own 1002 was scoped inside it and the overlay at 1001 painted straight
+     over the top, leaving no visible way out of the menu at all. */
+  body.menu-open .nav {
+    z-index: 1002;
+    --nav-bg: transparent;
+    --nav-line: transparent;
+    --nav-ink: var(--cream);
+    --nav-quiet: rgba(245, 240, 232, 0.72);
+    --nav-divider: rgba(184, 145, 84, 0.42);
+    box-shadow: none;
+  }
+
+  /* .nav--dark.is-stuck carries one more class than the rule above, so its
+     shadow needs answering on its own terms. */
+  body.menu-open .nav.is-stuck { box-shadow: none; }
+
+  /* Wider tap target for the X than the 44px button gives on its own. */
+  .nav-toggle.is-open { width: 48px; }
 
   .mobile-menu {
     position: fixed;
@@ -1309,6 +1353,8 @@
   .mobile-menu.is-open .mobile-menu-link:nth-child(2) { transition-delay: 0.14s; }
   .mobile-menu.is-open .mobile-menu-link:nth-child(3) { transition-delay: 0.20s; }
   .mobile-menu.is-open .mobile-menu-link:nth-child(4) { transition-delay: 0.26s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(5) { transition-delay: 0.32s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(6) { transition-delay: 0.38s; }
 
   .mobile-menu-link:active {
     color: var(--gold-light);
@@ -1328,7 +1374,7 @@
     border-radius: 2px;
     opacity: 0;
     transform: translateY(16px);
-    transition: opacity 0.5s ease 0.32s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.32s;
+    transition: opacity 0.5s ease 0.44s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.44s;
   }
 
   .mobile-menu.is-open .mobile-menu-give {
@@ -1397,6 +1443,7 @@
 <!-- Mobile menu overlay -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav class="mobile-menu-links" aria-label="Mobile navigation">
+    <a class="mobile-menu-link" href="index.html">Home</a>
     <a class="mobile-menu-link" href="about.html">About</a>
     <a class="mobile-menu-link" href="index.html#visit">Visit</a>
     <a class="mobile-menu-link" href="get-involved.html">Get Involved</a>
@@ -1722,9 +1769,7 @@
     if (!nav) return;
 
     function onScroll() {
-      nav.style.boxShadow = window.scrollY > 40
-        ? '0 1px 0 rgba(184, 145, 84, 0.15)'
-        : 'none';
+      nav.classList.toggle('is-stuck', window.scrollY > 40);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -1924,6 +1969,12 @@
     links.forEach(function(link) {
       link.addEventListener('click', closeMenu);
     });
+
+    // The lockup stays visible above the overlay and doubles as the way home.
+    // It lives in the nav, not the overlay, so the loop above never saw it,
+    // and on the homepage it only scrolls, which would have left the menu up.
+    var brand = document.querySelector('.nav-brand');
+    if (brand) brand.addEventListener('click', closeMenu);
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && menu.classList.contains('is-open')) {
