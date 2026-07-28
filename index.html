@@ -312,8 +312,14 @@
     z-index: 100;
     background-color: var(--nav-bg);
     border-bottom: 1px solid var(--nav-line);
-    transition: background-color 0.45s ease, border-color 0.45s ease;
+    transition: background-color 0.45s ease, border-color 0.45s ease,
+                box-shadow 0.45s ease;
   }
+
+  /* Once the page has moved under it, the bar earns a soft edge so it reads
+     as pinned rather than as part of the page. */
+  .nav.is-stuck { box-shadow: 0 10px 30px -18px rgba(26, 6, 12, 0.55); }
+  .nav.nav--dark.is-stuck { box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.6); }
 
   .nav.nav--light {
     --nav-bg: var(--paper);
@@ -452,7 +458,9 @@
      what actually holds the video, the copy and the service strip. */
   .hero {
     --hero-inset: 30px;
-    --hero-gap: 105px;
+    --hero-breathe: 53px;
+    --hero-floor: 132px;
+    --hero-gap: max(calc(var(--nav-h, 132px) + var(--hero-breathe)), var(--hero-floor));
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;
@@ -480,10 +488,10 @@
      inside it stay pinned to it and only ever animate opacity. */
   .hero-video-stack {
     position: absolute;
-    top: -5%;
+    top: -9%;
     left: 0;
     width: 100%;
-    height: 110%;
+    height: 118%;
     border-radius: inherit;
     z-index: 0;
     pointer-events: none;
@@ -708,9 +716,11 @@
     color: rgba(245, 240, 232, 0.88);
     margin: 0 0 46px 0;
     display: block;
-    padding-left: 0.2em;
-    text-align: left;
+    padding-left: 0.42em;
+    text-align: center;
   }
+
+  .hero-lockup { width: fit-content; max-width: 100%; }
 
   .hero-subtitle span {
     display: inline-block;
@@ -747,9 +757,30 @@
     border-radius: 1px;
     cursor: pointer;
     position: relative;
-    transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                 border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  /* The fill sweeps in from the left and retreats to the right, so the
+     button reads as filling rather than just swapping colour. */
+  .btn-primary::before,
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .btn-primary:hover::before,
+  .btn-ghost:hover::before { transform: scaleX(1); }
+
+  .btn-primary:not(:hover)::before,
+  .btn-ghost:not(:hover)::before { transform-origin: right center; }
 
   /* PRIMARY: the dominant action, solid burgundy */
   .btn-primary {
@@ -758,9 +789,7 @@
     border: 1px solid transparent;
   }
 
-  .btn-primary:hover {
-    background-color: var(--burgundy-deep);
-  }
+  .btn-primary::before { background-color: var(--burgundy-deep); }
 
   /* SECONDARY: recedes to an outline, fills faintly on hover */
   .btn-ghost {
@@ -769,8 +798,11 @@
     border: 1px solid rgba(245, 240, 232, 0.35);
   }
 
+  .btn-ghost::before { background-color: var(--cream); }
+
   .btn-ghost:hover {
-    background-color: rgba(245, 240, 232, 0.08);
+    color: var(--burgundy-darker);
+    border-color: var(--cream);
   }
 
   /* Shared arrow */
@@ -3206,7 +3238,7 @@
   /* ===================================================== */
 
   @media (max-width: 1024px) {
-    .hero { --hero-gap: 86px; --hero-inset: 22px; }
+    .hero { --hero-breathe: 40px; --hero-floor: 112px; --hero-inset: 22px; }
     .hero-frame { border-radius: 20px; }
     .hero-frame > .container { padding-bottom: 96px; }
     .hero-strip { grid-template-columns: repeat(2, 1fr); }
@@ -3290,7 +3322,7 @@
     .moments-head { padding: 0 24px; margin-bottom: 38px; }
     .moment { width: clamp(168px, 52vw, 220px); margin-right: 14px; }
 
-    .hero { --hero-gap: 74px; --hero-inset: 14px; padding-bottom: 14px; }
+    .hero { --hero-breathe: 28px; --hero-floor: 134px; --hero-inset: 14px; padding-bottom: 14px; }
     .hero-frame { border-radius: 16px; }
     .hero-frame > .container { padding: 0 22px 150px; }
     .hero-strip-item { padding: 15px 18px 17px; }
@@ -3604,11 +3636,15 @@
   <div class="container">
     <div class="hero-content">
 
-      <h1 class="hero-headline reveal reveal-delay-1" id="hero-headline">
-        <span class="hero-headline-cream">the Mount.</span>
-      </h1>
+      <!-- The lockup hugs the headline so the subline can centre on it
+           while the buttons below stay flush left. -->
+      <div class="hero-lockup">
+        <h1 class="hero-headline reveal reveal-delay-1" id="hero-headline">
+          <span class="hero-headline-cream">the Mount.</span>
+        </h1>
 
-      <p class="hero-subtitle reveal reveal-delay-2"><span>Grace · Growth · Gratitude</span></p>
+        <p class="hero-subtitle reveal reveal-delay-2"><span>Grace · Growth · Gratitude</span></p>
+      </div>
 
       <div class="hero-ctas reveal reveal-delay-3">
         <a href="#visit" class="btn-primary">Plan Your Visit</a>
@@ -4835,6 +4871,29 @@
     }
   })();
 
+
+  // ─── NAV HEIGHT ─────────────────────────────────────────────────────
+  // The hero's top gap is measured off the real bar rather than guessed, so
+  // the frame can never tuck under it when the lockup wraps at small widths.
+  (function publishNavHeight() {
+    var nav = document.getElementById('nav');
+    if (!nav) return;
+    function measure() {
+      document.documentElement.style.setProperty(
+        '--nav-h', Math.round(nav.getBoundingClientRect().height) + 'px');
+    }
+    measure();
+    // Watch the bar itself: a window resize listener misses the reflow that
+    // happens when the lockup rewraps, which left the value stale.
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(measure).observe(nav);
+    } else {
+      window.addEventListener('resize', measure, { passive: true });
+    }
+    window.addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  })();
+
   // ─── Adaptive nav: section-aware color theming ───────────────────
   // Uses viewport-relative measurement (getBoundingClientRect) which is
   // bulletproof regardless of DOM nesting or offsetParent chains.
@@ -4882,28 +4941,21 @@
       currentTheme = theme;
     }
 
-    // Throttle with requestAnimationFrame
-    let ticking = false;
+    // Scroll driven, but never gated behind requestAnimationFrame: a
+    // throttled rAF silently stops firing whenever the tab is backgrounded,
+    // which left the bar stuck on one theme.
     function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          applyTheme();
-          ticking = false;
-        });
-        ticking = true;
-      }
+      applyTheme();
+      nav.classList.toggle('is-stuck', window.scrollY > 8);
     }
 
-    // Init AFTER layout settles
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        applyTheme();
-      });
-    });
-
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', applyTheme, { passive: true });
-    window.addEventListener('load', applyTheme);
+    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('load', onScroll);
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) onScroll();
+    });
+    onScroll();
   })();
 
 

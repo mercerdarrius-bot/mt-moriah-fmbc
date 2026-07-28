@@ -582,6 +582,131 @@
     .next-field-row { grid-template-columns: 1fr; }
   }
 
+  /* Serve boxes are buttons now, so they need the button reset plus a
+     visible affordance that they open something. */
+  .ways-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.35s var(--ease);
+  }
+
+  .ways-item:hover,
+  .ways-item:focus-visible { background-color: #FFFFFF; }
+
+  .ways-item-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+  }
+
+  .ways-item-go span { transition: transform 0.35s var(--ease); display: inline-block; }
+  .ways-item:hover .ways-item-go span { transform: translateX(4px); }
+
+  /* ── Serve interest dialog ── */
+  .serve-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .serve-modal[hidden] { display: none; }
+
+  .serve-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 6, 12, 0.62);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .serve-modal-panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 620px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    border-radius: 3px;
+    padding: 46px 46px 40px;
+    box-shadow: 0 32px 80px -28px rgba(26, 6, 12, 0.6);
+  }
+
+  .serve-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: color 0.3s var(--ease);
+  }
+
+  .serve-modal-close:hover { color: var(--burgundy); }
+
+  .serve-modal-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 1;
+    font-size: clamp(27px, 3vw, 37px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 18px 0 14px;
+  }
+
+  .serve-modal-title em { font-style: italic; color: var(--burgundy); }
+
+  .serve-modal-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 26px;
+  }
+
+  .serve-modal-team { color: var(--burgundy); font-style: italic; }
+
+  .serve-status {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    display: none;
+  }
+
+  .serve-status.is-shown { display: block; }
+  .serve-status.is-error { color: var(--burgundy); }
+  .serve-form.is-done { display: none; }
+
+  body.serve-open { overflow: hidden; }
+
+  @media (max-width: 720px) {
+    .serve-modal { padding: 14px; }
+    .serve-modal-panel { padding: 34px 22px 28px; }
+  }
+
   /* ═══════════════════════════════════════════════════════════════
      PAGE HERO: Quiet, editorial. Not the homepage hero.
      This is the cover of an essay, not a movie poster.
@@ -1400,46 +1525,115 @@
       <div class="ways-top">
         <div class="eyebrow reveal">Serve With Us</div>
         <h2 class="ways-title reveal reveal-delay-1">Every gift <em>has a place here.</em></h2>
-        <p class="ways-intro reveal reveal-delay-2">
-          A church runs on the people who show up. If you are ready to give your time,
-          these are the teams that keep the Mount moving.
-        </p>
+        <p class="ways-intro reveal reveal-delay-2">Find your place to serve.</p>
       </div>
 
       <div class="ways-grid reveal reveal-delay-3">
-        <div class="ways-item">
+        <button type="button" class="ways-item" data-team="Hospitality"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">01</div>
           <h3 class="ways-item-name">Hospitality</h3>
           <p class="ways-item-body">Greeting at the door, helping visitors find a seat, and making sure no one walks in feeling like a stranger.</p>
-        </div>
-        <div class="ways-item">
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Worship and Music"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">02</div>
           <h3 class="ways-item-name">Worship and Music</h3>
           <p class="ways-item-body">Choir, musicians, and the sound and media team who carry the service to everyone in the room and beyond it.</p>
-        </div>
-        <div class="ways-item">
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Children and Youth"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">03</div>
           <h3 class="ways-item-name">Children and Youth</h3>
           <p class="ways-item-body">Teaching, mentoring, and building the generation that will carry this church into its next century.</p>
-        </div>
-        <div class="ways-item">
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Care and Outreach"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">04</div>
           <h3 class="ways-item-name">Care and Outreach</h3>
           <p class="ways-item-body">Visiting the sick, checking on our seniors, and carrying the work of this church into the streets of Quincy.</p>
-        </div>
-        <div class="ways-item">
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Prayer Team"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">05</div>
           <h3 class="ways-item-name">Prayer Team</h3>
           <p class="ways-item-body">Standing in the gap for the requests that come to us, confidentially and faithfully, every week.</p>
-        </div>
-        <div class="ways-item">
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Facilities"
+                aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">06</div>
           <h3 class="ways-item-name">Facilities</h3>
           <p class="ways-item-body">Keeping the house in order. Quiet work, faithfully done, that everyone benefits from and few people see.</p>
-        </div>
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
       </div>
     </div>
   </section>
+
+
+<!-- Serve interest dialog: opened by any team box above -->
+<div class="serve-modal" id="serveModal" role="dialog" aria-modal="true"
+     aria-labelledby="serveModalTitle" hidden>
+  <div class="serve-modal-backdrop" data-serve-close></div>
+  <div class="serve-modal-panel" role="document">
+    <button type="button" class="serve-modal-close" data-serve-close aria-label="Close">&times;</button>
+
+    <div class="eyebrow">Serve With Us</div>
+    <h2 class="serve-modal-title" id="serveModalTitle">Tell us you're <em>interested.</em></h2>
+    <p class="serve-modal-intro">
+      Share how to reach you and a ministry leader will follow up about serving with
+      <span class="serve-modal-team" id="serveTeam">this team</span>.
+    </p>
+
+    <form class="serve-form" id="serveForm" novalidate>
+      <div class="visit-field">
+        <label for="sf-team" class="visit-field-label">Where you would like to serve</label>
+        <select id="sf-team" name="team" class="visit-field-input visit-field-select">
+          <option>Hospitality</option>
+          <option>Worship and Music</option>
+          <option>Children and Youth</option>
+          <option>Care and Outreach</option>
+          <option>Prayer Team</option>
+          <option>Facilities</option>
+          <option>Wherever I am needed</option>
+        </select>
+      </div>
+
+      <div class="next-field-row">
+        <div class="visit-field">
+          <label for="sf-name" class="visit-field-label">Your name</label>
+          <input type="text" id="sf-name" name="name" class="visit-field-input" required
+                 autocomplete="name" placeholder="First and last name">
+        </div>
+        <div class="visit-field">
+          <label for="sf-contact" class="visit-field-label">Email or phone</label>
+          <input type="text" id="sf-contact" name="contact" class="visit-field-input" required
+                 autocomplete="email" placeholder="How we reach you">
+        </div>
+      </div>
+
+      <div class="visit-field">
+        <label for="sf-notes" class="visit-field-label">Anything we should know? <span class="next-opt">optional</span></label>
+        <textarea id="sf-notes" name="notes" rows="3" class="visit-field-input"
+                  placeholder="Your experience, your availability, or questions you have."></textarea>
+      </div>
+
+      <button type="submit" class="visit-form-submit">
+        <span>Send my interest</span>
+        <span class="visit-form-arrow">&rarr;</span>
+      </button>
+
+      <p class="next-form-note">Shared only with our ministry leaders.</p>
+    </form>
+
+    <p class="serve-status" id="serveStatus" role="status" aria-live="polite"></p>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -1585,6 +1779,111 @@
       confirmEl.classList.add('visible');
       form.classList.add('confirmed');
       confirmEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  })();
+
+
+  // ─── SERVE INTEREST DIALOG ──────────────────────────────────────────
+  // Each team box opens this with its own team preselected. Submission goes
+  // to a real endpoint so the church is actually notified; set SERVE_ENDPOINT
+  // below to a Web3Forms access key (or swap the fetch for your own handler).
+  // Until that key is set the form does NOT claim success, it tells the
+  // visitor to call instead, because a confirmation for a message that was
+  // never sent is worse than no form at all.
+  (function initServeInterest() {
+    var SERVE_ENDPOINT_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+    var CHURCH_PHONE = '(850) 627-7244';
+
+    var modal  = document.getElementById('serveModal');
+    var form   = document.getElementById('serveForm');
+    var status = document.getElementById('serveStatus');
+    var teamOut= document.getElementById('serveTeam');
+    var select = form && form.querySelector('[name="team"]');
+    if (!modal || !form || !select) return;
+
+    var lastFocused = null;
+
+    function open(team) {
+      lastFocused = document.activeElement;
+      if (team) {
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].text === team) { select.selectedIndex = i; break; }
+        }
+        if (teamOut) teamOut.textContent = team;
+      }
+      form.classList.remove('is-done');
+      status.className = 'serve-status';
+      status.textContent = '';
+      modal.hidden = false;
+      document.body.classList.add('serve-open');
+      window.setTimeout(function() {
+        var first = form.querySelector('[name="name"]');
+        if (first) first.focus();
+      }, 60);
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove('serve-open');
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.ways-item').forEach(function(box) {
+      box.addEventListener('click', function() { open(box.dataset.team); });
+    });
+
+    modal.querySelectorAll('[data-serve-close]').forEach(function(el) {
+      el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+      if (e.key !== 'Tab' || modal.hidden) return;
+      // keep focus inside the dialog while it is open
+      var f = modal.querySelectorAll('button, input, select, textarea, a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name    = form.querySelector('[name="name"]').value.trim();
+      var contact = form.querySelector('[name="contact"]').value.trim();
+      if (!name || !contact) return;
+
+      var firstName = name.split(' ')[0];
+
+      function succeed() {
+        status.textContent = 'Thank you, ' + firstName +
+          '. A ministry leader will reach out about serving with ' + select.value + '.';
+        status.className = 'serve-status is-shown';
+        form.classList.add('is-done');
+      }
+
+      function fail() {
+        status.textContent = 'We could not send that just now. Please call us at ' +
+          CHURCH_PHONE + ' and we will get you connected.';
+        status.className = 'serve-status is-shown is-error';
+      }
+
+      if (SERVE_ENDPOINT_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        console.warn('[serve] No endpoint configured, so nothing was sent. ' +
+                     'Set SERVE_ENDPOINT_KEY in this file to start receiving these.');
+        fail();
+        return;
+      }
+
+      var payload = new FormData(form);
+      payload.append('access_key', SERVE_ENDPOINT_KEY);
+      payload.append('subject', 'New serving interest from the website');
+      payload.append('from_name', 'Mt. Moriah website');
+
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: payload })
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
+        .then(function(d) { d && d.success ? succeed() : fail(); })
+        .catch(fail);
     });
   })();
 
