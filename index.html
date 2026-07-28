@@ -32,7 +32,7 @@
     --motion-base: 400ms;
     --motion-slow: 700ms;
 
-    /* Focus ring — accessibility */
+    /* Focus ring: accessibility */
     --focus-ring: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold);
     --focus-ring-dark: 0 0 0 2px var(--burgundy-deep), 0 0 0 4px var(--gold-warm);
   }
@@ -213,12 +213,12 @@
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* Light section rule — gold against cream */
+  /* Light section rule: gold against cream */
   .section--light > .section-rule {
     opacity: 0.85;
   }
 
-  /* Dark section rule — slightly brighter */
+  /* Dark section rule: slightly brighter */
   .section--dark > .section-rule {
     opacity: 1;
   }
@@ -473,7 +473,7 @@
 
 
   /* ===================================================== */
-  /* SECTION 1: HERO — Cream Static Grain                  */
+  /* SECTION 1: HERO: Cream Static Grain                  */
   /* ===================================================== */
 
   /* Three anchored zones across the full viewport height: the nav sits in
@@ -537,12 +537,12 @@
       linear-gradient(rgba(26, 6, 12, 0.18), rgba(26, 6, 12, 0.18));
   }
 
-  /* LAYER 1: Hidden — video replaces this */
+  /* LAYER 1: Hidden: video replaces this */
   .hero::before {
     display: none;
   }
 
-  /* Corner brackets — gold, drawn-in animation
+  /* Corner brackets: gold, drawn-in animation
      Top-left bracket sits well clear of stacked nav brand (180px down)
      Bottom-right bracket frames the lower-right corner */
   .hero::after {
@@ -564,10 +564,8 @@
   .hero-bracket-br {
     display: none;
   }
-  }
 
 
-}
 
   /* ─── EDITORIAL: Top-right corner marker ─── */
   /* ─── PARALLAX foundation ─── */
@@ -712,7 +710,7 @@
     opacity: 0.6;
   }
 
-  /* The centerpiece — sculpted mark */
+  /* The centerpiece: sculpted mark */
 
   /* ──────────────────────────────────────────────────────────────
      BESPOKE HERO TYPOGRAPHY
@@ -732,10 +730,10 @@
   }
 
   .hero-headline em {
-    font-style: normal; /* Override default italic — we control it per span */
+    font-style: normal; /* Override default italic: we control it per span */
   }
 
-  /* "A place at" — preamble label with weight to balance the display word */
+  /* "A place at": preamble label with weight to balance the display word */
   .hero-headline-white {
     font-family: 'DM Sans', sans-serif;
     font-style: normal;
@@ -751,7 +749,7 @@
     padding-left: 0;
   }
 
-  /* Small gold rule sits before "A place at" — editorial dateline mark */
+  /* Small gold rule sits before "A place at": editorial dateline mark */
   .hero-headline-white::before {
     content: "";
     display: inline-block;
@@ -760,7 +758,7 @@
     background: rgba(184, 145, 84, 0.6);
   }
 
-  /* "the Mount." — the entire hero is about this word */
+  /* "the Mount.": the entire hero is about this word */
   /* Solid cream, no gradient fill and no clipped background. The shadow is a
      soft luminance anchor that lifts the type off a moving frame, not a
      drop shadow, so it stays wide and low opacity. */
@@ -974,113 +972,42 @@
     color: var(--muted);
   }
   /* ===================================================== */
-  /* SECTION 3: ABOUT — Lean editorial moment              */
+  /* SECTION 3: ABOUT: Lean editorial moment              */
   /* ===================================================== */
-  .about {
-    padding: 160px 0 180px;
-    background: var(--paper);
-  }
 
-  .about-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-  }
 
-  /* Cross watermark — felt more than seen */
-  .about-inner::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 280px;
-    background:
-      linear-gradient(to bottom, rgba(184, 145, 84, 0.07) 0%, rgba(184, 145, 84, 0.07) 100%) no-repeat center center / 3px 280px,
-      linear-gradient(to right, rgba(184, 145, 84, 0.07) 0%, rgba(184, 145, 84, 0.07) 100%) no-repeat center 28% / 120px 3px;
-    pointer-events: none;
-    z-index: 0;
-  }
 
-  /* Gold corner flourishes — framing the section like a declaration */
-  .about-deco {
-    position: absolute;
-    top: -40px;
-    left: -40px;
-    right: -40px;
-    bottom: -40px;
-    pointer-events: none;
-    z-index: 0;
-  }
 
-  .about-deco-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 0.5px solid rgba(184, 145, 84, 0.12);
-  }
+  /* Cross watermark: felt more than seen */
 
-  .about-corner {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-  }
 
-  .about-corner--tl {
-    top: -4px;
-    left: -4px;
-    border-top: 2px solid var(--gold);
-    border-left: 2px solid var(--gold);
-  }
+  /* Gold corner flourishes: framing the section like a declaration */
 
-  .about-corner--tr {
-    top: -4px;
-    right: -4px;
-    border-top: 2px solid var(--gold);
-    border-right: 2px solid var(--gold);
-  }
 
-  .about-corner--bl {
-    bottom: -4px;
-    left: -4px;
-    border-bottom: 2px solid var(--gold);
-    border-left: 2px solid var(--gold);
-  }
 
-  .about-corner--br {
-    bottom: -4px;
-    right: -4px;
-    border-bottom: 2px solid var(--gold);
-    border-right: 2px solid var(--gold);
-  }
+
+
+
+
+
+
+
+
+
+
 
   /* Ensure all about content sits above the decorative elements */
   .about-inner .eyebrow,
   .about-headline,
   .about-lead,
-  .about-link {
-    position: relative;
-    z-index: 1;
-  }
+
 
   .about-inner .eyebrow {
     margin: 0 auto 36px;
     justify-content: center;
   }
 
-  .about-headline {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1.04;
-    color: var(--ink);
-    letter-spacing: -0.018em;
-    margin: 0 0 36px 0;
-  }
+
 
   .about-headline em {
     font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
@@ -1088,43 +1015,13 @@
     color: var(--burgundy);
   }
 
-  .about-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 1.7vw, 22px);
-    line-height: 1.55;
-    color: var(--ink-soft);
-    max-width: 580px;
-    margin: 0 auto 48px;
-    font-weight: 400;
-  }
 
-  .about-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 0;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--burgundy);
-    text-decoration: none;
-    border-top: 1px solid rgba(184, 145, 84, 0.4);
-    border-bottom: 1px solid rgba(184, 145, 84, 0.4);
-    transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  }
 
-  .about-link:hover {
-    color: var(--burgundy-deep);
-    gap: 18px;
-    border-color: var(--gold-warm);
-  }
 
-  .about-link-arrow {
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+
+
+
+
 
   .about-link:hover .about-link-arrow {
     transform: translateX(4px);
@@ -1136,7 +1033,7 @@
   /* ===================================================== */
 
   /* ════════════════════════════════════════════════════════════
-     VISIT — Split layout: welcome + service info | hospitality form
+     VISIT: Split layout: welcome + service info | hospitality form
      Deep burgundy ground; cream text and gold accents
      ════════════════════════════════════════════════════════════ */
   .visit {
@@ -1241,7 +1138,7 @@
     color: rgba(245, 240, 232, 0.7);
   }
 
-  /* Two directions links side by side — Apple Maps + Google Maps */
+  /* Two directions links side by side: Apple Maps + Google Maps */
   .visit-directions-row {
     display: flex;
     flex-wrap: wrap;
@@ -1277,7 +1174,7 @@
                 transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Fill animation — gold sweeps in from below on hover */
+  /* Fill animation: gold sweeps in from below on hover */
   .visit-directions::before {
     content: '';
     position: absolute;
@@ -1315,7 +1212,7 @@
     transform: translateX(3px);
   }
 
-  /* "Or call us" — quieter tertiary action, italic editorial treatment */
+  /* "Or call us": quieter tertiary action, italic editorial treatment */
   .visit-call {
     display: inline-flex;
     align-items: center;
@@ -1367,7 +1264,7 @@
 
 
 
-  /* ── RIGHT: Hospitality form — floats over the burgundy ground ───── */
+  /* ── RIGHT: Hospitality form: floats over the burgundy ground ───── */
   .visit-form-wrap {
     background: var(--paper);
     border: 1px solid rgba(184, 145, 84, 0.3);
@@ -1639,135 +1536,54 @@
 
 
   /* ════════════════════════════════════════════════════════════
-     PASTOR — Editorial profile spread
+     PASTOR: Editorial profile spread
      Portrait left, bio + pull quote + meta right
      ════════════════════════════════════════════════════════════ */
-  .pastor {
-    padding: 160px 0;
-    background: var(--cream);
-    color: var(--ink);
-    position: relative;
-  }
+
 
   .pastor .container {
     max-width: 1180px;
   }
 
-  .pastor-grid {
-    display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: 96px;
-    align-items: start;
-  }
+
 
   /* ── LEFT: Portrait + signature plate ────────────────────── */
-  .pastor-portrait-wrap {
-    position: sticky;
-    top: 140px;
-  }
 
-  .pastor-portrait {
-    aspect-ratio: 4 / 5;
-    background: linear-gradient(160deg, #ECE2D0 0%, #DFD2BB 100%);
-    border: 1px solid rgba(92, 26, 38, 0.15);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 18px 44px rgba(63, 17, 25, 0.12),
-                0 6px 16px rgba(63, 17, 25, 0.06);
-  }
+
+
 
   /* Gold corner mark on portrait */
   .pastor-portrait::before,
-  .pastor-portrait::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border-color: var(--gold);
-  }
 
-  .pastor-portrait::before {
-    top: 14px;
-    left: 14px;
-    border-top: 1px solid;
-    border-left: 1px solid;
-  }
 
-  .pastor-portrait::after {
-    bottom: 14px;
-    right: 14px;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-  }
 
-  /* Portrait image — fills the frame, slight zoom on hover */
-  .pastor-portrait-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+
+
+
+  /* Portrait image: fills the frame, slight zoom on hover */
+
 
   .pastor-portrait:hover .pastor-portrait-img {
     transform: scale(1.03);
   }
 
   /* Subtle gold overlay on the portrait frame (only visible against image) */
-  .pastor-portrait {
-    transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  }
 
-  .pastor-portrait:hover {
-    box-shadow: 0 24px 56px rgba(63, 17, 25, 0.16),
-                0 8px 20px rgba(63, 17, 25, 0.08);
-  }
 
-  .pastor-plate {
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(92, 26, 38, 0.22);
-    text-align: left;
-  }
 
-  .pastor-plate-name {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 40, "WONK" 1;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1.1;
-    color: var(--burgundy);
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
 
-  .pastor-plate-title {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
+
+
+
+
+
 
   /* ── RIGHT: Bio content ──────────────────────────────────── */
   .pastor-content .eyebrow {
     margin-bottom: 32px;
   }
 
-  .pastor-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
-    font-size: clamp(36px, 4.4vw, 56px);
-    line-height: 1.05;
-    color: var(--ink);
-    letter-spacing: -0.015em;
-    margin-bottom: 40px;
-  }
+
 
   .pastor-title em {
     font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
@@ -1775,18 +1591,9 @@
     color: var(--burgundy);
   }
 
-  .pastor-body {
-    margin-bottom: 48px;
-  }
 
-  .pastor-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(22px, 2vw, 26px);
-    line-height: 1.5;
-    color: var(--burgundy);
-    margin: 0 0 28px 0;
-  }
+
+
 
   .pastor-body p:not(.pastor-lead) {
     font-family: 'Cormorant Garamond', serif;
@@ -1801,94 +1608,32 @@
   }
 
   /* ── Pull quote ──────────────────────────────────────────── */
-  .pastor-quote {
-    margin: 0 0 48px 0;
-    padding: 32px 0;
-    border-top: 1px solid rgba(184, 145, 84, 0.55);
-    border-bottom: 1px solid rgba(184, 145, 84, 0.55);
-  }
 
-  .pastor-quote-text {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 40, "WONK" 1;
-    font-style: italic;
-    font-size: clamp(22px, 2.4vw, 30px);
-    line-height: 1.4;
-    color: var(--burgundy);
-    letter-spacing: -0.01em;
-    margin: 0 0 14px 0;
-  }
 
-  .pastor-quote-attr {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
+
+
+
 
   /* ── Meta strip ─────────────────────────────────────────── */
-  .pastor-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 40px;
-  }
 
-  .pastor-meta-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
 
-  .pastor-meta-value {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 36, "wght" 400, "SOFT" 40, "WONK" 1;
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.3;
-    color: var(--ink);
-  }
 
-  /* ── CTA — "Hear him preach" → scrolls to Sermons ───────── */
-  .pastor-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 0;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--burgundy);
-    text-decoration: none;
-    border-top: 1px solid rgba(92, 26, 38, 0.28);
-    border-bottom: 1px solid rgba(92, 26, 38, 0.28);
-    transition: color 0.3s ease, gap 0.3s ease;
-  }
 
-  .pastor-cta:hover {
-    color: var(--burgundy-deep);
-    gap: 16px;
-  }
 
-  .pastor-cta-arrow {
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    display: inline-block;
-  }
+
+  /* ── CTA: "Hear him preach" → scrolls to Sermons ───────── */
+
+
+
+
+
 
   .pastor-cta:hover .pastor-cta-arrow {
     transform: translateX(4px);
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     SERMONS — Clip carousel on deep burgundy ground
+     SERMONS: Clip carousel on deep burgundy ground
      ═══════════════════════════════════════════════════════════════ */
   .sermons {
     padding: 160px 0 180px;
@@ -2014,7 +1759,7 @@
     position: relative;
   }
 
-  /* Side buttons on the phone (silent switch, volume, power) — subtle */
+  /* Side buttons on the phone (silent switch, volume, power): subtle */
   .sermon-phone::before {
     content: '';
     position: absolute;
@@ -2165,7 +1910,7 @@
     display: block;
   }
 
-  /* Vignette overlay — darkens edges and bottom so the caption stays legible against any frame */
+  /* Vignette overlay: darkens edges and bottom so the caption stays legible against any frame */
   .sermon-phone-vignette {
     position: absolute;
     inset: 0;
@@ -2192,7 +1937,7 @@
     z-index: 2;
   }
 
-  /* Play button is hidden — TikTok-style autoplay with no overlay */
+  /* Play button is hidden: TikTok-style autoplay with no overlay */
   .sermon-phone-play {
     display: none;
   }
@@ -2203,7 +1948,7 @@
     border-color: var(--gold-light);
   }
 
-  /* Bottom-left caption stack — TikTok style */
+  /* Bottom-left caption stack: TikTok style */
   .sermon-phone-overlay {
     position: absolute;
     bottom: 36px;
@@ -2529,7 +2274,7 @@
     flex-shrink: 0;
   }
 
-  /* Givelify — primary solid button */
+  /* Givelify: primary solid button */
   .give-btn--givelify {
     background: var(--burgundy);
     color: var(--cream);
@@ -2541,7 +2286,7 @@
     border-color: var(--burgundy-deep);
   }
 
-  /* Cash App — outlined secondary button */
+  /* Cash App: outlined secondary button */
   .give-btn--cashapp {
     background: transparent;
     color: var(--burgundy);
@@ -2618,7 +2363,7 @@
     align-items: start;
   }
 
-  /* ── Month tabs (left sidebar) — premium block cards ── */
+  /* ── Month tabs (left sidebar): premium block cards ── */
   .events-months {
     position: sticky;
     top: 100px;
@@ -2635,7 +2380,7 @@
     scrollbar-color: var(--gold) rgba(184, 145, 84, 0.08);
   }
 
-  /* Styled scrollbar — thick, Apple-like */
+  /* Styled scrollbar: thick, Apple-like */
   .events-months::-webkit-scrollbar {
     width: 10px;
   }
@@ -2652,7 +2397,7 @@
     background: var(--gold-warm);
   }
 
-  /* Block card — each month is a substantial, padded block */
+  /* Block card: each month is a substantial, padded block */
   .events-month-tab {
     display: block;
     padding: 24px 24px;
@@ -2678,7 +2423,7 @@
     border-bottom: none;
   }
 
-  /* Months WITH events — bold, bright, interactive */
+  /* Months WITH events: bold, bright, interactive */
   .events-month-tab[data-has-events="true"] {
     color: var(--cream);
     cursor: pointer;
@@ -2695,13 +2440,13 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   }
 
-  /* Empty months — structurally present, visually quiet */
+  /* Empty months: structurally present, visually quiet */
   .events-month-tab[data-has-events="false"] {
     cursor: default;
     pointer-events: none;
   }
 
-  /* Active month — gold accent, clear selection state */
+  /* Active month: gold accent, clear selection state */
   .events-month-tab.is-active {
     color: var(--gold);
     background: rgba(184, 145, 84, 0.12);
@@ -2742,7 +2487,7 @@
     z-index: 10;
   }
 
-  /* Card image — cropped preview */
+  /* Card image: cropped preview */
   .event-card-image {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -3087,6 +2832,305 @@
   /* ===================================================== */
 
 
+
+  /* Sound control on each clip. Browsers only autoplay muted, so the clips
+     start silent and this hands the choice to the visitor. */
+  .sermon-sound {
+    position: absolute;
+    top: 52px;
+    right: 12px;
+    z-index: 6;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 240, 232, 0.34);
+    background: rgba(20, 8, 12, 0.52);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  }
+
+  .sermon-sound:hover {
+    background: rgba(20, 8, 12, 0.78);
+    border-color: rgba(245, 240, 232, 0.6);
+  }
+
+  .sermon-sound .sermon-sound-on { display: none; }
+  .sermon-sound[aria-pressed="true"] .sermon-sound-on { display: block; }
+  .sermon-sound[aria-pressed="true"] .sermon-sound-off { display: none; }
+
+  .sermon-sound[aria-pressed="true"] {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    color: var(--burgundy-darker);
+  }
+
+
+  /* ===================================================== */
+  /* OUR STORY + OUR PASTOR                                */
+  /* ===================================================== */
+  /* One section carries both, because at this stage of the church's life
+     the story and the man leading it are the same story. */
+  .story {
+    background: var(--paper);
+    padding: 132px 0 140px;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .story-portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--burgundy-darker);
+  }
+
+  .story-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
+  }
+
+  .story-plate {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+
+  .story-plate-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .story-plate-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 9px;
+  }
+
+  .story-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(38px, 4.6vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin: 22px 0 28px;
+  }
+
+  .story-title em { font-style: italic; color: var(--burgundy); }
+
+  .story-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 18px;
+    max-width: 54ch;
+  }
+
+  .story-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .story-divide {
+    height: 1px;
+    background: var(--line);
+    margin: 42px 0 36px;
+    max-width: 260px;
+  }
+
+  .story-pastor-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 18px 0 0;
+    max-width: 56ch;
+  }
+
+  .story-quote {
+    margin: 26px 0 0;
+    padding-left: 26px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .story-quote p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.42;
+    color: var(--burgundy);
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  .story-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 42px;
+  }
+
+  .story-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 1px;
+    border: 1px solid rgba(92, 26, 38, 0.3);
+    color: var(--burgundy);
+    transition: background-color 0.35s var(--ease-out), border-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+  }
+
+  .story-link:hover {
+    background-color: rgba(92, 26, 38, 0.06);
+    border-color: var(--burgundy);
+  }
+
+  .story-link--primary {
+    background-color: var(--burgundy);
+    border-color: var(--burgundy);
+    color: var(--cream);
+  }
+
+  .story-link--primary:hover {
+    background-color: var(--burgundy-deep);
+    border-color: var(--burgundy-deep);
+    color: var(--cream);
+  }
+
+  /* ===================================================== */
+  /* STAY CONNECTED                                        */
+  /* ===================================================== */
+  /* Deliberately a slim band rather than a full section. It punctuates the
+     page between Events and Give instead of competing with them. */
+  .connect {
+    background: var(--burgundy);
+    padding: 92px 0 96px;
+    border-top: 1px solid rgba(184, 145, 84, 0.22);
+  }
+
+  .connect-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .connect-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(32px, 3.6vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--cream);
+    margin: 20px 0 16px;
+  }
+
+  .connect-title em { font-style: italic; color: var(--gold-light); }
+
+  .connect-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(245, 240, 232, 0.8);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .connect-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    border: 1px solid rgba(212, 178, 126, 0.42);
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: rgba(26, 6, 12, 0.28);
+    transition: background-color 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+  }
+
+  .connect-card:hover {
+    background-color: rgba(26, 6, 12, 0.52);
+    border-color: var(--gold-light);
+  }
+
+  .connect-card-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-light);
+    color: var(--burgundy-darker);
+  }
+
+  .connect-card-text { flex: 1; min-width: 0; }
+
+  .connect-card-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .connect-card-handle {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.3;
+    color: rgba(245, 240, 232, 0.72);
+    margin-top: 6px;
+  }
+
+  .connect-card-arrow {
+    flex-shrink: 0;
+    color: var(--gold-light);
+    font-size: 19px;
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .connect-card:hover .connect-card-arrow { transform: translateX(5px); }
+
   /* ===================================================== */
   /* MINISTRY MOMENTS                                      */
   /* ===================================================== */
@@ -3170,168 +3214,6 @@
     display: block;
   }
 
-  /* ===================================================== */
-  /* NEXT STEPS                                            */
-  /* ===================================================== */
-  .next {
-    background: var(--paper);
-    padding: 118px 0 130px;
-  }
-
-  .next-intro { max-width: 720px; margin: 0 0 60px; }
-
-  .next-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
-    font-size: clamp(34px, 4.2vw, 58px);
-    line-height: 1.05;
-    letter-spacing: -0.018em;
-    color: var(--ink);
-    margin: 22px 0 18px;
-  }
-
-  .next-lede {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0;
-    max-width: 52ch;
-  }
-
-  .next-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    list-style: none;
-    margin: 0 0 76px;
-    padding: 0;
-  }
-
-  .next-card {
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
-    border: 1px solid var(--line-soft);
-    border-radius: 2px;
-    padding: 30px 26px 26px;
-    cursor: pointer;
-    transition: border-color var(--motion-base) var(--ease-out),
-                transform var(--motion-base) var(--ease-out);
-  }
-
-  .next-card:hover,
-  .next-card:focus-visible {
-    border-color: rgba(184, 145, 84, 0.55);
-    transform: translateY(-3px);
-  }
-
-  .next-card.is-chosen {
-    border-color: var(--burgundy);
-    box-shadow: inset 0 0 0 1px var(--burgundy);
-  }
-
-  .next-n {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    color: var(--gold);
-    margin-bottom: 22px;
-  }
-
-  .next-card h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
-    font-size: 22px;
-    line-height: 1.15;
-    color: var(--ink);
-    margin: 0 0 12px;
-  }
-
-  .next-card p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    margin: 0 0 24px;
-    flex: 1;
-  }
-
-  .next-go {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--burgundy);
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-  }
-
-  .next-card:hover .next-go { color: var(--burgundy-deep); }
-
-  /* The form band mirrors the visit form so the two read as one system */
-  .next-form-band {
-    background: #FFFFFF;
-    border: 1px solid var(--line-soft);
-    border-radius: 2px;
-    padding: 54px 48px;
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 56px;
-    align-items: start;
-  }
-
-  .next-form-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 1;
-    font-size: clamp(28px, 3vw, 40px);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin: 20px 0 16px;
-  }
-
-  .next-form-title em { font-style: italic; color: var(--burgundy); }
-
-  .next-form-intro {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-  .next-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-
-  .next-form-note {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--muted);
-    margin: 18px 0 0;
-  }
-
-  .next-opt {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    text-transform: none;
-  }
-
-  .next-confirm {
-    display: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-
-  .next-confirm.visible { display: block; }
-  .next-form.confirmed { display: none; }
-
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none; }
     .next-card:hover, .next-card:focus-visible { transform: none; }
@@ -3354,8 +3236,9 @@
     .nav-link { font-size: 11px; letter-spacing: 0.06em; }
     .nav-give { font-size: 11px; padding: 9px 17px; }
 
-    .next-grid { grid-template-columns: repeat(2, 1fr); }
-    .next-form-band { grid-template-columns: 1fr; gap: 36px; padding: 44px 36px; }
+    .story-grid { grid-template-columns: 1fr; gap: 44px; }
+    .story-portrait-wrap { max-width: 380px; }
+    .connect-inner { grid-template-columns: 1fr; gap: 34px; }
 
     .about { padding: 100px 0 120px; }
     .about-headline { font-size: 36px; }
@@ -3389,7 +3272,7 @@
     .nav, .nav.scrolled { padding: 16px 24px; }
     .nav-links { display: none; }
 
-    /* Hero — refined mobile composition */
+    /* Hero: refined mobile composition */
     .hero { padding: 110px 0 80px; min-height: 100vh; }
     .hero::before { top: 70px; left: 24px; width: 32px; height: 32px; }
     .hero::after { top: 140px; left: 24px; width: 40px; height: 40px; }
@@ -3411,13 +3294,14 @@
     .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
     .hero::after, .hero-bracket-br { display: none; }
 
+    .story { padding: 88px 0 92px; }
+    .story-links { flex-direction: column; align-items: stretch; }
+    .story-link { justify-content: center; }
+    .connect { padding: 72px 0 76px; }
+    .connect-card { padding: 20px; gap: 15px; }
     .moments { padding: 84px 0 92px; }
     .moments-head { padding: 0 24px; margin-bottom: 38px; }
     .moment { width: clamp(168px, 52vw, 220px); margin-right: 14px; }
-    .next { padding: 84px 0 92px; }
-    .next-grid { grid-template-columns: 1fr; gap: 16px; margin-bottom: 52px; }
-    .next-form-band { padding: 34px 24px; gap: 28px; }
-    .next-field-row { grid-template-columns: 1fr; }
 
     /* The nav sizes above are tuned for legibility at 1440. At phone widths
        the lockup has to come back down or the supporting line wraps and the
@@ -3464,7 +3348,7 @@
   /* MOBILE NAVIGATION (hamburger + overlay menu)          */
   /* ===================================================== */
 
-  /* Hamburger toggle — hidden on desktop */
+  /* Hamburger toggle: hidden on desktop */
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -3495,7 +3379,7 @@
     background: var(--ink);
   }
 
-  /* Open state — morph to X */
+  /* Open state: morph to X */
   .nav-toggle.is-open .nav-toggle-bar {
     background: var(--cream);
   }
@@ -3597,10 +3481,10 @@
   }
 
   /* ===================================================== */
-  /* MOBILE POLISH — typography + spacing refinements      */
+  /* MOBILE POLISH: typography + spacing refinements      */
   /* ===================================================== */
   @media (max-width: 720px) {
-    /* Events title — keep it from overflowing */
+    /* Events title: keep it from overflowing */
     .events-title { font-size: clamp(40px, 11vw, 56px); }
     .events { padding: 90px 0; }
     .events-top { margin-bottom: 48px; }
@@ -3612,7 +3496,7 @@
     .give-buttons { flex-direction: column; align-items: center; }
     .give-btn { width: 100%; max-width: 300px; justify-content: center; }
 
-    /* About section decorative frame — tighten on mobile */
+    /* About section decorative frame: tighten on mobile */
     .about-deco { top: -20px; left: -12px; right: -12px; bottom: -20px; }
     .about-headline { font-size: 32px; }
 
@@ -3660,7 +3544,7 @@
     <nav class="nav-links" aria-label="Main">
       <a class="nav-link" href="about.html">About</a>
       <a class="nav-link" href="#visit">Visit</a>
-      <a class="nav-link" href="#next-steps">Next Steps</a>
+      <a class="nav-link" href="get-involved.html">Get Involved</a>
       <a class="nav-link" href="#sermons">Sermons</a>
       <a class="nav-link" href="#events">Events</a>
     </nav>
@@ -3682,7 +3566,7 @@
   <nav class="mobile-menu-links" aria-label="Mobile navigation">
     <a class="mobile-menu-link" href="about.html">About</a>
     <a class="mobile-menu-link" href="#visit">Visit</a>
-    <a class="mobile-menu-link" href="#next-steps">Next Steps</a>
+    <a class="mobile-menu-link" href="get-involved.html">Get Involved</a>
     <a class="mobile-menu-link" href="#sermons">Sermons</a>
     <a class="mobile-menu-link" href="#events">Events</a>
     <a class="mobile-menu-give" href="#give">Giving</a>
@@ -3690,7 +3574,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- SECTION 1 · HERO — Cream Static Grain, Centered Editorial    -->
+<!-- SECTION - HERO                                                      -->
 <!-- ============================================================ -->
 <section class="hero section section--dark" id="hero" aria-labelledby="hero-headline">
   <!-- Hero background video sequence.
@@ -3763,7 +3647,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION - MINISTRY MOMENTS                                   -->
+<!-- SECTION - MINISTRY MOMENTS                                          -->
 <!-- ============================================================ -->
 <section class="moments section--dark" id="moments" aria-labelledby="moments-title">
   <div class="moments-head">
@@ -3803,243 +3687,61 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 2 · ABOUT — Lean editorial moment                    -->
+<!-- SECTION - OUR STORY AND OUR PASTOR                                  -->
 <!-- ============================================================ -->
-<section class="about section has-rule section--light" id="about">
+<section class="story section has-rule section--light" id="story">
   <div class="section-rule" aria-hidden="true"></div>
   <div class="container">
-    <div class="about-inner">
-      <!-- Decorative gold corner flourishes -->
-      <div class="about-deco" aria-hidden="true">
-        <div class="about-deco-border"></div>
-        <div class="about-corner about-corner--tl"></div>
-        <div class="about-corner about-corner--tr"></div>
-        <div class="about-corner about-corner--bl"></div>
-        <div class="about-corner about-corner--br"></div>
+    <div class="story-grid">
+
+      <div class="story-portrait-wrap reveal">
+        <div class="story-portrait">
+          <img src="pastor-caldwell-portrait-v1.JPG"
+               alt="Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
+               class="story-portrait-img" loading="lazy" />
+        </div>
+        <div class="story-plate">
+          <div class="story-plate-name">Stephen L.M. Caldwell</div>
+          <div class="story-plate-title">Senior Pastor</div>
+        </div>
       </div>
 
-      <div class="eyebrow reveal">Our Story</div>
-      <h2 class="about-headline reveal reveal-delay-1">
-        More than <em>a gathering.</em>
-      </h2>
-      <p class="about-lead reveal reveal-delay-2">
-        Mt. Moriah First Missionary Baptist Church has been a fixture in Quincy, Florida for generations. Under Pastor Stephen L.M. Caldwell, we're entering a new chapter, rooted in the same faith that built this house and pointed toward the work still ahead.
-      </p>
-      <a href="about.html" class="about-link reveal reveal-delay-3">
-        <span class="about-link-label">Read our full story</span>
-        <span class="about-link-arrow">&rarr;</span>
-      </a>
-    </div>
-  </div>
-</section>
+      <div class="story-content reveal reveal-delay-1">
+        <div class="eyebrow">Our Story</div>
+        <h2 class="story-title">More than <em>a gathering.</em></h2>
 
-<!-- ============================================================ -->
-<!-- SECTION 4 · PLAN YOUR VISIT                                  -->
-<!-- ============================================================ -->
-<section class="visit section has-rule section--dark" id="visit">
-  <div class="section-rule" aria-hidden="true"></div>
-
-  <div class="visit-inner">
-    <div class="visit-top reveal">
-      <div class="eyebrow centered">Plan Your Visit</div>
-      <h2 class="visit-title">
-        Come <em>as you are.</em>
-      </h2>
-    </div>
-
-    <div class="visit-grid">
-      <!-- LEFT — Welcome copy + service details -->
-      <div class="visit-info reveal">
-        <p class="visit-lead">
-          Whether it's your first Sunday or your fiftieth, there's a place at the Mount for you.
+        <p class="story-lead">
+          Mt. Moriah has been a fixture in Quincy for generations. A place where families
+          are raised, faith is built, and neighbors become one body.
+        </p>
+        <p class="story-body">
+          Under Pastor Stephen L.M. Caldwell, we are entering a new chapter, rooted in the
+          same faith that built this house and pointed toward the work still ahead.
         </p>
 
-        <div class="visit-details">
-          <div class="visit-detail">
-            <div class="visit-detail-label">When</div>
-            <div class="visit-detail-primary">Sundays at 11 AM</div>
-            <div class="visit-detail-secondary">Bible study Wednesdays at 7 PM</div>
-          </div>
+        <div class="story-divide" aria-hidden="true"></div>
 
-          <div class="visit-detail">
-            <div class="visit-detail-label">Where</div>
-            <div class="visit-detail-primary">302 South Tenth Street</div>
-            <div class="visit-detail-secondary">Quincy, Florida 32351</div>
-          </div>
-
-          <div class="visit-detail">
-            <div class="visit-detail-label">What to expect</div>
-            <div class="visit-detail-primary">A warm welcome at the door</div>
-            <div class="visit-detail-secondary">Come as you are. We mean it.</div>
-          </div>
+        <div class="story-pastor">
+          <div class="eyebrow">Our Pastor</div>
+          <p class="story-pastor-body">
+            Pastor Caldwell preaches a gospel that reaches every part of a life. Not only
+            the soul, but the mind, the family, and the future. He is new to the Mount,
+            but he is not new to the work.
+          </p>
+          <blockquote class="story-quote">
+            <p>We are not building a gathering. We are building a community of believers,
+            growing together in every part of life.</p>
+          </blockquote>
         </div>
 
-        <div class="visit-directions-row">
-          <a href="https://maps.apple.com/?address=302+South+10th+Street,+Quincy,+FL+32351&q=Mt+Moriah+First+Missionary+Baptist+Church" target="_blank" rel="noopener" class="visit-directions">
-            <span class="visit-directions-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
-              </svg>
-            </span>
-            Apple Maps
-            <span class="visit-directions-arrow">&rarr;</span>
+        <div class="story-links">
+          <a href="about.html#pastor" class="story-link story-link--primary">
+            Meet Pastor Caldwell <span aria-hidden="true">&rarr;</span>
           </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Mt+Moriah+First+Missionary+Baptist+Church+302+South+Tenth+Street+Quincy+FL+32351" target="_blank" rel="noopener" class="visit-directions">
-            <span class="visit-directions-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
-              </svg>
-            </span>
-            Google Maps
-            <span class="visit-directions-arrow">&rarr;</span>
+          <a href="about.html" class="story-link">
+            Read our full story <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
-
-        <a href="tel:8506277244" class="visit-call">
-          <span class="visit-call-icon" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" fill="currentColor"/>
-            </svg>
-          </span>
-          <span>Or call us at <strong>850-627-7244</strong></span>
-        </a>
-      </div>
-
-      <!-- RIGHT — Hospitality form -->
-      <div class="visit-form-wrap reveal reveal-delay-1">
-        <form class="visit-form" id="visitForm" novalidate>
-          <div class="visit-form-eyebrow">A Note to Our Hospitality Team</div>
-          <h3 class="visit-form-title">
-            Let us know <em>you're coming.</em>
-          </h3>
-          <p class="visit-form-intro">
-            We'll be ready to greet you personally and save you a seat.
-          </p>
-
-          <div class="visit-field">
-            <label for="vf-name" class="visit-field-label">Your name</label>
-            <input type="text" id="vf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
-          </div>
-
-          <div class="visit-field">
-            <label for="vf-party" class="visit-field-label">How many of you?</label>
-            <select id="vf-party" name="party" class="visit-field-input visit-field-select" required>
-              <option value="" disabled selected>Select party size</option>
-              <option value="1">Just me</option>
-              <option value="2">Two of us</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-              <option value="5">Five</option>
-              <option value="6+">Six or more</option>
-            </select>
-          </div>
-
-          <div class="visit-field">
-            <label for="vf-date" class="visit-field-label">Which Sunday?</label>
-            <input type="date" id="vf-date" name="date" class="visit-field-input" required>
-          </div>
-
-          <button type="submit" class="visit-form-submit">
-            <span>Save my seat</span>
-            <span class="visit-form-arrow">&rarr;</span>
-          </button>
-
-          <p class="visit-form-note">
-            We'll never share your information. This goes straight to our hospitality team.
-          </p>
-        </form>
-
-        <!-- Confirmation state — hidden until form submit -->
-        <div class="visit-confirm" id="visitConfirm" aria-hidden="true">
-          <div class="visit-confirm-mark">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              <path d="M14 24 L21 31 L34 17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 class="visit-confirm-title">
-            We'll see you Sunday, <em><span id="visitConfirmName">friend</span>.</em>
-          </h3>
-          <p class="visit-confirm-body">
-            Look for our hospitality team at the welcome table. We've saved a seat for you and your <span id="visitConfirmParty">party</span>.
-          </p>
-          <p class="visit-confirm-meta">
-            Sundays at 11 AM &middot; 302 South Tenth Street, Quincy FL
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 6 · MEET PASTOR CALDWELL                             -->
-<!-- ============================================================ -->
-<section class="pastor section has-rule section--light" id="pastor">
-  <div class="section-rule" aria-hidden="true"></div>
-  <div class="container">
-    <div class="pastor-grid">
-
-      <!-- LEFT — Portrait placeholder + signature plate -->
-      <div class="pastor-portrait-wrap reveal">
-        <div class="pastor-portrait">
-          <img
-            src="pastor-caldwell-portrait-v1.JPG"
-            alt="Portrait of Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
-            class="pastor-portrait-img"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="pastor-plate">
-          <div class="pastor-plate-name">Stephen L.M. Caldwell</div>
-          <div class="pastor-plate-title">Senior Pastor &middot; Mt. Moriah</div>
-        </div>
-      </div>
-
-      <!-- RIGHT — Bio + pull quote + CTA -->
-      <div class="pastor-content reveal reveal-delay-1">
-        <div class="eyebrow">Our Pastor</div>
-        <h2 class="pastor-title">
-          A shepherd <em>for this season.</em>
-        </h2>
-
-        <div class="pastor-body">
-          <p class="pastor-lead">
-            Pastor Caldwell came to Mt. Moriah believing that a church is more than a Sunday service. It is a place where people grow.
-          </p>
-
-          <p>
-            His ministry is built on a simple conviction: the gospel transforms whole lives. Not just souls, but minds, families, finances, and futures. He preaches Christ crucified and pursues a vision of community where grace is the ground, growth is the work, and gratitude is the response.
-          </p>
-
-          <p>
-            He is new to the Mount, but he is not new to the work. He arrives with a heart for people, a love for the Word, and a calling that this congregation has been preparing to receive.
-          </p>
-        </div>
-
-        <blockquote class="pastor-quote">
-          <p class="pastor-quote-text">
-            We are not building a gathering. We are building a community of believers, growing together in every part of life.
-          </p>
-          <footer class="pastor-quote-attr">Pastor Stephen L.M. Caldwell</footer>
-        </blockquote>
-
-        <div class="pastor-meta">
-          <div class="pastor-meta-item">
-            <div class="pastor-meta-label">Family</div>
-            <div class="pastor-meta-value">Husband &middot; Father of two</div>
-          </div>
-          <div class="pastor-meta-item">
-            <div class="pastor-meta-label">Heart</div>
-            <div class="pastor-meta-value">Pastoral care &middot; Holistic ministry</div>
-          </div>
-        </div>
-
-        <a href="#sermons" class="pastor-cta">
-          Hear him preach
-          <span class="pastor-cta-arrow">&rarr;</span>
-        </a>
       </div>
 
     </div>
@@ -4047,7 +3749,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 7 · SERMONS                                          -->
+<!-- SECTION - SERMONS                                                   -->
 <!-- ============================================================ -->
 <section class="sermons section has-rule section--dark" id="sermons">
   <div class="section-rule" aria-hidden="true"></div>
@@ -4081,16 +3783,27 @@
               <div class="sermon-phone-video">
                 <video
                   class="sermon-phone-videofile"
-                  src="pastor-caldwell-clip-placeholder-v1.mp4"
+                  src="sermon-clip-01.mp4"
                   autoplay
                   muted
                   loop
                   playsinline
                   webkit-playsinline="true"
-                  preload="auto"
-                  poster="pastor-caldwell-portrait-v1.JPG"
+                  preload="none"
+                  poster="sermon-clip-01.jpg"
                   aria-hidden="true">
                 </video>
+                <button class="sermon-sound" type="button"
+                        aria-pressed="false" aria-label="Turn on sound for this clip">
+                  <svg class="sermon-sound-off" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/>
+                  </svg>
+                  <svg class="sermon-sound-on" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+                  </svg>
+                </button>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
                 <div class="sermon-phone-play">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4105,7 +3818,7 @@
                         <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">2.4K</div>
+                    <div class="sermon-phone-action-count">Like</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4113,7 +3826,7 @@
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">186</div>
+                    <div class="sermon-phone-action-count">Comment</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4143,7 +3856,7 @@
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     </svg>
-                    <span>Sunday Worship &middot; April 2026</span>
+                    <span>Sunday Worship &middot; Quincy, FL</span>
                   </div>
                 </div>
               </div>
@@ -4152,8 +3865,8 @@
           </div>
           <div class="sermon-clip-caption">
             <p class="sermon-clip-caption-text">From Pastor Caldwell's first message at the Mount</p>
-            <a href="#" class="sermon-clip-cta">
-              Watch the clip
+            <a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener" class="sermon-clip-cta">
+              Watch on Facebook
               <span class="sermon-clip-arrow">&rarr;</span>
             </a>
           </div>
@@ -4175,16 +3888,27 @@
               <div class="sermon-phone-video">
                 <video
                   class="sermon-phone-videofile"
-                  src="pastor-caldwell-clip-placeholder-v1.mp4"
+                  src="sermon-clip-02.mp4"
                   autoplay
                   muted
                   loop
                   playsinline
                   webkit-playsinline="true"
-                  preload="auto"
-                  poster="pastor-caldwell-portrait-v1.JPG"
+                  preload="none"
+                  poster="sermon-clip-02.jpg"
                   aria-hidden="true">
                 </video>
+                <button class="sermon-sound" type="button"
+                        aria-pressed="false" aria-label="Turn on sound for this clip">
+                  <svg class="sermon-sound-off" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/>
+                  </svg>
+                  <svg class="sermon-sound-on" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+                  </svg>
+                </button>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
                 <div class="sermon-phone-play">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4199,7 +3923,7 @@
                         <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">1.8K</div>
+                    <div class="sermon-phone-action-count">Like</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4207,7 +3931,7 @@
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">94</div>
+                    <div class="sermon-phone-action-count">Comment</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4237,7 +3961,7 @@
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     </svg>
-                    <span>Mid-Week Word &middot; April 2026</span>
+                    <span>Sunday Worship &middot; Quincy, FL</span>
                   </div>
                 </div>
               </div>
@@ -4246,8 +3970,8 @@
           </div>
           <div class="sermon-clip-caption">
             <p class="sermon-clip-caption-text">On the simple truth that changes everything</p>
-            <a href="#" class="sermon-clip-cta">
-              Watch the clip
+            <a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener" class="sermon-clip-cta">
+              Watch on Facebook
               <span class="sermon-clip-arrow">&rarr;</span>
             </a>
           </div>
@@ -4269,16 +3993,27 @@
               <div class="sermon-phone-video">
                 <video
                   class="sermon-phone-videofile"
-                  src="pastor-caldwell-clip-placeholder-v1.mp4"
+                  src="sermon-clip-03.mp4"
                   autoplay
                   muted
                   loop
                   playsinline
                   webkit-playsinline="true"
-                  preload="auto"
-                  poster="pastor-caldwell-portrait-v1.JPG"
+                  preload="none"
+                  poster="sermon-clip-03.jpg"
                   aria-hidden="true">
                 </video>
+                <button class="sermon-sound" type="button"
+                        aria-pressed="false" aria-label="Turn on sound for this clip">
+                  <svg class="sermon-sound-off" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/>
+                  </svg>
+                  <svg class="sermon-sound-on" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+                  </svg>
+                </button>
                 <div class="sermon-phone-vignette" aria-hidden="true"></div>
                 <div class="sermon-phone-play">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4293,7 +4028,7 @@
                         <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">3.1K</div>
+                    <div class="sermon-phone-action-count">Like</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4301,7 +4036,7 @@
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                       </svg>
                     </div>
-                    <div class="sermon-phone-action-count">247</div>
+                    <div class="sermon-phone-action-count">Comment</div>
                   </div>
                   <div class="sermon-phone-action">
                     <div class="sermon-phone-action-icon">
@@ -4331,7 +4066,7 @@
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     </svg>
-                    <span>Sunday Worship &middot; March 2026</span>
+                    <span>Sunday Worship &middot; Quincy, FL</span>
                   </div>
                 </div>
               </div>
@@ -4340,8 +4075,8 @@
           </div>
           <div class="sermon-clip-caption">
             <p class="sermon-clip-caption-text">On building a community, not just a Sunday service</p>
-            <a href="#" class="sermon-clip-cta">
-              Watch the clip
+            <a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener" class="sermon-clip-cta">
+              Watch on Facebook
               <span class="sermon-clip-arrow">&rarr;</span>
             </a>
           </div>
@@ -4381,95 +4116,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION - NEXT STEPS                                         -->
-<!-- ============================================================ -->
-<section class="next section--light" id="next-steps">
-  <div class="container">
-    <header class="next-intro">
-      <div class="eyebrow reveal">Take Your Next Step</div>
-      <h2 class="next-title reveal reveal-delay-1">Wherever you are with God, there is a step for you.</h2>
-      <p class="next-lede reveal reveal-delay-2">Faith moves one step at a time. Choose the step that fits where you are today, and we will walk it with you.</p>
-    </header>
-
-    <ul class="next-grid reveal reveal-delay-3">
-      <li class="next-card" data-step="Follow Christ" role="button" tabindex="0" aria-controls="nextForm">
-        <span class="next-n">01</span>
-        <h3>Follow Christ</h3>
-        <p>Ready to give your life to Jesus, or want to know what that means? Start here and we will help you take the first step.</p>
-        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
-      </li>
-      <li class="next-card" data-step="Request prayer" role="button" tabindex="0" aria-controls="nextForm">
-        <span class="next-n">02</span>
-        <h3>Request Prayer</h3>
-        <p>Carrying something heavy? Our prayer team would be honored to stand with you. Share it, confidentially if you wish.</p>
-        <span class="next-go">Share a request <span aria-hidden="true">&rarr;</span></span>
-      </li>
-      <li class="next-card" data-step="Be baptized" role="button" tabindex="0" aria-controls="nextForm">
-        <span class="next-n">03</span>
-        <h3>Be Baptized</h3>
-        <p>Baptism is a public declaration of a changed life. Let us know you are ready and we will prepare a date with you.</p>
-        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
-      </li>
-      <li class="next-card" data-step="Become a member" role="button" tabindex="0" aria-controls="nextForm">
-        <span class="next-n">04</span>
-        <h3>Become a Member</h3>
-        <p>Ready to call Mt. Moriah home? Membership is how you plant roots, belong, and grow with this church family.</p>
-        <span class="next-go">Start this step <span aria-hidden="true">&rarr;</span></span>
-      </li>
-    </ul>
-
-    <div class="next-form-band reveal">
-      <div class="next-form-lead">
-        <div class="eyebrow">Begin</div>
-        <h2 class="next-form-title">Tell us you're <em>ready.</em></h2>
-        <p class="next-form-intro">Pick your step and share how to reach you. A pastor or team member will follow up personally to walk with you.</p>
-      </div>
-
-      <div>
-        <form class="next-form" id="nextForm" novalidate>
-          <div class="visit-field">
-            <label for="nf-step" class="visit-field-label">Which step?</label>
-            <select id="nf-step" name="step" class="visit-field-input visit-field-select">
-              <option>Follow Christ</option>
-              <option>Request prayer</option>
-              <option>Be baptized</option>
-              <option>Become a member</option>
-              <option>I am not sure yet</option>
-            </select>
-          </div>
-
-          <div class="next-field-row">
-            <div class="visit-field">
-              <label for="nf-name" class="visit-field-label">Your name</label>
-              <input type="text" id="nf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
-            </div>
-            <div class="visit-field">
-              <label for="nf-contact" class="visit-field-label">Email or phone</label>
-              <input type="text" id="nf-contact" name="contact" class="visit-field-input" required autocomplete="email" placeholder="How we reach you">
-            </div>
-          </div>
-
-          <div class="visit-field">
-            <label for="nf-notes" class="visit-field-label">Anything you'd like to share? <span class="next-opt">optional</span></label>
-            <textarea id="nf-notes" name="notes" rows="3" class="visit-field-input" placeholder="Where you are on your journey, questions you have, or how we can help."></textarea>
-          </div>
-
-          <button type="submit" class="visit-form-submit">
-            <span>Take this step</span>
-            <span class="visit-form-arrow">&rarr;</span>
-          </button>
-
-          <p class="next-form-note">Shared only with our pastoral team. We will reach out personally.</p>
-        </form>
-
-        <p class="next-confirm" id="nextConfirm" role="status" aria-live="polite"></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION · EVENTS                                             -->
+<!-- SECTION - EVENTS                                                    -->
 <!-- ============================================================ -->
 <section class="events section--dark" id="events">
   <div class="container">
@@ -4601,7 +4248,42 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION · GIVE                                               -->
+<!-- SECTION - STAY CONNECTED                                            -->
+<!-- ============================================================ -->
+<section class="connect section--dark" id="connect">
+  <div class="container">
+    <div class="connect-inner">
+      <div class="connect-lead">
+        <div class="eyebrow reveal">Stay Connected</div>
+        <h2 class="connect-title reveal reveal-delay-1">
+          The Mount, <em>all week long.</em>
+        </h2>
+        <p class="connect-body reveal reveal-delay-2">
+          Sunday is the gathering, not the whole of it. Follow along for clips from the
+          message, word from the pastor, and everything happening at the Mount between Sundays.
+        </p>
+      </div>
+
+      <div class="connect-action reveal reveal-delay-2">
+        <a class="connect-card" href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener">
+          <span class="connect-card-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/>
+            </svg>
+          </span>
+          <span class="connect-card-text">
+            <span class="connect-card-label">Follow us on Facebook</span>
+            <span class="connect-card-handle">Mt. Moriah First Missionary Baptist Church</span>
+          </span>
+          <span class="connect-card-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION - GIVE                                                      -->
 <!-- ============================================================ -->
 <section class="give section has-rule section--light" id="give">
   <div class="section-rule" aria-hidden="true"></div>
@@ -4631,6 +4313,145 @@
           </svg>
           <span class="give-btn-label">Cash App</span>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION - PLAN YOUR VISIT                                           -->
+<!-- ============================================================ -->
+<section class="visit section has-rule section--dark" id="visit">
+  <div class="section-rule" aria-hidden="true"></div>
+
+  <div class="visit-inner">
+    <div class="visit-top reveal">
+      <div class="eyebrow centered">Plan Your Visit</div>
+      <h2 class="visit-title">
+        Come <em>as you are.</em>
+      </h2>
+    </div>
+
+    <div class="visit-grid">
+      <!-- LEFT: Welcome copy + service details -->
+      <div class="visit-info reveal">
+        <p class="visit-lead">
+          Whether it's your first Sunday or your fiftieth, there's a place at the Mount for you.
+        </p>
+
+        <div class="visit-details">
+          <div class="visit-detail">
+            <div class="visit-detail-label">When</div>
+            <div class="visit-detail-primary">Sundays at 11 AM</div>
+            <div class="visit-detail-secondary">Bible study Wednesdays at 7 PM</div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="visit-detail-label">Where</div>
+            <div class="visit-detail-primary">302 South Tenth Street</div>
+            <div class="visit-detail-secondary">Quincy, Florida 32351</div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="visit-detail-label">What to expect</div>
+            <div class="visit-detail-primary">A warm welcome at the door</div>
+            <div class="visit-detail-secondary">Come as you are. We mean it.</div>
+          </div>
+        </div>
+
+        <div class="visit-directions-row">
+          <a href="https://maps.apple.com/?address=302+South+10th+Street,+Quincy,+FL+32351&q=Mt+Moriah+First+Missionary+Baptist+Church" target="_blank" rel="noopener" class="visit-directions">
+            <span class="visit-directions-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+            </span>
+            Apple Maps
+            <span class="visit-directions-arrow">&rarr;</span>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mt+Moriah+First+Missionary+Baptist+Church+302+South+Tenth+Street+Quincy+FL+32351" target="_blank" rel="noopener" class="visit-directions">
+            <span class="visit-directions-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+            </span>
+            Google Maps
+            <span class="visit-directions-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <a href="tel:8506277244" class="visit-call">
+          <span class="visit-call-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Or call us at <strong>850-627-7244</strong></span>
+        </a>
+      </div>
+
+      <!-- RIGHT: Hospitality form -->
+      <div class="visit-form-wrap reveal reveal-delay-1">
+        <form class="visit-form" id="visitForm" novalidate>
+          <div class="visit-form-eyebrow">A Note to Our Hospitality Team</div>
+          <h3 class="visit-form-title">
+            Let us know <em>you're coming.</em>
+          </h3>
+          <p class="visit-form-intro">
+            We'll be ready to greet you personally and save you a seat.
+          </p>
+
+          <div class="visit-field">
+            <label for="vf-name" class="visit-field-label">Your name</label>
+            <input type="text" id="vf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
+          </div>
+
+          <div class="visit-field">
+            <label for="vf-party" class="visit-field-label">How many of you?</label>
+            <select id="vf-party" name="party" class="visit-field-input visit-field-select" required>
+              <option value="" disabled selected>Select party size</option>
+              <option value="1">Just me</option>
+              <option value="2">Two of us</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6+">Six or more</option>
+            </select>
+          </div>
+
+          <div class="visit-field">
+            <label for="vf-date" class="visit-field-label">Which Sunday?</label>
+            <input type="date" id="vf-date" name="date" class="visit-field-input" required>
+          </div>
+
+          <button type="submit" class="visit-form-submit">
+            <span>Save my seat</span>
+            <span class="visit-form-arrow">&rarr;</span>
+          </button>
+
+          <p class="visit-form-note">
+            We'll never share your information. This goes straight to our hospitality team.
+          </p>
+        </form>
+
+        <!-- Confirmation state: hidden until form submit -->
+        <div class="visit-confirm" id="visitConfirm" aria-hidden="true">
+          <div class="visit-confirm-mark">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M14 24 L21 31 L34 17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="visit-confirm-title">
+            We'll see you Sunday, <em><span id="visitConfirmName">friend</span>.</em>
+          </h3>
+          <p class="visit-confirm-body">
+            Look for our hospitality team at the welcome table. We've saved a seat for you and your <span id="visitConfirmParty">party</span>.
+          </p>
+          <p class="visit-confirm-meta">
+            Sundays at 11 AM &middot; 302 South Tenth Street, Quincy FL
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -4679,8 +4500,6 @@
         <h4>Connect</h4>
         <ul>
           <li><a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">YouTube</a></li>
         </ul>
       </div>
     </div>
@@ -4700,7 +4519,7 @@
 
 <script>
   // ---------------------------------------------------------------
-  // Hero entry animation — stagger on load
+  // Hero entry animation: stagger on load
   // ---------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
     const heroReveals = document.querySelectorAll('.hero .reveal');
@@ -4820,7 +4639,7 @@
 
 
 
-  // ─── SERMONS VIDEOS — Pause when section is offscreen ───────────
+  // ─── SERMONS VIDEOS: Pause when section is offscreen ───────────
   (function initSermonVideos() {
     const section = document.getElementById('sermons');
     if (!section) return;
@@ -4880,7 +4699,7 @@
   })();
 
 
-  // ─── SERMONS CAROUSEL — Rotating clip cards ──────────────────────
+  // ─── SERMONS CAROUSEL: Rotating clip cards ──────────────────────
   (function initSermonsCarousel() {
     const carousel = document.getElementById('sermonsCarousel');
     if (!carousel) return;
@@ -4967,7 +4786,7 @@
   })();
 
 
-  // ─── VISIT FORM — Hospitality submission ─────────────────────────
+  // ─── VISIT FORM: Hospitality submission ─────────────────────────
   (function initVisitForm() {
     const form = document.getElementById('visitForm');
     if (!form) return;
@@ -5016,7 +4835,7 @@
     }
   })();
 
-  // ─── Adaptive nav — section-aware color theming ───────────────────
+  // ─── Adaptive nav: section-aware color theming ───────────────────
   // Uses viewport-relative measurement (getBoundingClientRect) which is
   // bulletproof regardless of DOM nesting or offsetParent chains.
   (function initAdaptiveNav() {
@@ -5101,55 +4920,61 @@
   })();
 
 
-  // ─── NEXT STEPS ─────────────────────────────────────────────────────
-  // The four cards are a picker for the form below rather than four dead
-  // ends: choosing one sets the select and moves focus there, so the whole
-  // section reads as a single flow. Submission is front end only, exactly
-  // like the visit form, and needs a real endpoint before launch.
-  (function initNextSteps() {
-    var form = document.getElementById('nextForm');
-    var confirmEl = document.getElementById('nextConfirm');
-    if (!form || !confirmEl) return;
 
-    var select = form.querySelector('[name="step"]');
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.next-card'));
+  // ─── SERMON CLIP SOUND ──────────────────────────────────────────────
+  // Autoplay only works muted, so every clip starts silent and the visitor
+  // opts in. Only one clip can be audible at a time. The video carries a
+  // data-unmuted marker so the page wide autoplay enforcer stops forcing
+  // it back to muted on its next pass.
+  (function initSermonSound() {
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.sermon-sound'));
+    if (!buttons.length) return;
 
-    function choose(card) {
-      var step = card.dataset.step;
-      if (!step) return;
-      for (var i = 0; i < select.options.length; i++) {
-        if (select.options[i].text === step) { select.selectedIndex = i; break; }
-      }
-      cards.forEach(function(c) { c.classList.toggle('is-chosen', c === card); });
-      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      window.setTimeout(function() {
-        try { select.focus({ preventScroll: true }); } catch (e) { select.focus(); }
-      }, 420);
+    function silence(btn) {
+      var v = btn.parentElement.querySelector('video');
+      if (!v) return;
+      v.muted = true;
+      v.removeAttribute('data-unmuted');
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Turn on sound for this clip');
     }
 
-    cards.forEach(function(card) {
-      card.addEventListener('click', function() { choose(card); });
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(card); }
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var video = btn.parentElement.querySelector('video');
+        if (!video) return;
+
+        var turningOn = btn.getAttribute('aria-pressed') !== 'true';
+        buttons.forEach(silence);
+
+        if (turningOn) {
+          video.muted = false;
+          video.setAttribute('data-unmuted', '');
+          btn.setAttribute('aria-pressed', 'true');
+          btn.setAttribute('aria-label', 'Mute this clip');
+          var pr = video.play();
+          if (pr !== undefined && pr.catch) pr.catch(function() {});
+        }
       });
     });
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var name = form.querySelector('[name="name"]').value.trim();
-      var contact = form.querySelector('[name="contact"]').value.trim();
-      if (!name || !contact) return;
-
-      // In a real implementation, POST to the church's pastoral endpoint here:
-      //   fetch('/api/next-step', { method: 'POST', body: new FormData(form) })
-      // For now, we just show the confirmation state.
-
-      confirmEl.textContent = 'Thank you, ' + name.split(' ')[0] +
-        '. A pastor or team member will reach out to you personally and soon.';
-      confirmEl.classList.add('visible');
-      form.classList.add('confirmed');
-      confirmEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
+    // A clip scrolled out of view gives up its sound.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) {
+            var btn = entry.target.parentElement.querySelector('.sermon-sound');
+            if (btn) silence(btn);
+          }
+        });
+      }, { threshold: 0.4 });
+      buttons.forEach(function(b) {
+        var v = b.parentElement.querySelector('video');
+        if (v) io.observe(v);
+      });
+    }
   })();
 
   // ─── EVENTS MONTH TABS ──────────────────────────────────
@@ -5394,10 +5219,13 @@
     }
 
     function tryPlay(video) {
-      // Ensure properties are set at the JS level too (belt and suspenders)
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('muted', '');
+      // Ensure properties are set at the JS level too (belt and suspenders),
+      // unless the visitor deliberately turned sound on for this clip.
+      if (!video.hasAttribute('data-unmuted')) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('muted', '');
+      }
       video.playsInline = true;
       if (isDormantHeroClip(video)) return;
       var p = video.play();
