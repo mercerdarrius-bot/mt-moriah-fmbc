@@ -310,38 +310,9 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: transparent;
-    border-bottom: 1px solid transparent;
-    transition: background-color 0.45s ease, border-color 0.45s ease;
-  }
-
-  /* The bar only goes see through while the hero is behind it, where the
-     hero's own top gradient anchor already holds the lockup legible. Over
-     every other section it fills, so headings cannot read through it. */
-  .nav.is-lifted {
     background-color: var(--nav-bg);
-    border-bottom-color: var(--nav-line);
-  }
-
-  /* See through over the hero means the lockup is reading against moving
-     video, so the quiet ink carries more weight there, and the Giving pill
-     fills instead of outlining. Gold as text over these clips tops out near
-     4.3:1 no matter how much scrim is added, but gold behind dark text is a
-     fixed pair at 9:1. Measured against the brightest frames of both clips. */
-  .nav:not(.is-lifted) {
-    --nav-quiet: rgba(245, 240, 232, 0.92);
-  }
-
-  .nav:not(.is-lifted) .nav-give {
-    background-color: var(--gold-light);
-    border-color: var(--gold-light);
-    color: var(--burgundy-darker);
-  }
-
-  .nav:not(.is-lifted) .nav-give:hover {
-    background-color: var(--cream);
-    border-color: var(--cream);
-    color: var(--burgundy-darker);
+    border-bottom: 1px solid var(--nav-line);
+    transition: background-color 0.45s ease, border-color 0.45s ease;
   }
 
   .nav.nav--light {
@@ -476,20 +447,32 @@
   /* SECTION 1: HERO: Cream Static Grain                  */
   /* ===================================================== */
 
-  /* Three anchored zones across the full viewport height: the nav sits in
-     the top gradient anchor, the headline block takes the centre, and the
-     meta band closes the bottom. The bottom padding clears that band. */
+  /* The hero is encapsulated. The section itself is the page ground and only
+     supplies the gap under the nav plus an even inset; the frame inside it is
+     what actually holds the video, the copy and the service strip. */
   .hero {
+    --hero-inset: 30px;
+    --hero-gap: 105px;
     min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    padding: var(--hero-gap) var(--hero-inset) var(--hero-inset);
+    position: relative;
+    background: var(--paper);
+    color: var(--cream);
+  }
+
+  .hero-frame {
+    position: relative;
+    flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 100px 48px 172px;
-    position: relative;
     overflow: hidden;
+    border-radius: 26px;
     background: var(--ink);
-    color: var(--cream);
+    isolation: isolate;
   }
 
   /* ── Hero Video Stack ── */
@@ -501,6 +484,7 @@
     left: 0;
     width: 100%;
     height: 110%;
+    border-radius: inherit;
     z-index: 0;
     pointer-events: none;
     will-change: transform;
@@ -522,19 +506,21 @@
   }
 
   /* ── Layered scrim ──
-     Four stacked gradients on one element instead of a flat wash. The top
-     and bottom anchors hold the nav and the meta band, the radial pool sits
-     under the headline, and the flat layer is the floor that keeps the
-     whole frame from going bright on a light clip. */
+     Tuned for a left aligned lockup, so the weight runs left to right rather
+     than pooling in the centre the way it did when the copy was centred. The
+     top and bottom anchors hold the frame's own edges and the service strip.
+     Measured against the brightest frames of both clips: headline 4.20:1,
+     subline 6.23:1, outlined CTA 4.92:1. */
   .hero-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
+    border-radius: inherit;
     background:
-      linear-gradient(to bottom, rgba(26, 6, 12, 0.85) 0%, transparent 22%),
-      linear-gradient(to top, rgba(26, 6, 12, 0.90) 0%, transparent 35%),
-      radial-gradient(ellipse 70% 55% at 50% 44%, rgba(26, 6, 12, 0.62) 0%, transparent 100%),
-      linear-gradient(rgba(26, 6, 12, 0.18), rgba(26, 6, 12, 0.18));
+      linear-gradient(to right, rgba(26, 6, 12, 0.84) 0%, rgba(26, 6, 12, 0.54) 45%, transparent 86%),
+      linear-gradient(to bottom, rgba(26, 6, 12, 0.55) 0%, transparent 16%),
+      linear-gradient(to top, rgba(26, 6, 12, 0.90) 0%, transparent 30%),
+      linear-gradient(rgba(26, 6, 12, 0.19), rgba(26, 6, 12, 0.19));
   }
 
   /* LAYER 1: Hidden: video replaces this */
@@ -588,94 +574,25 @@
     will-change: transform, opacity;
   }
 
-  /* ─── SCROLL CUE ───
-     A bare 1px rule at bottom centre with a gradient pulse travelling down
-     it. The service details that used to live here have moved to the meta
-     band, so this element carries no text. */
-  .hero-scroll {
-    position: absolute;
-    left: 50%;
-    bottom: 104px;
-    transform: translateX(-50%);
-    z-index: 8;
-    display: block;
-    width: 1px;
-    height: 40px;
-    background: rgba(245, 240, 232, 0.3);
-    overflow: hidden;
-    text-decoration: none;
-    opacity: 0;
-    animation: heroScrollFadeIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
-  }
-
-  @keyframes heroScrollFadeIn {
-    to { opacity: 1; }
-  }
-
-  .hero-scroll-cue {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(to bottom,
-      transparent 0%, var(--cream) 50%, transparent 100%);
-    animation: heroScrollPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  @keyframes heroScrollPulse {
-    0%   { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
-
-  /* ─── META BAND ───
-     Full width band closing the bottom edge, not a floating fragment.
-     Service time left, address right, hairline gold rule above. */
-  .hero-meta {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 8;
-    border-top: 1px solid rgba(184, 145, 84, 0.2);
-    padding: 24px 48px;
-  }
-
-  .hero-meta-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.75);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-scroll-cue { animation: none; }
-  }
 
   /* Container above the grain layers */
-  .hero > .container {
+  .hero-frame > .container {
     position: relative;
     z-index: 7;
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 clamp(28px, 5.4vw, 78px) 104px;
   }
 
   .hero-content {
-    text-align: center;
-    max-width: 880px;
+    text-align: left;
+    max-width: 720px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
   }
 
@@ -788,11 +705,11 @@
     font-weight: 500;
     letter-spacing: 0.42em;
     text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.72);
-    margin: 0 auto 52px auto;
+    color: rgba(245, 240, 232, 0.88);
+    margin: 0 0 46px 0;
     display: block;
-    padding-left: 0.42em;
-    text-align: center;
+    padding-left: 0.2em;
+    text-align: left;
   }
 
   .hero-subtitle span {
@@ -807,7 +724,7 @@
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
 
@@ -2872,6 +2789,71 @@
   }
 
 
+
+  /* ── Service strip ──
+     Rides the bottom edge inside the frame, divided into columns the way the
+     reference does. Content is drawn from the Visit section and the footer. */
+  .hero-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 8;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgba(18, 5, 9, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(184, 145, 84, 0.24);
+  }
+
+  .hero-strip-item {
+    padding: 22px clamp(18px, 2.2vw, 34px) 24px;
+    border-left: 1px solid rgba(245, 240, 232, 0.14);
+    text-decoration: none;
+    display: block;
+  }
+
+  .hero-strip-item:first-child { border-left: none; }
+
+  .hero-strip-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .hero-strip-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    color: var(--cream);
+    margin-top: 10px;
+  }
+
+  .hero-strip-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(245, 240, 232, 0.66);
+    margin-top: 5px;
+  }
+
+  .hero-strip-item--link { transition: background-color 0.35s var(--ease-out); }
+  .hero-strip-item--link:hover { background-color: rgba(245, 240, 232, 0.07); }
+
+  .hero-strip-arrow {
+    color: var(--gold-light);
+    font-size: 15px;
+    transition: transform 0.35s var(--ease-out);
+    display: inline-block;
+  }
+
+  .hero-strip-item--link:hover .hero-strip-arrow { transform: translateX(5px); }
+
   /* ===================================================== */
   /* OUR STORY + OUR PASTOR                                */
   /* ===================================================== */
@@ -3224,6 +3206,12 @@
   /* ===================================================== */
 
   @media (max-width: 1024px) {
+    .hero { --hero-gap: 86px; --hero-inset: 22px; }
+    .hero-frame { border-radius: 20px; }
+    .hero-frame > .container { padding-bottom: 96px; }
+    .hero-strip { grid-template-columns: repeat(2, 1fr); }
+    .hero-strip-item:nth-child(3) { border-left: none; }
+    .hero-strip-item:nth-child(n+3) { border-top: 1px solid rgba(245, 240, 232, 0.14); }
     /* Between the phone breakpoint and desktop the full nav is still shown,
        so the 1440 type scale has to come down or the Giving button runs off
        the right edge and the supporting line wraps to four lines. */
@@ -3273,7 +3261,6 @@
     .nav-links { display: none; }
 
     /* Hero: refined mobile composition */
-    .hero { padding: 110px 0 80px; min-height: 100vh; }
     .hero::before { top: 70px; left: 24px; width: 32px; height: 32px; }
     .hero::after { top: 140px; left: 24px; width: 40px; height: 40px; }
 
@@ -3303,6 +3290,13 @@
     .moments-head { padding: 0 24px; margin-bottom: 38px; }
     .moment { width: clamp(168px, 52vw, 220px); margin-right: 14px; }
 
+    .hero { --hero-gap: 74px; --hero-inset: 14px; padding-bottom: 14px; }
+    .hero-frame { border-radius: 16px; }
+    .hero-frame > .container { padding: 0 22px 150px; }
+    .hero-strip-item { padding: 15px 18px 17px; }
+    .hero-strip-title { font-size: 13.5px; margin-top: 7px; }
+    .hero-strip-meta { font-size: 12px; }
+    .hero-strip-label { font-size: 8.5px; letter-spacing: 0.2em; }
     /* The nav sizes above are tuned for legibility at 1440. At phone widths
        the lockup has to come back down or the supporting line wraps and the
        mark crowds the menu button. */
@@ -3313,17 +3307,6 @@
 
     /* Meta band stacks to two centred lines and the hero padding and scroll
        cue follow it up so nothing overlaps. */
-    .hero { padding-bottom: 190px; }
-    .hero-meta { padding: 20px 24px; }
-    .hero-meta-inner {
-      flex-direction: column;
-      gap: 8px;
-      text-align: center;
-      justify-content: center;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-    }
-    .hero-scroll { bottom: 124px; }
 
     .hero-sunday {
       padding-left: 20px;
@@ -3576,7 +3559,10 @@
 <!-- ============================================================ -->
 <!-- SECTION - HERO                                                      -->
 <!-- ============================================================ -->
-<section class="hero section section--dark" id="hero" aria-labelledby="hero-headline">
+<section class="hero section section--light" id="hero" aria-labelledby="hero-headline">
+  <!-- The hero is encapsulated: an inset, rounded frame sitting on the page
+       ground, with the nav bar above it rather than over it. -->
+  <div class="hero-frame">
   <!-- Hero background video sequence.
        Two clips stacked in the same box, crossfading on the 'ended' event.
        No loop attribute on the individual clips: the sequence loops, not
@@ -3626,22 +3612,36 @@
 
       <div class="hero-ctas reveal reveal-delay-3">
         <a href="#visit" class="btn-primary">Plan Your Visit</a>
-        <a href="#pastor" class="btn-ghost">Meet Pastor Caldwell</a>
+        <a href="about.html#pastor" class="btn-ghost">Meet Pastor Caldwell</a>
       </div>
 
     </div>
   </div>
 
-  <!-- Scroll cue: a pulsing hairline, no text -->
-  <a href="#about" class="hero-scroll" aria-label="Continue to welcome section">
-    <span class="hero-scroll-cue" aria-hidden="true"></span>
-  </a>
 
-  <!-- Meta band: closes the bottom edge full width -->
-  <div class="hero-meta">
-    <div class="hero-meta-inner">
-      <span class="hero-meta-time">Sundays at 11 AM</span>
-      <span class="hero-meta-address">302 South Tenth Street, Quincy FL</span>
+    <!-- Service strip: rides the bottom edge inside the frame. Every line
+         here already appears in the Visit section or the footer. -->
+    <div class="hero-strip">
+      <div class="hero-strip-item">
+        <div class="hero-strip-label">Sunday</div>
+        <div class="hero-strip-title">Worship</div>
+        <div class="hero-strip-meta">11:00 AM</div>
+      </div>
+      <div class="hero-strip-item">
+        <div class="hero-strip-label">Wednesday</div>
+        <div class="hero-strip-title">Bible Study</div>
+        <div class="hero-strip-meta">7:00 PM</div>
+      </div>
+      <div class="hero-strip-item">
+        <div class="hero-strip-label">Where</div>
+        <div class="hero-strip-title">302 South Tenth Street</div>
+        <div class="hero-strip-meta">Quincy, Florida</div>
+      </div>
+      <a class="hero-strip-item hero-strip-item--link" href="#visit">
+        <div class="hero-strip-label">First time?</div>
+        <div class="hero-strip-title">Plan Your Visit</div>
+        <div class="hero-strip-meta hero-strip-arrow" aria-hidden="true">&rarr;</div>
+      </a>
     </div>
   </div>
 </section>
@@ -4868,20 +4868,7 @@
       return 'light';
     }
 
-    // Fill the bar unless the hero is the thing sitting behind it.
-    const hero = document.getElementById('hero');
-    function updateFill() {
-      const probeY = nav.getBoundingClientRect().bottom + 1;
-      let over = null;
-      for (const section of allSections) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= probeY && rect.bottom > probeY) { over = section; break; }
-      }
-      nav.classList.toggle('is-lifted', !(hero && over === hero));
-    }
-
     function applyTheme() {
-      updateFill();
       const theme = getNavTheme();
       if (theme === currentTheme) return;
 
