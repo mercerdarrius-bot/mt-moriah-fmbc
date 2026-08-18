@@ -476,9 +476,41 @@
   .bio-link--primary { background-color: var(--burgundy); border-color: var(--burgundy); color: var(--cream); }
   .bio-link--primary:hover { background-color: var(--burgundy-deep); border-color: var(--burgundy-deep); color: var(--cream); }
 
+  /* Family strip: one wide frame and two uprights, sharing a baseline. */
+  /* All three frames come from the same 2:3 sitting, so they run at the
+     photographer's ratio and nothing is cropped. */
+  .bio-family {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: clamp(64px, 8vw, 96px);
+    padding-top: 40px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .bio-family-frame {
+    margin: 0;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--burgundy-darker);
+  }
+  .bio-family-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .bio-family-caption {
+    grid-column: 1 / -1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin-top: 6px;
+  }
+
 
   @media (max-width: 1024px) {
     .history-grid, .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .bio-family { grid-template-columns: 1fr 1fr; }
+    .bio-family-frame:first-child { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
+    .bio-family-frame:first-child img { object-position: center 20%; }
     .history-marker, .bio-portrait-wrap { position: static; }
     .bio-portrait-wrap { max-width: 400px; }
   }
@@ -549,6 +581,36 @@
     font-style: italic;
     max-width: 560px;
     margin: 0 auto;
+  }
+
+  /* Mission and vision sit side by side under the three words. */
+  .gs-statements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+    max-width: 1080px;
+    margin: 88px auto 0;
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+  }
+  .gs-statement-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .gs-statement p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 21px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+    max-width: 30em;
+    text-wrap: pretty;
   }
 
   .gs-grid {
@@ -790,10 +852,6 @@
   }
 
   /* Exactly 5 columns for deacons/trustees: tight single row */
-  .leadership-grid--five {
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-  }
 
   /* Section divider label (e.g. "Deacons & Trustees") */
   .leadership-section-label {
@@ -912,6 +970,154 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--gold-light);
+  }
+
+  /* Roles: the body of the church, described rather than pictured. */
+  .leadership-motto {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: rgba(245, 240, 232, 0.78);
+    margin: -28px auto 52px;
+  }
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    max-width: 1080px;
+    margin: 0 auto;
+    background: rgba(184, 145, 84, 0.22);
+    border: 1px solid rgba(184, 145, 84, 0.22);
+  }
+  .role {
+    background: rgba(26, 6, 12, 0.34);
+    padding: 34px 30px 36px;
+  }
+  .role-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
+    font-size: 21px;
+    line-height: 1.15;
+    color: var(--cream);
+    margin: 0 0 14px;
+  }
+  .role-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17.5px;
+    line-height: 1.55;
+    color: rgba(245, 240, 232, 0.82);
+    margin: 0;
+  }
+  .role-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 9px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17.5px;
+    line-height: 1.35;
+    color: rgba(245, 240, 232, 0.82);
+  }
+  .role-list li { padding-left: 16px; position: relative; }
+  .role-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  /* The Bridge Ministry */
+  .bridge {
+    max-width: 1080px;
+    margin: 88px auto 0;
+    padding-top: 64px;
+    border-top: 1px solid rgba(184, 145, 84, 0.28);
+  }
+  .bridge-top { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+  .bridge-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+  }
+  .bridge-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(26px, 3.2vw, 36px);
+    line-height: 1.18;
+    color: var(--cream);
+    letter-spacing: -0.012em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .bridge-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: rgba(245, 240, 232, 0.78);
+    margin: 0;
+  }
+  .bridge-verse span {
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-left: 12px;
+  }
+  .bridge-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .bridge-grid li {
+    text-align: center;
+    padding: 0 8px;
+    border-left: 1px solid rgba(184, 145, 84, 0.22);
+  }
+  .bridge-grid li:first-child { border-left: 0; }
+  .bridge-grid strong {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+  }
+  .bridge-grid span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.82);
+  }
+
+  /* These sit after the base rules on purpose: an earlier media block loses
+     to a later base rule of equal specificity. */
+  @media (max-width: 1024px) {
+    .roles-grid { grid-template-columns: 1fr 1fr; }
+    .bridge-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+    .bridge-grid li:nth-child(3) { border-left: 0; }
+    .gs-statements { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 720px) {
+    .roles-grid { grid-template-columns: 1fr; }
+    .bridge-grid { grid-template-columns: 1fr; gap: 28px; }
+    .bridge-grid li { border-left: 0; text-align: left; padding: 0; }
   }
 
 
@@ -1097,6 +1303,15 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(184, 145, 84, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.6);
+    margin: 0;
   }
 
   .footer-col h4 {
@@ -1547,7 +1762,7 @@
 
         <div class="bio-portrait-wrap reveal">
           <div class="bio-portrait">
-            <img src="pastor-caldwell-portrait-v1.JPG"
+            <img src="pastor-caldwell-portrait-v2.jpg"
                  alt="Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
                  loading="lazy" />
           </div>
@@ -1557,16 +1772,20 @@
           </div>
           <dl class="bio-facts">
             <div class="bio-fact">
-              <dt>Installed</dt>
+              <dt>Installation</dt>
               <dd>August 2026</dd>
             </div>
             <div class="bio-fact">
-              <dt>Family</dt>
-              <dd>Husband and father</dd>
+              <dt>Licensed to preach</dt>
+              <dd>2012</dd>
             </div>
             <div class="bio-fact">
-              <dt>Focus</dt>
-              <dd>Pastoral care and holistic ministry</dd>
+              <dt>Family</dt>
+              <dd>Lady Quierah, Taylore, and Tori</dd>
+            </div>
+            <div class="bio-fact">
+              <dt>Calling</dt>
+              <dd>Bridging the church and the marketplace</dd>
             </div>
           </dl>
         </div>
@@ -1578,42 +1797,74 @@
           </h2>
 
           <p class="bio-lead reveal reveal-delay-1">
-            Pastor Stephen L.M. Caldwell came to Mt. Moriah believing that a church is more
-            than a Sunday service. It is a place where people grow.
+            Pastor Stephen L.M. Caldwell is a devoted servant-leader whose ministry and
+            professional life reflect a passion for spiritual growth, community development,
+            and economic empowerment.
           </p>
 
           <p class="reveal reveal-delay-2">
-            His ministry rests on a simple conviction: the gospel transforms whole lives.
-            Not only souls, but minds, families, finances, and futures. He preaches Christ
-            crucified, and he pursues a vision of community where grace is the ground we
-            stand on, growth is the work we give ourselves to, and gratitude is the only
-            honest response to both.
+            With a unique calling that bridges the church and the marketplace, he is committed
+            to helping individuals, families, and communities flourish both spiritually and
+            financially. His ministerial journey began at Miracle Temple Church of God in
+            Christ, under the leadership of Superintendent John L. Lee, where he faithfully
+            served from 1997 to 2015 and was licensed to preach in 2012. In 2017, he founded
+            Empowerment Church TLH, serving as Senior Pastor through 2025 while leading a
+            ministry centered on discipleship, leadership development, and community
+            engagement.
           </p>
 
           <p class="reveal reveal-delay-2">
-            That conviction shapes how he pastors. He believes a church should be able to
-            speak to a marriage under strain, to a family deciding how to handle money, to
-            a young person choosing what to do with their life, and to a member sitting with
-            a diagnosis. Not because those things replace the gospel, but because the gospel
-            reaches them.
+            He is an ordained minister and member of St. John Missionary Baptist Church, under
+            the leadership of Rev. Delwynn G. Williams, and has been elected to serve as Senior
+            Pastor of Mt. Moriah First Missionary Baptist Church in Quincy, Florida. His
+            ministry is characterized by biblical preaching, visionary leadership, and a
+            commitment to equipping believers to transform their communities through the
+            Gospel.
           </p>
 
           <blockquote class="bio-quote reveal reveal-delay-2">
-            <p>We are not building a gathering. We are building a community of believers,
-            growing together in every part of life.</p>
+            <p>We are not simply building a congregation; we are cultivating a community of
+            believers growing together in every part of life.</p>
             <footer>Pastor Stephen L.M. Caldwell</footer>
           </blockquote>
 
           <p class="reveal reveal-delay-3">
-            He is new to the Mount, but he is not new to the work. He arrives with a heart
-            for people, a love for the Word, and a calling that this congregation has been
-            preparing to receive. His installation in August 2026 marks the beginning of a
-            chapter that both he and this church have been getting ready for.
+            Professionally, Pastor Caldwell serves as a Mortgage Loan Development and
+            Originator with Centennial Bank, specializing in residential lending and strategic
+            financial solutions that promote sustainable homeownership and generational wealth.
+            His previous leadership experience as a Branch Manager in the banking industry
+            equipped him to develop high-performing teams, cultivate business partnerships, and
+            expand community-focused initiatives. He has also provided leadership and financial
+            guidance through service on numerous nonprofit and civic boards.
           </p>
 
           <p class="reveal reveal-delay-3">
-            He and his family have made Quincy their home, and he intends to pastor the way
-            he preaches: present, plainly, and for the long haul.
+            Beyond the pulpit, he serves in several civic and ecclesiastical leadership roles,
+            including Founder and President of the I-Connect Coalition of Clergy, Executive
+            Board Member of Rhema Covenant Fellowship of Pastors, Overseer of Youth and Young
+            Adults by appointment of Bishop Wade S. McCrae, and Vice President of Finance for
+            the Tallahassee Urban League Young Professionals, working collaboratively to advance
+            leadership, economic opportunity, and community restoration.
+          </p>
+
+          <p class="reveal reveal-delay-3">
+            A graduate of Amos P. Godby High School, where he served as Student Body President,
+            Pastor Caldwell is currently pursuing a Bachelor of Science in Sociology at Arizona
+            State University.
+          </p>
+
+          <p class="reveal reveal-delay-3">
+            Pastor Caldwell is the devoted husband of Lady Quierah L. Caldwell and the proud
+            father of Taylore and Tori. He also serves as a loving father figure to LeAsia Kates
+            and is honored to be the godfather of several children whose lives he continues to
+            encourage through faith, mentorship, and love.
+          </p>
+
+          <p class="reveal reveal-delay-3">
+            Whether serving in the pulpit, the boardroom, or the community, Pastor Stephen
+            Caldwell remains committed to building bridges between faith and finance,
+            developing leaders, strengthening families, and advancing the Kingdom of God
+            through servant leadership and lasting impact.
           </p>
 
           <div class="bio-links reveal reveal-delay-3">
@@ -1627,6 +1878,30 @@
         </div>
 
       </div>
+
+      <!-- The family, beneath the bio. Two frames from the same sitting as the
+           portrait, so the whole section reads as one set. -->
+      <div class="bio-family reveal reveal-delay-2">
+        <figure class="bio-family-frame">
+          <img src="caldwell-family.jpg"
+               alt="Pastor Caldwell with Lady Quierah and their children"
+               loading="lazy" />
+        </figure>
+        <figure class="bio-family-frame">
+          <img src="caldwell-daughter.jpg"
+               alt="Pastor Caldwell holding one of his daughters"
+               loading="lazy" />
+        </figure>
+        <figure class="bio-family-frame">
+          <img src="pastor-caldwell-seated.jpg"
+               alt="Pastor Stephen L.M. Caldwell, seated"
+               loading="lazy" />
+        </figure>
+        <figcaption class="bio-family-caption">
+          The Caldwell family. Pastor Caldwell is the devoted husband of Lady Quierah L.
+          Caldwell and the proud father of Taylore and Tori.
+        </figcaption>
+      </div>
     </div>
   </section>
 
@@ -1637,12 +1912,14 @@
     <div class="container">
 
       <div class="gs-top">
-        <div class="gs-eyebrow reveal">What We Believe</div>
+        <div class="gs-eyebrow reveal">Our Culture</div>
         <h2 class="gs-title reveal reveal-delay-1">
           Three words. <em>One posture.</em>
         </h2>
         <p class="gs-intro reveal reveal-delay-2">
-          The shape of our faith, said simply. Each word leads to the next, and together they describe how we want to live.
+          Grace is the ground. Growth is the work. Gratitude is the response. We are not simply
+          building a congregation; we are cultivating a community of believers growing together
+          in every part of life.
         </p>
       </div>
 
@@ -1652,7 +1929,7 @@
           <div class="gs-pillar-num">i.</div>
           <div class="gs-pillar-rule"></div>
           <h3 class="gs-pillar-name">Grace</h3>
-          <div class="gs-pillar-tagline">Unearned. Given freely.</div>
+          <div class="gs-pillar-tagline">Grace is the ground.</div>
           <p class="gs-pillar-body">
             We begin here because God begins here. Grace is not the reward at the end of effort. It is the ground we stand on before we have done anything at all. Every person who walks through these doors is met by it first.
           </p>
@@ -1662,7 +1939,7 @@
           <div class="gs-pillar-num">ii.</div>
           <div class="gs-pillar-rule"></div>
           <h3 class="gs-pillar-name">Growth</h3>
-          <div class="gs-pillar-tagline">Spirit, mind, and means.</div>
+          <div class="gs-pillar-tagline">Growth is the work.</div>
           <p class="gs-pillar-body">
             Grace produces growth. We believe a believer should keep growing for the rest of their life, and that growth is not only spiritual. It includes how we think, how we care for our minds and bodies, how we handle our money, and how we build the futures we are responsible for.
           </p>
@@ -1672,12 +1949,28 @@
           <div class="gs-pillar-num">iii.</div>
           <div class="gs-pillar-rule"></div>
           <h3 class="gs-pillar-name">Gratitude</h3>
-          <div class="gs-pillar-tagline">The only honest response.</div>
+          <div class="gs-pillar-tagline">Gratitude is the response.</div>
           <p class="gs-pillar-body">
             When you have received grace and you are walking in growth, gratitude is what comes out. Not as a feeling we perform, but as a posture we carry. We worship, we serve, and we give because we are grateful, not because we owe.
           </p>
         </article>
 
+      </div>
+
+      <!-- Mission and vision, as the church states them. -->
+      <div class="gs-statements reveal reveal-delay-2">
+        <div class="gs-statement">
+          <div class="gs-statement-label">Our Mission</div>
+          <p>To develop people spiritually, mentally, and economically through intentional
+          teaching, authentic relationships, compassionate outreach, and Christ-centered
+          community.</p>
+        </div>
+        <div class="gs-statement">
+          <div class="gs-statement-label">Our Vision</div>
+          <p>To build a transformative community of believers where people experience grace,
+          pursue growth, and live with gratitude: impacting families, strengthening
+          communities, and advancing the Kingdom of God together.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1689,7 +1982,7 @@
     <div class="container">
 
       <div class="vision-top">
-        <div class="vision-eyebrow reveal">The Vision</div>
+        <div class="vision-eyebrow reveal">Our Ministry Pillars</div>
         <h2 class="vision-title reveal reveal-delay-1">
           A gospel that reaches <em>every part of life.</em>
         </h2>
@@ -1702,33 +1995,33 @@
 
         <article class="vision-card reveal reveal-delay-1">
           <div class="vision-card-num">01 &middot; Spirit</div>
-          <h3 class="vision-card-title">Spiritual formation</h3>
+          <h3 class="vision-card-title">Spiritual Formation and Discipleship</h3>
           <p class="vision-card-body">
-            Worship, scripture, prayer, and discipleship. The center of everything, and the reason the rest of this list matters.
+            Helping believers grow in their relationship with God through biblical teaching, prayer, worship, and discipleship that produces lasting transformation.
           </p>
         </article>
 
         <article class="vision-card reveal reveal-delay-2">
           <div class="vision-card-num">02 &middot; Mind</div>
-          <h3 class="vision-card-title">Mental and emotional health</h3>
+          <h3 class="vision-card-title">Mental Health and Wellness</h3>
           <p class="vision-card-body">
-            Faith does not ask us to ignore what we feel. We hold space for grief, for anxiety, for the weight people carry, and we believe the church should walk with people through it.
+            Promoting emotional, mental, and spiritual wellness through counseling referrals, education, support, resources, and care for the whole person: mind, body, and spirit.
           </p>
         </article>
 
         <article class="vision-card reveal reveal-delay-3">
-          <div class="vision-card-num">03 &middot; Means</div>
-          <h3 class="vision-card-title">Financial wellness</h3>
+          <div class="vision-card-num">03 &middot; Community</div>
+          <h3 class="vision-card-title">Economic Empowerment and Community Development</h3>
           <p class="vision-card-body">
-            How we earn, save, give, and steward what we have been entrusted with. We teach this because the Bible teaches it, and because our families deserve to flourish.
+            Equipping individuals and families with skills, resources, and opportunities to build wealth, create jobs, and strengthen the communities we serve.
           </p>
         </article>
 
         <article class="vision-card reveal reveal-delay-4">
-          <div class="vision-card-num">04 &middot; Community</div>
-          <h3 class="vision-card-title">Economic development</h3>
+          <div class="vision-card-num">04 &middot; Means</div>
+          <h3 class="vision-card-title">Financial Wellness</h3>
           <p class="vision-card-body">
-            A healthy church helps build a healthy neighborhood. We invest in the people, the businesses, and the future of Quincy because this is where God has planted us.
+            Empowering people to manage their finances wisely through education, stewardship, budgeting, and pathways to long-term financial freedom.
           </p>
         </article>
 
@@ -1754,7 +2047,7 @@
         <article class="leader-card leader-card--pastor">
           <div class="leader-card-photo">
             <img
-              src="pastor-caldwell-portrait-v1.JPG"
+              src="pastor-caldwell-portrait-v2.jpg"
               alt="Pastor Stephen L.M. Caldwell"
               loading="lazy"
             />
@@ -1766,80 +2059,61 @@
         </article>
       </div>
 
-      <!-- Deacons & Trustees -->
+      <!-- Serving together in ministry, as the church describes it. -->
       <div class="leadership-section-label reveal reveal-delay-2">
         <div class="leadership-section-rule"></div>
-        <span>Deacons &amp; Trustees</span>
+        <span>Serving Together in Ministry</span>
         <div class="leadership-section-rule"></div>
       </div>
+      <p class="leadership-motto reveal reveal-delay-2">One Body. Many Parts. One Purpose.</p>
 
-      <div class="leadership-grid leadership-grid--five reveal reveal-delay-3">
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
+      <div class="roles-grid reveal reveal-delay-3">
+        <article class="role">
+          <h3 class="role-name">Ministerial Staff</h3>
+          <p class="role-body">Called and equipped to teach, preach, shepherd, and lead with vision and compassion.</p>
         </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
+        <article class="role">
+          <h3 class="role-name">Deacons</h3>
+          <p class="role-body">Servant leaders called to support the ministry, care for the congregation, preserve order, and assist those in need with humility and integrity.</p>
         </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
+        <article class="role">
+          <h3 class="role-name">Deaconesses</h3>
+          <p class="role-body">Compassionate servants who extend Christ's love through prayer, visitation, encouragement, and service to the church and community.</p>
         </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Trustee</div>
-          </div>
+        <article class="role">
+          <h3 class="role-name">Ushers</h3>
+          <p class="role-body">Welcoming all with a servant's heart, creating an atmosphere of order, respect, and hospitality that honors God and blesses every guest.</p>
         </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Trustee</div>
-          </div>
+        <article class="role">
+          <h3 class="role-name">Choir</h3>
+          <p class="role-body">Using our voices to worship, proclaim, and inspire. The choir leads us into God's presence and declares His truth through music.</p>
         </article>
+        <article class="role role--list">
+          <h3 class="role-name">Additional Ministries</h3>
+          <ul class="role-list">
+            <li>Trustee Ministry</li>
+            <li>Man To Man Men's Ministry</li>
+            <li>Sister To Sister Women's Ministry</li>
+            <li>Youth Ministry</li>
+            <li>Media and Audio Visual Ministry</li>
+            <li>Hospitality Ministry</li>
+          </ul>
+        </article>
+      </div>
 
+      <!-- The Bridge Ministry -->
+      <div class="bridge reveal reveal-delay-3">
+        <div class="bridge-top">
+          <div class="bridge-eyebrow">The Bridge Ministry &middot; General Missions</div>
+          <h3 class="bridge-title">Building bridges of hope and love to reach the world for Christ.</h3>
+          <p class="bridge-verse">&ldquo;Go ye therefore, and teach all nations&hellip;&rdquo; <span>Matthew 28:19</span></p>
+        </div>
+        <ul class="bridge-grid">
+          <li><strong>Reach</strong><span>Sharing the Gospel at home and around the world.</span></li>
+          <li><strong>Serve</strong><span>Meeting physical and spiritual needs with compassion.</span></li>
+          <li><strong>Equip</strong><span>Empowering believers to grow, lead, and make a difference.</span></li>
+          <li><strong>Pray</strong><span>Covering our mission efforts and the lost in prayer.</span></li>
+        </ul>
       </div>
 
     </div>
@@ -1891,6 +2165,7 @@
         </div>
         <div class="footer-brand-name">Mt. Moriah</div>
         <div class="footer-brand-sub">First Missionary Baptist Church</div>
+        <p class="footer-brand-motto">One Church. One Family. One Mission.</p>
       </div>
 
       <div class="footer-col">

@@ -556,7 +556,7 @@
 
   .ways-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--line-soft);
     border: 1px solid var(--line-soft);
@@ -605,8 +605,13 @@
 
   /* Serve boxes are buttons now, so they need the button reset plus a
      visible affordance that they open something. */
+  /* Buttons centre their content vertically by default, which is why the
+     shorter cells looked dropped. Pin everything to the top of the cell. */
   .ways-item {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
     text-align: left;
     font: inherit;
@@ -1081,6 +1086,15 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(184, 145, 84, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.6);
+    margin: 0;
   }
 
   .footer-col h4 {
@@ -1576,46 +1590,60 @@
       </div>
 
       <div class="ways-grid reveal reveal-delay-3">
-        <button type="button" class="ways-item" data-team="Hospitality"
+        <button type="button" class="ways-item" data-team="Ushers"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">01</div>
-          <h3 class="ways-item-name">Hospitality</h3>
-          <p class="ways-item-body">Greeting at the door, helping visitors find a seat, and making sure no one walks in feeling like a stranger.</p>
+          <h3 class="ways-item-name">Ushers</h3>
+          <p class="ways-item-body">Welcoming all with a servant's heart, creating an atmosphere of order, respect, and hospitality that honors God and blesses every guest.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
-        <button type="button" class="ways-item" data-team="Worship and Music"
+        <button type="button" class="ways-item" data-team="Choir"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">02</div>
-          <h3 class="ways-item-name">Worship and Music</h3>
-          <p class="ways-item-body">Choir, musicians, and the sound and media team who carry the service to everyone in the room and beyond it.</p>
+          <h3 class="ways-item-name">Choir</h3>
+          <p class="ways-item-body">Using our voices to worship, proclaim, and inspire. The choir leads us into God's presence and declares His truth through music.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
-        <button type="button" class="ways-item" data-team="Children and Youth"
+        <button type="button" class="ways-item" data-team="Hospitality Ministry"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">03</div>
-          <h3 class="ways-item-name">Children and Youth</h3>
-          <p class="ways-item-body">Teaching, mentoring, and building the generation that will carry this church into its next century.</p>
+          <h3 class="ways-item-name">Hospitality Ministry</h3>
+          <p class="ways-item-body">Welcome and care for members and guests, so that everyone who comes to the Mount feels expected.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
-        <button type="button" class="ways-item" data-team="Care and Outreach"
+        <button type="button" class="ways-item" data-team="Media and Audio Visual Ministry"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">04</div>
-          <h3 class="ways-item-name">Care and Outreach</h3>
-          <p class="ways-item-body">Visiting the sick, checking on our seniors, and carrying the work of this church into the streets of Quincy.</p>
+          <h3 class="ways-item-name">Media and Audio Visual Ministry</h3>
+          <p class="ways-item-body">Sound, screens, and livestream, carrying the Word to everyone in the room and beyond it.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
-        <button type="button" class="ways-item" data-team="Prayer Team"
+        <button type="button" class="ways-item" data-team="Youth Ministry"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">05</div>
-          <h3 class="ways-item-name">Prayer Team</h3>
-          <p class="ways-item-body">Standing in the gap for the requests that come to us, confidentially and faithfully, every week.</p>
+          <h3 class="ways-item-name">Youth Ministry</h3>
+          <p class="ways-item-body">Walking with the young people of the Mount as they grow in faith and find their place in the body.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
-        <button type="button" class="ways-item" data-team="Facilities"
+        <button type="button" class="ways-item" data-team="Man To Man Men&#39;s Ministry"
                 aria-haspopup="dialog" aria-controls="serveModal">
           <div class="ways-item-label">06</div>
-          <h3 class="ways-item-name">Facilities</h3>
-          <p class="ways-item-body">Keeping the house in order. Quiet work, faithfully done, that everyone benefits from and few people see.</p>
+          <h3 class="ways-item-name">Man To Man Men's Ministry</h3>
+          <p class="ways-item-body">Brotherhood, accountability, and growth for the men of the church.</p>
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="Sister To Sister Women&#39;s Ministry"
+                aria-haspopup="dialog" aria-controls="serveModal">
+          <div class="ways-item-label">07</div>
+          <h3 class="ways-item-name">Sister To Sister Women's Ministry</h3>
+          <p class="ways-item-body">Fellowship, encouragement, and growth for the women of the church.</p>
+          <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="ways-item" data-team="The Bridge Ministry"
+                aria-haspopup="dialog" aria-controls="serveModal">
+          <div class="ways-item-label">08</div>
+          <h3 class="ways-item-name">The Bridge Ministry</h3>
+          <p class="ways-item-body">Our general missions ministry: building bridges of hope and love to reach the world for Christ. Reach, serve, equip, and pray.</p>
           <span class="ways-item-go">Express interest <span aria-hidden="true">&rarr;</span></span>
         </button>
       </div>
@@ -1641,12 +1669,14 @@
       <div class="visit-field">
         <label for="sf-team" class="visit-field-label">Where you would like to serve</label>
         <select id="sf-team" name="team" class="visit-field-input visit-field-select">
-          <option>Hospitality</option>
-          <option>Worship and Music</option>
-          <option>Children and Youth</option>
-          <option>Care and Outreach</option>
-          <option>Prayer Team</option>
-          <option>Facilities</option>
+          <option>Ushers</option>
+          <option>Choir</option>
+          <option>Hospitality Ministry</option>
+          <option>Media and Audio Visual Ministry</option>
+          <option>Youth Ministry</option>
+          <option>Man To Man Men's Ministry</option>
+          <option>Sister To Sister Women's Ministry</option>
+          <option>The Bridge Ministry</option>
           <option>Wherever I am needed</option>
         </select>
       </div>
@@ -1698,6 +1728,7 @@
         </div>
         <div class="footer-brand-name">Mt. Moriah</div>
         <div class="footer-brand-sub">First Missionary Baptist Church</div>
+        <p class="footer-brand-motto">One Church. One Family. One Mission.</p>
       </div>
 
       <div class="footer-col">
