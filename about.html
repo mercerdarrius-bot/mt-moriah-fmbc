@@ -906,47 +906,6 @@
     color: var(--gold-light);
   }
 
-  /* The body, as a ruled list of names. */
-  .body-list {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    max-width: 1080px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0 56px;
-  }
-  .body-list li {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 48, "wght" 450, "SOFT" 30, "WONK" 0;
-    font-size: 19px;
-    line-height: 1.3;
-    color: var(--cream);
-    padding: 17px 2px;
-    border-bottom: 1px solid rgba(184, 145, 84, 0.22);
-  }
-
-  .body-note {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    line-height: 1.55;
-    color: rgba(245, 240, 232, 0.82);
-    max-width: 560px;
-    margin: 64px auto 0;
-  }
-  .body-note strong { color: var(--cream); font-weight: 600; }
-  .body-note-verbs {
-    display: block;
-    margin-top: 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-  }
-
   .body-cta { text-align: center; margin: 48px 0 0; }
   .body-cta a {
     font-family: 'DM Sans', sans-serif;
@@ -966,10 +925,6 @@
      base rule of equal specificity. */
   @media (max-width: 1024px) {
     .gs-statements { grid-template-columns: 1fr; gap: 40px; }
-    .body-list { grid-template-columns: 1fr 1fr; gap: 0 40px; }
-  }
-  @media (max-width: 720px) {
-    .body-list { grid-template-columns: 1fr; }
   }
 
 
@@ -1917,37 +1872,9 @@
         </article>
       </div>
 
-      <div class="leadership-section-label reveal reveal-delay-2">
-        <div class="leadership-section-rule"></div>
-        <span>Serving Together in Ministry</span>
-        <div class="leadership-section-rule"></div>
-      </div>
-
-      <!-- The body, named. Each ministry's description lives on Get Involved,
-           where a visitor can actually raise their hand for it. -->
-      <ul class="body-list reveal reveal-delay-2">
-        <li>Ministerial Staff</li>
-        <li>Deacons</li>
-        <li>Deaconesses</li>
-        <li>Trustee Ministry</li>
-        <li>Ushers</li>
-        <li>Choir</li>
-        <li>Youth Ministry</li>
-        <li>Man To Man Men's Ministry</li>
-        <li>Sister To Sister Women's Ministry</li>
-        <li>Media and Audio Visual Ministry</li>
-        <li>Hospitality Ministry</li>
-        <li>The Bridge Ministry</li>
-      </ul>
-
-      <p class="body-note reveal reveal-delay-3">
-        <strong>The Bridge Ministry</strong>, our general missions ministry, builds bridges
-        of hope and love to reach the world for Christ.
-        <span class="body-note-verbs">Reach &middot; Serve &middot; Equip &middot; Pray</span>
-      </p>
-
+      <!-- Ministries live on Get Involved; this is the way there. -->
       <p class="body-cta reveal reveal-delay-3">
-        <a href="get-involved.html">Find your place to serve <span aria-hidden="true">&rarr;</span></a>
+        <a href="get-involved.html">Explore our ministries <span aria-hidden="true">&rarr;</span></a>
       </p>
 
     </div>
