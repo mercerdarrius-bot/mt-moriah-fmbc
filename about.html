@@ -573,25 +573,13 @@
     color: var(--burgundy);
   }
 
-  .gs-intro {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    font-style: italic;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  /* Mission and vision sit side by side under the three words. */
+  /* Culture, mission, vision: the section's whole content, three across. */
   .gs-statements {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px 64px;
-    max-width: 1080px;
-    margin: 88px auto 0;
-    padding-top: 56px;
-    border-top: 1px solid var(--line);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 56px;
+    max-width: 1120px;
+    margin: 0 auto;
   }
   .gs-statement-label {
     font-family: 'DM Sans', sans-serif;
@@ -605,68 +593,11 @@
   .gs-statement p {
     font-family: 'Fraunces', Georgia, serif;
     font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 30, "WONK" 0;
-    font-size: 21px;
+    font-size: 19px;
     line-height: 1.45;
     color: var(--ink);
     margin: 0;
-    max-width: 30em;
     text-wrap: pretty;
-  }
-
-  .gs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 56px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-
-  .gs-pillar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .gs-pillar-num {
-    font-family: 'Fraunces', Georgia, serif;
-    font-style: italic;
-    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 40, "WONK" 1;
-    font-size: 24px;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-
-  .gs-pillar-rule {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 24px;
-  }
-
-  .gs-pillar-name {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
-    font-style: italic;
-    font-size: clamp(38px, 4vw, 52px);
-    line-height: 1;
-    color: var(--burgundy);
-    margin-bottom: 20px;
-    letter-spacing: -0.015em;
-  }
-
-  .gs-pillar-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 19px;
-    color: var(--gold);
-    margin-bottom: 0;
-  }
-
-  .gs-pillar-body {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--ink-soft);
   }
 
   /* ═══════════════════════════════════════════════════════════════
@@ -972,152 +903,70 @@
     color: var(--gold-light);
   }
 
-  /* Roles: the body of the church, described rather than pictured. */
-  .leadership-motto {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 21px;
-    color: rgba(245, 240, 232, 0.78);
-    margin: -28px auto 52px;
-  }
-  .roles-grid {
+  /* The body, as a ruled list of names. */
+  .body-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1080px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    max-width: 1080px;
-    margin: 0 auto;
-    background: rgba(184, 145, 84, 0.22);
-    border: 1px solid rgba(184, 145, 84, 0.22);
+    gap: 0 56px;
   }
-  .role {
-    background: rgba(26, 6, 12, 0.34);
-    padding: 34px 30px 36px;
-  }
-  .role-name {
+  .body-list li {
     font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
-    font-size: 21px;
-    line-height: 1.15;
+    font-variation-settings: "opsz" 48, "wght" 450, "SOFT" 30, "WONK" 0;
+    font-size: 19px;
+    line-height: 1.3;
     color: var(--cream);
-    margin: 0 0 14px;
-  }
-  .role-body {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17.5px;
-    line-height: 1.55;
-    color: rgba(245, 240, 232, 0.82);
-    margin: 0;
-  }
-  .role-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 9px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17.5px;
-    line-height: 1.35;
-    color: rgba(245, 240, 232, 0.82);
-  }
-  .role-list li { padding-left: 16px; position: relative; }
-  .role-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.62em;
-    width: 6px;
-    height: 1px;
-    background: var(--gold-light);
+    padding: 17px 2px;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.22);
   }
 
-  /* The Bridge Ministry */
-  .bridge {
-    max-width: 1080px;
-    margin: 88px auto 0;
-    padding-top: 64px;
-    border-top: 1px solid rgba(184, 145, 84, 0.28);
-  }
-  .bridge-top { text-align: center; max-width: 720px; margin: 0 auto 48px; }
-  .bridge-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 22px;
-  }
-  .bridge-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 0;
-    font-size: clamp(26px, 3.2vw, 36px);
-    line-height: 1.18;
-    color: var(--cream);
-    letter-spacing: -0.012em;
-    margin: 0 0 20px;
-    text-wrap: balance;
-  }
-  .bridge-verse {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 19px;
-    color: rgba(245, 240, 232, 0.78);
-    margin: 0;
-  }
-  .bridge-verse span {
-    font-style: normal;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-left: 12px;
-  }
-  .bridge-grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-  }
-  .bridge-grid li {
+  .body-note {
     text-align: center;
-    padding: 0 8px;
-    border-left: 1px solid rgba(184, 145, 84, 0.22);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(245, 240, 232, 0.82);
+    max-width: 560px;
+    margin: 64px auto 0;
   }
-  .bridge-grid li:first-child { border-left: 0; }
-  .bridge-grid strong {
+  .body-note strong { color: var(--cream); font-weight: 600; }
+  .body-note-verbs {
     display: block;
+    margin-top: 16px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold-light);
-    margin-bottom: 14px;
-  }
-  .bridge-grid span {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    line-height: 1.5;
-    color: rgba(245, 240, 232, 0.82);
   }
 
-  /* These sit after the base rules on purpose: an earlier media block loses
-     to a later base rule of equal specificity. */
+  .body-cta { text-align: center; margin: 48px 0 0; }
+  .body-cta a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 178, 126, 0.5);
+    padding-bottom: 6px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .body-cta a:hover { color: var(--cream); border-color: var(--cream); }
+
+  /* After the base rules on purpose: an earlier media block loses to a later
+     base rule of equal specificity. */
   @media (max-width: 1024px) {
-    .roles-grid { grid-template-columns: 1fr 1fr; }
-    .bridge-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
-    .bridge-grid li:nth-child(3) { border-left: 0; }
     .gs-statements { grid-template-columns: 1fr; gap: 40px; }
+    .body-list { grid-template-columns: 1fr 1fr; gap: 0 40px; }
   }
   @media (max-width: 720px) {
-    .roles-grid { grid-template-columns: 1fr; }
-    .bridge-grid { grid-template-columns: 1fr; gap: 28px; }
-    .bridge-grid li { border-left: 0; text-align: left; padding: 0; }
+    .body-list { grid-template-columns: 1fr; }
   }
 
 
@@ -1444,7 +1293,6 @@
     .arc-marker-wrap { position: static; }
 
     .gs { padding: 120px 0; }
-    .gs-grid { grid-template-columns: 1fr; gap: 64px; }
 
     .vision { padding: 120px 0; }
     .vision-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1456,7 +1304,6 @@
     .leader-card-photo { width: 120px; height: 150px; }
     .leader-card--pastor .leader-card-photo { width: 160px; height: 200px; }
     .leader-card-name { font-size: 17px; }
-    .leadership-section-label { margin: 48px auto 36px; }
 
 
     .cta { padding: 120px 0; }
@@ -1691,7 +1538,7 @@
     <div class="container">
       <div class="page-hero-eyebrow reveal">Our Story</div>
       <h1 class="page-hero-title reveal reveal-delay-1">
-        A continuation,<br><em>not a restart.</em>
+        One Church. One Family.<br><em>One Mission.</em>
       </h1>
       <p class="page-hero-sub reveal reveal-delay-2">
         The story of Mt. Moriah is older than any one chapter. It belongs to the people who built this house, to the people who keep walking through its doors, and to the work still ahead.
@@ -1874,43 +1721,20 @@
     <div class="container">
 
       <div class="gs-top">
-        <div class="gs-eyebrow reveal">Our Culture</div>
+        <div class="gs-eyebrow reveal">Our Purpose. Our Path. Our Promise.</div>
         <h2 class="gs-title reveal reveal-delay-1">
-          Three words. <em>One posture.</em>
+          Building believers. Transforming lives.<br><em>Advancing the Kingdom.</em>
         </h2>
-        <p class="gs-intro reveal reveal-delay-2">
-          We are not simply building a congregation; we are cultivating a community of
-          believers growing together in every part of life.
-        </p>
       </div>
 
-      <div class="gs-grid">
-
-        <article class="gs-pillar reveal reveal-delay-1">
-          <div class="gs-pillar-num">i.</div>
-          <div class="gs-pillar-rule"></div>
-          <h3 class="gs-pillar-name">Grace</h3>
-          <div class="gs-pillar-tagline">Grace is the ground.</div>
-        </article>
-
-        <article class="gs-pillar reveal reveal-delay-2">
-          <div class="gs-pillar-num">ii.</div>
-          <div class="gs-pillar-rule"></div>
-          <h3 class="gs-pillar-name">Growth</h3>
-          <div class="gs-pillar-tagline">Growth is the work.</div>
-        </article>
-
-        <article class="gs-pillar reveal reveal-delay-3">
-          <div class="gs-pillar-num">iii.</div>
-          <div class="gs-pillar-rule"></div>
-          <h3 class="gs-pillar-name">Gratitude</h3>
-          <div class="gs-pillar-tagline">Gratitude is the response.</div>
-        </article>
-
-      </div>
-
-      <!-- Mission and vision, as the church states them. -->
+      <!-- Culture, mission and vision, exactly as the church states them. -->
       <div class="gs-statements reveal reveal-delay-2">
+        <div class="gs-statement">
+          <div class="gs-statement-label">Our Culture</div>
+          <p>Grace is the ground. Growth is the work. Gratitude is the response. We are not
+          simply building a congregation; we are cultivating a community of believers growing
+          together in every part of life.</p>
+        </div>
         <div class="gs-statement">
           <div class="gs-statement-label">Our Mission</div>
           <p>To develop people spiritually, mentally, and economically through intentional
@@ -1988,68 +1812,38 @@
     <div class="container">
 
       <div class="leadership-top">
-        <div class="leadership-eyebrow reveal">Leadership</div>
+        <div class="leadership-eyebrow reveal">Serving Together in Ministry</div>
         <h2 class="leadership-title reveal reveal-delay-1">
-          A shepherd, <em>and a body.</em>
+          One body. Many parts. <em>One purpose.</em>
         </h2>
       </div>
 
-      <!-- Serving together in ministry, as the church describes it. -->
-      <div class="leadership-section-label reveal reveal-delay-2">
-        <div class="leadership-section-rule"></div>
-        <span>Serving Together in Ministry</span>
-        <div class="leadership-section-rule"></div>
-      </div>
-      <p class="leadership-motto reveal reveal-delay-2">One Body. Many Parts. One Purpose.</p>
+      <!-- The body, named. Each ministry's description lives on Get Involved,
+           where a visitor can actually raise their hand for it. -->
+      <ul class="body-list reveal reveal-delay-2">
+        <li>Ministerial Staff</li>
+        <li>Deacons</li>
+        <li>Deaconesses</li>
+        <li>Trustee Ministry</li>
+        <li>Ushers</li>
+        <li>Choir</li>
+        <li>Youth Ministry</li>
+        <li>Man To Man Men's Ministry</li>
+        <li>Sister To Sister Women's Ministry</li>
+        <li>Media and Audio Visual Ministry</li>
+        <li>Hospitality Ministry</li>
+        <li>The Bridge Ministry</li>
+      </ul>
 
-      <div class="roles-grid reveal reveal-delay-3">
-        <article class="role">
-          <h3 class="role-name">Ministerial Staff</h3>
-          <p class="role-body">Called and equipped to teach, preach, shepherd, and lead with vision and compassion.</p>
-        </article>
-        <article class="role">
-          <h3 class="role-name">Deacons</h3>
-          <p class="role-body">Servant leaders called to support the ministry, care for the congregation, preserve order, and assist those in need with humility and integrity.</p>
-        </article>
-        <article class="role">
-          <h3 class="role-name">Deaconesses</h3>
-          <p class="role-body">Compassionate servants who extend Christ's love through prayer, visitation, encouragement, and service to the church and community.</p>
-        </article>
-        <article class="role">
-          <h3 class="role-name">Ushers</h3>
-          <p class="role-body">Welcoming all with a servant's heart, creating an atmosphere of order, respect, and hospitality that honors God and blesses every guest.</p>
-        </article>
-        <article class="role">
-          <h3 class="role-name">Choir</h3>
-          <p class="role-body">Using our voices to worship, proclaim, and inspire. The choir leads us into God's presence and declares His truth through music.</p>
-        </article>
-        <article class="role role--list">
-          <h3 class="role-name">Additional Ministries</h3>
-          <ul class="role-list">
-            <li>Trustee Ministry</li>
-            <li>Man To Man Men's Ministry</li>
-            <li>Sister To Sister Women's Ministry</li>
-            <li>Youth Ministry</li>
-            <li>Media and Audio Visual Ministry</li>
-            <li>Hospitality Ministry</li>
-          </ul>
-        </article>
-      </div>
+      <p class="body-note reveal reveal-delay-3">
+        <strong>The Bridge Ministry</strong>, our general missions ministry, builds bridges
+        of hope and love to reach the world for Christ.
+        <span class="body-note-verbs">Reach &middot; Serve &middot; Equip &middot; Pray</span>
+      </p>
 
-      <!-- The Bridge Ministry -->
-      <div class="bridge reveal reveal-delay-3">
-        <div class="bridge-top">
-          <div class="bridge-eyebrow">The Bridge Ministry &middot; General Missions</div>
-          <h3 class="bridge-title">Building bridges of hope and love to reach the world for Christ.</h3>
-          <p class="bridge-verse">&ldquo;Go ye therefore, and teach all nations&hellip;&rdquo; <span>Matthew 28:19</span></p>
-        </div>
-        <ul class="bridge-grid">
-          <li><strong>Reach</strong><span>Sharing the Gospel at home and around the world.</span></li>
-          <li><strong>Serve</strong><span>Meeting physical and spiritual needs with compassion.</span></li>
-          <li><strong>Equip</strong><span>Empowering believers to grow, lead, and make a difference.</span></li>
-          <li><strong>Pray</strong><span>Covering our mission efforts and the lost in prayer.</span></li>
-        </ul>
-      </div>
+      <p class="body-cta reveal reveal-delay-3">
+        <a href="get-involved.html">Find your place to serve <span aria-hidden="true">&rarr;</span></a>
+      </p>
 
     </div>
   </section>
