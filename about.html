@@ -1044,6 +1044,29 @@
     color: var(--gold-light);
   }
 
+  /* Group photograph. A hairline and a soft drop keep it from floating on the
+     burgundy, which has no edge of its own. */
+  .leadership-photo {
+    max-width: 1080px;
+    margin: clamp(56px, 7vw, 84px) auto 0;
+  }
+  .leadership-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    border: 1px solid rgba(184, 145, 84, 0.28);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.38);
+  }
+  .leadership-photo figcaption {
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245, 240, 232, 0.78);
+  }
+
   .body-cta { text-align: center; margin: 48px 0 0; }
   .body-cta a {
     font-family: 'DM Sans', sans-serif;
@@ -2006,82 +2029,14 @@
         </article>
       </div>
 
-      <!-- Headshot slots. Photos are being taken Sunday August 23 2026: swap
-           each placeholder div for <img src="leader-name.jpg" alt="First Last" />
-           and fill in the name and role. Add or remove articles freely; the
-           grid takes any number. -->
-      <div class="leadership-section-label reveal reveal-delay-2">
-        <div class="leadership-section-rule"></div>
-        <span>Deacons and Trustees</span>
-        <div class="leadership-section-rule"></div>
-      </div>
-
-      <div class="leadership-grid leadership-grid--five reveal reveal-delay-3">
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
-        </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
-        </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Deacon</div>
-          </div>
-        </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Trustee</div>
-          </div>
-        </article>
-
-        <article class="leader-card">
-          <div class="leader-card-photo leader-card-photo--placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="leader-card-info">
-            <h3 class="leader-card-name">Name</h3>
-            <div class="leader-card-role">Trustee</div>
-          </div>
-        </article>
-      </div>
+      <!-- The real photograph stands in until individual headshots exist.
+           The .leadership-grid rules are left in place for when they do. -->
+      <figure class="leadership-photo reveal reveal-delay-3">
+        <img src="leadership-group.jpg"
+             alt="Pastor Stephen L.M. Caldwell with the leadership of Mt. Moriah at the pulpit"
+             loading="lazy" />
+        <figcaption>Pastor Caldwell with the leadership of Mt. Moriah</figcaption>
+      </figure>
 
       <!-- Ministries live on Get Involved; this is the way there. -->
       <p class="body-cta reveal reveal-delay-3">
