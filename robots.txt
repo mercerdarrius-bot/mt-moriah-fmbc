@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mercerdarrius-bot.github.io/mt-moriah-fmbc/sitemap.xml

@@ -4,6 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mt. Moriah First Missionary Baptist Church · Quincy, FL</title>
+
+<meta name="description" content="Mt. Moriah First Missionary Baptist Church has served Quincy, Florida since 1895. Sunday worship at 11:00 AM, Bible study Wednesdays at 7:00 PM, at 302 South Tenth Street. Everyone is welcome.">
+<link rel="canonical" href="https://mercerdarrius-bot.github.io/mt-moriah-fmbc/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mt. Moriah First Missionary Baptist Church">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://mercerdarrius-bot.github.io/mt-moriah-fmbc/">
+<meta property="og:title" content="Mt. Moriah First Missionary Baptist Church">
+<meta property="og:description" content="Mt. Moriah First Missionary Baptist Church has served Quincy, Florida since 1895. Sunday worship at 11:00 AM, Bible study Wednesdays at 7:00 PM, at 302 South Tenth Street. Everyone is welcome.">
+<meta property="og:image" content="https://mercerdarrius-bot.github.io/mt-moriah-fmbc/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The congregation of Mt. Moriah First Missionary Baptist Church in Quincy, Florida">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mt. Moriah First Missionary Baptist Church">
+<meta name="twitter:description" content="Mt. Moriah First Missionary Baptist Church has served Quincy, Florida since 1895. Sunday worship at 11:00 AM, Bible study Wednesdays at 7:00 PM, at 302 South Tenth Street. Everyone is welcome.">
+<meta name="twitter:image" content="https://mercerdarrius-bot.github.io/mt-moriah-fmbc/og-card.jpg">
+
+<meta name="theme-color" content="#5C1A26">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "Mt. Moriah First Missionary Baptist Church",
+  "alternateName": "Mount Moriah First Missionary Baptist Church",
+  "url": "https://mercerdarrius-bot.github.io/mt-moriah-fmbc/",
+  "logo": "https://mercerdarrius-bot.github.io/mt-moriah-fmbc/apple-touch-icon.png",
+  "image": "https://mercerdarrius-bot.github.io/mt-moriah-fmbc/og-card.jpg",
+  "description": "A Missionary Baptist congregation serving Quincy, Florida since 1895.",
+  "foundingDate": "1895",
+  "telephone": "+1-850-627-7244",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "302 South Tenth Street",
+    "addressLocality": "Quincy",
+    "addressRegion": "FL",
+    "postalCode": "32351",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://www.facebook.com/profile.php?id=61580674044989"],
+  "founder": { "@type": "Person", "name": "Deacon Frank Turner" },
+  "employee": {
+    "@type": "Person",
+    "name": "Stephen L. M. Caldwell",
+    "jobTitle": "Senior Pastor"
+  },
+  "event": [
+    {
+      "@type": "Event",
+      "name": "Sunday Worship",
+      "eventSchedule": {
+        "@type": "Schedule",
+        "byDay": "https://schema.org/Sunday",
+        "startTime": "11:00",
+        "repeatFrequency": "P1W"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Mt. Moriah First Missionary Baptist Church",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "302 South Tenth Street",
+          "addressLocality": "Quincy",
+          "addressRegion": "FL",
+          "postalCode": "32351",
+          "addressCountry": "US"
+        }
+      }
+    },
+    {
+      "@type": "Event",
+      "name": "Bible Study",
+      "eventSchedule": {
+        "@type": "Schedule",
+        "byDay": "https://schema.org/Wednesday",
+        "startTime": "19:00",
+        "repeatFrequency": "P1W"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Mt. Moriah First Missionary Baptist Church",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "302 South Tenth Street",
+          "addressLocality": "Quincy",
+          "addressRegion": "FL",
+          "postalCode": "32351",
+          "addressCountry": "US"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero-video-stack { display: none; }
+    .mobile-menu { position: static; height: auto; opacity: 1; pointer-events: auto; }
+    .nav-toggle { display: none !important; }
+  </style>
+</noscript>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2111,7 +2217,7 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 0;
+    padding: 14px 0;
     font-family: 'DM Sans', sans-serif;
     font-size: 10.5px;
     font-weight: 500;
@@ -2885,6 +2991,18 @@
     transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
   }
 
+  /* The button is sized to the phone mock, so the touch target is widened
+     with a pseudo element rather than by growing the visible circle. */
+  .sermon-sound::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+  }
+
   .sermon-sound:hover {
     background: rgba(20, 8, 12, 0.78);
     border-color: rgba(245, 240, 232, 0.6);
@@ -3650,7 +3768,7 @@
 </head>
 <body>
 
-<a href="#hero-headline" class="skip-to-content">Skip to content</a>
+<a href="#main" class="skip-to-content">Skip to content</a>
 
 <!-- ============================================================ -->
 <!-- NAVIGATION                                                   -->
@@ -3709,6 +3827,7 @@
 <!-- ============================================================ -->
 <!-- SECTION - HERO                                                      -->
 <!-- ============================================================ -->
+<main id="main">
 <section class="hero section section--light" id="hero" aria-labelledby="hero-headline">
   <!-- The hero is encapsulated: an inset, rounded frame sitting on the page
        ground, with the nav bar above it rather than over it. -->
@@ -3816,26 +3935,26 @@
        start off screen never fetch and their cards stay blank forever. -->
   <div class="marquee">
     <div class="marquee-track" aria-hidden="true">
-        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async"></figure>
-        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async"></figure>
+        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-01.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-02.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-03.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-04.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-05.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-06.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-07.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-08.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-09.jpg" alt="" decoding="async" width="720" height="900"></figure>
+        <figure class="moment"><img data-marquee src="moment-10.jpg" alt="" decoding="async" width="720" height="900"></figure>
     </div>
   </div>
 </section>
@@ -3852,7 +3971,7 @@
         <div class="story-portrait">
           <img src="pastor-caldwell-portrait-v2.jpg"
                alt="Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
-               class="story-portrait-img" loading="lazy" />
+               class="story-portrait-img" loading="lazy" / width="998" height="1500">
         </div>
         <div class="story-plate">
           <div class="story-plate-name">Stephen L.M. Caldwell</div>
@@ -4307,7 +4426,7 @@
         <div class="events-month-group is-active" data-month="may">
           <article class="event-card" data-flyer="event-may-pentecost-sunday.JPG" data-date="2026-05-24">
             <div class="event-card-image">
-              <img src="event-may-pentecost-sunday.JPG" alt="Pentecost Sunday at Mt. Moriah" loading="lazy" />
+              <img src="event-may-pentecost-sunday.JPG" alt="Pentecost Sunday at Mt. Moriah" loading="lazy" / width="1254" height="1254">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">May 24 &middot; 11:00 AM</div>
@@ -4319,7 +4438,7 @@
 
           <article class="event-card" data-flyer="event-may-growing-in-grace.JPG" data-date="2026-05-06">
             <div class="event-card-image">
-              <img src="event-may-growing-in-grace.JPG" alt="Growing in Grace sermon series" loading="lazy" />
+              <img src="event-may-growing-in-grace.JPG" alt="Growing in Grace sermon series" loading="lazy" / width="1060" height="1484">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">May 6 &middot; 7:00 PM</div>
@@ -4331,7 +4450,7 @@
 
           <article class="event-card" data-flyer="event-may-mothers-day.JPG" data-date="2026-05-10">
             <div class="event-card-image">
-              <img src="event-may-mothers-day.JPG" alt="Mother's Day Celebration at Mt. Moriah" loading="lazy" />
+              <img src="event-may-mothers-day.JPG" alt="Mother's Day Celebration at Mt. Moriah" loading="lazy" / width="1054" height="1492">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">May 10</div>
@@ -4346,7 +4465,7 @@
         <div class="events-month-group" data-month="july">
           <article class="event-card" data-flyer="event-jul-ice-cream-sunday.jpg" data-date="2026-07-19">
             <div class="event-card-image">
-              <img src="event-jul-ice-cream-sunday.jpg" alt="Ice Cream Sunday at Mt. Moriah" loading="lazy" />
+              <img src="event-jul-ice-cream-sunday.jpg" alt="Ice Cream Sunday at Mt. Moriah" loading="lazy" / width="1770" height="1770">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">July 19 &middot; 1:00 PM</div>
@@ -4361,7 +4480,7 @@
         <div class="events-month-group" data-month="august">
           <article class="event-card" data-flyer="event-aug-pastoral-installation.jpg" data-date="2026-08-23">
             <div class="event-card-image">
-              <img src="event-aug-pastoral-installation.jpg" alt="Pastoral Installation of Pastor Stephen L.M. Caldwell" loading="lazy" />
+              <img src="event-aug-pastoral-installation.jpg" alt="Pastoral Installation of Pastor Stephen L.M. Caldwell" loading="lazy" / width="1532" height="1772">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">August 21 and 23</div>
@@ -4376,7 +4495,7 @@
         <div class="events-month-group" data-month="january">
           <article class="event-card" data-flyer="event-jan-watch-night.JPG" data-date="2025-12-31">
             <div class="event-card-image">
-              <img src="event-jan-watch-night.JPG" alt="New Year's Eve Watch Night Service" loading="lazy" />
+              <img src="event-jan-watch-night.JPG" alt="New Year's Eve Watch Night Service" loading="lazy" / width="1545" height="2000">
             </div>
             <div class="event-card-info">
               <div class="event-card-date">December 31 &middot; 10:00 PM</div>
@@ -4615,6 +4734,8 @@
 <!-- ============================================================ -->
 <!-- FOOTER                                                       -->
 <!-- ============================================================ -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
