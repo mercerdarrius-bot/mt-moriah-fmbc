@@ -684,6 +684,12 @@
   .print--a { transform: rotate(-3.2deg); }
   .print--b { transform: rotate(1.8deg) translateY(18px); margin-left: -14px; margin-right: -14px; }
   .print--c { transform: rotate(3.4deg) translateY(6px); }
+
+  /* A landscape frame keeps its own ratio. Cropped to the 4:5 the uprights
+     use, this one would lose the people at both edges. */
+  .print--landscape { width: clamp(238px, 30vw, 320px); }
+  .print--landscape .print-img { aspect-ratio: 3 / 2; }
+  .print--landscape .print-img img { object-position: center 30%; }
   .print:hover {
     transform: rotate(0deg) translateY(-6px);
     box-shadow: 0 26px 56px rgba(28, 26, 24, 0.22), 0 4px 12px rgba(28, 26, 24, 0.12);
@@ -1840,7 +1846,7 @@
           <div class="bio-portrait">
             <img src="pastor-caldwell-portrait-v2.jpg"
                  alt="Pastor Stephen L.M. Caldwell, Senior Pastor of Mt. Moriah First Missionary Baptist Church"
-                 loading="lazy" / width="998" height="1500">
+                 loading="lazy" width="998" height="1500" />
           </div>
           <div class="bio-plate">
             <div class="bio-plate-name">Stephen L.M. Caldwell</div>
@@ -1857,7 +1863,7 @@
             </div>
             <div class="bio-fact">
               <dt>Family</dt>
-              <dd>Lady Quierah, Taylore, and Tori</dd>
+              <dd>Lady Quierah, LeAsia, Taylore, and Tori</dd>
             </div>
             <div class="bio-fact">
               <dt>Calling</dt>
@@ -1913,9 +1919,9 @@
 
           <p class="reveal reveal-delay-3">
             Pastor Caldwell is the devoted husband of Lady Quierah L. Caldwell and the proud
-            father of Taylore and Tori. He also serves as a loving father figure to LeAsia Kates
-            and is honored to be the godfather of several children whose lives he continues to
-            encourage through faith, mentorship, and love.
+            father of LeAsia, Taylore, and Tori. He is also honored to be the godfather of
+            several children whose lives he continues to encourage through faith, mentorship,
+            and love.
           </p>
 
           <div class="bio-links reveal reveal-delay-3">
@@ -1938,7 +1944,7 @@
           <div class="print-img">
             <img src="caldwell-couple.jpg"
                  alt="Pastor Caldwell with Lady Quierah Caldwell in the sanctuary"
-                 loading="lazy" / width="1000" height="1500">
+                 loading="lazy" width="1000" height="1500" />
           </div>
           <figcaption>Pastor and Lady Quierah</figcaption>
         </figure>
@@ -1946,17 +1952,17 @@
           <div class="print-img">
             <img src="caldwell-family-sanctuary.jpg"
                  alt="Pastor Caldwell with Lady Quierah and their daughters in the sanctuary"
-                 loading="lazy" / width="1000" height="1500">
+                 loading="lazy" width="1000" height="1500" />
           </div>
           <figcaption>The Caldwell family</figcaption>
         </figure>
-        <figure class="print print--c">
+        <figure class="print print--c print--landscape">
           <div class="print-img">
-            <img src="caldwell-daughter.jpg"
-                 alt="Pastor Caldwell with one of his daughters"
-                 loading="lazy" / width="933" height="1400">
+            <img src="caldwell-leasia.jpg"
+                 alt="Pastor Caldwell with LeAsia and Lady Quierah in the sanctuary"
+                 loading="lazy" width="1400" height="933" />
           </div>
-          <figcaption>Fatherhood</figcaption>
+          <figcaption>LeAsia</figcaption>
         </figure>
       </div>
     </div>
@@ -2073,7 +2079,7 @@
               src="pastor-caldwell-portrait-v2.jpg"
               alt="Pastor Stephen L.M. Caldwell"
               loading="lazy"
-            / width="998" height="1500">
+           width="998" height="1500" />
           </div>
           <div class="leader-card-info">
             <h3 class="leader-card-name">Stephen L.M. Caldwell</h3>
@@ -2087,7 +2093,7 @@
       <figure class="leadership-photo reveal reveal-delay-3">
         <img src="leadership-group.jpg"
              alt="Pastor Stephen L.M. Caldwell with the leadership of Mt. Moriah at the pulpit"
-             loading="lazy" / width="1800" height="1200">
+             loading="lazy" width="1800" height="1200" />
         <figcaption>Pastor Caldwell with the leadership of Mt. Moriah</figcaption>
       </figure>
 
@@ -2145,7 +2151,7 @@
         </div>
         <div class="footer-brand-name">Mt. Moriah</div>
         <div class="footer-brand-sub">First Missionary Baptist Church</div>
-        <p class="footer-brand-motto">One Church. One Family. One Mission.</p>
+        <p class="footer-brand-motto">A Place of Grace, Growth &amp; Gratitude</p>
       </div>
 
       <div class="footer-col">
