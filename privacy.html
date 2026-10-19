@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Merx Analytics: cookieless and first party (see the privacy page). Plain tags on purpose:
+     the daily tag check reads the served HTML. -->
+<script>window.mx=window.mx||function(){(window.mx.q=window.mx.q||[]).push(arguments)}</script>
+<script defer src="https://a.merxstudios.com/m.js" data-site="6754emx8pu6oaiun"></script>
+<title>Privacy &middot; Mt. Moriah First Missionary Baptist Church</title>
+
+<meta name="description" content="How the Mt. Moriah First Missionary Baptist Church website measures visits without cookies, and what happens to what you write in its forms.">
+<link rel="canonical" href="https://mercerdarrius-bot.github.io/mt-moriah-fmbc/privacy.html">
+
+
+
+<meta name="theme-color" content="#5C1A26">
+
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero-video-stack { display: none; }
+    .mobile-menu { position: static; height: auto; opacity: 1; pointer-events: auto; }
+    .nav-toggle { display: none !important; }
+  
+</style>
+</noscript>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap">
+
+<style>
+  /* ───────────────────────────────────────────────────────────────
+     DESIGN TOKENS (mirror of index.html)
+     ─────────────────────────────────────────────────────────────── */
+  :root {
+    --burgundy: #5C1A26;
+    --burgundy-deep: #3F1119;
+    --burgundy-darker: #2A0B12;
+    --gold: #B89154;
+    --gold-warm: #C9A766;
+    --gold-light: #D4B27E;
+    --cream: #F5F0E8;
+    --paper: #FAF6EF;
+    --ink: #1C1A18;
+    --ink-soft: #4A4540;
+    --muted: rgba(28, 26, 24, 0.55);
+    --line: rgba(184, 145, 84, 0.25);
+    --line-soft: rgba(28, 26, 24, 0.08);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --focus-ring: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold);
+    --focus-ring-dark: 0 0 0 2px var(--burgundy-deep), 0 0 0 4px var(--gold-warm);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* The horizontal guard has to be `clip`, not `hidden`, and it has to sit on
+     the root as well as the body. `overflow-x: hidden` on body makes body a
+     scrolling container, and iOS Safari then resolves position: fixed against
+     that container instead of the viewport, so the pinned nav rides up the
+     page on a phone while looking perfectly pinned in desktop Chrome. `clip`
+     clips without creating a scroll container, which keeps the nav anchored.
+     Where clip is unsupported the guard falls back to the root only, which is
+     the same reason: never body alone. */
+  html { overflow-x: clip; }
+  body { overflow-x: clip; }
+
+  @supports not (overflow-x: clip) {
+    html { overflow-x: hidden; }
+    body { overflow-x: visible; }
+  }
+
+  ::selection {
+    background: var(--burgundy);
+    color: var(--cream);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Skip to content for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 16px;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 8px 16px;
+    z-index: 100;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* Focus ring */
+  a:focus-visible, button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 2px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     NAV: Same lockup as homepage, but always paper background
+     (no dark/light switching needed since this page is uniformly paper-ish)
+     ═══════════════════════════════════════════════════════════════ */
+  /* Same lockup and palette system as the homepage nav. This page has no
+     video hero behind the bar, so it is always filled. */
+  .skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s ease;
+  }
+  .skip-to-content:focus {
+    top: 16px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--gold);
+  }
+
+  .nav {
+    --nav-bg: var(--paper);
+    --nav-line: rgba(92, 26, 38, 0.14);
+    --nav-ink: var(--burgundy);
+    --nav-quiet: rgba(74, 69, 64, 0.82);
+    --nav-divider: rgba(92, 26, 38, 0.22);
+    --nav-cta: var(--burgundy);
+    --nav-cta-border: rgba(184, 145, 84, 0.75);
+    --nav-cta-fill-ink: var(--paper);
+
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transform: translateZ(0);
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-line);
+  }
+
+  /* Owned by a class, not an inline style. An inline box-shadow outranks the
+     stylesheet, so it survived into the open menu and left a gold hairline
+     hanging across the overlay. */
+  .nav.is-stuck { box-shadow: 0 1px 0 rgba(184, 145, 84, 0.15); }
+
+  /* brand | centred links | actions */
+  .nav-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 17px 40px;
+  }
+
+  .nav-brand {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+  }
+
+  .nav-mark {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--nav-ink);
+    padding-right: 15px;
+    border-right: 1px solid var(--nav-divider);
+  }
+
+  .nav-mark svg {
+    width: auto;
+    height: 44px;
+    display: block;
+  }
+
+  .nav-name {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.34;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--nav-ink);
+  }
+
+  .nav-name-primary { display: block; }
+  .nav-name-secondary { display: block; color: var(--nav-quiet); }
+
+  .nav-links {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 2.5vw, 44px);
+  }
+
+  .nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--nav-quiet);
+    transition: color 0.35s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-current { color: var(--nav-ink); }
+
+  .nav-end {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-give {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--nav-cta);
+    background-color: transparent;
+    border: 1px solid var(--nav-cta-border);
+    border-radius: 999px;
+    padding: 11px 24px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .nav-give:hover {
+    background-color: var(--nav-cta);
+    color: var(--nav-cta-fill-ink);
+    border-color: var(--nav-cta);
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     PAGE HERO: Quiet, editorial. Not the homepage hero.
+     This is the cover of an essay, not a movie poster.
+     ═══════════════════════════════════════════════════════════════ */
+  .page-hero {
+    padding: 178px 0 96px;
+    background: var(--paper);
+    text-align: center;
+    position: relative;
+  }
+
+  .page-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+  }
+
+  .page-hero-eyebrow::before,
+  .page-hero-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .page-hero-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 1.0;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    margin: 0 auto 36px;
+    max-width: 900px;
+  }
+
+  .page-hero-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 60, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .page-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .page-hero-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent 0%, var(--gold) 100%);
+    margin: 80px auto 0;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 1: THE ARC (expanded narrative)
+     Sticky marker on the left, three breathing paragraphs on the right
+     ═══════════════════════════════════════════════════════════════ */
+
+
+  .arc-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  .arc-body p:last-child {
+    font-style: italic;
+    font-size: 23px;
+    color: var(--burgundy);
+    margin-bottom: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 2: THE THREE G's (expanded with deeper exposition)
+     Cream background break + three pillars
+     ═══════════════════════════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════════════════════
+     OUR HISTORY  (absorbed the old Arc and Heritage sections)
+     ═══════════════════════════════════════════════════════════════ */
+  .history { padding: 120px 0 124px; background: var(--paper); }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    gap: clamp(40px, 6vw, 92px);
+    align-items: start;
+  }
+
+  .history-marker { position: sticky; top: 128px; padding-top: 8px; border-top: 2px solid var(--gold); }
+
+  .history-marker-eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-top: 18px;
+  }
+
+  .history-marker-place {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 400, "SOFT" 30, "WONK" 1;
+    font-style: italic; font-size: 40px; line-height: 1; color: var(--burgundy); margin-top: 10px;
+  }
+
+  .history-marker-rule { width: 42px; height: 1px; background: var(--line); margin: 20px 0; }
+
+  .history-marker-address {
+    font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.7; color: var(--ink-soft);
+  }
+
+  .history-eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold);
+  }
+
+  .history-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(32px, 3.8vw, 52px); line-height: 1.06; letter-spacing: -0.018em;
+    color: var(--ink); margin: 20px 0 30px; max-width: 20ch;
+  }
+
+  .history-title em { font-style: italic; color: var(--burgundy); }
+
+  .history-body p {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.62;
+    color: var(--ink-soft); margin: 0 0 20px; max-width: 62ch;
+  }
+
+  .history-body > p:first-of-type { font-size: 22px; color: var(--ink); }
+  .history-body p:last-child { margin-bottom: 0; }
+
+  /* Dated milestones. The year is the anchor, so it hangs in its own column
+     and the entries share a single hairline spine. */
+  .timeline {
+    list-style: none;
+    margin: 40px 0 8px;
+    padding: 0;
+    border-left: 1px solid var(--line);
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 0 24px;
+    padding: 0 0 30px 28px;
+    position: relative;
+  }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .timeline-year {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--burgundy);
+    font-variant-numeric: tabular-nums;
+    padding-top: 4px;
+  }
+  .timeline p {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* Rolls of names: read as records, not as running prose. */
+  .roll {
+    margin: 34px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .roll-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+  .roll-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
+    margin: 0;
+  }
+  .roll-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 12px 0 0;
+  }
+  /* The prose that resumes after a roll needs its own air; the roll's own
+     bottom margin is zero so the rule sits tight to its names. */
+  .roll + p { margin-top: 34px; }
+
+  .history-quote {
+    margin: 40px 0 0;
+    padding: 4px 0 4px 26px;
+    border-left: 2px solid var(--gold);
+  }
+  .history-quote p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.42;
+    color: var(--burgundy);
+    margin: 0 0 10px;
+  }
+  .history-quote footer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .history-credit {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-soft);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .history-body .history-credit { font-size: 12px; }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PASTOR BIO
+     ═══════════════════════════════════════════════════════════════ */
+  .bio { padding: 120px 0 124px; background: #FFFFFF; border-top: 1px solid var(--line-soft); }
+
+  .bio-grid {
+    display: grid; grid-template-columns: 0.78fr 1.22fr;
+    gap: clamp(44px, 6vw, 92px); align-items: start;
+  }
+
+  .bio-portrait-wrap { position: sticky; top: 118px; }
+
+  .bio-portrait { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 2px; background: var(--burgundy-darker); }
+
+  .bio-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+
+  .bio-plate { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+
+  .bio-plate-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 500, "SOFT" 30, "WONK" 0;
+    font-size: 22px; line-height: 1.15; color: var(--ink);
+  }
+
+  .bio-plate-title {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-top: 8px;
+  }
+
+  .bio-facts { margin: 26px 0 0; padding: 0; }
+  .bio-fact { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line-soft); }
+
+  .bio-fact dt {
+    font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .bio-fact dd { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink); text-align: right; }
+
+  .bio-eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold);
+  }
+
+  .bio-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(32px, 3.8vw, 52px); line-height: 1.06;
+    letter-spacing: -0.018em; color: var(--ink); margin: 20px 0 28px;
+  }
+
+  .bio-title em { font-style: italic; color: var(--burgundy); }
+
+  .bio-body p {
+    font-family: 'Cormorant Garamond', serif; font-size: 19.5px; line-height: 1.62;
+    color: var(--ink-soft); margin: 0 0 20px; max-width: 62ch;
+  }
+
+  .bio-body .bio-lead { font-size: 22px; color: var(--ink); }
+
+  .bio-quote { margin: 30px 0; padding: 4px 0 4px 26px; border-left: 2px solid var(--gold); }
+
+  .bio-quote p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 40, "WONK" 1;
+    font-style: italic; font-size: 21px; line-height: 1.42;
+    color: var(--burgundy); margin: 0 0 12px; max-width: 46ch;
+  }
+
+  .bio-quote footer {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .bio-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+  .bio-link {
+    display: inline-flex; align-items: center; gap: 11px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;
+    padding: 15px 30px; border-radius: 1px;
+    border: 1px solid rgba(92, 26, 38, 0.3); color: var(--burgundy);
+    transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease);
+  }
+
+  .bio-link:hover { background-color: rgba(92, 26, 38, 0.06); border-color: var(--burgundy); }
+  .bio-link--primary { background-color: var(--burgundy); border-color: var(--burgundy); color: var(--cream); }
+  .bio-link--primary:hover { background-color: var(--burgundy-deep); border-color: var(--burgundy-deep); color: var(--cream); }
+
+  /* Loose prints. The tilt sits on the figure so the shadow rides with it and
+     each one reads as a physical print rather than a rotated box. */
+  .prints {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: clamp(72px, 9vw, 104px);
+    padding: 24px 0 8px;
+  }
+  .print {
+    margin: 0;
+    background: #FFFFFF;
+    padding: 12px 12px 0;
+    border-radius: 2px;
+    box-shadow: 0 18px 40px rgba(28, 26, 24, 0.16), 0 3px 10px rgba(28, 26, 24, 0.10);
+    width: clamp(200px, 25vw, 268px);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .print-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--burgundy-darker);
+  }
+  .print-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
+  }
+  .print figcaption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 18px 4px 20px;
+  }
+
+  .print--a { transform: rotate(-3.2deg); }
+  .print--b { transform: rotate(1.8deg) translateY(18px); margin-left: -14px; margin-right: -14px; }
+  .print--c { transform: rotate(3.4deg) translateY(6px); }
+  .print:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: 0 26px 56px rgba(28, 26, 24, 0.22), 0 4px 12px rgba(28, 26, 24, 0.12);
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .print, .print:hover { transition: none; }
+  }
+
+
+  @media (max-width: 1024px) {
+    .history-grid, .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .print--b { margin-left: 0; margin-right: 0; }
+    .history-marker, .bio-portrait-wrap { position: static; }
+    .bio-portrait-wrap { max-width: 400px; }
+  }
+
+  @media (max-width: 720px) {
+    .timeline li { grid-template-columns: 1fr; gap: 6px; padding-left: 22px; }
+    .history { padding: 84px 0 88px; }
+    .bio { padding: 84px 0 88px; }
+    .history-marker-place { font-size: 32px; }
+    .bio-links { flex-direction: column; align-items: stretch; }
+    .bio-link { justify-content: center; }
+  }
+
+  .gs {
+    padding: 116px 0;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .gs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .gs-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .gs-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .gs-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .gs-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  /* Culture, mission, vision: the section's whole content, three across. */
+  .gs-statements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 56px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .gs-statement-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .gs-statement p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 48, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 3: THE VISION (four pillars of holistic ministry)
+     Back to paper. 2×2 editorial cards with serif headlines.
+     ═══════════════════════════════════════════════════════════════ */
+  .vision {
+    padding: 116px 0;
+    background: var(--paper);
+  }
+
+  .vision-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .vision-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .vision-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .vision-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .vision-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .vision-card {
+    padding: 48px 44px;
+    background: var(--cream);
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    position: relative;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .vision-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s var(--ease);
+  }
+
+  .vision-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 56px rgba(92, 26, 38, 0.08);
+  }
+
+  .vision-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .vision-card-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .vision-card-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--burgundy);
+    margin-bottom: 18px;
+    letter-spacing: -0.012em;
+  }
+
+  .vision-card-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION 4: LEADERSHIP
+     Pastor Caldwell anchor + space for the team
+     Burgundy background: the team is the heart of the church.
+     ═══════════════════════════════════════════════════════════════ */
+  .leadership {
+    padding: 116px 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 145, 84, 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+    color: var(--cream);
+  }
+
+  .leadership-top {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 96px;
+  }
+
+  .leadership-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+
+  .leadership-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: -0.018em;
+    margin-bottom: 28px;
+  }
+
+  .leadership-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 50, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ── Pastor anchor: centered above the board ─────────── */
+  .leadership-pastor-anchor {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 12px;
+    max-width: 1080px;
+  }
+
+  /* ── Leadership card grid ──────────────────────────────── */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 36px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* Exactly 5 columns for deacons/trustees: tight single row */
+  .leadership-grid--five {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /* Section divider label (e.g. "Deacons & Trustees") */
+  .leadership-section-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1080px;
+    margin: 64px auto 48px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .leadership-section-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 145, 84, 0.25);
+  }
+
+  /* Individual leader card */
+  .leader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .leader-card-photo {
+    width: 160px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #2A0B12 0%, #1A060C 100%);
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .leader-card:hover .leader-card-photo {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+  }
+
+  .leader-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Placeholder photo: shows a subtle person icon */
+  .leader-card-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(184, 145, 84, 0.4);
+  }
+
+  /* Gold L-brackets on the pastor card photo */
+  .leader-card--pastor .leader-card-photo {
+    width: 200px;
+    height: 250px;
+  }
+
+  .leader-card--pastor .leader-card-photo::before,
+  .leader-card--pastor .leader-card-photo::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gold-light);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .leader-card--pastor .leader-card-photo::before {
+    top: -6px;
+    left: -6px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .leader-card--pastor .leader-card-photo::after {
+    bottom: -6px;
+    right: -6px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .leader-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .leader-card-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 40, "WONK" 1;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .leader-card-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  /* Group photograph. A hairline and a soft drop keep it from floating on the
+     burgundy, which has no edge of its own. */
+  .leadership-photo {
+    max-width: 1080px;
+    margin: clamp(56px, 7vw, 84px) auto 0;
+  }
+  .leadership-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    border: 1px solid rgba(184, 145, 84, 0.28);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.38);
+  }
+  .leadership-photo figcaption {
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245, 240, 232, 0.78);
+  }
+
+  .body-cta { text-align: center; margin: 48px 0 0; }
+  .body-cta a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 178, 126, 0.5);
+    padding-bottom: 6px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .body-cta a:hover { color: var(--cream); border-color: var(--cream); }
+
+  /* After the base rules on purpose: an earlier media block loses to a later
+     base rule of equal specificity. */
+  @media (max-width: 1024px) {
+    .gs-statements { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+
+  /* Placeholder when no photo is available */
+
+
+  /* Info area below photo */
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     CTA: Closing invitation, pushes back to homepage actions
+     ═══════════════════════════════════════════════════════════════ */
+  .cta {
+    padding: 124px 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 145, 84, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #1A060C 0%, #0E0307 100%);
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .cta-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+
+  .cta-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 1.0;
+    color: var(--cream);
+    letter-spacing: -0.022em;
+    margin-bottom: 28px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-title em {
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 60, "WONK" 1;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.75);
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+
+  .cta-buttons {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+    background: var(--gold-light);
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    transition: background 0.4s var(--ease), gap 0.3s ease, transform 0.3s ease;
+  }
+
+  .cta-btn-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    gap: 18px;
+  }
+
+  .cta-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border-top: 1px solid rgba(184, 145, 84, 0.4);
+    border-bottom: 1px solid rgba(184, 145, 84, 0.4);
+    transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .cta-btn-secondary:hover {
+    color: var(--cream);
+    gap: 18px;
+    border-color: var(--gold-warm);
+  }
+
+  .cta-arrow {
+    display: inline-block;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .cta-btn-primary:hover .cta-arrow,
+  .cta-btn-secondary:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     FOOTER: minimal, brand-anchored
+     ═══════════════════════════════════════════════════════════════ */
+  .footer {
+    padding: 80px 0 48px;
+    background: var(--burgundy-darker);
+    color: rgba(245, 240, 232, 0.6);
+    position: relative;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(184, 145, 84, 0.15);
+  }
+
+  .footer-brand-mark {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-mark svg {
+    width: 72px;
+    height: auto;
+    display: block;
+  }
+
+  .footer-brand-mark { color: var(--gold); }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .footer-brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(184, 145, 84, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.6);
+    margin: 0;
+  }
+
+  .footer-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col a, .footer-col li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-bottom .gold {
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .footer-merx {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-merx-pre {
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-merx-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-merx-link:hover {
+    color: var(--cream);
+  }
+
+  .footer-merx-icon {
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer-merx-link:hover .footer-merx-icon {
+    transform: rotate(-8deg) scale(1.05);
+  }
+
+  .footer-merx-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     REVEAL ANIMATION (matches homepage system)
+     ═══════════════════════════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     MOBILE
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .container { padding: 0 24px; }
+    .nav-inner { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .nav-inner { grid-template-columns: 1fr auto; padding: 13px 20px; }
+    .nav-mark svg { height: 34px; }
+    .nav-name { font-size: 9px; letter-spacing: 0.1em; }
+
+    .page-hero { padding: 160px 0 80px; }
+    .page-hero-title { font-size: 44px; }
+
+    .arc { padding: 100px 0 120px; }
+    .arc-grid { grid-template-columns: 1fr; gap: 48px; }
+    .arc-marker-wrap { position: static; }
+
+    .gs { padding: 120px 0; }
+
+    .vision { padding: 120px 0; }
+    .vision-grid { grid-template-columns: 1fr; gap: 24px; }
+    .vision-card { padding: 36px 32px; }
+
+    .leadership { padding: 120px 0; }
+    .leadership-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 28px; }
+    /* Two across, not three: the card photo is a fixed 120px at this width,
+       so a 1fr track cannot shrink below it and three of them overflowed the
+       container by 74px, clipping the third card. */
+    .leadership-grid--five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .leader-card-photo { width: 120px; height: 150px; }
+    .leader-card--pastor .leader-card-photo { width: 160px; height: 200px; }
+    .leader-card-name { font-size: 17px; }
+
+
+    .cta { padding: 120px 0; }
+    .cta-buttons { flex-direction: column; gap: 24px; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+  /* ===================================================== */
+  /* MOBILE NAVIGATION (hamburger + overlay menu)          */
+  /* ===================================================== */
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    position: relative;
+  }
+
+  /* The bar takes the nav's own ink, so it is burgundy on the light bar and
+     cream on the dark one. It was hard coded cream with a .scrolled override
+     that nothing sets any more, so once the nav became permanently light the
+     button was cream on cream and invisible at phone widths. */
+  .nav-toggle-bar {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--nav-ink);
+    margin: 0 auto;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease, background 0.3s ease;
+  }
+
+  .nav-toggle.is-open .nav-toggle-bar {
+    background: var(--cream);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  /* With the menu open the bar sits over the overlay rather than the page, so
+     it drops its own fill and switches to cream ink: the lockup and the close
+     X then read as the overlay's own header. The z-index climb is the load
+     bearing part. .nav is a stacking context at z-index 100, so the button's
+     own 1002 was scoped inside it and the overlay at 1001 painted straight
+     over the top, leaving no visible way out of the menu at all. */
+  body.menu-open .nav {
+    z-index: 1002;
+    --nav-bg: transparent;
+    --nav-line: transparent;
+    --nav-ink: var(--cream);
+    --nav-quiet: rgba(245, 240, 232, 0.72);
+    --nav-divider: rgba(184, 145, 84, 0.42);
+    box-shadow: none;
+  }
+
+  /* .nav--dark.is-stuck carries one more class than the rule above, so its
+     shadow needs answering on its own terms. */
+  body.menu-open .nav.is-stuck { box-shadow: none; }
+
+  /* Wider tap target for the X than the 44px button gives on its own. */
+  .nav-toggle.is-open { width: 48px; }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: linear-gradient(160deg, var(--burgundy-deep) 0%, var(--burgundy-darker) 100%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .mobile-menu-link {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: 34px;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 14px 0;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  }
+
+  .mobile-menu.is-open .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu.is-open .mobile-menu-link:nth-child(1) { transition-delay: 0.08s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(2) { transition-delay: 0.14s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(3) { transition-delay: 0.20s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(4) { transition-delay: 0.26s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(5) { transition-delay: 0.32s; }
+  .mobile-menu.is-open .mobile-menu-link:nth-child(6) { transition-delay: 0.38s; }
+
+  .mobile-menu-link:active {
+    color: var(--gold-light);
+  }
+
+  .mobile-menu-give {
+    margin-top: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+    background: var(--gold);
+    text-decoration: none;
+    padding: 18px 48px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease 0.44s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.44s;
+  }
+
+  .mobile-menu.is-open .mobile-menu-give {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-toggle { display: flex; }
+    .nav-give { display: none; }
+  }
+
+  /* The buttons are inline-flex inside a <p>, so the paragraph's line-height
+     was stacking them on top of each other. */
+  .notfound-links {
+    margin-top: 52px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+  }
+
+  /* PRIVACY: reading column inside the centred page hero */
+  .privacy-body {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .privacy-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+
+  .privacy-body p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-to-content">Skip to content</a>
+
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- NAV                                                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" aria-label="Mount Moriah First Missionary Baptist Church · Home">
+      <div class="nav-mark">
+        <svg viewBox="0 0 100 80.94" fill="currentColor" role="img"
+             aria-label="Mt. Moriah identity mark" xmlns="http://www.w3.org/2000/svg">
+          <path d="M51.26,80.94 50.36,80.49 48.51,80.72 48.21,79.90 50.22,77.05 53.36,71.16 55.38,68.30 56.95,65.11 58.74,62.47 59.64,60.40 61.66,57.54 63.00,54.79 66.14,49.92 66.82,48.29 68.16,46.55 68.83,44.93 69.73,43.86 70.18,42.68 75.34,34.22 74.89,32.60 65.02,16.51 64.35,14.94 70.63,4.12 71.22,3.81 76.91,13.09 77.58,14.71 78.48,15.78 79.37,17.85 80.27,18.92 81.17,20.77 81.84,21.38 82.29,22.56 87.22,30.35 87.89,31.98 88.57,32.60 94.62,42.97 95.29,43.58 95.96,45.21 97.31,46.95 99.33,50.81 100.00,51.43 100.00,52.16 94.39,61.80 93.36,62.78 88.57,55.52 85.87,50.76 84.08,48.35 83.41,46.72 82.60,45.96 81.61,47.17 80.49,49.47 79.82,50.08 79.82,50.59 78.70,52.10 78.25,53.28 76.46,55.69 73.99,60.23 69.73,66.68 69.28,67.85 68.61,68.47 68.16,69.65 67.26,70.71 61.88,79.96 61.35,80.49 57.71,80.49 57.54,80.72 53.45,80.49 51.26,80.94Z"/>
+          <path d="M39.83,80.72 39.24,80.41 34.98,72.51 33.10,70.63 31.98,69.96 28.78,69.96 27.72,70.85 26.54,71.08 25.70,71.97 24.75,72.42 24.36,73.09 23.40,73.54 19.20,78.03 18.39,77.83 24.22,68.08 24.89,66.45 27.58,62.47 31.61,55.24 33.41,52.83 34.30,50.76 35.29,49.55 35.65,49.64 36.55,51.49 37.44,52.55 39.46,56.64 40.13,56.42 42.15,52.55 45.29,47.67 45.96,46.05 46.64,45.43 46.64,44.93 54.26,32.20 55.61,29.46 56.73,27.94 62.11,18.02 63.14,17.04 70.63,29.74 72.20,31.92 72.87,33.21 72.65,34.22 66.28,44.84 65.55,45.07 63.68,41.79 63.37,41.48 62.78,41.79 58.52,49.47 56.95,51.65 56.28,53.28 52.47,59.28 45.29,72.34 43.05,75.64 42.15,77.72 40.58,80.18 39.83,80.72Z"/>
+          <path d="M0.81,80.94 0.00,80.41 0.00,79.90 6.05,69.82 7.40,68.08 7.62,67.12 9.19,64.94 9.87,63.31 10.54,62.70 11.21,61.07 13.45,57.76 15.47,53.90 16.37,52.83 18.16,49.19 20.18,46.33 20.85,44.70 24.44,39.15 29.60,29.90 34.75,21.66 35.43,20.04 37.36,17.26 48.88,36.41 48.88,37.14 48.21,38.48 46.86,40.22 46.41,41.40 45.52,42.46 44.62,44.31 43.95,44.93 43.95,45.43 42.29,47.98 41.79,47.98 41.26,47.45 39.01,43.36 38.12,42.29 38.12,41.79 37.81,41.48 37.00,41.79 36.55,42.97 34.53,45.82 32.06,50.36 30.04,53.22 29.60,54.40 28.92,55.02 28.25,56.64 24.44,62.42 20.63,69.20 19.96,69.82 19.96,70.32 13.82,80.49 13.37,80.72 0.98,80.72 0.81,80.94Z"/>
+          <path d="M68.75,80.94 67.40,80.72 64.66,80.94 64.13,80.63 64.13,79.90 82.88,49.78 84.75,53.28 85.87,54.57 86.32,55.75 87.22,56.81 91.26,63.82 95.96,71.16 97.76,74.58 98.65,75.64 100.00,78.11 100.00,78.67 99.24,78.03 98.74,78.03 97.00,75.78 94.93,74.66 94.09,73.54 92.01,72.65 91.62,72.20 88.93,71.30 86.86,71.30 84.39,72.20 81.61,74.75 77.94,80.72 72.28,80.49 72.11,80.72 68.92,80.72 68.75,80.94Z"/>
+          <path d="M50.14,33.63 49.55,33.32 49.33,32.60 47.76,30.63 39.46,16.96 39.46,16.45 39.83,16.37 41.79,18.61 42.74,19.06 46.19,22.39 46.41,21.66 46.19,20.77 46.41,11.29 46.10,10.76 40.67,10.76 40.22,10.54 39.91,10.23 39.91,6.81 40.22,6.50 46.10,6.50 46.41,4.85 46.19,2.33 46.41,2.16 46.41,0.31 46.72,0.00 49.92,0.00 50.22,0.31 50.31,6.50 56.19,6.50 56.50,6.81 56.50,10.23 55.97,10.76 51.65,10.54 50.22,11.07 50.14,33.63Z"/>
+        </svg>
+      </div>
+      <span class="nav-name">
+        <span class="nav-name-primary">Mount Moriah</span>
+        <span class="nav-name-secondary">First Missionary Baptist Church</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html#visit" class="nav-link" data-mx-event="plan_visit_click">Visit</a>
+      <a href="get-involved.html" class="nav-link">Get Involved</a>
+      <a href="index.html#sermons" class="nav-link">Sermons</a>
+      <a href="index.html#events" class="nav-link">Events</a>
+    </nav>
+
+    <div class="nav-end">
+      <a href="index.html#give" class="nav-give">
+        Giving
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+
+    <!-- Mobile hamburger toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation">
+    <a class="mobile-menu-link" href="index.html">Home</a>
+    <a class="mobile-menu-link" href="about.html">About</a>
+    <a class="mobile-menu-link" href="index.html#visit" data-mx-event="plan_visit_click">Visit</a>
+    <a class="mobile-menu-link" href="get-involved.html">Get Involved</a>
+    <a class="mobile-menu-link" href="index.html#sermons">Sermons</a>
+    <a class="mobile-menu-link" href="index.html#events">Events</a>
+    <a class="mobile-menu-give" href="index.html#give">Giving</a>
+  </nav>
+</div>
+
+<main id="main">
+  <section class="page-hero" style="padding-top: clamp(180px, 22vh, 260px); padding-bottom: clamp(120px, 16vh, 200px);">
+    <div class="container">
+      <h1 class="page-hero-title">Privacy</h1>
+      <div class="privacy-body">
+        <p>This site uses Merx Analytics to understand how visitors use it. Merx Analytics does not use cookies, does not store IP addresses, and does not follow you across other websites. It records the pages visited, links and buttons clicked, whether a form was submitted (never what was written in it), the website that referred you, your general device, browser, and screen size, and your approximate location (city, state, or country). This information is used only in aggregate to improve the site.</p>
+        <p>What you write in a form on this site, such as planning a visit, taking a next step, or offering to serve, is used only by Mt. Moriah to follow up with you.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                           -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">
+          <svg viewBox="0 0 100 80.94" fill="currentColor" role="img"
+               aria-label="Mt. Moriah identity mark" xmlns="http://www.w3.org/2000/svg">
+            <path d="M51.26,80.94 50.36,80.49 48.51,80.72 48.21,79.90 50.22,77.05 53.36,71.16 55.38,68.30 56.95,65.11 58.74,62.47 59.64,60.40 61.66,57.54 63.00,54.79 66.14,49.92 66.82,48.29 68.16,46.55 68.83,44.93 69.73,43.86 70.18,42.68 75.34,34.22 74.89,32.60 65.02,16.51 64.35,14.94 70.63,4.12 71.22,3.81 76.91,13.09 77.58,14.71 78.48,15.78 79.37,17.85 80.27,18.92 81.17,20.77 81.84,21.38 82.29,22.56 87.22,30.35 87.89,31.98 88.57,32.60 94.62,42.97 95.29,43.58 95.96,45.21 97.31,46.95 99.33,50.81 100.00,51.43 100.00,52.16 94.39,61.80 93.36,62.78 88.57,55.52 85.87,50.76 84.08,48.35 83.41,46.72 82.60,45.96 81.61,47.17 80.49,49.47 79.82,50.08 79.82,50.59 78.70,52.10 78.25,53.28 76.46,55.69 73.99,60.23 69.73,66.68 69.28,67.85 68.61,68.47 68.16,69.65 67.26,70.71 61.88,79.96 61.35,80.49 57.71,80.49 57.54,80.72 53.45,80.49 51.26,80.94Z"/>
+            <path d="M39.83,80.72 39.24,80.41 34.98,72.51 33.10,70.63 31.98,69.96 28.78,69.96 27.72,70.85 26.54,71.08 25.70,71.97 24.75,72.42 24.36,73.09 23.40,73.54 19.20,78.03 18.39,77.83 24.22,68.08 24.89,66.45 27.58,62.47 31.61,55.24 33.41,52.83 34.30,50.76 35.29,49.55 35.65,49.64 36.55,51.49 37.44,52.55 39.46,56.64 40.13,56.42 42.15,52.55 45.29,47.67 45.96,46.05 46.64,45.43 46.64,44.93 54.26,32.20 55.61,29.46 56.73,27.94 62.11,18.02 63.14,17.04 70.63,29.74 72.20,31.92 72.87,33.21 72.65,34.22 66.28,44.84 65.55,45.07 63.68,41.79 63.37,41.48 62.78,41.79 58.52,49.47 56.95,51.65 56.28,53.28 52.47,59.28 45.29,72.34 43.05,75.64 42.15,77.72 40.58,80.18 39.83,80.72Z"/>
+            <path d="M0.81,80.94 0.00,80.41 0.00,79.90 6.05,69.82 7.40,68.08 7.62,67.12 9.19,64.94 9.87,63.31 10.54,62.70 11.21,61.07 13.45,57.76 15.47,53.90 16.37,52.83 18.16,49.19 20.18,46.33 20.85,44.70 24.44,39.15 29.60,29.90 34.75,21.66 35.43,20.04 37.36,17.26 48.88,36.41 48.88,37.14 48.21,38.48 46.86,40.22 46.41,41.40 45.52,42.46 44.62,44.31 43.95,44.93 43.95,45.43 42.29,47.98 41.79,47.98 41.26,47.45 39.01,43.36 38.12,42.29 38.12,41.79 37.81,41.48 37.00,41.79 36.55,42.97 34.53,45.82 32.06,50.36 30.04,53.22 29.60,54.40 28.92,55.02 28.25,56.64 24.44,62.42 20.63,69.20 19.96,69.82 19.96,70.32 13.82,80.49 13.37,80.72 0.98,80.72 0.81,80.94Z"/>
+            <path d="M68.75,80.94 67.40,80.72 64.66,80.94 64.13,80.63 64.13,79.90 82.88,49.78 84.75,53.28 85.87,54.57 86.32,55.75 87.22,56.81 91.26,63.82 95.96,71.16 97.76,74.58 98.65,75.64 100.00,78.11 100.00,78.67 99.24,78.03 98.74,78.03 97.00,75.78 94.93,74.66 94.09,73.54 92.01,72.65 91.62,72.20 88.93,71.30 86.86,71.30 84.39,72.20 81.61,74.75 77.94,80.72 72.28,80.49 72.11,80.72 68.92,80.72 68.75,80.94Z"/>
+            <path d="M50.14,33.63 49.55,33.32 49.33,32.60 47.76,30.63 39.46,16.96 39.46,16.45 39.83,16.37 41.79,18.61 42.74,19.06 46.19,22.39 46.41,21.66 46.19,20.77 46.41,11.29 46.10,10.76 40.67,10.76 40.22,10.54 39.91,10.23 39.91,6.81 40.22,6.50 46.10,6.50 46.41,4.85 46.19,2.33 46.41,2.16 46.41,0.31 46.72,0.00 49.92,0.00 50.22,0.31 50.31,6.50 56.19,6.50 56.50,6.81 56.50,10.23 55.97,10.76 51.65,10.54 50.22,11.07 50.14,33.63Z"/>
+          </svg>
+        </div>
+        <div class="footer-brand-name">Mt. Moriah</div>
+        <div class="footer-brand-sub">First Missionary Baptist Church</div>
+        <p class="footer-brand-motto">A Place of Grace, Growth and Gratitude.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>302 South Tenth Street</li>
+          <li>Quincy, Florida 32351</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Worship</h4>
+        <ul>
+          <li>Sundays &middot; 11:00 AM</li>
+          <li>Bible Study &middot; Wed 7:00 PM</li>
+          <li>(850) 627-7244</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Mt. Moriah First Missionary Baptist Church</span>
+      <span class="footer-merx">
+        <span class="footer-merx-pre">Crafted by</span>
+        <a href="#" class="footer-merx-link" target="_blank" rel="noopener noreferrer">
+          <svg width="28" height="28" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Merx Studios" class="footer-merx-icon"><rect x="6" y="6" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 42 L14 18 L21 18 L28 30 L35 18 L42 18 L42 42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/></svg>
+          <span class="footer-merx-name">Merx Studios</span>
+        </a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── REVEAL ANIMATIONS ─────────────────────────────────────────
+  (function initReveals() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+
+  // ─── NAV SHADOW ON SCROLL ──────────────────────────────────────
+  // Background is owned by CSS now. This used to write a translucent fill
+  // inline, which beat the stylesheet and kept the bar see through.
+  (function initNavScroll() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    function onScroll() {
+      nav.classList.toggle('is-stuck', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // ─── MOBILE MENU TOGGLE ─────────────────────────────────────────────
+  (function initMobileMenu() {
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+
+    var links = menu.querySelectorAll('a');
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      toggle.classList.add('is-open');
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      document.body.classList.remove('menu-open');
+    }
+
+    toggle.addEventListener('click', function() {
+      if (menu.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    links.forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // The lockup stays visible above the overlay and doubles as the way home.
+    // It lives in the nav, not the overlay, so the loop above never saw it,
+    // and on the homepage it only scrolls, which would have left the menu up.
+    var brand = document.querySelector('.nav-brand');
+    if (brand) brand.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Merx Analytics: cookieless and first party (see the privacy page). Plain tags on purpose:
+     the daily tag check reads the served HTML. -->
+<script>window.mx=window.mx||function(){(window.mx.q=window.mx.q||[]).push(arguments)}</script>
+<script defer src="https://a.merxstudios.com/m.js" data-site="6754emx8pu6oaiun"></script>
 <title>Get Involved · Mt. Moriah First Missionary Baptist Church</title>
 
 <meta name="description" content="Take your next step at Mt. Moriah in Quincy, Florida. Follow Christ, request prayer, be baptized, become a member, or find your place to serve in one of our ministries.">
@@ -1486,7 +1490,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="about.html" class="nav-link">About</a>
-      <a href="index.html#visit" class="nav-link">Visit</a>
+      <a href="index.html#visit" class="nav-link" data-mx-event="plan_visit_click">Visit</a>
       <a href="get-involved.html" class="nav-link is-current">Get Involved</a>
       <a href="index.html#sermons" class="nav-link">Sermons</a>
       <a href="index.html#events" class="nav-link">Events</a>
@@ -1512,7 +1516,7 @@
   <nav class="mobile-menu-links" aria-label="Mobile navigation">
     <a class="mobile-menu-link" href="index.html">Home</a>
     <a class="mobile-menu-link" href="about.html">About</a>
-    <a class="mobile-menu-link" href="index.html#visit">Visit</a>
+    <a class="mobile-menu-link" href="index.html#visit" data-mx-event="plan_visit_click">Visit</a>
     <a class="mobile-menu-link" href="get-involved.html">Get Involved</a>
     <a class="mobile-menu-link" href="index.html#sermons">Sermons</a>
     <a class="mobile-menu-link" href="index.html#events">Events</a>
@@ -1805,6 +1809,7 @@
         <h4>Connect</h4>
         <ul>
           <li><a href="https://www.facebook.com/profile.php?id=61580674044989" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
         </ul>
       </div>
     </div>
@@ -1901,7 +1906,9 @@
 
       // In a real implementation, POST to the church's pastoral endpoint here:
       //   fetch('/api/next-step', { method: 'POST', body: new FormData(form) })
-      // For now, we just show the confirmation state.
+      // For now, we just show the confirmation state. When the POST is wired,
+      // move the analytics call below into its success handler.
+      if (window.mx) window.mx('event', 'form_submit', { form: 'next_step' });
 
       confirmEl.textContent = 'Thank you, ' + name.split(' ')[0] +
         '. A pastor or team member will reach out to you personally and soon.';
@@ -1985,6 +1992,7 @@
       var firstName = name.split(' ')[0];
 
       function succeed() {
+        if (window.mx) window.mx('event', 'form_submit', { form: 'serve' });
         status.textContent = 'Thank you, ' + firstName +
           '. A ministry leader will reach out about serving with ' + select.value + '.';
         status.className = 'serve-status is-shown';
