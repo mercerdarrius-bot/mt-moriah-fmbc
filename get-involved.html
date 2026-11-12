@@ -1604,28 +1604,12 @@
             </select>
           </div>
 
-          <div class="next-field-row">
-            <div class="visit-field">
-              <label for="nf-name" class="visit-field-label">Your name</label>
-              <input type="text" id="nf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
-            </div>
-            <div class="visit-field">
-              <label for="nf-contact" class="visit-field-label">Email or phone</label>
-              <input type="text" id="nf-contact" name="contact" class="visit-field-input" required autocomplete="email" placeholder="How we reach you">
-            </div>
-          </div>
-
-          <div class="visit-field">
-            <label for="nf-notes" class="visit-field-label">Anything you'd like to share? <span class="next-opt">optional</span></label>
-            <textarea id="nf-notes" name="notes" rows="3" class="visit-field-input" placeholder="Where you are on your journey, questions you have, or how we can help."></textarea>
-          </div>
-
           <button type="submit" class="visit-form-submit">
             <span>Take this step</span>
             <span class="visit-form-arrow">&rarr;</span>
           </button>
 
-          <p class="next-form-note">Shared only with our pastoral team. We will reach out personally.</p>
+          <p class="next-form-note">On the next page, tell us how to reach you. Shared only with our church team. We will reach out personally.</p>
         </form>
 
         <p class="next-confirm" id="nextConfirm" role="status" aria-live="polite"></p>
@@ -1738,31 +1722,12 @@
         </select>
       </div>
 
-      <div class="next-field-row">
-        <div class="visit-field">
-          <label for="sf-name" class="visit-field-label">Your name</label>
-          <input type="text" id="sf-name" name="name" class="visit-field-input" required
-                 autocomplete="name" placeholder="First and last name">
-        </div>
-        <div class="visit-field">
-          <label for="sf-contact" class="visit-field-label">Email or phone</label>
-          <input type="text" id="sf-contact" name="contact" class="visit-field-input" required
-                 autocomplete="email" placeholder="How we reach you">
-        </div>
-      </div>
-
-      <div class="visit-field">
-        <label for="sf-notes" class="visit-field-label">Anything we should know? <span class="next-opt">optional</span></label>
-        <textarea id="sf-notes" name="notes" rows="3" class="visit-field-input"
-                  placeholder="Your experience, your availability, or questions you have."></textarea>
-      </div>
-
       <button type="submit" class="visit-form-submit">
         <span>Send my interest</span>
         <span class="visit-form-arrow">&rarr;</span>
       </button>
 
-      <p class="next-form-note">Shared only with our ministry leaders.</p>
+      <p class="next-form-note">On the next page, tell us how to reach you. Shared only with our church team.</p>
     </form>
 
     <p class="serve-status" id="serveStatus" role="status" aria-live="polite"></p>
@@ -1869,8 +1834,8 @@
   // ─── NEXT STEPS ─────────────────────────────────────────────────────
   // The four cards are a picker for the form below rather than four dead
   // ends: choosing one sets the select and moves focus there, so the whole
-  // section reads as a single flow. Submission is front end only, exactly
-  // like the visit form, and needs a real endpoint before launch.
+  // section reads as a single flow. The button opens the church app's own
+  // form for that step (prayer, or a next step), which reaches the church team.
   (function initNextSteps() {
     var form = document.getElementById('nextForm');
     var confirmEl = document.getElementById('nextConfirm');
@@ -1899,37 +1864,31 @@
       });
     });
 
+    // The step opens the church app's own form (its Pray page), which reaches the church team.
+    var APP = 'https://steeple-one.vercel.app';
+    var TOPIC = {
+      'Follow Christ': 'I want to follow Christ',
+      'Be baptized': "I'm ready to be baptized",
+      'Become a member': "I'd like to become a member",
+      'I am not sure yet': "I'm not sure of my next step yet"
+    };
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var name = form.querySelector('[name="name"]').value.trim();
-      var contact = form.querySelector('[name="contact"]').value.trim();
-      if (!name || !contact) return;
-
-      // In a real implementation, POST to the church's pastoral endpoint here:
-      //   fetch('/api/next-step', { method: 'POST', body: new FormData(form) })
-      // For now, we just show the confirmation state. When the POST is wired,
-      // move the analytics call below into its success handler.
+      var step = select.value;
       if (window.mx) window.mx('event', 'form_submit', { form: 'next_step' });
-
-      confirmEl.textContent = 'Thank you, ' + name.split(' ')[0] +
-        '. A pastor or team member will reach out to you personally and soon.';
-      confirmEl.classList.add('visible');
-      form.classList.add('confirmed');
-      confirmEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      window.location.href = step === 'Request prayer'
+        ? APP + '/pray'
+        : APP + '/pray?kind=next_step&topic=' + encodeURIComponent(TOPIC[step] || step);
     });
   })();
 
 
   // ─── SERVE INTEREST DIALOG ──────────────────────────────────────────
   // Each team box opens this with its own team preselected. Submission goes
-  // to a real endpoint so the church is actually notified; set SERVE_ENDPOINT
-  // below to a Web3Forms access key (or swap the fetch for your own handler).
-  // Until that key is set the form does NOT claim success, it tells the
-  // visitor to call instead, because a confirmation for a message that was
-  // never sent is worse than no form at all.
+  // opens the church app's own form (its Pray page, a next step) naming the
+  // team, which reaches the church team.
   (function initServeInterest() {
-    var SERVE_ENDPOINT_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
-    var CHURCH_PHONE = '(850) 627-7244';
+    var APP = 'https://steeple-one.vercel.app';
 
     var modal  = document.getElementById('serveModal');
     var form   = document.getElementById('serveForm');
@@ -1954,8 +1913,7 @@
       modal.hidden = false;
       document.body.classList.add('serve-open');
       window.setTimeout(function() {
-        var first = form.querySelector('[name="name"]');
-        if (first) first.focus();
+        if (select) select.focus();
       }, 60);
     }
 
@@ -1986,42 +1944,10 @@
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var name    = form.querySelector('[name="name"]').value.trim();
-      var contact = form.querySelector('[name="contact"]').value.trim();
-      if (!name || !contact) return;
-
-      var firstName = name.split(' ')[0];
-
-      function succeed() {
-        if (window.mx) window.mx('event', 'form_submit', { form: 'serve' });
-        status.textContent = 'Thank you, ' + firstName +
-          '. A ministry leader will reach out about serving with ' + select.value + '.';
-        status.className = 'serve-status is-shown';
-        form.classList.add('is-done');
-      }
-
-      function fail() {
-        status.textContent = 'We could not send that just now. Please call us at ' +
-          CHURCH_PHONE + ' and we will get you connected.';
-        status.className = 'serve-status is-shown is-error';
-      }
-
-      if (SERVE_ENDPOINT_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        console.warn('[serve] No endpoint configured, so nothing was sent. ' +
-                     'Set SERVE_ENDPOINT_KEY in this file to start receiving these.');
-        fail();
-        return;
-      }
-
-      var payload = new FormData(form);
-      payload.append('access_key', SERVE_ENDPOINT_KEY);
-      payload.append('subject', 'New serving interest from the website');
-      payload.append('from_name', 'Mt. Moriah website');
-
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: payload })
-        .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
-        .then(function(d) { d && d.success ? succeed() : fail(); })
-        .catch(fail);
+      var team = select.value;
+      var topic = team === 'Wherever I am needed' ? "I'd like to serve wherever I am needed" : "I'd like to serve with the " + team;
+      if (window.mx) window.mx('event', 'form_submit', { form: 'serve' });
+      window.location.href = APP + '/pray?kind=next_step&topic=' + encodeURIComponent(topic);
     });
   })();
 

@@ -1500,6 +1500,7 @@
 
   /* ── Submit button ────────────────────────────────────────── */
   .visit-form-submit {
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 14px;
@@ -4693,7 +4694,9 @@
 
       <!-- RIGHT: Hospitality form -->
       <div class="visit-form-wrap reveal reveal-delay-1">
-        <form class="visit-form" id="visitForm" novalidate>
+        <!-- Plan Your Visit opens the church app's own form, which reaches the
+             hospitality team and the Welcome station on Sunday. -->
+        <div class="visit-form" id="visitPlan">
           <div class="visit-form-eyebrow">A Note to Our Hospitality Team</div>
           <h3 class="visit-form-title">
             Let us know <em>you're coming.</em>
@@ -4702,55 +4705,13 @@
             We'll be ready to greet you personally and save you a seat.
           </p>
 
-          <div class="visit-field">
-            <label for="vf-name" class="visit-field-label">Your name</label>
-            <input type="text" id="vf-name" name="name" class="visit-field-input" required autocomplete="name" placeholder="First and last name">
-          </div>
-
-          <div class="visit-field">
-            <label for="vf-party" class="visit-field-label">How many of you?</label>
-            <select id="vf-party" name="party" class="visit-field-input visit-field-select" required>
-              <option value="" disabled selected>Select party size</option>
-              <option value="1">Just me</option>
-              <option value="2">Two of us</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-              <option value="5">Five</option>
-              <option value="6+">Six or more</option>
-            </select>
-          </div>
-
-          <div class="visit-field">
-            <label for="vf-date" class="visit-field-label">Which Sunday?</label>
-            <input type="date" id="vf-date" name="date" class="visit-field-input" required>
-          </div>
-
-          <button type="submit" class="visit-form-submit">
+          <a href="https://steeple-one.vercel.app/visit/plan" class="visit-form-submit">
             <span>Save my seat</span>
             <span class="visit-form-arrow">&rarr;</span>
-          </button>
+          </a>
 
           <p class="visit-form-note">
-            We'll never share your information. This goes straight to our hospitality team.
-          </p>
-        </form>
-
-        <!-- Confirmation state: hidden until form submit -->
-        <div class="visit-confirm" id="visitConfirm" aria-hidden="true">
-          <div class="visit-confirm-mark">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              <path d="M14 24 L21 31 L34 17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 class="visit-confirm-title">
-            We'll see you Sunday, <em><span id="visitConfirmName">friend</span>.</em>
-          </h3>
-          <p class="visit-confirm-body">
-            Look for our hospitality team at the welcome table. We've saved a seat for you and your <span id="visitConfirmParty">party</span>.
-          </p>
-          <p class="visit-confirm-meta">
-            Sundays at 11 AM &middot; 302 South Tenth Street, Quincy FL
+            Tell us which Sunday and who is coming. It goes straight to our hospitality team.
           </p>
         </div>
       </div>
@@ -5115,58 +5076,6 @@
 
     // Initialize
     updateCarousel();
-  })();
-
-
-  // ─── VISIT FORM: Hospitality submission ─────────────────────────
-  (function initVisitForm() {
-    const form = document.getElementById('visitForm');
-    if (!form) return;
-
-    const wrap = form.closest('.visit-form-wrap');
-    const confirm = document.getElementById('visitConfirm');
-    const nameOut = document.getElementById('visitConfirmName');
-    const partyOut = document.getElementById('visitConfirmParty');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = form.querySelector('[name="name"]').value.trim();
-      const party = form.querySelector('[name="party"]').value;
-      const date = form.querySelector('[name="date"]').value;
-
-      if (!name || !party || !date) return;
-
-      // Extract first name only for the warm greeting
-      const firstName = name.split(' ')[0];
-      nameOut.textContent = firstName;
-
-      // Format party text naturally
-      let partyText = 'guest';
-      if (party === '1') partyText = 'guest';
-      else if (party === '2') partyText = 'guest';
-      else if (party === '6+') partyText = 'group';
-      else partyText = 'group';
-      partyOut.textContent = partyText;
-
-      // In a real implementation, POST to the church's hospitality endpoint here:
-      //   fetch('/api/visit', { method: 'POST', body: new FormData(form) })
-      // For now, we just show the confirmation state. When the POST is wired,
-      // move the analytics call below into its success handler.
-      if (window.mx) window.mx('event', 'form_submit', { form: 'visit' });
-
-      wrap.classList.add('confirmed');
-      confirm.classList.add('visible');
-      confirm.setAttribute('aria-hidden', 'false');
-      confirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-
-    // Set min date on the date input to today
-    const dateInput = form.querySelector('[name="date"]');
-    if (dateInput) {
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
-    }
   })();
 
 
