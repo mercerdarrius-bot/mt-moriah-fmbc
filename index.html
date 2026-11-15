@@ -1643,6 +1643,127 @@
     display: none;
   }
 
+  /* ── Plan Your Visit: the people, choices and messages ───── */
+  .visit-form fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 24px 0;
+    min-width: 0;
+  }
+
+  .visit-person {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 20px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px dashed rgba(92, 26, 38, 0.15);
+  }
+
+  .visit-person .visit-field-input { font-size: 18px; }
+
+  .visit-person-extra {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 44px;
+  }
+
+  .visit-age {
+    width: 84px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+  }
+
+  .visit-remove {
+    margin-left: auto;
+  }
+
+  .visit-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .visit-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--burgundy);
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .visit-add,
+  .visit-remove {
+    background: none;
+    border: 0;
+    padding: 10px 0;
+    min-height: 44px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--burgundy);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(92, 26, 38, 0.35);
+  }
+
+  .visit-add:hover,
+  .visit-remove:hover { text-decoration-color: var(--burgundy); }
+
+  .visit-field-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+
+  .visit-field-area {
+    resize: vertical;
+    min-height: 64px;
+  }
+
+  .visit-form-error {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #8e1b1b;
+    background: rgba(142, 27, 27, 0.06);
+    border-left: 2px solid #8e1b1b;
+    padding: 10px 14px;
+    margin: -8px 0 24px 0;
+  }
+
+  .visit-form-error a { color: inherit; }
+
+  .visit-field-input[aria-invalid="true"] { border-bottom-color: #8e1b1b; }
+
+  .visit-form-submit[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+  }
+
+  /* the honeypot: off screen for people, still there for bots */
+  .visit-hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 520px) {
+    .visit-person,
+    .visit-field-pair { grid-template-columns: 1fr; }
+  }
+
 
   /* ════════════════════════════════════════════════════════════
      PASTOR: Editorial profile spread
@@ -2445,19 +2566,6 @@
   .give-btn--givelify:hover {
     background: var(--burgundy-deep);
     border-color: var(--burgundy-deep);
-  }
-
-  /* Cash App: outlined secondary button */
-  .give-btn--cashapp {
-    background: transparent;
-    color: var(--burgundy);
-    border: 1.5px solid var(--gold);
-  }
-
-  .give-btn--cashapp:hover {
-    background: var(--burgundy);
-    color: var(--cream);
-    border-color: var(--burgundy);
   }
 
 
@@ -4598,22 +4706,15 @@
       </h2>
 
       <p class="give-subtitle reveal reveal-delay-2">
-        Choose how you would like to give.
+        Give online through Givelify, or in the offering at any service.
       </p>
 
       <div class="give-buttons reveal reveal-delay-3">
-        <a href="#" class="give-btn give-btn--givelify" data-mx-event="give_click" aria-label="Give with Givelify">
+        <a href="https://www.givelify.com/donate/mt-moriah-first-missionary-baptist-church-quincy-fl-2j7wy5MTk0OTE0OQ==/donation/amount" target="_blank" rel="noopener" class="give-btn give-btn--givelify" data-mx-event="give_click" aria-label="Give with Givelify (opens Givelify)">
           <svg class="give-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
           </svg>
           <span class="give-btn-label">Givelify</span>
-        </a>
-
-        <a href="#" class="give-btn give-btn--cashapp" data-mx-event="give_click" aria-label="Give with Cash App">
-          <svg class="give-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-1h-1c-1.1 0-2-.9-2-2h2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1 0-.55-.36-.81-.9-.95l-2.2-.55C9.48 12.05 8.5 11.11 8.5 9.5c0-1.3.89-2.4 2.5-2.45V6h2v1.05c1.13.13 2 .9 2.22 2.95h-2c-.12-.55-.55-1-1.22-1h-1c-.55 0-1 .45-1 1 0 .44.36.69.9.83l2.2.55C14.52 11.95 15.5 12.89 15.5 14.5c0 1.3-.89 2.4-2.5 2.45V18z" fill="currentColor"/>
-          </svg>
-          <span class="give-btn-label">Cash App</span>
         </a>
       </div>
     </div>
@@ -4694,9 +4795,9 @@
 
       <!-- RIGHT: Hospitality form -->
       <div class="visit-form-wrap reveal reveal-delay-1">
-        <!-- Plan Your Visit opens the church app's own form, which reaches the
-             hospitality team and the Welcome station on Sunday. -->
-        <div class="visit-form" id="visitPlan">
+        <!-- Plan Your Visit: sent straight to the church's console (the app's /api/visit/plan),
+             where the hospitality team sees the family and the Sunday station expects them. -->
+        <form class="visit-form" id="visitForm" novalidate>
           <div class="visit-form-eyebrow">A Note to Our Hospitality Team</div>
           <h3 class="visit-form-title">
             Let us know <em>you're coming.</em>
@@ -4705,13 +4806,74 @@
             We'll be ready to greet you personally and save you a seat.
           </p>
 
-          <a href="https://app.mtmoriahquincy.org/visit/plan" class="visit-form-submit">
-            <span>Save my seat</span>
+          <p class="visit-form-error" id="visitError" role="alert" hidden></p>
+
+          <div class="visit-field">
+            <label for="vf-sunday" class="visit-field-label">Which Sunday?</label>
+            <select id="vf-sunday" name="serviceDate" class="visit-field-input visit-field-select" required disabled>
+              <option value="">Loading the coming Sundays</option>
+            </select>
+          </div>
+
+          <fieldset class="visit-field visit-people">
+            <legend class="visit-field-label">Who is coming?</legend>
+            <div id="visitPeople"></div>
+            <button type="button" class="visit-add" id="visitAdd">+ Add someone</button>
+          </fieldset>
+
+          <div class="visit-field-pair">
+            <div class="visit-field">
+              <label for="vf-email" class="visit-field-label">Email</label>
+              <input type="email" id="vf-email" name="email" class="visit-field-input" autocomplete="email" inputmode="email" placeholder="For your confirmation">
+            </div>
+            <div class="visit-field">
+              <label for="vf-phone" class="visit-field-label">Phone</label>
+              <input type="tel" id="vf-phone" name="phone" class="visit-field-input" autocomplete="tel" inputmode="tel" placeholder="Or a number to reach you">
+            </div>
+          </div>
+
+          <fieldset class="visit-field visit-choice">
+            <legend class="visit-field-label">Have you visited before?</legend>
+            <label class="visit-check"><input type="radio" name="firstVisit" value="yes" checked> This is our first visit</label>
+            <label class="visit-check"><input type="radio" name="firstVisit" value="no"> We have been before</label>
+          </fieldset>
+
+          <div class="visit-field">
+            <label for="vf-notes" class="visit-field-label">Anything we should know?</label>
+            <textarea id="vf-notes" name="notes" rows="2" class="visit-field-input visit-field-area" maxlength="500" placeholder="Seating, a wheelchair, a child who needs a quiet room"></textarea>
+          </div>
+
+          <div class="visit-hp" aria-hidden="true">
+            <label for="vf-website">Leave this empty</label>
+            <input type="text" id="vf-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="visit-form-submit" id="visitSubmit">
+            <span id="visitSubmitLabel">Save my seat</span>
             <span class="visit-form-arrow">&rarr;</span>
-          </a>
+          </button>
 
           <p class="visit-form-note">
-            Tell us which Sunday and who is coming. It goes straight to our hospitality team.
+            It goes straight to our hospitality team. We'll never share your information.
+          </p>
+        </form>
+
+        <!-- Confirmation: shown once the church has the family's visit -->
+        <div class="visit-confirm" id="visitConfirm" aria-hidden="true" tabindex="-1">
+          <div class="visit-confirm-mark">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M14 24 L21 31 L34 17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="visit-confirm-title">
+            We'll see you <em id="visitConfirmWhen">Sunday</em>.
+          </h3>
+          <p class="visit-confirm-body" id="visitConfirmBody">
+            Look for our hospitality team at the door. We've saved you a seat.
+          </p>
+          <p class="visit-confirm-meta">
+            302 South Tenth Street &middot; Quincy FL
           </p>
         </div>
       </div>
@@ -5076,6 +5238,173 @@
 
     // Initialize
     updateCarousel();
+  })();
+
+
+  // ─── PLAN YOUR VISIT: sent straight to the church's console ──────────
+  // The app gives the coming Sundays and a signed note (GET), then takes the
+  // form (POST), through the same checks as the app's own Plan your visit.
+  // If the app cannot be reached, the form points to the app's page instead.
+  (function initVisitForm() {
+    const APP = 'https://app.mtmoriahquincy.org';
+    const ENDPOINT = APP + '/api/visit/plan';
+    const form = document.getElementById('visitForm');
+    if (!form) return;
+    const wrap = form.closest('.visit-form-wrap');
+    const sunday = document.getElementById('vf-sunday');
+    const people = document.getElementById('visitPeople');
+    const addBtn = document.getElementById('visitAdd');
+    const errorBox = document.getElementById('visitError');
+    const submit = document.getElementById('visitSubmit');
+    const submitLabel = document.getElementById('visitSubmitLabel');
+    const confirmBox = document.getElementById('visitConfirm');
+    let token = '';
+    let count = 0;
+
+    function showError(message, withAppLink) {
+      errorBox.textContent = message;
+      if (withAppLink) {
+        errorBox.append(' ');
+        const a = document.createElement('a');
+        a.href = APP + '/visit/plan';
+        a.textContent = 'Use the form in our app instead.';
+        errorBox.append(a);
+      }
+      errorBox.hidden = false;
+    }
+
+    function clearError() {
+      errorBox.hidden = true;
+      errorBox.textContent = '';
+      form.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    }
+
+    function addPerson(lastName) {
+      count += 1;
+      const n = count;
+      const row = document.createElement('div');
+      row.className = 'visit-person';
+      row.innerHTML =
+        '<div class="visit-field" style="margin-bottom:0">' +
+          '<label class="visit-field-label" for="vf-first-' + n + '">First name</label>' +
+          '<input class="visit-field-input" id="vf-first-' + n + '" data-k="first" autocomplete="' + (n === 1 ? 'given-name' : 'off') + '">' +
+        '</div>' +
+        '<div class="visit-field" style="margin-bottom:0">' +
+          '<label class="visit-field-label" for="vf-last-' + n + '">Last name</label>' +
+          '<input class="visit-field-input" id="vf-last-' + n + '" data-k="last" autocomplete="' + (n === 1 ? 'family-name' : 'off') + '">' +
+        '</div>' +
+        '<div class="visit-person-extra">' +
+          '<label class="visit-check"><input type="checkbox" data-k="child"> Child</label>' +
+          '<input class="visit-field-input visit-age" data-k="age" inputmode="numeric" maxlength="2" placeholder="Age" aria-label="Age" hidden>' +
+          (n > 1 ? '<button type="button" class="visit-remove">Remove</button>' : '') +
+        '</div>';
+      row.querySelector('[data-k="last"]').value = lastName || '';
+      const child = row.querySelector('[data-k="child"]');
+      const age = row.querySelector('[data-k="age"]');
+      child.addEventListener('change', function () { age.hidden = !child.checked; if (child.checked) age.focus(); });
+      age.addEventListener('input', function () { age.value = age.value.replace(/\D/g, '').slice(0, 2); });
+      const remove = row.querySelector('.visit-remove');
+      if (remove) remove.addEventListener('click', function () { row.remove(); });
+      people.appendChild(row);
+      return row;
+    }
+
+    addPerson('');
+    addBtn.addEventListener('click', function () {
+      const rows = people.querySelectorAll('.visit-person');
+      const last = rows.length ? rows[0].querySelector('[data-k="last"]').value.trim() : '';
+      addPerson(last).querySelector('[data-k="first"]').focus();
+    });
+
+    // the coming Sundays, and the note that shows a person filled this out
+    fetch(ENDPOINT, { mode: 'cors' })
+      .then(function (r) { if (!r.ok) throw new Error('unavailable'); return r.json(); })
+      .then(function (data) {
+        token = data.token || '';
+        sunday.innerHTML = '';
+        (data.sundays || []).forEach(function (s) {
+          const o = document.createElement('option');
+          o.value = s.date;
+          o.textContent = s.label;
+          sunday.appendChild(o);
+        });
+        sunday.disabled = !sunday.options.length;
+        if (!sunday.options.length) showError('There are no Sundays to choose right now. Please call the church office at 850-627-7244.', false);
+      })
+      .catch(function () {
+        sunday.innerHTML = '<option value="">The coming Sundays could not load</option>';
+        showError('This form cannot reach the church right now.', true);
+      });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearError();
+      const guests = [];
+      let missing = null;
+      people.querySelectorAll('.visit-person').forEach(function (row) {
+        const first = row.querySelector('[data-k="first"]');
+        const last = row.querySelector('[data-k="last"]');
+        const isChild = row.querySelector('[data-k="child"]').checked;
+        const ageText = row.querySelector('[data-k="age"]').value;
+        if (!first.value.trim() && !last.value.trim()) return;
+        if (!first.value.trim() || !last.value.trim()) {
+          (first.value.trim() ? last : first).setAttribute('aria-invalid', 'true');
+          missing = missing || (first.value.trim() ? last : first);
+          return;
+        }
+        guests.push({ firstName: first.value.trim(), lastName: last.value.trim(), isChild: isChild, age: isChild && ageText ? Number(ageText) : null });
+      });
+      if (missing || !guests.length) {
+        const el = missing || people.querySelector('[data-k="first"]');
+        el.setAttribute('aria-invalid', 'true');
+        showError('Add the first and last name of everyone coming.', false);
+        el.focus();
+        return;
+      }
+      const email = form.querySelector('[name="email"]').value.trim();
+      const phone = form.querySelector('[name="phone"]').value.trim();
+      if (!email && !phone) {
+        form.querySelector('[name="email"]').setAttribute('aria-invalid', 'true');
+        showError('Add an email or a phone number so the church can reach you.', false);
+        form.querySelector('[name="email"]').focus();
+        return;
+      }
+      const checked = form.querySelector('[name="firstVisit"]:checked');
+      const body = {
+        serviceDate: sunday.value,
+        guests: guests,
+        email: email,
+        phone: phone,
+        firstVisit: checked ? checked.value : '',
+        notes: form.querySelector('[name="notes"]').value.trim(),
+        website: form.querySelector('[name="website"]').value,
+        token: token,
+      };
+      submit.disabled = true;
+      submitLabel.textContent = 'Sending';
+      fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().catch(function () { return { status: 'error', error: 'This form cannot reach the church right now.' }; }); })
+        .then(function (r) {
+          if (r.status !== 'done') {
+            const field = r.field === 'email' ? form.querySelector('[name="email"]') : r.field === 'serviceDate' ? sunday : r.field === 'guests' ? people.querySelector('[data-k="first"]') : null;
+            if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+            showError(r.error || 'That did not go through. Please try again.', !r.field);
+            return;
+          }
+          if (window.mx) window.mx('event', 'form_submit', { form: 'visit' });
+          document.getElementById('visitConfirmWhen').textContent = r.label || 'Sunday';
+          document.getElementById('visitConfirmBody').textContent =
+            'Look for our hospitality team at the door. We\'ll greet you by name and save you a seat.' +
+            (email ? ' A confirmation is on its way to your email.' : '');
+          wrap.classList.add('confirmed');
+          confirmBox.classList.add('visible');
+          confirmBox.setAttribute('aria-hidden', 'false');
+          confirmBox.focus({ preventScroll: true });
+          confirmBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        })
+        .catch(function () { showError('This form cannot reach the church right now.', true); })
+        .then(function () { submit.disabled = false; submitLabel.textContent = 'Save my seat'; });
+    });
   })();
 
 
