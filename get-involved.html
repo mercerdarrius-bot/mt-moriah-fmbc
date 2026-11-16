@@ -488,6 +488,59 @@
   .next-confirm.visible { display: block; }
   .next-form.confirmed { display: none; }
 
+  .next-error {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--burgundy);
+    margin: 0 0 20px;
+  }
+
+  .next-error a { color: inherit; }
+
+  .next-check {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: -6px 0 26px;
+    cursor: pointer;
+  }
+
+  .next-check[hidden] { display: none; }
+
+  .next-check input {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--burgundy);
+    flex: none;
+  }
+
+  .visit-field-input[aria-invalid="true"] { border-bottom-color: var(--burgundy); }
+
+  .visit-form-submit[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+  }
+
+  /* the honeypot: off screen for people, still there for bots */
+  .next-hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 560px) {
+    .next-field-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
 
 
   .visit-field {
@@ -1592,24 +1645,54 @@
       </div>
 
       <div>
+        <!-- Next steps and prayer: sent straight to the church's console (the app's /api/website/forms).
+             A prayer request or a next step lands in Care, where the pastoral team follows up. -->
         <form class="next-form" id="nextForm" novalidate>
+          <p class="next-error" id="nextError" role="alert" hidden></p>
+
           <div class="visit-field">
             <label for="nf-step" class="visit-field-label">Which step?</label>
             <select id="nf-step" name="step" class="visit-field-input visit-field-select">
-              <option>Follow Christ</option>
-              <option>Request prayer</option>
-              <option>Be baptized</option>
-              <option>Become a member</option>
-              <option>I am not sure yet</option>
+              <option data-say="I want to follow Christ">Follow Christ</option>
+              <option data-kind="prayer">Request prayer</option>
+              <option data-say="I'm ready to be baptized">Be baptized</option>
+              <option data-say="I'd like to become a member">Become a member</option>
+              <option data-say="I'm not sure of my next step yet">I am not sure yet</option>
             </select>
           </div>
 
-          <button type="submit" class="visit-form-submit">
-            <span>Take this step</span>
+          <div class="next-field-row">
+            <div class="visit-field">
+              <label for="nf-name" class="visit-field-label">Your name</label>
+              <input type="text" id="nf-name" name="name" class="visit-field-input" required maxlength="120" autocomplete="name" placeholder="First and last name">
+            </div>
+            <div class="visit-field">
+              <label for="nf-contact" class="visit-field-label">Email or phone</label>
+              <input type="text" id="nf-contact" name="contact" class="visit-field-input" required maxlength="160" autocomplete="email" placeholder="How we reach you">
+            </div>
+          </div>
+
+          <div class="visit-field">
+            <label for="nf-notes" class="visit-field-label" id="nf-notes-label">Anything you'd like to share? <span class="next-opt">optional</span></label>
+            <textarea id="nf-notes" name="notes" rows="3" class="visit-field-input" maxlength="4000" placeholder="Where you are on your journey, questions you have, or how we can help."></textarea>
+          </div>
+
+          <label class="next-check" id="nf-private" hidden>
+            <input type="checkbox" name="confidential">
+            <span>Keep this confidential. Only the pastor and the church office will read it.</span>
+          </label>
+
+          <div class="next-hp" aria-hidden="true">
+            <label for="nf-website">Leave this empty</label>
+            <input type="text" id="nf-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="visit-form-submit" id="nextSubmit">
+            <span id="nextSubmitLabel">Take this step</span>
             <span class="visit-form-arrow">&rarr;</span>
           </button>
 
-          <p class="next-form-note">On the next page, tell us how to reach you. Shared only with our church team. We will reach out personally.</p>
+          <p class="next-form-note">Shared only with our pastoral team. We will reach out personally.</p>
         </form>
 
         <p class="next-confirm" id="nextConfirm" role="status" aria-live="polite"></p>
@@ -1706,28 +1789,57 @@
       <span class="serve-modal-team" id="serveTeam">this team</span>.
     </p>
 
+    <!-- Serving interest: sent straight to the church's console (the app's /api/website/forms).
+         data-ministry is the ministry's name in the console: someone already on the church roll
+         lands on that ministry's requests for its leaders; anyone else reaches the church office. -->
     <form class="serve-form" id="serveForm" novalidate>
+      <p class="next-error" id="serveError" role="alert" hidden></p>
+
       <div class="visit-field">
         <label for="sf-team" class="visit-field-label">Where you would like to serve</label>
         <select id="sf-team" name="team" class="visit-field-input visit-field-select">
-          <option>Ushers</option>
-          <option>Choir</option>
-          <option>Hospitality Ministry</option>
-          <option>Media and Audio Visual Ministry</option>
-          <option>Youth Ministry</option>
-          <option>Man To Man Men's Ministry</option>
-          <option>Sister To Sister Women's Ministry</option>
-          <option>The Bridge Ministry</option>
+          <option data-ministry="Usher Ministry">Ushers</option>
+          <option data-ministry="Choir Ministry">Choir</option>
+          <option data-ministry="Hospitality Ministry">Hospitality Ministry</option>
+          <option data-ministry="Media and Audio Visual Ministry">Media and Audio Visual Ministry</option>
+          <option data-ministry="Youth Ministry">Youth Ministry</option>
+          <option data-ministry="Man to Man Men's Ministry">Man To Man Men's Ministry</option>
+          <option data-ministry="Sister to Sister Women's Ministry">Sister To Sister Women's Ministry</option>
+          <option data-ministry="General Missions">The Bridge Ministry</option>
           <option>Wherever I am needed</option>
         </select>
       </div>
 
-      <button type="submit" class="visit-form-submit">
-        <span>Send my interest</span>
+      <div class="next-field-row">
+        <div class="visit-field">
+          <label for="sf-name" class="visit-field-label">Your name</label>
+          <input type="text" id="sf-name" name="name" class="visit-field-input" required maxlength="120"
+                 autocomplete="name" placeholder="First and last name">
+        </div>
+        <div class="visit-field">
+          <label for="sf-contact" class="visit-field-label">Email or phone</label>
+          <input type="text" id="sf-contact" name="contact" class="visit-field-input" required maxlength="160"
+                 autocomplete="email" placeholder="How we reach you">
+        </div>
+      </div>
+
+      <div class="visit-field">
+        <label for="sf-notes" class="visit-field-label">Anything we should know? <span class="next-opt">optional</span></label>
+        <textarea id="sf-notes" name="notes" rows="3" class="visit-field-input" maxlength="4000"
+                  placeholder="Your experience, your availability, or questions you have."></textarea>
+      </div>
+
+      <div class="next-hp" aria-hidden="true">
+        <label for="sf-website">Leave this empty</label>
+        <input type="text" id="sf-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="visit-form-submit" id="serveSubmit">
+        <span id="serveSubmitLabel">Send my interest</span>
         <span class="visit-form-arrow">&rarr;</span>
       </button>
 
-      <p class="next-form-note">On the next page, tell us how to reach you. Shared only with our church team.</p>
+      <p class="next-form-note">Shared only with our ministry leaders and church office.</p>
     </form>
 
     <p class="serve-status" id="serveStatus" role="status" aria-live="polite"></p>
@@ -1831,11 +1943,66 @@
     onScroll();
   })();
 
+  // ─── WEBSITE FORMS ──────────────────────────────────────────────────
+  // Both forms on this page go straight to the church's console (the app's
+  // /api/website/forms): GET gives a signed note that shows a person filled
+  // the form out, POST takes the response. A prayer request or a next step
+  // lands in Care for the pastoral team; serving interest lands with that
+  // ministry, or with the church office for anyone new.
+  var websiteForms = (function () {
+    var ENDPOINT = 'https://app.mtmoriahquincy.org/api/website/forms';
+    var OFFICE = ' Please call the church office at 850-627-7244.';
+    var token = '';
+    var ready = fetch(ENDPOINT, { mode: 'cors' })
+      .then(function (r) { if (!r.ok) throw new Error('unavailable'); return r.json(); })
+      .then(function (d) { token = d.token || ''; return !!token; })
+      .catch(function () { return false; });
+
+    // one box takes an email or a phone number
+    function contactOf(text) {
+      var t = (text || '').trim();
+      if (t.indexOf('@') > -1) return { email: t, phone: '' };
+      var digits = t.replace(/\D/g, '');
+      if (digits.length === 11 && digits.charAt(0) === '1') digits = digits.slice(1);
+      return digits.length === 10 ? { email: '', phone: digits } : null;
+    }
+
+    function send(body) {
+      return ready
+        .then(function (ok) {
+          if (!ok) return { status: 'error', error: 'This form cannot reach the church right now.' + OFFICE };
+          body.token = token;
+          return fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+            .then(function (r) { return r.json(); });
+        })
+        .catch(function () { return { status: 'error', error: 'This form cannot reach the church right now.' + OFFICE }; });
+    }
+
+    function firstName(name) { return (name || '').trim().split(/\s+/)[0] || ''; }
+
+    return { send: send, contactOf: contactOf, firstName: firstName };
+  })();
+
+  function formHelpers(form, errorBox) {
+    return {
+      error: function (message, field) {
+        errorBox.textContent = message;
+        errorBox.hidden = false;
+        if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+      },
+      clear: function () {
+        errorBox.hidden = true;
+        errorBox.textContent = '';
+        form.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+      }
+    };
+  }
+
   // ─── NEXT STEPS ─────────────────────────────────────────────────────
   // The four cards are a picker for the form below rather than four dead
   // ends: choosing one sets the select and moves focus there, so the whole
-  // section reads as a single flow. The button opens the church app's own
-  // form for that step (prayer, or a next step), which reaches the church team.
+  // section reads as a single flow. Request prayer asks for the prayer itself
+  // and offers to keep it confidential.
   (function initNextSteps() {
     var form = document.getElementById('nextForm');
     var confirmEl = document.getElementById('nextConfirm');
@@ -1864,31 +2031,81 @@
       });
     });
 
-    // The step opens the church app's own form (its Pray page), which reaches the church team.
-    var APP = 'https://app.mtmoriahquincy.org';
-    var TOPIC = {
-      'Follow Christ': 'I want to follow Christ',
-      'Be baptized': "I'm ready to be baptized",
-      'Become a member': "I'd like to become a member",
-      'I am not sure yet': "I'm not sure of my next step yet"
-    };
+    var nameEl = form.querySelector('[name="name"]');
+    var contactEl = form.querySelector('[name="contact"]');
+    var notesEl = form.querySelector('[name="notes"]');
+    var notesLabel = document.getElementById('nf-notes-label');
+    var privateBox = document.getElementById('nf-private');
+    var submit = document.getElementById('nextSubmit');
+    var submitLabel = document.getElementById('nextSubmitLabel');
+    var ui = formHelpers(form, document.getElementById('nextError'));
+
+    function isPrayer() { return select.options[select.selectedIndex].dataset.kind === 'prayer'; }
+
+    // Request prayer asks for the prayer itself; every other step keeps the note optional
+    function fit() {
+      var prayer = isPrayer();
+      notesLabel.innerHTML = prayer ? 'How can we pray for you?' : 'Anything you\'d like to share? <span class="next-opt">optional</span>';
+      notesEl.placeholder = prayer ? 'Share as much or as little as you like.' : 'Where you are on your journey, questions you have, or how we can help.';
+      privateBox.hidden = !prayer;
+      submitLabel.textContent = prayer ? 'Send my request' : 'Take this step';
+    }
+    select.addEventListener('change', fit);
+    cards.forEach(function(card) { card.addEventListener('click', fit); });
+    fit();
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var step = select.value;
-      if (window.mx) window.mx('event', 'form_submit', { form: 'next_step' });
-      window.location.href = step === 'Request prayer'
-        ? APP + '/pray'
-        : APP + '/pray?kind=next_step&topic=' + encodeURIComponent(TOPIC[step] || step);
+      ui.clear();
+      var prayer = isPrayer();
+      var opt = select.options[select.selectedIndex];
+      var name = nameEl.value.trim();
+      if (!name) return ui.error('Tell us your name.', nameEl);
+      if (!contactEl.value.trim()) return ui.error('Leave an email or a phone number so we can reach you.', contactEl);
+      var contact = websiteForms.contactOf(contactEl.value);
+      if (!contact) return ui.error('Enter an email address or a 10 digit phone number.', contactEl);
+      if (prayer && !notesEl.value.trim()) return ui.error('Write a few words so we know how to pray.', notesEl);
+
+      submit.disabled = true;
+      var label = submitLabel.textContent;
+      submitLabel.textContent = 'Sending';
+      websiteForms.send({
+        kind: prayer ? 'prayer' : 'next_step',
+        name: name,
+        email: contact.email,
+        phone: contact.phone,
+        message: notesEl.value.trim(),
+        step: prayer ? '' : (opt.dataset.say || opt.text),
+        confidential: prayer && form.querySelector('[name="confidential"]').checked,
+        website: form.querySelector('[name="website"]').value
+      }).then(function(r) {
+        if (!r || r.status !== 'done') {
+          var field = r && (r.field === 'name' ? nameEl : r.field === 'email' || r.field === 'phone' ? contactEl : r.field === 'message' ? notesEl : null);
+          ui.error((r && r.error) || 'That did not go through. Please try again.', field);
+          return;
+        }
+        if (window.mx) window.mx('event', 'form_submit', { form: prayer ? 'prayer' : 'next_step' });
+        var first = websiteForms.firstName(name);
+        confirmEl.textContent = prayer
+          ? 'Received, ' + first + '. You are not carrying it alone. Our pastoral team will pray with you.'
+          : 'Thank you, ' + first + '. A pastor or team member will reach out personally to walk with you.';
+        form.classList.add('confirmed');
+        confirmEl.classList.add('visible');
+        confirmEl.setAttribute('tabindex', '-1');
+        confirmEl.focus({ preventScroll: true });
+      }).then(function() {
+        submit.disabled = false;
+        submitLabel.textContent = label;
+      });
     });
   })();
 
 
   // ─── SERVE INTEREST DIALOG ──────────────────────────────────────────
-  // Each team box opens this with its own team preselected. Submission goes
-  // opens the church app's own form (its Pray page, a next step) naming the
-  // team, which reaches the church team.
+  // Each team box opens this with its own team preselected. The response goes
+  // straight to the church's console (websiteForms above): to that ministry's
+  // requests for someone on the church roll, to the church office otherwise.
   (function initServeInterest() {
-    var APP = 'https://app.mtmoriahquincy.org';
 
     var modal  = document.getElementById('serveModal');
     var form   = document.getElementById('serveForm');
@@ -1908,6 +2125,7 @@
         if (teamOut) teamOut.textContent = team;
       }
       form.classList.remove('is-done');
+      if (ui) ui.clear();
       status.className = 'serve-status';
       status.textContent = '';
       modal.hidden = false;
@@ -1942,12 +2160,55 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
-    form.addEventListener('submit', function(e) {
+    var nameEl = form.querySelector('[name="name"]');
+    var contactEl = form.querySelector('[name="contact"]');
+    var notesEl = form.querySelector('[name="notes"]');
+    var submit = document.getElementById('serveSubmit');
+    var submitLabel = document.getElementById('serveSubmitLabel');
+    var ui = formHelpers(form, document.getElementById('serveError'));
+
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var team = select.value;
-      var topic = team === 'Wherever I am needed' ? "I'd like to serve wherever I am needed" : "I'd like to serve with the " + team;
-      if (window.mx) window.mx('event', 'form_submit', { form: 'serve' });
-      window.location.href = APP + '/pray?kind=next_step&topic=' + encodeURIComponent(topic);
+      ui.clear();
+      var opt = select.options[select.selectedIndex];
+      var team = opt.text;
+      var name = nameEl.value.trim();
+      if (!name) return ui.error('Tell us your name.', nameEl);
+      if (!contactEl.value.trim()) return ui.error('Leave an email or a phone number so we can reach you.', contactEl);
+      var contact = websiteForms.contactOf(contactEl.value);
+      if (!contact) return ui.error('Enter an email address or a 10 digit phone number.', contactEl);
+
+      submit.disabled = true;
+      submitLabel.textContent = 'Sending';
+      websiteForms.send({
+        kind: 'serve',
+        name: name,
+        email: contact.email,
+        phone: contact.phone,
+        message: notesEl.value.trim(),
+        team: team,
+        ministry: opt.dataset.ministry || '',
+        website: form.querySelector('[name="website"]').value
+      }).then(function (r) {
+        if (!r || r.status !== 'done') {
+          var field = r && (r.field === 'name' ? nameEl : r.field === 'email' || r.field === 'phone' ? contactEl : r.field === 'message' ? notesEl : null);
+          ui.error((r && r.error) || 'That did not go through. Please try again.', field);
+          return;
+        }
+        if (window.mx) window.mx('event', 'form_submit', { form: 'serve' });
+        var first = websiteForms.firstName(name);
+        status.textContent = team === 'Wherever I am needed'
+          ? 'Thank you, ' + first + '. We will be in touch about where you can serve.'
+          : 'Thank you, ' + first + '. We will be in touch about serving with ' + team + '.';
+        form.classList.add('is-done');
+        form.reset();
+        status.className = 'serve-status is-shown';
+        status.setAttribute('tabindex', '-1');
+        status.focus({ preventScroll: true });
+      }).then(function () {
+        submit.disabled = false;
+        submitLabel.textContent = 'Send my interest';
+      });
     });
   })();
 
