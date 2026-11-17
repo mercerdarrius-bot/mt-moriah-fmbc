@@ -3478,6 +3478,222 @@
 
   .connect-card:hover .connect-card-arrow { transform: translateX(5px); }
 
+  /* The member app, inside Stay Connected: a phone drawn in CSS around a real screen of the app,
+     the way to open it, and the four setup steps. */
+  .connect-app {
+    --phone-w: 292px;
+    display: grid;
+    grid-template-columns: var(--phone-w) minmax(0, 1fr);
+    gap: clamp(48px, 7vw, 104px);
+    align-items: center;
+    margin-top: clamp(64px, 8vw, 104px);
+    padding-top: clamp(64px, 8vw, 104px);
+    border-top: 1px solid rgba(184, 145, 84, 0.22);
+  }
+
+  .app-phone {
+    width: var(--phone-w);
+    padding: 11px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #2b2a2c, #121113 46%, #252427);
+    box-shadow:
+      0 0 0 1.5px rgba(255, 255, 255, 0.14),
+      0 0 0 4px #0c0b0c,
+      0 40px 80px -30px rgba(10, 2, 5, 0.85),
+      0 18px 36px -18px rgba(10, 2, 5, 0.6);
+    position: relative;
+  }
+
+  .app-phone-screen {
+    border-radius: 39px;
+    overflow: hidden;
+    background: #3d1018;
+    position: relative;
+  }
+
+  .app-phone-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .app-phone-status {
+    height: calc((var(--phone-w) - 22px) * 0.135);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 24px 0 30px;
+    color: #fff;
+    position: relative;
+  }
+
+  .app-phone-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .app-phone-island {
+    position: absolute;
+    left: 50%;
+    top: 9px;
+    width: 30%;
+    height: 24px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #000;
+  }
+
+  .app-phone-icons { display: inline-flex; align-items: center; gap: 5px; }
+
+  .connect-app-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 96, "wght" 400, "SOFT" 30, "WONK" 0;
+    font-size: clamp(30px, 3.2vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -0.018em;
+    color: var(--cream);
+    margin: 0 0 16px;
+  }
+
+  .connect-app-title em { font-style: italic; color: var(--gold-light); }
+
+  .connect-app-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(245, 240, 232, 0.82);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .connect-app-get {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px 28px;
+    margin: 30px 0 38px;
+  }
+
+  .connect-app-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 2px;
+    background: var(--gold-light);
+    color: var(--burgundy-darker);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+  }
+
+  .connect-app-open:hover { background: var(--cream); transform: translateY(-1px); }
+
+  .connect-app-qr {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 330px;
+  }
+
+  .connect-app-qr-code {
+    flex: none;
+    width: 92px;
+    height: 92px;
+    padding: 9px;
+    border-radius: 6px;
+    background: var(--cream);
+  }
+
+  .connect-app-qr p {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .connect-app-qr strong { color: var(--cream); font-weight: 500; }
+
+  .connect-app-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 36px;
+  }
+
+  .connect-app-steps li {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .connect-app-n {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 178, 126, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    color: var(--gold-light);
+  }
+
+  .connect-app-steps h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin: 5px 0 6px;
+  }
+
+  .connect-app-steps p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(245, 240, 232, 0.76);
+    margin: 0 0 6px;
+  }
+
+  .connect-app-steps strong { color: var(--cream); font-weight: 600; }
+  .connect-app-steps a { color: var(--gold-light); }
+
+  .connect-app-icon {
+    display: inline-block;
+    vertical-align: -2px;
+    margin: 0 1px;
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 1020px) {
+    .connect-app { --phone-w: 258px; }
+    .connect-app-steps { grid-template-columns: 1fr; }
+    /* a smaller phone: a narrower island and smaller status icons, so they never overlap */
+    .app-phone-status { padding: 3px 17px 0 25px; }
+    .app-phone-island { width: 26%; height: 21px; top: 8px; }
+    .app-phone-time { font-size: 12px; }
+    .app-phone-icons { gap: 4px; }
+    .app-phone-icons svg { height: 9.5px; width: auto; }
+  }
+
+  @media (max-width: 760px) {
+    .connect-app { grid-template-columns: 1fr; --phone-w: 248px; }
+    .connect-app-phone { justify-self: center; }
+    .connect-app-qr { display: none; }
+    .connect-app-open { width: 100%; justify-content: center; }
+    .connect-app-get { margin: 26px 0 32px; }
+  }
+
   /* ===================================================== */
   /* MINISTRY MOMENTS                                      */
   /* ===================================================== */
@@ -4687,6 +4903,88 @@
           </span>
           <span class="connect-card-arrow" aria-hidden="true">&rarr;</span>
         </a>
+      </div>
+    </div>
+
+    <!-- The member app. It installs from the phone's browser (no app store), so this shows what it looks
+         like, how to open it (button, or the QR code on a computer), and the four steps to set it up.
+         The phone shows a sample member on a test copy of the app, never a real person. -->
+    <div class="connect-app" id="app">
+      <div class="connect-app-phone reveal">
+        <div class="app-phone" role="img" aria-label="The Mount Moriah app on an iPhone: Home shows this week's Bible Study, a member's ministries and the church's announcements.">
+          <div class="app-phone-screen">
+            <div class="app-phone-status" aria-hidden="true">
+              <span class="app-phone-time">9:41</span>
+              <span class="app-phone-island"></span>
+              <span class="app-phone-icons">
+                <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="0.8"/><rect x="4.6" y="5" width="3" height="6" rx="0.8"/><rect x="9.2" y="2.6" width="3" height="8.4" rx="0.8"/><rect x="13.8" y="0" width="3" height="11" rx="0.8"/></svg>
+                <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2.3c2.1 0 4 .8 5.5 2.1l1.1-1.2A9.6 9.6 0 0 0 7.5.6 9.6 9.6 0 0 0 .9 3.2L2 4.4a8 8 0 0 1 5.5-2.1zm0 3.3c1.2 0 2.3.4 3.2 1.2l1.1-1.2a6.3 6.3 0 0 0-8.6 0l1.1 1.2c.9-.8 2-1.2 3.2-1.2zm0 3.2c-.4 0-.8.2-1.1.4l1.1 1.2 1.1-1.2c-.3-.2-.7-.4-1.1-.4z"/></svg>
+                <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.2" stroke="currentColor" opacity="0.45"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><path d="M23 4v4c.8-.3 1.3-1.1 1.3-2S23.8 4.3 23 4z" fill="currentColor" opacity="0.5"/></svg>
+              </span>
+            </div>
+            <img src="app-home-iphone.jpg" width="690" height="1493" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <div class="connect-app-copy">
+        <h3 class="connect-app-title reveal">The church family, <em>in your pocket.</em></h3>
+        <p class="connect-app-body reveal reveal-delay-1">
+          For members of Mt. Moriah: announcements the moment they are sent, this week's services,
+          your ministries, giving and prayer, all in one place. There is nothing to find in an app
+          store. It installs from your phone's browser in about a minute.
+        </p>
+
+        <div class="connect-app-get reveal reveal-delay-1">
+          <a class="connect-app-open" href="https://app.mtmoriahquincy.org">
+            <span>Open the app</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <div class="connect-app-qr">
+            <svg xmlns="http://www.w3.org/2000/svg" class="connect-app-qr-code" role="img" aria-label="QR code for app.mtmoriahquincy.org" viewBox="0 0 29 29" shape-rendering="crispEdges"><path stroke="#3A0F18" d="M0 0.5h7m2 0h2m1 0h4m1 0h4m1 0h7M0 1.5h1m5 0h1m3 0h1m1 0h5m1 0h1m1 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h6m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h2m2 0h1m4 0h1m2 0h1m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h3m3 0h1m1 0h1m1 0h1M0 8.5h1m1 0h5m4 0h2m3 0h2m2 0h1m1 0h5M1 9.5h2m5 0h4m1 0h3m2 0h7m3 0h1M0 10.5h1m2 0h2m1 0h2m2 0h1m2 0h6m3 0h1M2 11.5h4m1 0h1m1 0h1m1 0h3m1 0h1m7 0h1m1 0h1m1 0h1M3 12.5h2m1 0h2m1 0h2m3 0h2m1 0h1m1 0h1m5 0h2M0 13.5h1m2 0h3m3 0h4m2 0h3m1 0h2m1 0h1m1 0h1m3 0h1M0 14.5h5m1 0h1m1 0h1m3 0h1m5 0h1m1 0h1m3 0h3M0 15.5h1m1 0h2m1 0h1m8 0h1m1 0h1m4 0h1m2 0h1m2 0h1M0 16.5h1m5 0h4m1 0h2m3 0h3m4 0h1m1 0h2M0 17.5h1m4 0h1m1 0h3m1 0h5m1 0h8m1 0h1m1 0h1M0 18.5h1m1 0h1m1 0h1m1 0h1m2 0h9m2 0h1m1 0h1m1 0h1m1 0h1M0 19.5h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h1m2 0h1m5 0h1m2 0h1M0 20.5h1m1 0h2m1 0h3m1 0h1m1 0h1m2 0h2m1 0h1m1 0h6m1 0h3M8 21.5h1m2 0h1m3 0h4m1 0h1m3 0h5M0 22.5h7m2 0h1m1 0h2m4 0h1m1 0h2m1 0h1m1 0h3M0 23.5h1m5 0h1m1 0h1m2 0h1m2 0h1m1 0h1m2 0h2m3 0h1m2 0h2M0 24.5h1m1 0h3m1 0h1m1 0h3m6 0h1m2 0h5m1 0h1m1 0h1M0 25.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h2m4 0h1m2 0h1m1 0h2M0 26.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h4m2 0h7M0 27.5h1m5 0h1m5 0h1m3 0h1m1 0h3m1 0h4m1 0h1M0 28.5h7m1 0h5m1 0h2m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1"/></svg>
+            <p>On a computer? Scan this with your phone's camera to open <strong>app.mtmoriahquincy.org</strong>.</p>
+          </div>
+        </div>
+
+        <ol class="connect-app-steps reveal reveal-delay-2">
+          <li>
+            <span class="connect-app-n" aria-hidden="true">1</span>
+            <div>
+              <h4>Open it on your phone</h4>
+              <p>Go to <strong>app.mtmoriahquincy.org</strong>, tap Open the app above, or scan the code.</p>
+            </div>
+          </li>
+          <li>
+            <span class="connect-app-n" aria-hidden="true">2</span>
+            <div>
+              <h4>Add it to your Home Screen</h4>
+              <p><strong>iPhone:</strong> in Safari, tap Share
+                <svg class="connect-app-icon" width="14" height="17" viewBox="0 0 14 17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="(the square with an arrow)" role="img"><path d="M7 1v10M3.5 4.5 7 1l3.5 3.5"/><path d="M4.5 7.5H2.5a1.5 1.5 0 0 0-1.5 1.5v5.5A1.5 1.5 0 0 0 2.5 16h9a1.5 1.5 0 0 0 1.5-1.5V9a1.5 1.5 0 0 0-1.5-1.5h-2"/></svg>,
+                then Add to Home Screen, then Add.</p>
+              <p><strong>Android:</strong> in Chrome, tap the three dots
+                <svg class="connect-app-icon" width="4" height="16" viewBox="0 0 4 16" fill="currentColor" aria-label="(the menu)" role="img"><circle cx="2" cy="2" r="1.6"/><circle cx="2" cy="8" r="1.6"/><circle cx="2" cy="14" r="1.6"/></svg>,
+                then Add to Home screen or Install app.</p>
+            </div>
+          </li>
+          <li>
+            <span class="connect-app-n" aria-hidden="true">3</span>
+            <div>
+              <h4>Sign in</h4>
+              <p>Open Mount Moriah from your Home Screen and tap Sign in. Use the email address the church
+                has for you, then type the short code that arrives in your inbox. There is no password to
+                remember. If the church does not have your email yet, call the office at
+                <a href="tel:8506277244">(850) 627-7244</a>.</p>
+            </div>
+          </li>
+          <li>
+            <span class="connect-app-n" aria-hidden="true">4</span>
+            <div>
+              <h4>Turn on notifications</h4>
+              <p>On Home, tap Turn on notifications, then Allow, so announcements reach you the moment they
+                are sent. On an iPhone this works once the app is on your Home Screen.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </div>
